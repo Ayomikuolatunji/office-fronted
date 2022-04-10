@@ -26,10 +26,11 @@ export default function index() {
      }else if(username.length<4){
         toast.error("Your user name should be more than 3 characters !", taostOption);
         return false     
-     }else if(password.length<7){
-      toast.error("Your paswword should be 9 characters long!", taostOption);
+     }else if(password.length <= 7){
+      toast.error("Your paswword should be 8 characters long!", taostOption);
       return false 
      }
+     return true
   }
 
   const submitUserInfo=(e)=>{
