@@ -14,17 +14,18 @@ import {RegisterMain} from "../../styled-compnent/index"
 
 
 
-export default function login() {
+export default function Login() {
   const [loading,setLoading]=useState(false)
   const router = useRouter()
   const {values,handleChange}=RegistrationHook()
+
   const toastOption={
     position: "bottom-right",
     autoclose:8000,
     pauseOnHover:true,
     draggable:true,
     theme:"dark"
-}
+  }
 
 
   const submitLogin=async(e)=>{
@@ -54,11 +55,7 @@ export default function login() {
     
   }
   const validateRegistration=()=>{
-    const {username,email,password,confirmPassword}=values
-     if(password !==confirmPassword){
-        toast.error("Password an confirm password should be equal !", toastOption);
-        return false    
-     }
+    const {email,password}=values
      if(password.length < 5){
       toast.error("Your paswword should be 8 characters long!", toastOption);
       return false 
@@ -76,7 +73,7 @@ export default function login() {
             <h1>Login</h1>
         </div>
          <form onSubmit={submitLogin}>
-                <InputText 
+              <InputText 
                 type={"email"}
                 onChange={(e)=>handleChange(e)}
                 name={"email"}
@@ -90,14 +87,6 @@ export default function login() {
                 name={"password"}
                 placeholder={"Enter your password"}
                 value={values.password}
-                className="block"
-             />
-             <InputText 
-                type={"password"}
-                onChange={(e)=>handleChange(e)}
-                name={"confirmPassword"}
-                placeholder={"Comfirm your password"}
-                value={values.confirmPassword}
                 className="block"
               />
               <Button text={loading?"please wait":"register"} className={"outline"}/>

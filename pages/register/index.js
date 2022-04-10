@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 
 
 
-export default function register() {
+export default function Register() {
   const [loading,setLoading]=useState(false)
   const {values,handleChange}=RegistrationHook()
   const router = useRouter()
