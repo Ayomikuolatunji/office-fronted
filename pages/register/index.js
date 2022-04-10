@@ -51,6 +51,20 @@ export default function index() {
 
 
 const RegisterMain=styled.div`
+     width: 100vw;
+     height: 100vh;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 1rem;
+     justify-content: center;
+     background-color: #131342;
 
-
+     .brand{
+          h1{
+              color: #fff;
+              font-size: 30px;
+              text-transform: uppercase;
+          }
+     }
 `
