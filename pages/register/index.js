@@ -67,4 +67,44 @@ const RegisterMain=styled.div`
               text-transform: uppercase;
           }
      }
+     form {
+         display: flex;
+         justify-content: center;
+         flex-direction: column;
+         gap: 2rem;
+         background-color: #00000076;
+         padding: 2rem 3rem;
+
+         input{
+             background: transparent;
+             padding: 1rem;
+             border: 0.1rem solid #4e0eff;
+             border-radius: 0.4rem;
+             color: #fff;
+             width: 100%;
+             font-size: 1rem;
+
+             &:hover{
+                 border: 1px solid #997af0;
+                 outline: none;
+             }
+         }
+
+         button{
+            background-color: #997af0;
+            border-radius: 0.4rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            color: #fff;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+
+            &:hover{
+                
+            }
+         }
+     }
 `
