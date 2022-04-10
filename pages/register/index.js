@@ -22,15 +22,15 @@ export default function index() {
          <form onSubmit={submitUserInfo}>
               <InputText 
                 type={"text"}
-                onChange={()=>handleChange(e)}
-                name={"name"}
+                onChange={(e)=>handleChange(e)}
+                name={"username"}
                 placeholder={"Enter your user name"}
                 value={values.username}
                 className="block"
               />
                 <InputText 
                 type={"email"}
-                onChange={()=>handleChange(e)}
+                onChange={(e)=>handleChange(e)}
                 name={"email"}
                 placeholder={"Enter your email address"}
                 value={values.email}
@@ -38,21 +38,21 @@ export default function index() {
               />
               <InputText 
                 type={"password"}
-                onChange={()=>handleChange(e)}
+                onChange={(e)=>handleChange(e)}
                 name={"password"}
                 placeholder={"Enter your password"}
-                value={values.passsword}
+                value={values.password}
                 className="block"
              />
              <InputText 
                 type={"text"}
-                onChange={()=>handleChange(e)}
+                onChange={(e)=>handleChange(e)}
                 name={"confirmPassword"}
                 placeholder={"Comfirm your password"}
                 value={values.comfirmPassword}
                 className="block"
               />
-              <Button text={"Register"} className={""}/>
+              <Button text={"Register"} className={"outline"}/>
               <span>Already have an account ? <Link href={"/login"} passHref>Login</Link> </span>
          </form>
     </RegisterMain>
