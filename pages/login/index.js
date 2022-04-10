@@ -1,9 +1,183 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Link from 'next/link'
+import styled from 'styled-components'
+import { ToastContainer,toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import Button from '../../util/Button'
+import InputText from '../../util/InputText'
+import { RegistrationHook } from '../../helpers/RegistrationHook'
+import {registrationApi} from "../../api/registerApi"
+import { useRouter } from 'next/router';
 
-export default function index() {
+
+
+
+export default function login() {
+  const [loading,setLoading]=useState(false)
+  const {values,handleChange}=RegistrationHook()
+  const router = useRouter()
+  const toastOption={
+    position: "bottom-right",
+    autoclose:8000,
+    pauseOnHover:true,
+    draggable:true,
+    theme:"dark"
+}
+
+
+  const submitLogin=async(e)=>{
+    setLoading(true)
+    const {username,email,password,confirmPassword}=values
+      e.preventDefault()
+      validateRegistration()
+      if(!validateRegistration()){
+         return
+      }
+      try{
+          const res=await axios.post(registrationApi,{
+          username,
+          email,
+          password
+         })
+        console.log(res)
+        if(res.status===201){
+          setLoading(false)
+        }
+        localStorage.setItem("office-user",JSON.stringify(res.data.user))
+        router.push('/')
+      }catch(err){
+         setLoading(false)
+          console.log(err)
+          toast.error(err.message,toastOption)
+      }
+    
+  }
+  const validateRegistration=()=>{
+    const {username,email,password,confirmPassword}=values
+     if(password !==confirmPassword){
+        toast.error("Password an confirm password should be equal !", toastOption);
+        return false    
+     }
+     if(username.length < 4){
+        toast.error("Your user name should be more than 3 characters !", toastOption);
+        return false     
+     }
+     if(password.length < 5){
+      toast.error("Your paswword should be 8 characters long!", toastOption);
+      return false 
+     }
+     if(!email){
+      toast.error("Email is required!", toastOption);
+      return false 
+     }
+     return true
+  } 
   return (
-    <div>
-        login page 
-    </div>
+     <>
+       <RegisterMain>
+         <div className="brand">
+            <h1>Login</h1>
+        </div>
+         <form onSubmit={submitLogin}>
+                <InputText 
+                type={"email"}
+                onChange={(e)=>handleChange(e)}
+                name={"email"}
+                placeholder={"Enter your email address"}
+                value={values.email}
+                className="block"
+              />
+              <InputText 
+                type={"password"}
+                onChange={(e)=>handleChange(e)}
+                name={"password"}
+                placeholder={"Enter your password"}
+                value={values.password}
+                className="block"
+             />
+             <InputText 
+                type={"password"}
+                onChange={(e)=>handleChange(e)}
+                name={"confirmPassword"}
+                placeholder={"Comfirm your password"}
+                value={values.confirmPassword}
+                className="block"
+              />
+              <Button text={loading?"please wait":"register"} className={"outline"}/>
+              <span>You dont an account ? <Link href={"/register"} passHref>register</Link> </span>
+         </form>
+       </RegisterMain>
+       <ToastContainer limit={6}/>
+     </>
   )
 }
+
+
+const RegisterMain=styled.div`
+     width: 100vw;
+     height: 100vh;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 1rem;
+     justify-content: center;
+     background-color: #131342;
+
+     .brand{
+          h1{
+              color: #fff;
+              font-size: 30px;
+              text-transform: uppercase;
+          }
+     }
+     form {
+         display: flex;
+         justify-content: center;
+         flex-direction: column;
+         gap: 2rem;
+         background-color: #00000076;
+         padding: 2rem 3rem;
+
+         input{
+             background: transparent;
+             padding: 1rem;
+             border: 0.1rem solid #4e0eff;
+             border-radius: 0.4rem;
+             color: #fff;
+             width: 100%;
+             font-size: 1rem;
+
+             &:hover{
+                 border: 1px solid #997af0;
+                 outline: none;
+             }
+         }
+
+         button{
+            background-color: #997af0;
+            border-radius: 0.4rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            color: #fff;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            transition: 0.5s ease-in-out;
+            &:hover{
+                background-color: #4e0eff; 
+            }
+         }
+         span{
+             color: white;
+             text-transform: uppercase;
+             a{
+                 color: #4e0eff;
+                 text-decoration:none;
+                 font-weight: bold;
+             }
+         }
+     }
+`

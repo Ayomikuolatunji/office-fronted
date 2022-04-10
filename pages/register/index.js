@@ -1,44 +1,78 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer,toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 import Button from '../../util/Button'
 import InputText from '../../util/InputText'
 import { RegistrationHook } from '../../helpers/RegistrationHook'
+import {registrationApi} from "../../api/registerApi"
+import { useRouter } from 'next/router';
 
 
 
-export default function index() {
+
+export default function register() {
+  const [loading,setLoading]=useState(false)
   const {values,handleChange}=RegistrationHook()
-  const taostOption={
+  const router = useRouter()
+  const toastOption={
     position: "bottom-right",
     autoclose:8000,
     pauseOnHover:true,
     draggable:true,
     theme:"dark"
 }
+
+
+  const submitUserInfo=async(e)=>{
+    setLoading(true)
+    const {username,email,password,confirmPassword}=values
+      e.preventDefault()
+      validateRegistration()
+      if(!validateRegistration()){
+         return
+      }
+      try{
+          const res=await axios.post(registrationApi,{
+          username,
+          email,
+          password
+         })
+        console.log(res)
+        if(res.status===201){
+          setLoading(false)
+        }
+        localStorage.setItem("office-user",JSON.stringify(res.data.user))
+        router.push('/')
+      }catch(err){
+         setLoading(false)
+          console.log(err)
+          toast.error(err.message,toastOption)
+      }
+    
+  }
   const validateRegistration=()=>{
     const {username,email,password,confirmPassword}=values
-    if(password !==confirmPassword){
-        toast.error("Password an confirm password should be seen !", taostOption);
+     if(password !==confirmPassword){
+        toast.error("Password an confirm password should be equal !", toastOption);
         return false    
-     }else if(username.length<4){
-        toast.error("Your user name should be more than 3 characters !", taostOption);
+     }
+     if(username.length < 4){
+        toast.error("Your user name should be more than 3 characters !", toastOption);
         return false     
-     }else if(password.length <= 7){
-      toast.error("Your paswword should be 8 characters long!", taostOption);
+     }
+     if(password.length < 5){
+      toast.error("Your paswword should be 8 characters long!", toastOption);
+      return false 
+     }
+     if(!email){
+      toast.error("Email is required!", toastOption);
       return false 
      }
      return true
-  }
-
-  const submitUserInfo=(e)=>{
-      e.preventDefault()
-      validateRegistration()
-      console.log(values)
-  }
- 
+  } 
   return (
      <>
        <RegisterMain>
@@ -78,11 +112,11 @@ export default function index() {
                 value={values.confirmPassword}
                 className="block"
               />
-              <Button text={"Register"} className={"outline"}/>
+              <Button text={loading?"please wait":"register"} className={"outline"}/>
               <span>Already have an account ? <Link href={"/login"} passHref>Login</Link> </span>
          </form>
        </RegisterMain>
-       <ToastContainer/>
+       <ToastContainer limit={6}/>
      </>
   )
 }
