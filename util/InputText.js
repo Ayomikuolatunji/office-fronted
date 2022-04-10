@@ -1,6 +1,8 @@
 import React from 'react'
 
-export default function InputText({type,placeholder,onChange,name,className}) {
+export default function InputText({type,placeholder,onChange,name,className,value}) {
+
+
   return (
      <input 
      type={type} 
@@ -8,6 +10,7 @@ export default function InputText({type,placeholder,onChange,name,className}) {
      onChange={onChange}
      name={name}
      className={className}
+     value={value}
      />
   )
 }

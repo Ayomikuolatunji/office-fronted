@@ -1,17 +1,19 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Button from '../../util/Button'
 import InputText from '../../util/InputText'
+import { RegistrationHook } from '../../helpers/RegistrationHook'
+
 
 export default function index() {
+  const {values,handleChange}=RegistrationHook()
 
  const submitUserInfo=(e)=>{
      e.preventDefault()
+     console.log(values)
  }
- const handleChange=(e)=>{
-
- } 
+ 
   return (
     <RegisterMain>
          <div className="brand">
@@ -23,24 +25,32 @@ export default function index() {
                 onChange={()=>handleChange(e)}
                 name={"name"}
                 placeholder={"Enter your user name"}
+                value={values.username}
+                className="block"
               />
                 <InputText 
                 type={"email"}
                 onChange={()=>handleChange(e)}
                 name={"email"}
                 placeholder={"Enter your email address"}
+                value={values.email}
+                className="block"
               />
               <InputText 
                 type={"password"}
                 onChange={()=>handleChange(e)}
                 name={"password"}
                 placeholder={"Enter your password"}
+                value={values.passsword}
+                className="block"
              />
              <InputText 
                 type={"text"}
                 onChange={()=>handleChange(e)}
                 name={"confirmPassword"}
                 placeholder={"Comfirm your password"}
+                value={values.comfirmPassword}
+                className="block"
               />
               <Button text={"Register"} className={""}/>
               <span>Already have an account ? <Link href={"/login"} passHref>Login</Link> </span>
@@ -111,6 +121,8 @@ const RegisterMain=styled.div`
              text-transform: uppercase;
              a{
                  color: #4e0eff;
+                 text-decoration:none;
+                 font-weight: bold;
              }
          }
      }
