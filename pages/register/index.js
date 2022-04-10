@@ -1,21 +1,46 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer,toast } from 'react-toastify'
 import Button from '../../util/Button'
 import InputText from '../../util/InputText'
 import { RegistrationHook } from '../../helpers/RegistrationHook'
 
 
+
 export default function index() {
   const {values,handleChange}=RegistrationHook()
+  const taostOption={
+    position: "bottom-right",
+    autoclose:8000,
+    pauseOnHover:true,
+    draggable:true,
+    theme:"dark"
+}
+  const validateRegistration=()=>{
+    const {username,email,password,confirmPassword}=values
+    if(password !==confirmPassword){
+        toast.error("Password an confirm password should be seen !", taostOption);
+        return false    
+     }else if(username.length<4){
+        toast.error("Your user name should be more than 3 characters !", taostOption);
+        return false     
+     }else if(password.length<7){
+      toast.error("Your paswword should be 9 characters long!", taostOption);
+      return false 
+     }
+  }
 
- const submitUserInfo=(e)=>{
-     e.preventDefault()
-     console.log(values)
- }
+  const submitUserInfo=(e)=>{
+      e.preventDefault()
+      validateRegistration()
+      console.log(values)
+  }
  
   return (
-    <RegisterMain>
+     <>
+       <RegisterMain>
          <div className="brand">
             <h1>New EMployee Registration</h1>
         </div>
@@ -45,7 +70,7 @@ export default function index() {
                 className="block"
              />
              <InputText 
-                type={"text"}
+                type={"password"}
                 onChange={(e)=>handleChange(e)}
                 name={"confirmPassword"}
                 placeholder={"Comfirm your password"}
@@ -55,7 +80,9 @@ export default function index() {
               <Button text={"Register"} className={"outline"}/>
               <span>Already have an account ? <Link href={"/login"} passHref>Login</Link> </span>
          </form>
-    </RegisterMain>
+       </RegisterMain>
+       <ToastContainer/>
+     </>
   )
 }
 
