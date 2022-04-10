@@ -49,7 +49,7 @@ export default function index() {
                 onChange={(e)=>handleChange(e)}
                 name={"confirmPassword"}
                 placeholder={"Comfirm your password"}
-                value={values.comfirmPassword}
+                value={values.confirmPassword}
                 className="block"
               />
               <Button text={"Register"} className={"outline"}/>

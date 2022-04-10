@@ -5,7 +5,7 @@ export const RegistrationHook=()=>{
        username:"",
        email:"",
        password:"",
-       comfirmPassword:""  
+       confirmPassword:""  
    })
 
    const handleChange=(e)=>{
