@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import styled from 'styled-components'
 import { ToastContainer,toast } from 'react-toastify'
+import { useRouter } from 'next/router';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Button from '../../util/Button'
 import InputText from '../../util/InputText'
 import { RegistrationHook } from '../../helpers/RegistrationHook'
-import {registrationApi} from "../../api/registerApi"
-import { useRouter } from 'next/router';
+import {loginApi} from "../../api/authApi"
+import {RegisterMain} from "../../styled-compnent/index"
+
 
 
 
 
 export default function login() {
   const [loading,setLoading]=useState(false)
-  const {values,handleChange}=RegistrationHook()
   const router = useRouter()
+  const {values,handleChange}=RegistrationHook()
   const toastOption={
     position: "bottom-right",
     autoclose:8000,
@@ -35,8 +36,7 @@ export default function login() {
          return
       }
       try{
-          const res=await axios.post(registrationApi,{
-          username,
+          const res=await axios.post(loginApi,{
           email,
           password
          })
@@ -58,10 +58,6 @@ export default function login() {
      if(password !==confirmPassword){
         toast.error("Password an confirm password should be equal !", toastOption);
         return false    
-     }
-     if(username.length < 4){
-        toast.error("Your user name should be more than 3 characters !", toastOption);
-        return false     
      }
      if(password.length < 5){
       toast.error("Your paswword should be 8 characters long!", toastOption);
@@ -114,70 +110,3 @@ export default function login() {
 }
 
 
-const RegisterMain=styled.div`
-     width: 100vw;
-     height: 100vh;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     gap: 1rem;
-     justify-content: center;
-     background-color: #131342;
-
-     .brand{
-          h1{
-              color: #fff;
-              font-size: 30px;
-              text-transform: uppercase;
-          }
-     }
-     form {
-         display: flex;
-         justify-content: center;
-         flex-direction: column;
-         gap: 2rem;
-         background-color: #00000076;
-         padding: 2rem 3rem;
-
-         input{
-             background: transparent;
-             padding: 1rem;
-             border: 0.1rem solid #4e0eff;
-             border-radius: 0.4rem;
-             color: #fff;
-             width: 100%;
-             font-size: 1rem;
-
-             &:hover{
-                 border: 1px solid #997af0;
-                 outline: none;
-             }
-         }
-
-         button{
-            background-color: #997af0;
-            border-radius: 0.4rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            color: #fff;
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #fff;
-            border: none;
-            transition: 0.5s ease-in-out;
-            &:hover{
-                background-color: #4e0eff; 
-            }
-         }
-         span{
-             color: white;
-             text-transform: uppercase;
-             a{
-                 color: #4e0eff;
-                 text-decoration:none;
-                 font-weight: bold;
-             }
-         }
-     }
-`

@@ -7,7 +7,7 @@ import axios from 'axios';
 import Button from '../../util/Button'
 import InputText from '../../util/InputText'
 import { RegistrationHook } from '../../helpers/RegistrationHook'
-import {registrationApi} from "../../api/registerApi"
+import {registrationApi} from "../../api/authApi"
 import { useRouter } from 'next/router';
 
 
