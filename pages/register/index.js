@@ -101,10 +101,17 @@ const RegisterMain=styled.div`
             font-weight: bold;
             color: #fff;
             border: none;
-
+            transition: 0.5s ease-in-out;
             &:hover{
-                
+                background-color: #4e0eff; 
             }
+         }
+         span{
+             color: white;
+             text-transform: uppercase;
+             a{
+                 color: #4e0eff;
+             }
          }
      }
 `
