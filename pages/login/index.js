@@ -30,7 +30,7 @@ export default function Login() {
 
   const submitLogin=async(e)=>{
     setLoading(true)
-    const {username,email,password,confirmPassword}=values
+    const {email,password}=values
       e.preventDefault()
       validateRegistration()
       if(!validateRegistration()){
@@ -89,7 +89,7 @@ export default function Login() {
                 value={values.password}
                 className="block"
               />
-              <Button text={loading?"please wait":"register"} className={"outline"}/>
+              <Button text={loading?"please wait":"Login"} className={"outline"}/>
               <span>You dont an account ? <Link href={"/register"} passHref>register</Link> </span>
          </form>
        </RegisterMain>
