@@ -47,20 +47,20 @@ export default function Avatar() {
           toast.error("Profile picture required", toastOption);
           return false 
         }
-        if(user){
-          console.log(user.user._id)
-          const {data}=await  axios.post(`${profile}/${user.user._id}`,{
-            Image:avatars[selectedAvatar]
-          })
-          console.log(data)
-          if(data.isSet){
-            user.user.avartImage=data.image,
-            user.user.avatarImageSet=true
-            router.push("/")
-          }else{
-            toast.error("avatar not set", toastOption)
+         try{
+          if(user){
+            console.log(user.user._id)
+            const {data}=await axios.post(`${profile}/${user.user._id}`,{
+              avartImage:avatars[selectedAvatar],
+              avatarImageSet:true
+            })
+            if(data.isSet){
+              router.push("/")
+            }
           }
-        }
+         }catch(err){
+             toast.error(err.message, toastOption)
+         }
     }
     useEffect(()=>{
       async function fetch(){
@@ -90,8 +90,7 @@ export default function Avatar() {
                    onClick={()=>setSelectedAvatar(index)}
                     >
                       <img src={`data:image/svg+xml;base64,${avatar}`} alt="avatar"
-                       
-                      />
+                    />
                    </div>
                })}
              </div>

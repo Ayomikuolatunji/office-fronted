@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import React, { useState,useEffect } from 'react'
-import styled from 'styled-components'
 import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -43,7 +42,6 @@ export default function Register() {
           email,
           password
          })
-         console.log(res)
          if(res.status===201){
           setLoading(false)
          }
