@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Link from 'next/link'
 import { ToastContainer,toast } from 'react-toastify'
 import { useRouter } from 'next/router';
@@ -26,7 +26,11 @@ export default function Login() {
     draggable:true,
     theme:"dark"
   }
-
+  useEffect(()=>{
+    if(localStorage.getItem("office-user")){
+      router.push('/')
+    }
+  })
 
   const submitLogin=async(e)=>{
     setLoading(true)
@@ -40,10 +44,10 @@ export default function Login() {
           password
          })
         console.log(res)
-        if(res.status===201){
+        if(res.status===200){
           setLoading(false)
         }
-        localStorage.setItem("office-user",JSON.stringify(res.data.user))
+        localStorage.setItem("office-user",JSON.stringify(res.data.token))
         router.push('/')
       }catch(err){
          setLoading(false)
@@ -51,7 +55,7 @@ export default function Login() {
          toast.error(err.message,toastOption)
       }
     
-      }
+    }
      
   }
   const validateRegistration=()=>{
@@ -93,7 +97,7 @@ export default function Login() {
               <span>You dont an account ? <Link href={"/register"} passHref>register</Link> </span>
          </form>
        </RegisterMain>
-       <ToastContainer limit={6}/>
+       <ToastContainer limit={1}/>
      </>
   )
 }

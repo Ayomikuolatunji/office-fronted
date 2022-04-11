@@ -24,8 +24,12 @@ export default function Register() {
     pauseOnHover:true,
     draggable:true,
     theme:"dark"
-}
-
+  }
+  useEffect(()=>{
+    if(localStorage.getItem("office-user")){
+      router.push('/')
+    }
+  })
 
   const submitUserInfo=async(e)=>{
     setLoading(true)
@@ -43,7 +47,6 @@ export default function Register() {
          if(res.status===201){
           setLoading(false)
          }
-         localStorage.setItem("office-user",JSON.stringify(res.data.user))
          router.push('/')
         }catch(err){
          setLoading(false)
