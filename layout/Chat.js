@@ -1,9 +1,45 @@
+import React,{useEffect,useState} from 'react'
 import styled from 'styled-components'
-import React from 'react'
-
-
+import { allUsers } from '../api/authApi'
+import { useSelector,useDispatch } from 'react-redux'
+import axios from 'axios'
 
 export default function Chat() {
+  const [contacts,setContacts]=useState([])
+  const [currentUser,setCurrentUser]=useState("")
+  const users=useSelector((state)=>state.users.users)
+
+
+    useEffect(()=>{
+        if(currentUser){
+          axios.get(allUsers)
+          .then(res=>{
+             console.log(res)
+          })
+          .catch(err=>{
+            console.log(err.message)
+          })
+        }
+    },[currentUser])
+
+    useEffect(()=>{
+      const userId=localStorage.getItem("userId")
+      const id=JSON.parse(userId)
+       fetch(`http://localhost:8080/office-api/auth/${JSON.parse(userId)}`)
+       .then(res=>{
+         return res.json()
+       })
+       .then(data=>{
+        setCurrentUser(data)
+       })
+       .catch(err=>{
+         console.log(err.message)
+       })
+    },[])
+
+
+
+
   return (
     <ChatContainer>
         <div className="container">
