@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import Link from 'next/link'
 import { ToastContainer,toast } from 'react-toastify'
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from "styled-components"
@@ -15,7 +15,8 @@ export default function Avatar() {
     const [avatars,setAvatars]=React.useState([]);
     const [loading,setLoading]=useState(true);
     const [selectedAvatar,setSelectedAvatar]=useState(undefined);
-    const [user,setUser]=useState([])    
+    const [user,setUser]=useState([])
+    const router=useRouter()    
     const api="https://api.multiavatar.com/45678945";
 
     const toastOption={
@@ -48,10 +49,17 @@ export default function Avatar() {
         }
         if(user){
           console.log(user.user._id)
-          const setAvatar=await  axios.post(`${profile}/${user.user._id}`,{
-            avartImage:avatars[selectedAvatar]
+          const {data}=await  axios.post(`${profile}/${user.user._id}`,{
+            Image:avatars[selectedAvatar]
           })
-          console.log(setAvatar)
+          console.log(data)
+          if(data.isSet){
+            user.user.avartImage=data.image,
+            user.user.avatarImageSet=true
+            router.push("/")
+          }else{
+            toast.error("avatar not set", toastOption)
+          }
         }
     }
     useEffect(()=>{
