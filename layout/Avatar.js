@@ -75,6 +75,11 @@ export default function Avatar() {
       }
       fetch()
     },[])
+    useEffect(()=>{
+      if(!localStorage.getItem("office-user")){
+         router.push('/login')
+      }
+    })
   return (
     <>
         {loading && <Loader/>}

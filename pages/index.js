@@ -11,7 +11,7 @@ export default function Home() {
      if(!localStorage.getItem("office-user")){
         router.push('/login')
      }
-   },[])
+   })
   return (
     <div>
       <Head>
