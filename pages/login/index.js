@@ -32,11 +32,9 @@ export default function Login() {
     setLoading(true)
     const {email,password}=values
       e.preventDefault()
-      validateRegistration()
-      if(!validateRegistration()){
-         return
-      }
-      try{
+        validateRegistration()
+      if(validateRegistration()){
+        try{
           const res=await axios.post(loginApi,{
           email,
           password
@@ -49,10 +47,12 @@ export default function Login() {
         router.push('/')
       }catch(err){
          setLoading(false)
-          console.log(err)
-          toast.error(err.message,toastOption)
+         console.log(err)
+         toast.error(err.message,toastOption)
       }
     
+      }
+     
   }
   const validateRegistration=()=>{
     const {email,password}=values
