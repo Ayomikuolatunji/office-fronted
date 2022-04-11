@@ -47,8 +47,8 @@ export default function Register() {
          if(res.status===201){
           setLoading(false)
          }
-         localStorage.setItem("office-profile",JSON.stringify(res.data.user))
-         router.push('/')
+         localStorage.setItem("userId",JSON.stringify(res.data.user))
+         router.push('/profile-picture')
         }catch(err){
          setLoading(false)
          console.log(err)

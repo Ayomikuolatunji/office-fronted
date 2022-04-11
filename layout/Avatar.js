@@ -14,7 +14,8 @@ import Loader from '../components/loader/Loader';
 export default function Avatar() {
     const [avatars,setAvatars]=React.useState([]);
     const [loading,setLoading]=useState(true);
-    const [selectedAvatar,setSelectedAvatar]=useState(undefined);    
+    const [selectedAvatar,setSelectedAvatar]=useState(undefined);
+    const [user,setUser]=useState([])    
     const api="https://api.multiavatar.com/45678945";
 
     const toastOption={
@@ -23,11 +24,30 @@ export default function Avatar() {
         pauseOnHover:true,
         draggable:true,
         theme:"dark"
-      }
+    }
+ 
+    useEffect(()=>{
+      const userId=localStorage.getItem("userId")
+      const id=JSON.parse(userId)
+       fetch(`http://localhost:8080/office-api/auth/${JSON.parse(userId)}`)
+       .then(res=>{
+         return res.json()
+       })
+       .then(data=>{
+         setUser(data)
+       })
+       .catch(err=>{
+         console.log(err.message)
+       })
+    },[])
+
     const proflePicture=()=>{
         if(selectedAvatar===undefined){
           toast.error("Profile picture required", toastOption);
           return false 
+        }
+        if(user){
+          console.log(user)
         }
     }
     useEffect(()=>{
@@ -45,7 +65,7 @@ export default function Avatar() {
     },[])
   return (
     <>
-          {loading && <Loader/>}
+        {loading && <Loader/>}
        {loading || <Container>
              <div className="title">
                  <h1>Pick an Avatar as your profile picture</h1>
