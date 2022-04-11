@@ -92,11 +92,11 @@ export default function Avatar() {
             <div className="avatars">
                {avatars.map((avatar,index)=>{
                    return <div 
-                   className={`avatar ${selectedAvatar?"selected":" "}`} 
+                   className={`avatar ${selectedAvatar===index? "selected bg-red-500":" "}`} 
                    key={index} 
-                   onClick={()=>setSelectedAvatar(index)}
                     >
                       <img src={`data:image/svg+xml;base64,${avatar}`} alt="avatar"
+                       onClick={()=>setSelectedAvatar(index)}
                     />
                    </div>
                })}
@@ -142,11 +142,11 @@ const Container=styled.div`
          img{
            height: 6rem;
          }
-         .selected{
-          border: 7.4rem solid #997af0;
-          background-color: green;
-         }
        }
+       .selected{
+          border: 0.4rem solid #997af0;
+          background-color: green;          
+         }
      }
      button{
             background-color: #997af0;
