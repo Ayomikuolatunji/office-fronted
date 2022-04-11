@@ -47,6 +47,7 @@ export default function Register() {
          if(res.status===201){
           setLoading(false)
          }
+         localStorage.setItem("office-profile",JSON.stringify(res.data.user))
          router.push('/')
         }catch(err){
          setLoading(false)
