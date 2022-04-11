@@ -34,7 +34,7 @@ const ChatContainer=styled.div`
          grid-template-columns: 25% 75%;
 
          @media (max-width:1080px) and (min-width:720px){
-           
+             grid-template-columns: 35% 65%;
          }
     }
 `
