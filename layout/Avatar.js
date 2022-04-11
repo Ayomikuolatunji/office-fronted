@@ -41,13 +41,17 @@ export default function Avatar() {
        })
     },[])
 
-    const proflePicture=()=>{
+    const proflePicture=async()=>{
         if(selectedAvatar===undefined){
           toast.error("Profile picture required", toastOption);
           return false 
         }
         if(user){
-          console.log(user)
+          console.log(user.user._id)
+          const setAvatar=await  axios.post(`${profile}/${user.user._id}`,{
+            avartImage:avatars[selectedAvatar]
+          })
+          console.log(setAvatar)
         }
     }
     useEffect(()=>{
