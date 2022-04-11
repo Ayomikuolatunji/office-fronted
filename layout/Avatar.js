@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import 'react-toastify/dist/ReactToastify.css';
 import { profile } from '../api/authApi';
 import styled from "styled-components"
+import { Buffer } from 'buffer';
 import axios from 'axios';
 
 export default function Avatar() {
@@ -24,6 +25,7 @@ export default function Avatar() {
 
     }
     useEffect(()=>{
+      async function fetch(){
         let data=[]
         for(let i=0; i<4; i++){
          const image=await axios.get(`${api}/${Math.random(Math.random()* 1000)}`)
@@ -32,6 +34,8 @@ export default function Avatar() {
         }
         setAvatars(data)
         setLoading(false)
+      }
+      fetch()
     },[])
   return (
     <>
@@ -40,7 +44,11 @@ export default function Avatar() {
                  <h1>Pick an Avatar as your profile picture</h1>
              </div>
              <div className="avatar">
-
+               {avatars.map((avatar,index)=>{
+                   return <div className={`avatar ${selectedAvatar===index?"selected":" "}`} key={index}>
+                      <img src={`data:image/svg+xml;base64,${avatar}`} alt="avatar" onClick={()=>setSelectedAvatar(index)} />
+                   </div>
+               })}
              </div>
         </Container>
         <ToastContainer limit={1}/>
