@@ -33,7 +33,7 @@ export default function Register() {
 
   const submitUserInfo=async(e)=>{
     setLoading(true)
-    const {username,email,password,confirmPassword}=values
+    const {username,email,password}=values
       e.preventDefault()
       validateRegistration()
       if(validateRegistration()){
