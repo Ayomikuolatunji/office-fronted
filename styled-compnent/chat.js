@@ -99,3 +99,49 @@ export const ContactDiv=styled.div`
          }
      }
 `
+
+export const SingleChatDiv=styled.div`
+    padding-top: 1rem;
+    
+     .chat-header{
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 0.2rem;
+         .user-details{
+             display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            .avatar{
+
+                img{
+                    height: 3rem;
+                }
+            }
+            .username{
+                h1{
+                    color: #fff;
+                    font-size: large;
+                    font-weight: bolder;
+                }
+            }
+         }
+     }
+`
+
+export const ChatBillDiv=styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  flex-direction: column;
+  font-weight: bolder;
+  font-size: 2rem;
+
+  h1{
+      span{
+          color: purple;
+      }
+  }
+`

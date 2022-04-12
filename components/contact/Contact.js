@@ -23,6 +23,10 @@ export default function Contact({contacts,currentUser}) {
      setSelectedChat(index) 
       dispatch(updateChat({contact}))
   }
+  const otherUser=(others,element)=>{
+     const newUsers= others.filter(p=>p.username !==element?.username)
+     return newUsers
+  }
 
   return (
     <>
@@ -31,7 +35,7 @@ export default function Contact({contacts,currentUser}) {
                <h1>Chat</h1>
            </div>
            <div className="contacts">
-               {contacts.map((contact,index)=>{
+               {otherUser(contacts,currentUser.user ).map((contact,index)=>{
                   return (
                       <div key={index}  className={`contact ${selectedChat===index? "selected":" "}`}
                      onClick={()=>changeCurrentChat(index,contact)}

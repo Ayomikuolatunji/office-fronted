@@ -34,7 +34,6 @@ export default function Register() {
     setLoading(true)
     const {username,email,password}=values
       e.preventDefault()
-      validateRegistration()
       if(validateRegistration()){
         try{
           const res=await axios.post(registrationApi,{

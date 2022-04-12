@@ -1,5 +1,8 @@
 import React from 'react'
 import styled from "styled-components"
+import { ChatBillDiv } from '../../styled-compnent/chat'
+
+
 export default function ChatBillBoard({currentUser:{user}}) {
 
 
@@ -14,19 +17,3 @@ export default function ChatBillBoard({currentUser:{user}}) {
   )
 }
 
-
-const ChatBillDiv=styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  flex-direction: column;
-  font-weight: bolder;
-  font-size: 2rem;
-
-  h1{
-      span{
-          color: purple;
-      }
-  }
-`

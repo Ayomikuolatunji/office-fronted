@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^1.8.0",
     "axios": "^0.26.1",
     "buffer": "^6.0.3",
+    "emoji-picker-react": "^3.5.1",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.9",
     "next": "12.1.0",

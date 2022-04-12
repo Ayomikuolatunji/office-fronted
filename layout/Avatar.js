@@ -43,10 +43,6 @@ export default function Avatar() {
     },[])
 
     const proflePicture=async()=>{
-        if(selectedAvatar===undefined){
-          toast.error("Profile picture required", toastOption);
-          return false 
-        }
          try{
           if(user){
             console.log(user.user._id)
@@ -60,6 +56,10 @@ export default function Avatar() {
           }
          }catch(err){
              toast.error(err.message, toastOption)
+         }
+         if(!selectedAvatar){
+          toast.error("Profile picture required", toastOption);
+          return false 
          }
     }
     useEffect(()=>{
