@@ -104,6 +104,9 @@ const ContactDiv=styled.div`
          align-items: center;
 
          .avatar{
+             display: flex;
+             align-items: center;
+             gap: 1rem;
              img{
                  height: 4rem;
                  max-inline-size: 100%;
@@ -111,6 +114,9 @@ const ContactDiv=styled.div`
          }
          .userName{
              color: #fff
+         }
+         @media (max-width:1080px) and (min-width:720px){
+              gap: 1rem;
          }
      }
 `
