@@ -28,22 +28,22 @@ export default function Contact({contacts,currentUser}) {
                {contacts.map((contact,index)=>{
                   return (
                       <div key={index}  className={`contact ${selectedChat===index? "selected":" "}`} >
-                            <img src={`data:image/svg+xml;base64,${contact.avartImage}`} alt="avatar"
+                         <img src={`data:image/svg+xml;base64,${contact.avartImage}`} alt="avatar"
                        onClick={()=>setSelectedChat(index)}
                        />
-                       <div className="user-name">
+                       <div className="userName">
                            <h1>{contact.username}</h1>
                        </div>
                       </div>
                   )
                })}
            </div>
-           <div className="current-user">
+           <div className="currentUser">
                 <div className="avatar"> 
                   <img src={`data:image/svg+xml;base64,${currentUserImg}`} alt="avatar"
                        onClick={()=>setSelectedChat(index)}
                        />
-                    <div className="user-name">
+                    <div className="userName">
                         <h1>{currentUserName}</h1>
                     </div>
                 </div>
@@ -71,21 +71,46 @@ const ContactDiv=styled.div`
        gap: 0.8rem;
        flex-direction: column;
        overflow: auto;
+
        .contact {
          display: flex;
-         flex-direction: column;
-         justify-content: center;
          align-items: center;
          cursor: pointer;
          transition: 0.5s ease-in-out all;
+         width: 95%;
+         min-height: 5rem;
+         background-color: #ffffff39;
+         gap: 0.76rem;
          img{
            height: 3rem;
-           width: 3rem;
+         }
+         .userName{
+             h1{
+                color: #fff;
+             }
          }
        }
+
        .selected{
           border: 0.4rem solid #997af0;
           background-color: green;          
+         }
+     }
+
+     .currentUser{
+         background-color: #997af0;
+         display: flex;
+         justify-content:center;
+         align-items: center;
+
+         .avatar{
+             img{
+                 height: 4rem;
+                 max-inline-size: 100%;
+             }
+         }
+         .userName{
+             color: #fff
          }
      }
 `

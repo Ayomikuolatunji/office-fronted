@@ -57,7 +57,7 @@ const ChatContainer=styled.div`
          gap: 2rem;
          background-color: #00000076;
          padding: 2rem 3rem;
-         width: 85vw;
+         width: 100%;
          height: 85vh;
          display: grid;
          grid-template-columns: 25% 75%;
