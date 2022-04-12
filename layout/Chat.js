@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import useSWR from 'swr';
 import { allUsers } from '../api/authApi'
 import Contact from '../components/contact/Contact'
-import axios from 'axios'
+import Loader from "../components/loader/Loader"
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 function Chat() {
   const [currentUser,setCurrentUser]=useState("")
@@ -27,7 +27,9 @@ function Chat() {
 
 
   if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
+  if (!data) return <div>
+      <Loader/>
+  </div>
    console.log(data)
 
 
