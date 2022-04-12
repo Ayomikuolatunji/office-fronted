@@ -1,10 +1,12 @@
 import React,{useEffect, useState} from 'react'
 import styled from "styled-components"
 
+
 export default function Contact({contacts,currentUser}) {
   const [currentUserName,setCurrentUserName]=useState("")
   const [currentUserImg,setCurrentUserImg]=useState("")
   const [selectedChat,setSelectedChat]=useState(undefined)
+  const [cureenChat,setCurrentChat]=useState("")
 
   useEffect(()=>{
     if(currentUser){
@@ -15,7 +17,8 @@ export default function Contact({contacts,currentUser}) {
 
 
   const changeCurrentChat=(index,contact)=>{
-
+     setSelectedChat(index) 
+      
   }
 
   return (
@@ -27,19 +30,9 @@ export default function Contact({contacts,currentUser}) {
            <div className="contacts">
                {contacts.map((contact,index)=>{
                   return (
-                      <div key={index}  className={`contact ${selectedChat===index? "selected":" "}`} >
-                         <img src={`data:image/svg+xml;base64,${contact.avartImage}`} alt="avatar"
-                       onClick={()=>setSelectedChat(index)}
-                       />
-                       <div className="userName">
-                           <h1>{contact.username}</h1>
-                       </div>
-                      </div>
-                  )
-               })}
-               {contacts.map((contact,index)=>{
-                  return (
-                      <div key={index}  className={`contact ${selectedChat===index? "selected":" "}`} >
+                      <div key={index}  className={`contact ${selectedChat===index? "selected":" "}`}
+                     onClick={()=>changeCurrentChat(index,contact)}
+                      >
                          <img src={`data:image/svg+xml;base64,${contact.avartImage}`} alt="avatar"
                        onClick={()=>setSelectedChat(index)}
                        />

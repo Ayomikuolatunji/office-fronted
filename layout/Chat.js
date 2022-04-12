@@ -5,11 +5,13 @@ import { allUsers } from '../api/authApi'
 import Contact from '../components/contact/Contact'
 import Loader from "../components/loader/Loader"
 const fetcher = (...args) => fetch(...args).then(res => res.json())
+
 function Chat() {
   const [currentUser,setCurrentUser]=useState("")
+ 
+
+  // e
   const { data, error } = useSWR(allUsers, fetcher)
-
-
   useEffect(()=>{
     const userId=localStorage.getItem("userId")
     const id=JSON.parse(userId)
@@ -34,7 +36,7 @@ function Chat() {
   return (
     <ChatContainer>
         <div className="container">
-           <Contact contacts={data.users} currentUser={currentUser}/>
+           <Contact contacts={data.users} currentUser={currentUser} setCurrentChat={setCurrentChat}/>
         </div>
     </ChatContainer>
   )
