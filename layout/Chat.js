@@ -1,52 +1,46 @@
 import React,{useEffect,useState} from 'react'
 import styled from 'styled-components'
+import useSWR from 'swr';
 import { allUsers } from '../api/authApi'
 import Contact from '../components/contact/Contact'
 import axios from 'axios'
-
-export default function Chat() {
-  const [contacts,setContacts]=useState([])
+const fetcher = (...args) => fetch(...args).then(res => res.json())
+function Chat() {
   const [currentUser,setCurrentUser]=useState("")
+  const { data, error } = useSWR(allUsers, fetcher)
 
 
-  
-      
-    useEffect(()=>{
-        axios.get(allUsers)
-        .then(data=>{
-          setContacts({data})
-        })
-        .catch(err=>{
-          console.log(err.message)
-        })      
-    },[])
-
-    useEffect(()=>{
-      const userId=localStorage.getItem("userId")
-      const id=JSON.parse(userId)
-       fetch(`http://localhost:8080/office-api/auth/${JSON.parse(userId)}`)
-       .then(res=>{
-         return res.json()
-       })
-       .then(data=>{
-        setCurrentUser(data)
-       })
-       .catch(err=>{
-         console.log(err.message)
-       })
-    },[])
+  useEffect(()=>{
+    const userId=localStorage.getItem("userId")
+    const id=JSON.parse(userId)
+     fetch(`http://localhost:8080/office-api/auth/${JSON.parse(userId)}`)
+     .then(res=>{
+       return res.json()
+     })
+     .then(data=>{
+      setCurrentUser(data)
+     })
+     .catch(err=>{
+       console.log(err.message)
+     })
+  },[])
 
 
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
+   console.log(data)
 
 
   return (
     <ChatContainer>
         <div className="container">
-
+           <Contact contacts={data.users} currentUser={currentUser}/>
         </div>
     </ChatContainer>
   )
 }
+export default Chat
+
 
 
 const ChatContainer=styled.div`
