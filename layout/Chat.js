@@ -30,8 +30,6 @@ function Chat() {
   if (!data) return <div>
       <Loader/>
   </div>
-   console.log(data)
-
 
   return (
     <ChatContainer>
