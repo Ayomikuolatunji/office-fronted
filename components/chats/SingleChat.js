@@ -14,7 +14,8 @@ export default function SingleChat({currentUser}) {
           <div className="chat-header">
               <div className="user-detaiils">
                   <div className="avatar">
-                      
+                  <img src={`data:image/svg+xml;base64,${currentChat.contact.avartImage}`} alt="avatar"
+                       />
                   </div>
               </div>
           </div>
