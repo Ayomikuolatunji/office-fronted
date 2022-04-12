@@ -92,7 +92,7 @@ export default function Avatar() {
             <div className="avatars">
                {avatars.map((avatar,index)=>{
                    return <div 
-                   className={`avatar ${selectedAvatar===index? "selected bg-red-500":" "}`} 
+                   className={`avatar ${selectedAvatar===index? "selected":" "}`} 
                    key={index} 
                     >
                       <img src={`data:image/svg+xml;base64,${avatar}`} alt="avatar"
