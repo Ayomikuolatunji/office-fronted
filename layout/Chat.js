@@ -1,26 +1,25 @@
 import React,{useEffect,useState} from 'react'
 import styled from 'styled-components'
 import { allUsers } from '../api/authApi'
-import { useSelector,useDispatch } from 'react-redux'
+import Contact from '../components/contact/Contact'
 import axios from 'axios'
 
 export default function Chat() {
   const [contacts,setContacts]=useState([])
   const [currentUser,setCurrentUser]=useState("")
-  const users=useSelector((state)=>state.users.users)
 
 
+  
+      
     useEffect(()=>{
-        if(currentUser){
-          axios.get(allUsers)
-          .then(res=>{
-             console.log(res)
-          })
-          .catch(err=>{
-            console.log(err.message)
-          })
-        }
-    },[currentUser])
+        axios.get(allUsers)
+        .then(data=>{
+          setContacts({data})
+        })
+        .catch(err=>{
+          console.log(err.message)
+        })      
+    },[])
 
     useEffect(()=>{
       const userId=localStorage.getItem("userId")
