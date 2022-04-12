@@ -7,11 +7,11 @@ import Chat from "../layout/Chat"
 export default function Home() {
   const router = useRouter()
 
-   useEffect(()=>{
-     if(!localStorage.getItem("office-user")){
-        router.push('/login')
-     }
-   },[])
+  //  useEffect(()=>{
+  //    if(!localStorage.getItem("office-user")){
+  //       router.push('/login')
+  //    }
+  //  },[])
    
   return (
     <div>

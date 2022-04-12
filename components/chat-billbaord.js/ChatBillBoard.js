@@ -7,7 +7,7 @@ export default function ChatBillBoard({currentUser:{user}}) {
     <>
        <ChatBillDiv>
          
-          <h1>Hey,  <span>{user.username.toUpperCase()}</span> welcome</h1>
+          <h1>Hey,  <span>{user?.username.toUpperCase()}</span> welcome</h1>
           <p>Select a chat or report to the group</p>
       </ChatBillDiv>  
     </>

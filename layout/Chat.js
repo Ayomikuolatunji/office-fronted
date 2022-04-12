@@ -7,6 +7,8 @@ import Contact from '../components/contact/Contact'
 import Loader from "../components/loader/Loader"
 import ChatBillBoard from '../components/chat-billbaord.js/ChatBillBoard';
 import SingleChat from '../components/chats/SingleChat';
+
+
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 function Chat() {
