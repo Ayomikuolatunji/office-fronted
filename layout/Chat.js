@@ -5,13 +5,13 @@ import useSWR from 'swr';
 import { allUsers } from '../api/authApi'
 import Contact from '../components/contact/Contact'
 import Loader from "../components/loader/Loader"
+import ChatBillBoard from '../components/chat-billbaord.js/ChatBillBoard';
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 function Chat() {
   const [currentUser,setCurrentUser]=useState("")
   const currentChat=useSelector(state=>state.users.chat)
-  const  contacts=useSelector(state=>state.users.users) 
-  console.log(currentChat,contacts)
+  console.log(currentChat)
 
   // fetch contact list then transport all through
   const { data, error } = useSWR(allUsers, fetcher)
@@ -30,9 +30,7 @@ function Chat() {
      })
   },[])
 
-  useEffect(()=>{
-
-  })
+  
   if (error) return <div>failed to load</div>
   if (!data) return <div>
       <Loader/>
@@ -41,7 +39,13 @@ function Chat() {
   return (
     <ChatContainer>
         <div className="container">
-           <Contact contacts={data.users} currentUser={currentUser}/>
+           <Contact 
+           contacts={data.users} 
+           currentUser={currentUser}
+           />
+           <ChatBillBoard
+             currentUser={currentUser}
+           />
         </div>
     </ChatContainer>
   )
