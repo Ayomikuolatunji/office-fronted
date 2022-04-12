@@ -45,7 +45,7 @@ function Chat() {
            />
            {currentChat === null?  <ChatBillBoard
              currentUser={currentUser}
-           />: <SingleChat/>}
+           />: <SingleChat currentUser={currentUser}/>}
          
         </div>
     </ChatContainer>
