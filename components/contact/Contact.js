@@ -12,6 +12,12 @@ export default function Contact({contacts,currentUser}) {
         setCurrentUserName(currentUser.user.username)
     }
   },[currentUser])
+
+
+  const changeCurrentChat=(index,contact)=>{
+
+  }
+  
   return (
     <ContactDiv>
         <img src={currentUserImg} alt="user" />

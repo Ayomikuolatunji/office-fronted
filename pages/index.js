@@ -11,9 +11,6 @@ export default function Home() {
      if(!localStorage.getItem("office-user")){
         router.push('/login')
      }
-     if(!localStorage.getItem("userId")){
-      router.push('/register')
-   }
    },[])
    
   return (
