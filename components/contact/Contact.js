@@ -17,12 +17,13 @@ export default function Contact({contacts,currentUser}) {
   const changeCurrentChat=(index,contact)=>{
 
   }
-  
+
   return (
-    <ContactDiv>
-        <img src={currentUserImg} alt="user" />
-        <h1>{currentUserName}</h1>
-    </ContactDiv>
+    <>
+       {currentUserName && currentUserImg && (<ContactDiv>
+           
+       </ContactDiv>)}
+    </>
   )
 }
  
