@@ -6,7 +6,7 @@ const AllUserSlice=createSlice({
     name:"users",
     initialState:{
         users: null,
-        chat:undefined
+        chat:null
     },
     reducers:{
         allUsersData:(state,action)=>{
