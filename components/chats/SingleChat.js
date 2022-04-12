@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import styled from "styled-components"
+import Logout from '../logout/Logout'
 export default function SingleChat({currentUser}) {
 
 
@@ -21,6 +22,7 @@ export default function SingleChat({currentUser}) {
                       <h1>{currentChat.contact.username}</h1>
                   </div>
               </div>
+              <Logout/>
           </div>
           <div className="message">
 

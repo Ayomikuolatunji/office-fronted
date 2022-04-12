@@ -28,7 +28,7 @@ export default function Contact({contacts,currentUser}) {
     <>
       <ContactDiv>
            <div className="brand">
-               <h1>logo</h1>
+               <h1>Chat</h1>
            </div>
            <div className="contacts">
                {contacts.map((contact,index)=>{
