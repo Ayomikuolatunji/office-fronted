@@ -1,10 +1,16 @@
 import React from 'react'
-import {allUsers} from "../../api/authApi"
+import styled from "styled-components"
 
-export default function Contact({contacts}) {
-        console.log(contacts)
+export default function Contact({contacts,currentUser}) {
+        console.log(contacts,currentUser)
   return (
-    <div>Contact</div>
+    <ContactDiv>
+
+    </ContactDiv>
   )
 }
  
+const ContactDiv=styled.div`
+  
+
+`
