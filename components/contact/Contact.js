@@ -37,6 +37,18 @@ export default function Contact({contacts,currentUser}) {
                       </div>
                   )
                })}
+               {contacts.map((contact,index)=>{
+                  return (
+                      <div key={index}  className={`contact ${selectedChat===index? "selected":" "}`} >
+                         <img src={`data:image/svg+xml;base64,${contact.avartImage}`} alt="avatar"
+                       onClick={()=>setSelectedChat(index)}
+                       />
+                       <div className="userName">
+                           <h1>{contact.username}</h1>
+                       </div>
+                      </div>
+                  )
+               })}
            </div>
            <div className="currentUser">
                 <div className="avatar"> 
@@ -71,7 +83,14 @@ const ContactDiv=styled.div`
        gap: 0.8rem;
        flex-direction: column;
        overflow: auto;
-
+       ::-webkit-scrollbar{
+           width: 0.2rem;
+           &-thumb{
+            background-color: #ffffff39;
+            width: 0.1rem;
+            border-radius: 1rem;
+           }
+       }
        .contact {
          display: flex;
          align-items: center;
