@@ -9,12 +9,18 @@ export default function ChatInput({handlemessage}) {
 
   return (
     <>
-      
+      <InputContainerStyle>
+           <div className="button-container">
+               <div className="emoji">
+                   <BsEmojiSmileFill/>
+               </div>
+           </div>
+      </InputContainerStyle>
     </>
   )
 }
 
 
-const InputContainer=styled.div`
+const InputContainerStyle=styled.div`
 
 `
