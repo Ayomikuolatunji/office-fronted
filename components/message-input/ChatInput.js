@@ -26,8 +26,8 @@ export default function ChatInput() {
     // call api 
     const res=await axios.post(sendChatApi,{
       chat:text,
-      to: contact?._id.toString(),
-      from:mainUser?.user._id.toString()
+      to: contact?._id,
+      from:mainUser?.user._id
     })
     console.log(res)
     setText("")
