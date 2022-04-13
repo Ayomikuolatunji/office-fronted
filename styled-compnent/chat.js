@@ -104,7 +104,7 @@ export const ContactDiv=styled.div`
 
 export const SingleChatDiv=styled.div`
     padding-top: 1rem;
-    
+     position: relative;
      .chat-header{
          display: flex;
          justify-content: space-between;

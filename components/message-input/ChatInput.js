@@ -30,6 +30,7 @@ const InputContainerStyle=styled.div`
       grid-template-columns: 5% 95%;
       padding: 0.2rem;
       background-color: #080420;
+      width: 90%;
       align-items: center;
       position: absolute;
       bottom: 0;
@@ -43,7 +44,19 @@ const InputContainerStyle=styled.div`
         .emoji{
           svg{
             color: yellow;
+            font-size: 1.5rem;
           }
+        }
+      }
+      .form-input{
+        width: 70%;
+        border-radius: 2rem;
+        background-color: transparent;
+        background-color: green;
+
+        input{
+          width: 90%;
+          height: 60px;
         }
       }
 `
