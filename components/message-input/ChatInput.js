@@ -1,32 +1,31 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
 import {IoMdSend} from "react-icons/io"
-import {BsEmojiSmileFill} from "react-icons/bs"
 import InputEmoji from "react-input-emoji";
-
+import Button from "../../util/Button"
 
 export default function ChatInput({handlemessage}) {
   const [text, setText] = useState("");
 
-    const submit=(e)=>{
+    const submitMessgae=(e)=>{
       e.preventDefault()
       console.log(text)
+      setText("")
     }
+    // input submit
+  const Enter=()=>console.log(text)
   return (
     <>
       <InputContainerStyle>
-           <div className="button-container">
-               {/* <div className="emoji">
-                   <BsEmojiSmileFill/>
-               </div> */}
-           </div>
-           <form className="form-input" onSubmit={submit}>
+           <form className="form-input" onSubmit={submitMessgae}>
             <InputEmoji
               value={text}
-              onChange={(e)=>setText(e.target.value)}
+              onChange={setText}
               placeholder="Type a message"
+              onEnter={Enter}
+              cleanOnEnter
             />
-             <button className='button'><IoMdSend/></button>
+            <Button text={<IoMdSend className='text-5xl ml-4'/>} type="submit"/>
            </form>
       </InputContainerStyle>
     </>
@@ -36,7 +35,6 @@ export default function ChatInput({handlemessage}) {
 
 const InputContainerStyle=styled.div`
       display: grid;
-      grid-template-columns: 5% 95%;
       padding: 0.2rem;
       background-color: #fff;
       width: 95%;
@@ -45,30 +43,26 @@ const InputContainerStyle=styled.div`
       bottom: 0;
       left: 0;
       right: 0;
-      margin: 30px;
-      .button-container{
-        display: flex;
-        align-items: center;
-        color: #fff;
-        gap: 1rem;
+      margin: 10px;
 
-        .emoji{
-          svg{
-            color: yellow;
-            font-size: 1.5rem;
-          }
-        }
-      }
       .form-input{
-        width: 70%;
+        width: 90%;
         border-radius: 2rem;
-        background-color: transparent;;
-        input{
-          width: 90%;
-          height: 60px;
-          border: none;
-          text-indent: 10px;
-          font-size: 20px;
-        }
+        background-color: transparent;
+        display: flex;
+
+        .react-input-emoji--button{
+        background-color:transparent !important;
+        position:absolute;
+        left:0;
+        margin: 450px;
+        z-index: 99;
       }
+        .react-input-emoji--input {
+          height: 50px;
+          padding: 15px;
+        }
+         
+      }
+  
 `
