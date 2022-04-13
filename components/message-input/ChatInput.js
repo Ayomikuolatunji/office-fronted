@@ -14,15 +14,22 @@ import { sendChatApi } from '../../api/chat-api'
 export default function ChatInput() {
   const [text, setText] = useState("");
   const msgDispatch=useDispatch()
-  const mainUser=useSelector(state=>state.users.user)
-  console.log(mainUser)
-      
-  const submitMessgae=(e)=>{
+  const {mainUser}=useSelector(state=>state.users.user)
+  const {contact}=useSelector(state=>state.users.chat)
+  console.log(mainUser?.user._id, contact?._id)
+
+  const submitMessgae=async()=>{
       if(!text) return
     //  update msssage state
-
     msgDispatch(updateMessage({text}))
     //  empty input box
+    // call api 
+    const res=await axios.post(sendChatApi,{
+      chat:text,
+      to: contact?._id.toString(),
+      from:mainUser?.user._id.toString()
+    })
+    console.log(res)
     setText("")
   }
 

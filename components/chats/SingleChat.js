@@ -16,6 +16,7 @@ export default function SingleChat() {
   return (
     <>
       <SingleChatDiv>
+        {/* single chat header */}
           <ChatHeader/>
           <div className="message">
             <MessageBody message={message}/>
