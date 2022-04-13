@@ -5,13 +5,14 @@ import { createSlice } from "@reduxjs/toolkit";
 const AllUserSlice=createSlice({
     name:"users",
     initialState:{
-        users: null,
+        user: null,
         chat:null,
-        message:null
+        message:null,
+        
     },
     reducers:{
-        allUsersData:(state,action)=>{
-             state.users = action.payload
+        currentUser:(state,action)=>{
+             state.user= action.payload
         },
         updateChat:(state,action)=>{
            state.chat=action.payload
@@ -22,5 +23,5 @@ const AllUserSlice=createSlice({
     }
 })
 
-export const {allUsersData,updateChat,updateMessage}=AllUserSlice.actions
+export const {currentUser,updateChat,updateMessage}=AllUserSlice.actions
 export default AllUserSlice.reducer

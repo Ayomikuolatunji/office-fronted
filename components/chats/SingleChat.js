@@ -4,7 +4,7 @@ import {SingleChatDiv} from "../../styled-compnent/chat"
 import ChatInput from '../message-input/ChatInput'
 import MessageBody from '../message-body/MessageBody'
 import { useSelector } from 'react-redux';
-import { sendChatApi } from '../../api/chat-api'
+
 
 
 
@@ -18,7 +18,7 @@ export default function SingleChat() {
       <SingleChatDiv>
           <ChatHeader/>
           <div className="message">
-            <MessageBody/>
+            <MessageBody message={message}/>
           </div>
           <div className="message-input">
             <ChatInput/>

@@ -1,29 +1,30 @@
 import React,{useEffect, useState} from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch ,useSelector} from 'react-redux'
 import { ContactDiv } from '../../styled-compnent/chat'
 import { updateChat } from '../../redux/AllUser-slice'
 
 
-export default function Contact({contacts,currentUser}) {
+export default function Contact({contacts}) {
  const dispatch=useDispatch()
   const [currentUserName,setCurrentUserName]=useState("")
   const [currentUserImg,setCurrentUserImg]=useState("")
   const [selectedChat,setSelectedChat]=useState(undefined)
-  const [cureenChat,setCurrentChat]=useState("")
-
+  const {mainUser}=useSelector(state=>state.users.user)
+  
+  
   useEffect(()=>{
-    if(currentUser){
-        setCurrentUserImg(currentUser.user.avartImage)
-        setCurrentUserName(currentUser.user.username)
+    if(mainUser){
+      setCurrentUserImg(mainUser.user.avartImage)
+      setCurrentUserName(mainUser.user.username)
     }
-  },[currentUser])
+  },[mainUser])
 
 
   const changeCurrentChat=(index,contact)=>{
      setSelectedChat(index) 
       dispatch(updateChat({contact}))
   }
-  const otherUser=(others,element)=>{
+  const otherUsers=(others,element)=>{
      const newUsers= others.filter(p=>p.username !==element?.username)
      return newUsers
   }
@@ -35,7 +36,7 @@ export default function Contact({contacts,currentUser}) {
                <h1>Chat</h1>
            </div>
            <div className="contacts">
-               {otherUser(contacts,currentUser.user ).map((contact,index)=>{
+               {otherUsers(contacts,mainUser.user ).map((contact,index)=>{
                   return (
                       <div key={index}  className={`contact ${selectedChat===index? "selected":" "}`}
                      onClick={()=>changeCurrentChat(index,contact)}

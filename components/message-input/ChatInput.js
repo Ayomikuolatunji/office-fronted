@@ -1,22 +1,30 @@
 import React, { useState } from 'react';
 import {IoMdSend} from "react-icons/io"
 import InputEmoji from "react-input-emoji";
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 import Button from "../../util/Button"
 import { InputContainerStyle } from '../../styled-compnent/chat';
-import { useDispatch } from 'react-redux';
 import { updateMessage } from '../../redux/AllUser-slice';
+import { sendChatApi } from '../../api/chat-api'
+
+
 
 export default function ChatInput() {
+  const currentUser=useSelector(state=>state.users.user)
+  console.log(currentUser)
   const [text, setText] = useState("");
   const msgDispatch=useDispatch()
+      
+  const submitMessgae=(e)=>{
+      if(!text) return
+    //  update msssage state
 
-    const submitMessgae=(e)=>{
-       if(!text) return
-      //  update msssage state
-      msgDispatch(updateMessage({text}))
-      //  empty input box
-      setText("")
-    }
+    msgDispatch(updateMessage({text}))
+    //  empty input box
+    setText("")
+  }
 
   return (
     <>

@@ -43,11 +43,12 @@ function Chat() {
         <div className="container">
            <Contact 
            contacts={data.users} 
-           currentUser={currentUser}
            />
-           {currentChat === null?  <ChatBillBoard
+           {currentChat === null?  
+           <ChatBillBoard
              currentUser={currentUser}
-           />: <SingleChat currentUser={currentUser}/>}
+           />: 
+           <SingleChat/>}
          
         </div>
     </ChatContainer>
