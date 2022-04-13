@@ -12,10 +12,10 @@ import { sendChatApi } from '../../api/chat-api'
 
 
 export default function ChatInput() {
-  const currentUser=useSelector(state=>state.users.user)
-  console.log(currentUser)
   const [text, setText] = useState("");
   const msgDispatch=useDispatch()
+  const mainUser=useSelector(state=>state.users.user)
+  console.log(mainUser)
       
   const submitMessgae=(e)=>{
       if(!text) return

@@ -23,13 +23,13 @@ export default function Home() {
      .catch(err=>{
        console.log(err.message)
      })
-  },[])
+  },[dispatch])
   
-   useEffect(()=>{
+  useEffect(()=>{
      if(!localStorage.getItem("office-user")){
         router.push('/login')
      }
-   },[])
+  },[router])
 
 
   return (
