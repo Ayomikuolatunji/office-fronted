@@ -3,10 +3,13 @@ import ChatHeader from '../chat-header/ChatHeader'
 import {SingleChatDiv} from "../../styled-compnent/chat"
 import ChatInput from '../message-input/ChatInput'
 import MessageBody from '../message-body/MessageBody'
+import { useSelector } from 'react-redux';
 
 
 
 export default function SingleChat() {
+  const message=useSelector(state=>state.users.message)
+  console.log("hey",message)
 
   const handlemessage=async(msg)=>{
 
@@ -20,7 +23,7 @@ export default function SingleChat() {
             <MessageBody/>
           </div>
           <div className="message-input">
-            <ChatInput handlemessage={handlemessage}/>
+            <ChatInput/>
           </div>
       </SingleChatDiv>
     </>
