@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react';
 import styled from 'styled-components'
-import EmojiPicker from 'emoji-picker-react'
 import {IoMdSend} from "react-icons/io"
 import {BsEmojiSmileFill} from "react-icons/bs"
 
 
 export default function ChatInput({handlemessage}) {
-
+  const [chosenEmoji, setChosenEmoji] = useState(null);
+  
   return (
     <>
       <InputContainerStyle>
@@ -15,6 +15,9 @@ export default function ChatInput({handlemessage}) {
                    <BsEmojiSmileFill/>
                </div>
            </div>
+           <form className="form-input">
+             <input type="text" />
+           </form>
       </InputContainerStyle>
     </>
   )
