@@ -31,8 +31,19 @@ const InputContainerStyle=styled.div`
       padding: 0.2rem;
       background-color: #080420;
       align-items: center;
-
+      position: absolute;
+      bottom: 0;
+      margin: 30px;
       .button-container{
-        
+        display: flex;
+        align-items: center;
+        color: #fff;
+        gap: 1rem;
+
+        .emoji{
+          svg{
+            color: yellow;
+          }
+        }
       }
 `

@@ -6,6 +6,7 @@ width: 100vw;
 height: 100vh;
 display: flex;
 flex-direction: column;
+position: relative;
 align-items: center;
 gap: 1rem;
 justify-content: center;
@@ -13,9 +14,10 @@ background-color: #131342;
 
 .container{
     gap: 2rem;
+    position: relative;
     background-color: #00000076;
     padding: 2rem 3rem;
-    width: 100%;
+    width: 80vw;
     height: 85vh;
     display: grid;
     grid-template-columns: 25% 75%;
