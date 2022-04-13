@@ -16,7 +16,8 @@ export default function ChatInput({handlemessage}) {
                </div>
            </div>
            <form className="form-input">
-             <input type="text" />
+             <input type="text" placeholder='message'/>
+             <button className='button'><IoMdSend/></button>
            </form>
       </InputContainerStyle>
     </>
@@ -25,5 +26,13 @@ export default function ChatInput({handlemessage}) {
 
 
 const InputContainerStyle=styled.div`
+      display: grid;
+      grid-template-columns: 5% 95%;
+      padding: 0.2rem;
+      background-color: #080420;
+      align-items: center;
 
+      .button-container{
+        
+      }
 `
