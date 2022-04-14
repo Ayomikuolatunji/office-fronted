@@ -35,7 +35,6 @@ export default function ChatInput() {
       to: contact?._id,
       from:mainUser?.user._id
     })
-     console.log(res)
     socket.emit("send_chat",{chats:data.chats} )
   }
 
