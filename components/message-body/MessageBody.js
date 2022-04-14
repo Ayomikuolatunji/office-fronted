@@ -6,7 +6,7 @@ import { fetchChats } from '../../api/chat-api'
 
 
 export default function MessageBody() {
-  const {mainUser}=useSelector(state=>state.users.user)
+  const mainUser=useSelector(state=>state.users.user)
   const {contact}=useSelector(state=>state.users.chat)
   const [msg,setMsg]=useState([])
 
@@ -14,7 +14,7 @@ export default function MessageBody() {
     useEffect(()=>{
         async function fetchChat(){
             const {data}=await axios.post(fetchChats,{
-              from:mainUser?.user._id,
+              from:mainUser?.mainUser?.user._id,
               to: contact?._id
             })
             setMsg(data.sendChat)

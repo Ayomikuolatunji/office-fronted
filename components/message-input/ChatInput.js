@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {IoMdSend} from "react-icons/io"
 import InputEmoji from "react-input-emoji";
 import { useDispatch } from 'react-redux';
-import {useRef,useEffect} from 'react';
+import {useEffect} from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import Button from "../../util/Button"
@@ -11,21 +11,19 @@ import { updateMessage } from '../../redux/AllUser-slice';
 import { sendChatApi } from '../../api/chat-api'
 import { io } from "socket.io-client";
 
+const socket = io("http://localhost:8080", {
+  withCredentials: true,
+  transports : ['websocket']
+})
 export default function ChatInput() {
-  const socket=useRef()
   const [text, setText] = useState("");
   const msgDispatch=useDispatch()
   const {mainUser}=useSelector(state=>state.users.user)
   const {contact}=useSelector(state=>state.users.chat)
+  const [arrivedMsg,setArrMesg]=useState("")
 
-  useEffect(()=>{
-    socket.current = io("http://localhost:8080", {
-      withCredentials: true,
-      transports : ['websocket']
-    })
-    socket.current.emit("add-users",mainUser?.mainUser?.user._id)
-  })
-  
+
+
   const submitMessgae=async()=>{
       if(!text) return
     //  update msssage state
@@ -37,9 +35,12 @@ export default function ChatInput() {
       to: contact?._id,
       from:mainUser?.user._id
     })
-    console.log(res)
-    setText("")
+     console.log(res)
+     if(socket.current){
+       socket.emit("send_chat", )
+     }
   }
+
 
   return (
     <>
