@@ -30,15 +30,13 @@ export default function ChatInput() {
     msgDispatch(updateMessage({text}))
     //  empty input box
     // call api 
-    const res=await axios.post(sendChatApi,{
+    const {data}=await axios.post(sendChatApi,{
       chat:text,
       to: contact?._id,
       from:mainUser?.user._id
     })
      console.log(res)
-     if(socket.current){
-       socket.emit("send_chat", )
-     }
+    socket.emit("send_chat",{chats:data.chats} )
   }
 
 
