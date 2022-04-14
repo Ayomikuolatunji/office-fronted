@@ -23,7 +23,7 @@ export default function Home() {
      .catch(err=>{
        console.log(err.message)
      })
-  },[dispatch])
+  })
   
   useEffect(()=>{
      if(!localStorage.getItem("office-user")){

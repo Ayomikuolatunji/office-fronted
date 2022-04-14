@@ -9,13 +9,13 @@ export default function Contact({contacts}) {
   const [currentUserName,setCurrentUserName]=useState("")
   const [currentUserImg,setCurrentUserImg]=useState("")
   const [selectedChat,setSelectedChat]=useState(undefined)
-  const {mainUser}=useSelector(state=>state.users.user)
+  const mainUser=useSelector(state=>state.users.user)
   
   
   useEffect(()=>{
     if(mainUser){
-      setCurrentUserImg(mainUser.user.avartImage)
-      setCurrentUserName(mainUser.user.username)
+      setCurrentUserImg(mainUser?.mainUser?.user.avartImage)
+      setCurrentUserName(mainUser?.mainUser?.user.username)
     }
   },[mainUser])
 
@@ -36,7 +36,7 @@ export default function Contact({contacts}) {
                <h1>Chat</h1>
            </div>
            <div className="contacts">
-               {otherUsers(contacts,mainUser.user ).map((contact,index)=>{
+               {otherUsers(contacts,mainUser?.mainUser?.user ).map((contact,index)=>{
                   return (
                       <div key={index}  className={`contact ${selectedChat===index? "selected":" "}`}
                      onClick={()=>changeCurrentChat(index,contact)}

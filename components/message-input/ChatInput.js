@@ -2,22 +2,30 @@ import React, { useState } from 'react';
 import {IoMdSend} from "react-icons/io"
 import InputEmoji from "react-input-emoji";
 import { useDispatch } from 'react-redux';
+import {useRef,useEffect} from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import Button from "../../util/Button"
 import { InputContainerStyle } from '../../styled-compnent/chat';
 import { updateMessage } from '../../redux/AllUser-slice';
 import { sendChatApi } from '../../api/chat-api'
-
-
+import { io } from "socket.io-client";
 
 export default function ChatInput() {
+  const socket=useRef()
   const [text, setText] = useState("");
   const msgDispatch=useDispatch()
   const {mainUser}=useSelector(state=>state.users.user)
   const {contact}=useSelector(state=>state.users.chat)
 
-
+  useEffect(()=>{
+    socket.current = io("http://localhost:8080", {
+      withCredentials: true,
+      transports : ['websocket']
+    })
+    socket.current.emit("add-users",mainUser?.mainUser?.user._id)
+  })
+  
   const submitMessgae=async()=>{
       if(!text) return
     //  update msssage state

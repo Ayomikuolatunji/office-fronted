@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect,useRef } from 'react'
 import { useSelector } from 'react-redux';
-import { ChatContainer } from '../styled-compnent/chat'; 
 import useSWR from 'swr';
+import { io } from "socket.io-client";
+import { ChatContainer } from '../styled-compnent/chat'; 
 import { allUsers } from '../api/authApi'
 import Contact from '../components/contact/Contact'
 import Loader from "../components/loader/Loader"
@@ -12,8 +13,9 @@ import SingleChat from '../components/chats/SingleChat';
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 function Chat() {
-
+  const mainUser=useSelector(state=>state.users.user)
   const currentChat=useSelector(state=>state.users.chat)
+  const socket=useRef()
   // fetch contact list then transport all through
   const { data, error } = useSWR(allUsers, fetcher)
 
@@ -21,7 +23,7 @@ function Chat() {
   
   if (error) return <div>failed to load</div>
   if (!data) return <Loader/>
-
+  console.log(socket)
   return (
     <ChatContainer>
         <div className="container">
@@ -33,7 +35,7 @@ function Chat() {
            ?  
            <ChatBillBoard/>
            : 
-           <SingleChat/>}
+           <SingleChat socket={mainUser}/>}
          
         </div>
     </ChatContainer>

@@ -49,7 +49,6 @@ export default function Login() {
         localStorage.setItem("userId",JSON.stringify(res.data.user))
         localStorage.setItem("office-user",JSON.stringify(res.data.token))
         router.push('/')
-        window.location.reload()
       }catch(err){
          setLoading(false)
          console.log(err)
