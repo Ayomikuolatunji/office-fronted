@@ -2,10 +2,12 @@ import React,{useEffect, useState} from 'react'
 import { useDispatch ,useSelector} from 'react-redux'
 import { ContactDiv } from '../../styled-compnent/chat'
 import { updateChat } from '../../redux/AllUser-slice'
+import Search from '../search/Search'
 
 
 export default function Contact({contacts}) {
  const dispatch=useDispatch()
+ const [contact,setContact]=useState("")
   const [currentUserName,setCurrentUserName]=useState("")
   const [currentUserImg,setCurrentUserImg]=useState("")
   const [selectedChat,setSelectedChat]=useState(undefined)
@@ -28,15 +30,32 @@ export default function Contact({contacts}) {
      const newUsers= others.filter(p=>p.username !==element?.username)
      return newUsers
   }
-
+  const filterUser=contacts.filter(p=>{
+    if(p.username.toUpperCase().includes(contact.toUpperCase())){
+      return p
+    }
+    return null
+  })
+  const handleSearch=(e)=>setContact(e.target.value)
+  
   return (
     <>
       <ContactDiv>
-           <div className="brand">
-               <h1>Chat</h1>
+           <div className="currentUser">
+                <div className="avatar"> 
+                  <img src={`data:image/svg+xml;base64,${currentUserImg}`} alt="avatar"
+                       onClick={()=>setSelectedChat(index)}
+                       />
+                    <div className="userName">
+                        <h1>{currentUserName}</h1>
+                    </div>
+                </div>
+           </div>
+           <div>
+             <Search handleSearch={handleSearch} contact={contact}/>
            </div>
            <div className="contacts">
-               {otherUsers(contacts,mainUser?.mainUser?.user ).map((contact,index)=>{
+               {otherUsers(filterUser,mainUser?.mainUser?.user ).map((contact,index)=>{
                   return (
                       <div key={index}  className={`contact ${selectedChat===index? "selected":" "}`}
                      onClick={()=>changeCurrentChat(index,contact)}
@@ -50,16 +69,6 @@ export default function Contact({contacts}) {
                       </div>
                   )
                })}
-           </div>
-           <div className="currentUser">
-                <div className="avatar"> 
-                  <img src={`data:image/svg+xml;base64,${currentUserImg}`} alt="avatar"
-                       onClick={()=>setSelectedChat(index)}
-                       />
-                    <div className="userName">
-                        <h1>{currentUserName}</h1>
-                    </div>
-                </div>
            </div>
        </ContactDiv>
     </>

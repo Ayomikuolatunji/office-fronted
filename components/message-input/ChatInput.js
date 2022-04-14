@@ -64,22 +64,24 @@ export default function ChatInput() {
       from:mainUser?.mainUser?.user._id,
       to: contact?._id
     })
-    console.log(data)
     setMsg(data.sendChat)
 }
   useEffect(()=>{
     if(socket.current){
       socket.current.on("recieved_chat",data=>{   
-            console.log(data)
             fetchChat()
        })
     }
  },[socket])
 
+   useEffect(()=>{
+    var element = document.getElementById("yourDivID");
+    element.scrollTop = element.scrollHeight;
+   })
 
   return (
     <>
-     <Message>
+     <Message id='yourDivID'>
              {msg?.map((message,index)=>{
                  return(
                    <div key={index} className={`msg ${message.me?"sent":"received"}`}>

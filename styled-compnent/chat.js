@@ -29,9 +29,12 @@ background-color: #131342;
 `
 export const ContactDiv=styled.div`
   color: #fff;
-  display: grid;
-  grid-template-rows: 10% 75% 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
+  width: 100%;
+
 
   .brand{
       h1{
@@ -192,6 +195,8 @@ export const Message=styled.div`
             border-radius: 1rem;
            }
        }
+  overscroll-behavior-y: contain;
+  scroll-snap-type: y proximity;
     padding: 1rem 2rem;
     display: flex;
     width: 100%;
@@ -225,5 +230,8 @@ export const Message=styled.div`
         .content{
             background-color:#4f04ff21 
         }
+    }
+    :last-child{
+        scroll-snap-align: end;
     }
 `
