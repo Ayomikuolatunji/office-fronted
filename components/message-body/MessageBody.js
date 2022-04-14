@@ -7,24 +7,32 @@ import { useSelector } from 'react-redux'
 export default function MessageBody() {
   const {mainUser}=useSelector(state=>state.users.user)
   const {contact}=useSelector(state=>state.users.chat)
-    const [mgs,setMsg]=useState([])
-
+  const [msg,setMsg]=useState([])
+    console.log(mainUser?.user._id, typeof contact?._id)
 
     useEffect(()=>{
         async function fetchChat(){
-            const message=await axios.post(fetchChats,{
-              from:mainUser?.user._id.toString(),
-              to: contact?._id.toString()
+            const {data}=await axios.post(fetchChats,{
+              from:mainUser?.user._id,
+              to: contact?._id
             })
-            console.log(message)
+            setMsg(data.sendChat)
         }
         fetchChat()
     },[mainUser,contact])
-  
+     console.log(msg)
+
+
     return (
       <div>
         <Message>
-          
+             {msg?.map((message,index)=>{
+                 return(
+                   <div key={index} className={`${message.me?"sent":"received"}`}>
+                      
+                   </div>
+                 )
+             })}
         </Message>
       </div>
     )

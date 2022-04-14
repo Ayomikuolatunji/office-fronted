@@ -16,7 +16,7 @@ export default function ChatInput() {
   const msgDispatch=useDispatch()
   const {mainUser}=useSelector(state=>state.users.user)
   const {contact}=useSelector(state=>state.users.chat)
-  console.log(mainUser?.user._id, contact?._id)
+
 
   const submitMessgae=async()=>{
       if(!text) return
