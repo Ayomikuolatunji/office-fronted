@@ -13,13 +13,13 @@ export default function MessageBody() {
     useEffect(()=>{
         async function fetchChat(){
             const message=await axios.post(fetchChats,{
-              to: contact?._id,
-              from:mainUser?.user._id
+              from:mainUser?.user._id.toString(),
+              to: contact?._id.toString()
             })
             console.log(message)
         }
         fetchChat()
-    })
+    },[mainUser,contact])
   
     return (
       <div>
