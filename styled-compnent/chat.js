@@ -181,3 +181,49 @@ export const InputContainerStyle=styled.div`
       }
   
 `
+
+export const Message=styled.div`
+    overflow: auto;
+    ::-webkit-scrollbar{
+           width: 0.2rem;
+           &-thumb{
+            background-color: #ffffff39;
+            width: 0.1rem;
+            border-radius: 1rem;
+           }
+       }
+    padding: 1rem 2rem;
+    display: flex;
+    width: 100%;
+    height: 50vh;
+    gap: 1rem;
+    flex-direction: column;
+    .msg{
+        display: flex;
+        align-items: center;
+
+        .content{
+            max-width: 40%;
+            overflow-wrap: break-word;
+            padding: 1rem;
+            font-size: 1rem;
+            border-radius: 1rem;
+            color: #fff;
+            font-weight: bold;
+        }
+    }
+    .sent{
+        justify-content: flex-end;
+
+        .content{
+            background-color:#4f04ff21 
+        }
+    }
+    .received{
+        justify-content: flex-start;
+ 
+        .content{
+            background-color:#4f04ff21 
+        }
+    }
+`
