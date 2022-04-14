@@ -185,7 +185,7 @@ export const InputContainerStyle=styled.div`
 export const Message=styled.div`
     overflow: auto;
     ::-webkit-scrollbar{
-           width: 0.2rem;
+           width: 0.5rem;
            &-thumb{
             background-color: #ffffff39;
             width: 0.1rem;
