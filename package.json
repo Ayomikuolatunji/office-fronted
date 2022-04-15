@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.5.2",
     "@mui/styles": "^5.5.1",
+    "@nextui-org/react": "^1.0.8-beta.5",
     "@reduxjs/toolkit": "^1.8.0",
     "axios": "^0.26.1",
     "buffer": "^6.0.3",

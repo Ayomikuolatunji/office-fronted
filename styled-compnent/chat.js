@@ -2,15 +2,15 @@ import styled from "styled-components"
 
 
 export const ChatContainer=styled.div`
-width: 100vw;
-height: 100vh;
-display: flex;
-flex-direction: column;
-position: relative;
-align-items: center;
-gap: 1rem;
-justify-content: center;
-background-color: #131342;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    background-color: #131342;
 
 .container{
     gap: 1rem;
@@ -32,6 +32,7 @@ export const ContactDiv=styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
   overflow: hidden;
   width: 100%;
   border-right:3px solid #131342;
@@ -84,7 +85,29 @@ export const ContactDiv=styled.div`
 
     
 `
-
+export const Profilestyle=styled.div`
+         cursor: pointer;
+         display: flex;
+         justify-content:space-between;
+         padding: 0.3rem 3rem 0.3rem 0;
+         align-items: center;
+        
+         .avatar{
+             display: flex;
+             align-items: center;
+             gap: 1rem;
+             img{
+                 height: 4rem;
+                 max-inline-size: 100%;
+             }
+         }
+         .userName{
+             color: #fff
+         }
+         @media (max-width:1080px) and (min-width:720px){
+              gap: 1rem;
+         }
+`
 export const SingleChatDiv=styled.div`
     padding-top: 1rem;
      position: relative;
@@ -216,26 +239,3 @@ export const Message=styled.div`
     }
 `
 
-export const Profilestyle=styled.div`
-         cursor: pointer;
-         display: flex;
-         justify-content:space-between;
-         padding: 0.3rem 3rem 0.3rem 0;
-         align-items: center;
-        
-         .avatar{
-             display: flex;
-             align-items: center;
-             gap: 1rem;
-             img{
-                 height: 4rem;
-                 max-inline-size: 100%;
-             }
-         }
-         .userName{
-             color: #fff
-         }
-         @media (max-width:1080px) and (min-width:720px){
-              gap: 1rem;
-         }
-`

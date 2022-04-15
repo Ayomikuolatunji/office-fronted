@@ -21,6 +21,20 @@ export default function Profile() {
     
   return (
      <>
+        <div className="div absolute min-h-full bg-red-500 left-0 top-0 right-0 z-50 w-full">
+            <div className="change-profile-picture">
+
+            </div>
+            <div className="change-username">
+
+            </div>
+            <div className="change-password">
+
+            </div>
+            <div className="change-email">
+                
+            </div>
+        </div>
         <Profilestyle className="currentUser">
             <div className="avatar"> 
                 <img src={`data:image/svg+xml;base64,${currentUserImg}`} alt="avatar"
