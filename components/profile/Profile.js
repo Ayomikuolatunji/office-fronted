@@ -7,6 +7,7 @@ import ChangePicture from './ChangePicture'
 
 
 
+
 export default function Profile() {
     const [currentUserName,setCurrentUserName]=useState("")
     const [currentUserImg,setCurrentUserImg]=useState("")
