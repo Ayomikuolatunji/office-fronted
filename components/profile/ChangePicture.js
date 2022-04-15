@@ -8,7 +8,7 @@ import axios from 'axios';
 import Profile from './Profile';
 
 
-export default function ChangePicture() {
+export default function ChangePicture({currentUserImg}) {
  const [file,setFile]=useState("")
  const [loading,setLoading]=useState(true);
 
@@ -16,9 +16,9 @@ export default function ChangePicture() {
 
   return (
     <div className='flex justify-center flex-col items-center mt-4 relative'>
-        <div className="div relative">
+        <div className="relative">
            <Avatar
-            src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+            src={`data:image/svg+xml;base64,${currentUserImg}`}
             size="xl"
             className='w-[230px] h-2/5 rounded-full opacity-[0.3]'
            />
@@ -28,12 +28,13 @@ export default function ChangePicture() {
               <input type="file" id='file' className='hidden'/>
            </label>
         </div>
-        <div className='flex'>
+        <h1 className='text-green-500 mt-10'>Or select an avatar</h1>
+        <div className='flex -mt-[70px]'>
             {[...Array(4)].map((_, index) => (
             <ProfileAvatar key={index}
                 avatarStyle='Circle'
                 {...generateRandomAvatarOptions()} 
-                className="w-[62px]"
+                className="w-[75px]"
             />
         ))}
         </div>

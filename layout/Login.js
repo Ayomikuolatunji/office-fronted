@@ -94,7 +94,7 @@ export default function Login() {
                 className="block"
               />
               <Button text={loading?"please wait":"Login"} className={"outline"}/>
-              <span>You dont an account ? <Link href={"/register"} passHref>register</Link> </span>
+              <span>You dont have an account ? <Link href={"/register"} passHref>register</Link> </span>
          </form>
        </RegisterMain>
        <ToastContainer limit={1}/>
