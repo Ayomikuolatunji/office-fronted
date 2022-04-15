@@ -30,7 +30,7 @@ export default function Profile() {
               <h1 className='text-xl ml-[29px]'>Profile</h1>
             </div>
             <div className="change-profile-picture">
-                <<ChangePicture/>
+                <ChangePicture/>
             </div>
             <div className="change-username">
 
