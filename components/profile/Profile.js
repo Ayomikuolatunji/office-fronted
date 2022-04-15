@@ -4,7 +4,8 @@ import {FcLeft} from "react-icons/fc"
 import { useSelector } from 'react-redux'
 import { Profilestyle } from '../../styled-compnent/chat'
 import ChangePicture from './ChangePicture'
-
+import { Avatar} from '@nextui-org/react';
+import Logout from "../logout/Logout"
 
 
 
@@ -25,10 +26,10 @@ export default function Profile() {
     
   return (
      <>
-       <div className={`${openProfile?"div absolute min-h-full bg-[#131342] left-0 top-0 right-0 z-50  duration-1000 transition-all ease-in-out block":"hidden"}`}>
+       <div className={`${openProfile?"div absolute min-h-full bg-[#131342] left-0 top-0 right-0 z-[999]  duration-1000 transition-all ease-in-out block":"hidden"}`}>
             <div className={` flex left items-center p-3 pl-4`}>
             <FcLeft onClick={()=>setOpenProfile(!openProfile)} className={`text-4xl cursor-pointer  duration-1000 transition-all ease-out inline`}/>
-              <h1 className='text-xl ml-[29px]'>Profile</h1>
+              <h1 className='text-xl ml-[29px]'>profile page</h1>
             </div>
             <div className="change-profile-picture">
                 <ChangePicture currentUserImg={currentUserImg}/>
@@ -42,10 +43,13 @@ export default function Profile() {
             <div className="change-email">
 
             </div>
+            <div className="logout flex items-center absolute bottom-0 right-0 mr-16">
+              <Logout/>
+            </div>
         </div>
         <Profilestyle className="currentUser">
             <div className="avatar"> 
-                <img src={`data:image/svg+xml;base64,${currentUserImg}`} alt="avatar"
+                <Avatar src={`data:image/svg+xml;base64,${currentUserImg}`} alt="avatar"
                     onClick={()=>setSelectedChat(index)}
                     />
                 <div className="userName">

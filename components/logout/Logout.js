@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components"
-import {BiPowerOff} from "react-icons/bi"
+import {GoSignOut} from "react-icons/go"
 import { useRouter } from 'next/router'
 
 
@@ -19,8 +19,9 @@ export default function Logout() {
 
   return (
     <>
-     <button>
-         <BiPowerOff onClick={LogoutFunc} className="text-3xl text-purple-200"/>
+     <button onClick={LogoutFunc} className="flex items-center m-3">
+         <GoSignOut  className="text-[40px] text-white"/>
+         <span className='ml-3'>Logout</span>
      </button>
     </>
   )

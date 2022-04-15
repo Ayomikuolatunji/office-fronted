@@ -1,18 +1,14 @@
 import React,{useEffect, useState} from 'react'
 import { Avatar} from '@nextui-org/react';
 import {FcOldTimeCamera} from "react-icons/fc"
-import ProfileAvatar from 'avataaars';
-import { generateRandomAvatarOptions } from './GenerateRandomAvatar';
 
-import axios from 'axios';
-import Profile from './Profile';
+
+
 
 
 export default function ChangePicture({currentUserImg}) {
  const [file,setFile]=useState("")
  const [loading,setLoading]=useState(true);
-
-
 
   return (
     <div className='flex justify-center flex-col items-center mt-4 relative'>
@@ -28,16 +24,7 @@ export default function ChangePicture({currentUserImg}) {
               <input type="file" id='file' className='hidden'/>
            </label>
         </div>
-        <h1 className='text-green-500 mt-10'>Or select an avatar</h1>
-        <div className='flex -mt-[70px]'>
-            {[...Array(4)].map((_, index) => (
-            <ProfileAvatar key={index}
-                avatarStyle='Circle'
-                {...generateRandomAvatarOptions()} 
-                className="w-[75px]"
-            />
-        ))}
-        </div>
+       
     </div>
   )
 }
