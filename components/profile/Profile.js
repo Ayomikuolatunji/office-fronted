@@ -3,6 +3,7 @@ import {GiHamburgerMenu} from "react-icons/gi"
 import {FcLeft} from "react-icons/fc"
 import { useSelector } from 'react-redux'
 import { Profilestyle } from '../../styled-compnent/chat'
+import ChangePicture from './ChangePicture'
 
 
 
@@ -29,7 +30,7 @@ export default function Profile() {
               <h1 className='text-xl ml-[29px]'>Profile</h1>
             </div>
             <div className="change-profile-picture">
-                
+                <<ChangePicture/>
             </div>
             <div className="change-username">
 
