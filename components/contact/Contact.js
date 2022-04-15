@@ -1,25 +1,18 @@
 import React,{useEffect, useState} from 'react'
 import { useDispatch ,useSelector} from 'react-redux'
+import {GiHamburgerMenu} from "react-icons/gi"
 import { ContactDiv } from '../../styled-compnent/chat'
 import { updateChat } from '../../redux/AllUser-slice'
 import Search from '../search/Search'
+import Profile from '../profile/Profile'
 
 
 export default function Contact({contacts}) {
  const dispatch=useDispatch()
  const [contact,setContact]=useState("")
-  const [currentUserName,setCurrentUserName]=useState("")
-  const [currentUserImg,setCurrentUserImg]=useState("")
   const [selectedChat,setSelectedChat]=useState(undefined)
   const mainUser=useSelector(state=>state.users.user)
   
-  
-  useEffect(()=>{
-    if(mainUser){
-      setCurrentUserImg(mainUser?.mainUser?.user.avartImage)
-      setCurrentUserName(mainUser?.mainUser?.user.username)
-    }
-  },[mainUser])
 
 
   const changeCurrentChat=(index,contact)=>{
@@ -41,21 +34,12 @@ export default function Contact({contacts}) {
   return (
     <>
       <ContactDiv>
-           <div className="currentUser">
-                <div className="avatar"> 
-                  <img src={`data:image/svg+xml;base64,${currentUserImg}`} alt="avatar"
-                       onClick={()=>setSelectedChat(index)}
-                       />
-                    <div className="userName">
-                        <h1>{currentUserName}</h1>
-                    </div>
-                </div>
-           </div>
+          <Profile/>
            <div>
              <Search handleSearch={handleSearch} contact={contact}/>
            </div>
            <div className="contacts">
-               {otherUsers(filterUser,mainUser?.mainUser?.user ).map((contact,index)=>{
+              {filterUser.length?otherUsers(filterUser,mainUser?.mainUser?.user ).map((contact,index)=>{
                   return (
                       <div key={index}  className={`contact ${selectedChat===index? "selected":" "}`}
                      onClick={()=>changeCurrentChat(index,contact)}
@@ -68,7 +52,7 @@ export default function Contact({contacts}) {
                        </div>
                       </div>
                   )
-               })}
+               }):<h1 className="text-center">No search found</h1>}
            </div>
        </ContactDiv>
     </>

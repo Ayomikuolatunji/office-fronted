@@ -13,11 +13,11 @@ justify-content: center;
 background-color: #131342;
 
 .container{
-    gap: 2rem;
+    gap: 1rem;
     position: relative;
     background-color: #00000076;
-    padding: 2rem 3rem;
-    width: 80vw;
+    padding: 2rem 1rem;
+    width: 90vw;
     height: 85vh;
     display: grid;
     grid-template-columns: 25% 75%;
@@ -34,7 +34,7 @@ export const ContactDiv=styled.div`
   justify-content: space-between;
   overflow: hidden;
   width: 100%;
-
+  border-right:3px solid #131342;
 
   .brand{
       h1{
@@ -46,10 +46,11 @@ export const ContactDiv=styled.div`
   .contacts{
        display: flex;
        gap: 0.8rem;
+       height:70vh;
        flex-direction: column;
        overflow: auto;
        ::-webkit-scrollbar{
-           width: 0.2rem;
+           width: 0.4rem;
            &-thumb{
             background-color: #ffffff39;
             width: 0.1rem;
@@ -81,28 +82,7 @@ export const ContactDiv=styled.div`
          }
      }
 
-     .currentUser{
-         background-color: #997af0;
-         display: flex;
-         justify-content:center;
-         align-items: center;
-
-         .avatar{
-             display: flex;
-             align-items: center;
-             gap: 1rem;
-             img{
-                 height: 4rem;
-                 max-inline-size: 100%;
-             }
-         }
-         .userName{
-             color: #fff
-         }
-         @media (max-width:1080px) and (min-width:720px){
-              gap: 1rem;
-         }
-     }
+    
 `
 
 export const SingleChatDiv=styled.div`
@@ -234,4 +214,28 @@ export const Message=styled.div`
     :last-child{
         scroll-snap-align: end;
     }
+`
+
+export const Profilestyle=styled.div`
+         cursor: pointer;
+         display: flex;
+         justify-content:space-between;
+         padding: 0.3rem 3rem 0.3rem 0;
+         align-items: center;
+        
+         .avatar{
+             display: flex;
+             align-items: center;
+             gap: 1rem;
+             img{
+                 height: 4rem;
+                 max-inline-size: 100%;
+             }
+         }
+         .userName{
+             color: #fff
+         }
+         @media (max-width:1080px) and (min-width:720px){
+              gap: 1rem;
+         }
 `
