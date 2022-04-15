@@ -24,8 +24,8 @@ export default function Profile() {
     
   return (
      <>
-       <div className={`${openProfile?"div absolute min-h-full bg-[#131342] left-0 top-0 right-0 z-50  duration-1000 transition-all ease-in-out block":""}`}>
-            <div className={` ${openProfile?"flex":"hidden"} left items-center p-3 pl-4`}>
+       <div className={`${openProfile?"div absolute min-h-full bg-[#131342] left-0 top-0 right-0 z-50  duration-1000 transition-all ease-in-out block":"hidden"}`}>
+            <div className={` flex left items-center p-3 pl-4`}>
             <FcLeft onClick={()=>setOpenProfile(!openProfile)} className={`text-4xl cursor-pointer  duration-1000 transition-all ease-out inline`}/>
               <h1 className='text-xl ml-[29px]'>Profile</h1>
             </div>
