@@ -107,7 +107,7 @@ export default function ProfilePicture() {
             {loading ? <Loader/> :
             <React.Fragment>
               <div className="thumbnail-img mx-auto mt-10 flex flex-col items-center">
-                <img src={image || defaultImg} className="rounded-full" style={{width:"200px", borderRadius:"100%"}}/>
+                <img src={image || defaultImg} className="rounded-full" style={{width:"200px", borderRadius:"100%",height:"150px"}}/>
                   <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer'>
                      <FcOldTimeCamera className='text-3xl my-3'/>
                     <span className='text-lg text-white'> Upload profile picture</span>
