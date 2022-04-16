@@ -73,7 +73,7 @@ export default function Avatar() {
     }
   },[router])
 
-  const onImageChange =async(event) => {
+  const onImageChange=async(event) => {
     setLoadingImg(true)
     try{
         if (event.target.files && event.target.files[0]) {
@@ -118,7 +118,7 @@ export default function Avatar() {
                         type={"file"} 
                         id='file' 
                         className='hidden'
-                        onChange={(e)=>onImageChange(e)}
+                        onChange={onImageChange}
                       />
                   </label>
               </div>
