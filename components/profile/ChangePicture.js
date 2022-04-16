@@ -65,6 +65,7 @@ export default function ChangePicture({currentUserImg}) {
                  type={"file"} 
                  id='file' 
                  className='hidden'
+                 onChange={onImageChange} 
               />
            </label>
            <button onClick={()=>upload_Profile()}>submit</button>

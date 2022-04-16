@@ -1,18 +1,18 @@
-import React, { useState,useEffect } from 'react'
-import Link from 'next/link'
+import React, { useState,useEffect,useRef } from 'react'
 import { ToastContainer,toast } from 'react-toastify'
 import Router, { useRouter } from 'next/router';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from "styled-components"
-import { Buffer } from 'buffer';
 import Button from "../util/Button"
 import { profile } from '../api/authApi';
 import Loader from '../components/loader/Loader';
+import { Avatar as Image} from "@nextui-org/react";
 import {FcOldTimeCamera} from "react-icons/fc"
 
 
 export default function Avatar() {
+  const hiddenImageFile = useRef(null);
     const [imagePreview,setImagePreview]=React.useState([]);
     const [loading,setLoading]=useState(true);
     const [image, setImage] =React.useState("");
@@ -60,19 +60,20 @@ export default function Avatar() {
         }catch(err){
             toast.error(err.message, toastOption)
         }
-        if(!selectedAvatar){
+        if(!imagePreview){
         toast.error("Profile picture required", toastOption);
         return false 
         }
     }
-
 
   useEffect(()=>{
     if(localStorage.getItem("office-user")){
         router.push('/login')
     }
   },[router])
-  console.log(imagePreview)
+  const handleImage =event=> {
+    hiddenImageFile.current.click();
+  }
   const onImageChange=async(event) => {
     setLoadingImg(true)
     try{
@@ -92,9 +93,7 @@ export default function Avatar() {
                        body:fileUpload
                })
                if(response.status===200) setLoadingImg(false)
-               setImagePreview(result.url.split("?")[0])
-               console.log(result)
-             
+               setImagePreview(result.url.split("?")[0])   
           }
         }catch(error){
            setLoadingImg(false)
@@ -102,7 +101,6 @@ export default function Avatar() {
            return false 
         }
  }
- console.log(image)
   return (
     <>
         <Container>
@@ -111,18 +109,19 @@ export default function Avatar() {
               <div className="title">
                   <h1>Pick an Avatar as your profile picture</h1>
               </div>
-              <div className="relative">
-                  <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer left-[30px]'>
-                      <FcOldTimeCamera className='text-3xl my-3'/>
-                      <span className='text-lg'> Change profile picture</span>
-                      <input
-                        type={"file"} 
-                        id='file' 
-                        className='hidden'
-                        onChange={onImageChange}
-                      />
-                  </label>
-              </div>
+              <div className="thumbnail-img mx-auto mt-10 flex flex-col items-center">
+                <Image src={image? image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU"} alt={`${image ? "preview" :""}`} className={`w-[230px] h-[500px] `}/>
+                  <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer'>
+                     <FcOldTimeCamera className='text-3xl my-3'/>
+                    <span className='text-lg'> Change profile picture</span>
+                    <input
+                      type={"file"} 
+                      id='file' 
+                      className='hidden'
+                      onChange={onImageChange} 
+                    />
+                </label>
+               </div>
               <Button 
               text={"Set as Profile Picture"}
               onClick={()=>proflePicture()}
