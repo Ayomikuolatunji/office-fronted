@@ -15,7 +15,6 @@ export default function ProfilePicture() {
     const [imagePreview,setImagePreview]=React.useState([]);
     const [loading,setLoading]=useState(true);
     const [image, setImage] =React.useState("");
-    const [loadingImg,setLoadingImg]=React.useState(false)
     const [user,setUser]=useState([])
     const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
     
@@ -75,7 +74,6 @@ export default function ProfilePicture() {
     hiddenImageFile.current.click();
   }
   const onImageChange=async(event) => {
-    setLoadingImg(true)
     try{
         if (event.target.files && event.target.files[0]) {
             const fileUpload=event.target.files[0]
@@ -92,8 +90,7 @@ export default function ProfilePicture() {
                        method: 'PUT',
                        body:fileUpload
                })
-               if(response.status===200) setLoadingImg(false)
-               setImagePreview(result.url.split("?")[0])   
+               if(response.status===200) setImagePreview(result.url.split("?")[0])   
           }
         }catch(error){
            setLoadingImg(false)
