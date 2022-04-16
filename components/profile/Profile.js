@@ -49,7 +49,7 @@ export default function Profile() {
         </div>
         <Profilestyle className="currentUser">
             <div className="avatar"> 
-                <Avatar src={`data:image/svg+xml;base64,${currentUserImg}`} alt="avatar"
+                <Avatar src={`${currentUserImg}`} alt="avatar"
                     onClick={()=>setSelectedChat(index)}
                     />
                 <div className="userName">

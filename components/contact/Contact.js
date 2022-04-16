@@ -44,7 +44,7 @@ export default function Contact({contacts}) {
                       <div key={index}  className={`contact ${selectedChat===index? "selected":" "}`}
                      onClick={()=>changeCurrentChat(index,contact)}
                       >
-                         <img src={`data:image/svg+xml;base64,${contact.avartImage}`} alt="avatar"
+                         <img src={`${contact.avartImage}`} alt="avatar"
                        onClick={()=>setSelectedChat(index)}
                        />
                        <div className="userName">

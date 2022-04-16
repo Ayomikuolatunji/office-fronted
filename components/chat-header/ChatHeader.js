@@ -15,7 +15,7 @@ export default function ChatHeader() {
           <div className="chat-header">
               <div className="user-details">
                   <div className="avatar">
-                    <img src={`data:image/svg+xml;base64,${currentChat.contact.avartImage}`} alt="avatar"
+                    <img src={`${currentChat.contact.avartImage}`} alt="avatar"
                         />
                   </div>
                   <div className="username">
