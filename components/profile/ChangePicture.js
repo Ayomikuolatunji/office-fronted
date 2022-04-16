@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import { Avatar} from '@nextui-org/react';
 import {FcOldTimeCamera} from "react-icons/fc"
+import InputText from "../../util/InputText"
 
 
 
@@ -9,6 +10,13 @@ import {FcOldTimeCamera} from "react-icons/fc"
 export default function ChangePicture({currentUserImg}) {
  const [file,setFile]=useState("")
  const [loading,setLoading]=useState(true);
+
+
+ const upload_Profile=async(e)=>{
+       setFile(e.target.value)
+ }
+
+ console.log(file)
 
   return (
     <div className='flex justify-center flex-col items-center mt-4 relative'>
@@ -21,7 +29,11 @@ export default function ChangePicture({currentUserImg}) {
            <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999] absolute top-[30%] cursor-pointer left-[30px]'>
                <FcOldTimeCamera className='text-3xl my-3'/>
                <span className='text-lg'> Change profile picture</span>
-              <input type="file" id='file' className='hidden'/>
+              <InputText
+                 type="file" id='file' 
+                  className='hidden'
+                  onChange={(e)=>upload_Profile(e)}
+              />
            </label>
         </div>
        
