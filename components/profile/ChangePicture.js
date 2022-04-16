@@ -8,44 +8,12 @@ import axios from 'axios';
 
 
 
+
 export default function ChangePicture({currentUserImg}) {
  const mainuserId=useSelector(state=>state.users.user)
  const [imagePreview,setImagePreview]=React.useState([]);
-  
+   
 
- const graphQuery={
-   query:`
-   mutation {
-    update_Profile_Picture(id: "${mainuserId?.mainUser?.user._id}", update_picture: {avartImage: "${imagePreview}", avatarImageSet: true}) {
-      _id
-      username
-      email
-    }
-  }
-  
-   `
-  }
-
-
-
- const upload_Profile=()=>{
-      fetch("http://localhost:8080/graphql",{
-        method:"POST",
-        headers:{
-           "Content-Type":"application/json"
-        },
-         body:JSON.stringify(graphQuery)
-      })
-      .then(js=>{
-        return js.json()
-      })
-      .then(data=>{
-        console.log(data)
-      })
-      .catch(err=>{
-        console.log(err.message)
-      })
- }
  const toastOption={
   position: "bottom-right",
   autoclose:8000,
@@ -54,11 +22,44 @@ export default function ChangePicture({currentUserImg}) {
   theme:"dark"
 }
 
+
+ const uplaod=()=>{
+  console.log(imagePreview);
+  const graphQuery={
+    query:`
+    mutation {
+     update_Profile_Picture(id: "${mainuserId?.mainUser?.user._id}", update_picture: {avartImage: "${imagePreview}", avatarImageSet: true}) {
+       _id
+       username
+       email
+       avartImage
+     }
+   }  
+    `
+   }
+    fetch("http://localhost:8080/graphql",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(graphQuery)
+    })
+    .then(js=>{
+      return js.json()
+    })
+    .then(data=>{
+      console.log(data)
+    })
+    .catch(err=>{
+      console.log(err.message)
+    })
+ }
+
  const onImageChange=async(event) => {
+   console.log(event.target.files[0])
   try{
       if (event.target.files && event.target.files[0]) {
           const fileUpload=event.target.files[0]
-           setImage(URL.createObjectURL(event.target.files[0]));
            const response = await axios({
              method: 'GET',
              headers:{
@@ -73,6 +74,11 @@ export default function ChangePicture({currentUserImg}) {
              })
              if(response.status===200) 
              setImagePreview(result.url.split("?")[0])   
+             console.log(result)
+             if(imagePreview){
+              uplaod()
+             }
+
         }
       }catch(error){
         toast.error("uploading failed", toastOption);
@@ -89,14 +95,14 @@ export default function ChangePicture({currentUserImg}) {
             size="xl"
             className='w-[230px] h-4/5 rounded-full opacity-[0.4]'
            />
-           <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999] absolute top-[10%] cursor-pointer left-[25px]'>
+           <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999] absolute top-[10%] cursor-pointer left-[35px]'>
                <FcOldTimeCamera className='text-3xl my-3'/>
-               <span className='text-lg'> Change profile picture</span>
+               <span className='text-[15px]'> Change profile picture</span>
               <input
                  type={"file"} 
                  id='file' 
                  className='hidden'
-                 onChange={onImageChange} 
+                 onChange={(e)=>onImageChange(e)} 
               />
            </label>
         </div>
