@@ -7,17 +7,17 @@ import styled from "styled-components"
 import Button from "../util/Button"
 import { profile } from '../api/authApi';
 import Loader from '../components/loader/Loader';
-import { Avatar as Image} from "@nextui-org/react";
 import {FcOldTimeCamera} from "react-icons/fc"
 
 
-export default function Avatar() {
+export default function ProfilePicture() {
   const hiddenImageFile = useRef(null);
     const [imagePreview,setImagePreview]=React.useState([]);
     const [loading,setLoading]=useState(true);
     const [image, setImage] =React.useState("");
     const [loadingImg,setLoadingImg]=React.useState(false)
     const [user,setUser]=useState([])
+    const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
     
     const router=useRouter()    
 
@@ -50,7 +50,7 @@ export default function Avatar() {
         if(user){
           console.log(user.user._id)
           const {data}=await axios.post(`${profile}/${user.user._id}`,{
-            avartImage:imagePreview,
+            avartImage:imagePreview || defaultImg,
             avatarImageSet:true
           })
           if(data.isSet){
@@ -106,14 +106,11 @@ export default function Avatar() {
         <Container>
             {loading ? <Loader/> :
             <React.Fragment>
-              <div className="title">
-                  <h1>Pick an Avatar as your profile picture</h1>
-              </div>
               <div className="thumbnail-img mx-auto mt-10 flex flex-col items-center">
-                <Image src={image? image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU"} alt="image-preview" className={`w-[230px] h-[200px] `}/>
+                <img src={image || defaultImg} className="rounded-full" style={{width:"200px", borderRadius:"100%"}}/>
                   <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer'>
                      <FcOldTimeCamera className='text-3xl my-3'/>
-                    <span className='text-lg'> Change profile picture</span>
+                    <span className='text-lg text-white'> Upload profile picture</span>
                     <input
                       type={"file"} 
                       id='file' 
