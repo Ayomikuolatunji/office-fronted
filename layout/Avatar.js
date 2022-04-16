@@ -110,7 +110,7 @@ export default function Avatar() {
                   <h1>Pick an Avatar as your profile picture</h1>
               </div>
               <div className="thumbnail-img mx-auto mt-10 flex flex-col items-center">
-                <Image src={image? image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU"} alt={`${image ? "preview" :""}`} className={`w-[230px] h-[500px] `}/>
+                <Image src={image? image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU"} alt="image-preview" className={`w-[230px] h-[200px] `}/>
                   <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer'>
                      <FcOldTimeCamera className='text-3xl my-3'/>
                     <span className='text-lg'> Change profile picture</span>
