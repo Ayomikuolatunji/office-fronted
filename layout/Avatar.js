@@ -72,7 +72,7 @@ export default function Avatar() {
         router.push('/login')
     }
   },[router])
-
+  console.log(imagePreview)
   const onImageChange=async(event) => {
     setLoadingImg(true)
     try{
@@ -91,8 +91,9 @@ export default function Avatar() {
                        method: 'PUT',
                        body:fileUpload
                })
-               if(result.status===200) setLoading(false)
-               console.log(response,result)
+               if(response.status===200) setLoadingImg(false)
+               setImagePreview(result.url.split("?")[0])
+               console.log(result)
              
           }
         }catch(error){
