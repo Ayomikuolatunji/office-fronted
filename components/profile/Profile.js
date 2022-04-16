@@ -35,7 +35,7 @@ export default function Profile() {
                 <ChangePicture currentUserImg={currentUserImg}/>
             </div>
             <div className="change-username">
-
+                 
             </div>
             <div className="change-password">
 
