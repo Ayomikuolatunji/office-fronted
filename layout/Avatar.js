@@ -35,6 +35,7 @@ export default function Avatar() {
          return res.json()
        })
        .then(data=>{
+         setLoading(false)
          setUser(data)
        })
        .catch(err=>{
@@ -47,7 +48,7 @@ export default function Avatar() {
           if(user){
             console.log(user.user._id)
             const {data}=await axios.post(`${profile}/${user.user._id}`,{
-              avartImage:avatars[selectedAvatar],
+              avartImage:avatars,
               avatarImageSet:true
             })
             if(data.isSet){
@@ -62,19 +63,7 @@ export default function Avatar() {
           return false 
          }
     }
-    useEffect(()=>{
-      async function fetch(){
-        let data=[]
-        for(let i=0; i<=5; i++){
-         const image=await axios.get(`${api}/${Math.random(Math.random()* 1000)}`)
-         const buffer=new Buffer(image.data)
-         data.push(buffer.toString("base64"))
-        }
-        setAvatars(data)
-        setLoading(false)
-      }
-      fetch()
-    },[])
+
 
     useEffect(()=>{
       if(localStorage.getItem("office-user")){
@@ -84,28 +73,22 @@ export default function Avatar() {
 
   return (
     <>
-        {loading && <Loader/>}
-       {loading || <Container>
-             <div className="title">
-                 <h1>Pick an Avatar as your profile picture</h1>
-             </div>
-            <div className="avatars">
-               {avatars.map((avatar,index)=>{
-                   return <div 
-                   className={`avatar ${selectedAvatar===index? "selected":" "}`} 
-                   key={index} 
-                    >
-                      <img src={`data:image/svg+xml;base64,${avatar}`} alt="avatar"
-                       onClick={()=>setSelectedAvatar(index)}
-                    />
-                   </div>
-               })}
-             </div>
-             <Button 
-             text={"Set as Profile Picture"}
-             onClick={()=>proflePicture()}
-             />    
-        </Container>}
+        <Container>
+            {loading ? <Loader/> :
+            <React.Fragment>
+              <div className="title">
+                  <h1>Pick an Avatar as your profile picture</h1>
+              </div>
+              <div className="avatars">
+                
+              </div>
+              <Button 
+              text={"Set as Profile Picture"}
+              onClick={()=>proflePicture()}
+              />    
+            </React.Fragment>
+              }
+        </Container>
         <ToastContainer limit={1}/>
     </>
   )
