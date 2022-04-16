@@ -2,10 +2,11 @@ import React,{useState,useEffect} from 'react'
 import {GiHamburgerMenu} from "react-icons/gi"
 import {FcLeft} from "react-icons/fc"
 import { useSelector } from 'react-redux'
+import { Avatar} from '@nextui-org/react';
 import { Profilestyle } from '../../styled-compnent/chat'
 import ChangePicture from './ChangePicture'
-import { Avatar} from '@nextui-org/react';
 import Logout from "../logout/Logout"
+import Username from '../username/Username';
 
 
 
@@ -35,7 +36,7 @@ export default function Profile() {
                 <ChangePicture currentUserImg={currentUserImg}/>
             </div>
             <div className="change-username">
-                 
+                 <Username/>
             </div>
             <div className="change-password">
 
