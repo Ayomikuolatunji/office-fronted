@@ -9,15 +9,17 @@ import { Buffer } from 'buffer';
 import Button from "../util/Button"
 import { profile } from '../api/authApi';
 import Loader from '../components/loader/Loader';
+import {FcOldTimeCamera} from "react-icons/fc"
 
 
 export default function Avatar() {
-    const [avatars,setAvatars]=React.useState([]);
+    const [imagePreview,setImagePreview]=React.useState([]);
     const [loading,setLoading]=useState(true);
-    const [selectedAvatar,setSelectedAvatar]=useState(undefined);
+    const [image, setImage] =React.useState("");
+    const [loadingImg,setLoadingImg]=React.useState(false)
     const [user,setUser]=useState([])
+    
     const router=useRouter()    
-    const api="https://api.multiavatar.com/45678945";
 
     const toastOption={
         position: "bottom-right",
@@ -44,33 +46,62 @@ export default function Avatar() {
     },[])
 
     const proflePicture=async()=>{
-         try{
-          if(user){
-            console.log(user.user._id)
-            const {data}=await axios.post(`${profile}/${user.user._id}`,{
-              avartImage:avatars,
-              avatarImageSet:true
-            })
-            if(data.isSet){
-              router.push("/")
-            }
+        try{
+        if(user){
+          console.log(user.user._id)
+          const {data}=await axios.post(`${profile}/${user.user._id}`,{
+            avartImage:imagePreview,
+            avatarImageSet:true
+          })
+          if(data.isSet){
+            router.push("/")
           }
-         }catch(err){
-             toast.error(err.message, toastOption)
-         }
-         if(!selectedAvatar){
-          toast.error("Profile picture required", toastOption);
-          return false 
-         }
+        }
+        }catch(err){
+            toast.error(err.message, toastOption)
+        }
+        if(!selectedAvatar){
+        toast.error("Profile picture required", toastOption);
+        return false 
+        }
     }
 
 
-    useEffect(()=>{
-      if(localStorage.getItem("office-user")){
-         router.push('/login')
-      }
-    },[])
+  useEffect(()=>{
+    if(localStorage.getItem("office-user")){
+        router.push('/login')
+    }
+  },[router])
 
+  const onImageChange =async(event) => {
+    setLoadingImg(true)
+    try{
+        if (event.target.files && event.target.files[0]) {
+            const fileUpload=event.target.files[0]
+             setImage(URL.createObjectURL(event.target.files[0]));
+             const response = await axios({
+               method: 'GET',
+               headers:{
+                 "Content-Type":"image/jpeg"
+               },
+                  url:"https://115mf3u9df.execute-api.eu-west-3.amazonaws.com/default/collegeImgPreview"
+               })
+                   // PUT request: for upload url to S3
+               const result = await fetch(response.data.uploadURL, {
+                       method: 'PUT',
+                       body:fileUpload
+               })
+               if(result.status===200) setLoading(false)
+               console.log(response,result)
+             
+          }
+        }catch(error){
+           setLoadingImg(false)
+           toast.error("uploading failed", toastOption);
+           return false 
+        }
+ }
+ console.log(image)
   return (
     <>
         <Container>
@@ -79,8 +110,17 @@ export default function Avatar() {
               <div className="title">
                   <h1>Pick an Avatar as your profile picture</h1>
               </div>
-              <div className="avatars">
-                
+              <div className="relative">
+                  <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer left-[30px]'>
+                      <FcOldTimeCamera className='text-3xl my-3'/>
+                      <span className='text-lg'> Change profile picture</span>
+                      <input
+                        type={"file"} 
+                        id='file' 
+                        className='hidden'
+                        onChange={(e)=>onImageChange(e)}
+                      />
+                  </label>
               </div>
               <Button 
               text={"Set as Profile Picture"}
@@ -101,6 +141,7 @@ const Container=styled.div`
      flex-direction: column;
      gap: 3rem;
      background-color: #131324;
+     position: relative;
      height: 100vh;
 
      .title {
@@ -109,28 +150,6 @@ const Container=styled.div`
         }
      }
 
-     .avatars{
-       display: flex;
-       gap: 3rem;
-        
-       .avatar {
-         border: 0.4rem solid transparent;
-         padding: 0.4rem;
-         border-radius: 5rem;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         cursor: pointer;
-         transition: 0.5s ease-in-out all;
-         img{
-           height: 6rem;
-         }
-       }
-       .selected{
-          border: 0.4rem solid #997af0;
-          background-color: green;          
-         }
-     }
      button{
             background-color: #997af0;
             border-radius: 0.4rem;
