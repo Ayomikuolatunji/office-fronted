@@ -19,7 +19,7 @@ export default function Username() {
     }
    console.log(text);
   return (
-    <div className='py-3 mt-10'>
+    <div className='py-3 mt-6'>
        <div className="title ml-1.5">
            <h1>Your name</h1>
        </div>
@@ -56,7 +56,7 @@ const OverRideInput=styled.div`
       }
      .react-input-emoji--input {
           height: 50px;
-          padding: 10px;
+          padding: 15px;
           border-bottom: 3px solid gray;
           border-top: none !important;
           color: #fff;

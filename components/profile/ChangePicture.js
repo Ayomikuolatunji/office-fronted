@@ -23,36 +23,7 @@ export default function ChangePicture({currentUserImg}) {
 }
 
 
- const uplaod=()=>{
-  const graphQuery={
-    query:`
-    mutation {
-     update_Profile_Picture(id: "${mainuserId?.mainUser?.user._id}", update_picture: {avartImage: "${imagePreview}", avatarImageSet: true}) {
-       _id
-       username
-       email
-       avartImage
-     }
-   }  
-    `
-   }
-    fetch("http://localhost:8080/graphql",{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify(graphQuery)
-    })
-    .then(js=>{
-      return js.json()
-    })
-    .then(data=>{
-      console.log(data)
-    })
-    .catch(err=>{
-      console.log(err.message)
-    })
- }
+
 
  const onImageChange=async(event) => {
    console.log(event.target.files[0])
@@ -71,12 +42,36 @@ export default function ChangePicture({currentUserImg}) {
                      method: 'PUT',
                      body:fileUpload
              })
-             if(response.status===200) 
-             setImagePreview(result.url.split("?")[0])   
-             if(imagePreview){
-              uplaod()
-             }
-
+            if(result.status===200){
+               const graphQuery={
+                 query:`
+                 mutation {
+                  update_Profile_Picture(id: "${mainuserId?.mainUser?.user._id}", update_picture: {avartImage: "${result.url.split("?")[0].toString()}", avatarImageSet: true}) {
+                    _id
+                    username
+                    email
+                    avartImage
+                  }
+                }  
+                 `
+                }
+                 fetch("http://localhost:8080/graphql",{
+                   method:"POST",
+                   headers:{
+                     "Content-Type":"application/json"
+                   },
+                   body:JSON.stringify(graphQuery)
+                 })
+                 .then(js=>{
+                   return js.json()
+                 })
+                 .then(data=>{
+                   console.log(data)
+                 })
+                 .catch(err=>{
+                   console.log(err.message)
+                 })
+              }
         }
       }catch(error){
         toast.error("uploading failed", toastOption);
@@ -91,7 +86,7 @@ export default function ChangePicture({currentUserImg}) {
            <img
             src={`${currentUserImg}`}
             size="xl"
-            className='w-[180px] h-[180px] rounded-full opacity-[0.4]'
+            className='w-[190px] h-[180px] rounded-full opacity-[0.4]'
            />
            <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[2] absolute top-[30%] cursor-pointer left-[15px]'>
                <FcOldTimeCamera className='text-3xl my-3'/>
