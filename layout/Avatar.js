@@ -11,7 +11,6 @@ import {FcOldTimeCamera} from "react-icons/fc"
 
 
 export default function ProfilePicture() {
-  const hiddenImageFile = useRef(null);
     const [imagePreview,setImagePreview]=React.useState([]);
     const [loading,setLoading]=useState(true);
     const [image, setImage] =React.useState("");
@@ -49,7 +48,7 @@ export default function ProfilePicture() {
         if(user){
           console.log(user.user._id)
           const {data}=await axios.post(`${profile}/${user.user._id}`,{
-            avartImage:imagePreview || defaultImg,
+            avartImage:imagePreview?imagePreview:defaultImg,
             avatarImageSet:true
           })
           if(data.isSet){
@@ -57,11 +56,7 @@ export default function ProfilePicture() {
           }
         }
         }catch(err){
-            toast.error(err.message, toastOption)
-        }
-        if(!imagePreview){
-        toast.error("Profile picture required", toastOption);
-        return false 
+            toast.error("Profile picture required", toastOption)
         }
     }
 
@@ -70,9 +65,6 @@ export default function ProfilePicture() {
         router.push('/login')
     }
   },[router])
-  const handleImage =event=> {
-    hiddenImageFile.current.click();
-  }
   const onImageChange=async(event) => {
     try{
         if (event.target.files && event.target.files[0]) {
@@ -119,6 +111,7 @@ export default function ProfilePicture() {
               <Button 
               text={"Set as Profile Picture"}
               onClick={()=>proflePicture()}
+              type="submit"
               />    
             </React.Fragment>
               }
