@@ -33,18 +33,10 @@ export default function Profile() {
     const res=await axios.delete(`${deleteUserApi}/${mainUser?.mainUser?.user._id}`)
     if(res.status===200){
       console.log(res)
-      router.push("/")
+      localStorage.removeItem("ffice-user")
+      localStorage.removeItem("userId")
+      router.push("/login")
     }
-      // fetch()
-      // .then(user=>{
-      //   return user.json()
-      // })
-      // .then((res)=>{
-          
-      // })
-      // .catch(err=>{
-      //   console.log(err.message)
-      // })
   }
     
   return (

@@ -52,7 +52,7 @@ export default function Login() {
       }catch(err){
          setLoading(false)
          console.log(err)
-         toast.error(err.message,toastOption)
+         toast.error("Either account does not exits or incorrect passsword or Email",toastOption)
       }
     
     }
