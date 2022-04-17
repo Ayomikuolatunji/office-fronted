@@ -7,6 +7,10 @@ import { Profilestyle } from '../../styled-compnent/chat'
 import ChangePicture from './ChangePicture'
 import Logout from "../logout/Logout"
 import Username from './Username';
+import { deleteUserApi } from '../../api/authApi';
+import { useRouter } from 'next/router';
+import Button from '../../util/Button';
+import axios from 'axios';
 
 
 
@@ -15,7 +19,7 @@ export default function Profile() {
     const [currentUserImg,setCurrentUserImg]=useState("")
     const mainUser=useSelector(state=>state.users.user)
     const [openProfile,setOpenProfile]=useState(false)
-
+    const router=useRouter()
 
       
   useEffect(()=>{
@@ -25,8 +29,22 @@ export default function Profile() {
     }
   },[mainUser])
 
-  const DeleteUser=()=>{
-      fetch('http://localhost:8080/office-api/auth/delete_user/625c71f67dbbad9b9c4c8eb5')
+  const DeleteUser=async()=>{
+    const res=await axios.delete(`${deleteUserApi}/${mainUser?.mainUser?.user._id}`)
+    if(res.status===200){
+      console.log(res)
+      router.push("/")
+    }
+      // fetch()
+      // .then(user=>{
+      //   return user.json()
+      // })
+      // .then((res)=>{
+          
+      // })
+      // .catch(err=>{
+      //   console.log(err.message)
+      // })
   }
     
   return (
@@ -49,7 +67,7 @@ export default function Profile() {
 
             </div>
             <div className="logout flex items-center absolute bottom-0 right-0  justify-between w-full">
-              <button className='text-[19px] text-red-500 font-extrabold'>Delete Account</button>
+              <Button className='text-[19px] text-red-500 font-extrabold' text={"Delete Account"} onClick={()=>DeleteUser()}/>
               <Logout/>
             </div>
         </div>
