@@ -24,6 +24,10 @@ export default function Profile() {
       setCurrentUserName(mainUser?.mainUser?.user.username)
     }
   },[mainUser])
+
+  const DeleteUser=()=>{
+      fetch('http://localhost:8080/office-api/auth/delete_user/625c71f67dbbad9b9c4c8eb5')
+  }
     
   return (
      <>
