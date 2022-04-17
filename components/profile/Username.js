@@ -1,23 +1,49 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { useSelector } from 'react-redux'
 import InputEmoji from "react-input-emoji";
 import styled from "styled-components"
 
+
+const fetcher = (...args) => fetch(...args).then(res => res.json())
+
 export default function Username() {
-    const userName=useSelector(state=>state.users.user)
-    const [text,setText]=useState(userName?.mainUser.user.username.toString().toUpperCase())
+    const mainUser=useSelector(state=>state.users.user)
+    const [text,setText]=useState(mainUser?.mainUser.user.username.toString().toUpperCase())
    
 
-    const query={
-      query:`{
-           
-      }`
+    const graphQuery={
+      query:`   
+        mutation {
+          update_Profile_Username(id:"${mainUser?.mainUser?.user._id}",update_username:{username:"${text}"})
+        {
+        _id,
+        avartImage,
+        username
+        }
+        }
+      `
     }
 
+
     const ChangeProfilePicture=()=>{
-         console.log(text)
+      fetch("http://localhost:8080/graphql",{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(graphQuery)
+      })
+      .then(js=>{
+        return js.json()
+      })
+      .then(data=>{
+        console.log(data)
+          window.location.reload(false);
+      })
+      .catch(err=>{
+        console.log(err.message)
+      })
     }
-   console.log(text);
   return (
     <div className='py-3 mt-6'>
        <div className="title ml-1.5">
@@ -27,7 +53,7 @@ export default function Username() {
            <InputEmoji
               value={text}
               onChange={setText}
-              placeholder={userName?.mainUser.user.username.toString().toUpperCase()}
+              placeholder={mainUser?.mainUser.user.username.toString().toUpperCase()}
               cleanOnEnter
               className="text-red-500"
               onEnter={ChangeProfilePicture}

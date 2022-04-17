@@ -20,7 +20,7 @@ export default function Contact({contacts}) {
       dispatch(updateChat({contact}))
   }
   const otherUsers=(others,element)=>{
-     const newUsers= others.filter(p=>p.username !==element?.username)
+     const newUsers= others.filter(p=>p._id !==element?._id)
      return newUsers
   }
   const filterUser=contacts.filter(p=>{

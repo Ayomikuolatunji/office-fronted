@@ -19,7 +19,7 @@ export default function Logout() {
 
   return (
     <>
-     <button onClick={LogoutFunc} className="flex items-center m-3">
+     <button onClick={LogoutFunc} className="flex items-center my-3">
          <GoSignOut  className="text-[40px] text-white"/>
          <span className='ml-3'>Logout</span>
      </button>

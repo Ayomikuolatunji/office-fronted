@@ -44,7 +44,8 @@ export default function Profile() {
             <div className="change-email">
 
             </div>
-            <div className="logout flex items-center absolute bottom-0 right-0 mr-16">
+            <div className="logout flex items-center absolute bottom-0 right-0  justify-between w-full">
+              <button className='text-[19px] text-red-500 font-extrabold'>Delete Account</button>
               <Logout/>
             </div>
         </div>

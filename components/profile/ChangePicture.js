@@ -11,7 +11,7 @@ import axios from 'axios';
 
 export default function ChangePicture({currentUserImg}) {
  const mainuserId=useSelector(state=>state.users.user)
- const [imagePreview,setImagePreview]=React.useState([]);
+
    
 
  const toastOption={
