@@ -41,7 +41,7 @@ export default function Profile() {
     
   return (
      <>
-       <div className={`${openProfile?"div absolute min-h-full bg-[#131342] left-0 top-0 right-0 z-[999]  duration-1000 transition-all ease-in-out block":"hidden"}`}>
+       <div className={`${openProfile?"div absolute min-h-full bg-[#131342] left-0 top-0 right-0 z-[999] p-3 duration-1000 transition-all ease-in-out block":"hidden"}`}>
             <div className={` flex left items-center p-3 pl-4`}>
             <FcLeft onClick={()=>setOpenProfile(!openProfile)} className={`text-4xl cursor-pointer  duration-1000 transition-all ease-out inline`}/>
               <h1 className='text-xl ml-[29px]'>profile page</h1>
@@ -58,7 +58,7 @@ export default function Profile() {
             <div className="change-email">
 
             </div>
-            <div className="logout flex items-center absolute bottom-0 right-0  justify-between w-full">
+            <div className="logout flex items-center absolute bottom-0 right-0  justify-between w-full p-2">
               <Button className='text-[19px] text-red-500 font-extrabold' text={"Delete Account"} onClick={()=>DeleteUser()}/>
               <Logout/>
             </div>

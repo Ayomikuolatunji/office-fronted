@@ -13,7 +13,6 @@ export default function Logout() {
            localStorage.removeItem("office-user")
            localStorage.removeItem("userId")
        }
-       window.location.reload()
        router.push("/login")
   }
 

@@ -29,7 +29,6 @@ export default function ProfilePicture() {
  
     useEffect(()=>{
       const userId=localStorage.getItem("userId")
-      const id=JSON.parse(userId)
        fetch(`http://localhost:8080/office-api/auth/${JSON.parse(userId)}`)
        .then(res=>{
          return res.json()
