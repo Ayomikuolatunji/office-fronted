@@ -6,7 +6,7 @@ import { Avatar} from '@nextui-org/react';
 import { Profilestyle } from '../../styled-compnent/chat'
 import ChangePicture from './ChangePicture'
 import Logout from "../logout/Logout"
-import Username from '../username/Username';
+import Username from './Username';
 
 
 

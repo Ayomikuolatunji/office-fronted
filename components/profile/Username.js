@@ -5,7 +5,19 @@ import styled from "styled-components"
 
 export default function Username() {
     const userName=useSelector(state=>state.users.user)
-    const [text,setText]=useState(userName?.mainUser.user.username.toString())
+    const [text,setText]=useState(userName?.mainUser.user.username.toString().toUpperCase())
+   
+
+    const query={
+      query:`{
+           
+      }`
+    }
+
+    const ChangeProfilePicture=()=>{
+         console.log(text)
+    }
+   console.log(text);
   return (
     <div className='py-3 mt-10'>
        <div className="title ml-1.5">
@@ -18,6 +30,7 @@ export default function Username() {
               placeholder={userName?.mainUser.user.username.toString().toUpperCase()}
               cleanOnEnter
               className="text-red-500"
+              onEnter={ChangeProfilePicture}
             />
        </OverRideInput>
     </div>
@@ -30,6 +43,7 @@ const OverRideInput=styled.div`
 .react-input-emoji--container{
     border-radius:0 !important;
     background-color: transparent !important;
+    border: none;
     
 }
    .react-input-emoji--button{
@@ -37,16 +51,18 @@ const OverRideInput=styled.div`
         position:absolute;
         color:"yellow";
         left:0;
-        margin-left: 290px;
+        margin-left: 255px;
         z-index: 99;
       }
      .react-input-emoji--input {
           height: 50px;
-          border-bottom: 3px solid red;
-          padding: 15px;
+          padding: 10px;
+          border-bottom: 3px solid gray;
           border-top: none !important;
           color: #fff;
-          border-left: 0 !important;
     }
-
+    .react-input-emoji--placeholder{
+      left: 0 ;
+      color: #fff;
+    }
 `

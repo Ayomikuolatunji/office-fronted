@@ -24,7 +24,6 @@ export default function ChangePicture({currentUserImg}) {
 
 
  const uplaod=()=>{
-  console.log(imagePreview);
   const graphQuery={
     query:`
     mutation {
@@ -74,7 +73,6 @@ export default function ChangePicture({currentUserImg}) {
              })
              if(response.status===200) 
              setImagePreview(result.url.split("?")[0])   
-             console.log(result)
              if(imagePreview){
               uplaod()
              }
