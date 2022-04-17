@@ -164,7 +164,7 @@ export const InputContainerStyle=styled.div`
       bottom: 0;
       left: 0;
       right: 0;
-      margin: 10px;
+      border: none !important;
 
       .form-input{
         width: 90%;

@@ -51,7 +51,6 @@ export default function Profile() {
         <Profilestyle className="currentUser">
             <div className="avatar"> 
                 <Avatar src={`${currentUserImg}`} alt="avatar"
-                    onClick={()=>setSelectedChat(index)}
                     />
                 <div className="userName">
                     <h1>{currentUserName.toUpperCase()}</h1>

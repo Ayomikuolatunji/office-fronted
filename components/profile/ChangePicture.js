@@ -93,9 +93,9 @@ export default function ChangePicture({currentUserImg}) {
            <img
             src={`${currentUserImg}`}
             size="xl"
-            className='w-[230px] h-4/5 rounded-full opacity-[0.4]'
+            className='w-[180px] h-[180px] rounded-full opacity-[0.4]'
            />
-           <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999] absolute top-[10%] cursor-pointer left-[35px]'>
+           <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[2] absolute top-[30%] cursor-pointer left-[15px]'>
                <FcOldTimeCamera className='text-3xl my-3'/>
                <span className='text-[15px]'> Change profile picture</span>
               <input

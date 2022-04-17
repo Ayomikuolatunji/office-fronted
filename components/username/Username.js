@@ -5,17 +5,17 @@ import styled from "styled-components"
 
 export default function Username() {
     const userName=useSelector(state=>state.users.user)
-    const [text,setText]=useState(userName?.mainUser.user.userName)
+    const [text,setText]=useState(userName?.mainUser.user.username.toString())
   return (
-    <div className='p-3 mt-10  bg-fuchsia-700'>
-       <div className="title">
+    <div className='py-3 mt-10'>
+       <div className="title ml-1.5">
            <h1>Your name</h1>
        </div>
-       <OverRideInput className="input mt-4">
+       <OverRideInput className="input mt-4 w-full -ml-1">
            <InputEmoji
               value={text}
               onChange={setText}
-              placeholder={userName?.mainUser.user.username.toString()}
+              placeholder={userName?.mainUser.user.username.toString().toUpperCase()}
               cleanOnEnter
               className="text-red-500"
             />
@@ -26,16 +26,27 @@ export default function Username() {
 
 
 const OverRideInput=styled.div`
+  z-index: 999;
+.react-input-emoji--container{
+    border-radius:0 !important;
+    background-color: transparent !important;
+    
+}
    .react-input-emoji--button{
         background-color:transparent !important;
         position:absolute;
+        color:"yellow";
         left:0;
-        margin: 40px;
+        margin-left: 290px;
         z-index: 99;
       }
      .react-input-emoji--input {
           height: 50px;
+          border-bottom: 3px solid red;
           padding: 15px;
+          border-top: none !important;
+          color: #fff;
+          border-left: 0 !important;
     }
 
 `
