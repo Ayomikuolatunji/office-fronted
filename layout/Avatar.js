@@ -1,4 +1,4 @@
-import React, { useState,useEffect,useRef } from 'react'
+import React, { useState,useEffect} from 'react'
 import { ToastContainer,toast } from 'react-toastify'
 import Router, { useRouter } from 'next/router';
 import axios from 'axios';
@@ -46,7 +46,6 @@ export default function ProfilePicture() {
     const proflePicture=async()=>{
         try{
         if(user){
-          console.log(user.user._id)
           const {data}=await axios.post(`${profile}/${user.user._id}`,{
             avartImage:imagePreview?imagePreview:defaultImg,
             avatarImageSet:true
