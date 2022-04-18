@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Chat from "../layout/Chat"
 import { useDispatch } from 'react-redux';
 import { currentUser } from '../redux/AllUser-slice';
+import { singleUser } from '../api/authApi';
 
 
 export default function Home() {
@@ -12,7 +13,7 @@ export default function Home() {
 
   useEffect(()=>{
     const userId=localStorage.getItem("userId")
-     fetch(`http://localhost:8080/office-api/auth/${JSON.parse(userId)}`)
+     fetch(`${singleUser}/${JSON.parse(userId)}`)
      .then(res=>{
        return res.json()
      })

@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { useDispatch ,useSelector} from 'react-redux'
-import {GiHamburgerMenu} from "react-icons/gi"
+import { Avatar } from '@nextui-org/react';
 import { ContactDiv } from '../../styled-compnent/chat'
 import { updateChat } from '../../redux/AllUser-slice'
 import Search from '../search/Search'
@@ -44,8 +44,11 @@ export default function Contact({contacts}) {
                       <div key={index}  className={`contact ${selectedChat===index? "selected":" "}`}
                      onClick={()=>changeCurrentChat(index,contact)}
                       >
-                         <img src={`${contact.avartImage}`} alt="avatar"
-                       onClick={()=>setSelectedChat(index)}
+                         <Avatar 
+                         className='w-[60px] h-[60px]' 
+                         src={`${contact.avartImage}`} 
+                         alt="avatar"
+                          onClick={()=>setSelectedChat(index)}
                        />
                        <div className="userName">
                            <h1>{contact.username}</h1>

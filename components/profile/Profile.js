@@ -67,7 +67,7 @@ export default function Profile() {
             <div className="avatar"> 
                 <Avatar src={`${currentUserImg}`} alt="avatar"
                     />
-                <div className="userName">
+                <div className="userName -ml-1.5 text-sm">
                     <h1>{currentUserName.toUpperCase()}</h1>
                 </div>
             </div>

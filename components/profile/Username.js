@@ -65,7 +65,7 @@ export default function Username() {
 
 
 const OverRideInput=styled.div`
-  z-index: 999;
+  z-index: 99999;
 .react-input-emoji--container{
     border-radius:0 !important;
     background-color: transparent !important;

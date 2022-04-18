@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import styled from "styled-components"
+import { Avatar } from '@nextui-org/react';
 
 
 export default function ChatHeader() {
@@ -15,7 +16,7 @@ export default function ChatHeader() {
           <div className="chat-header">
               <div className="user-details">
                   <div className="avatar">
-                    <img src={`${currentChat.contact.avartImage}`} alt="avatar"
+                    <Avatar src={`${currentChat.contact.avartImage}`} alt="avatar"
                         />
                   </div>
                   <div className="username">

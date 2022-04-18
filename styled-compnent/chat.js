@@ -89,7 +89,7 @@ export const Profilestyle=styled.div`
          cursor: pointer;
          display: flex;
          justify-content:space-between;
-         padding: 0.3rem 3rem 0.3rem 0;
+         padding: 0.3rem 1rem 0.3rem 0;
          align-items: center;
         
          .avatar{

@@ -3,6 +3,7 @@ import { ToastContainer,toast } from 'react-toastify'
 import {FcOldTimeCamera} from "react-icons/fc"
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { Avatar } from '@nextui-org/react';
 
 
 
@@ -83,12 +84,12 @@ export default function ChangePicture({currentUserImg}) {
   return (
     <div className='flex justify-center flex-col items-center mt-4 relative'>
         <div className="relative">
-           <img
+           <Avatar
             src={`${currentUserImg}`}
             size="xl"
-            className='w-[190px] h-[180px] rounded-full opacity-[0.4]'
+            className='w-[190px] h-[180px] rounded-full -z-10 opacity-[0.4]'
            />
-           <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[2] absolute top-[30%] cursor-pointer left-[15px]'>
+           <label htmlFor="file" className='flex justify-center flex-col items-center  file  absolute top-[30%] cursor-pointer left-[15px]'>
                <FcOldTimeCamera className='text-3xl my-3'/>
                <span className='text-[15px]'> Change profile picture</span>
               <input
