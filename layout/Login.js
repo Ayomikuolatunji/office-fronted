@@ -93,6 +93,9 @@ export default function Login() {
                 value={values.password}
                 className="block"
               />
+
+              <span className="text-sm">You forgot password ? <Link href={"/reset-password"} passHref>reset password</Link> </span>
+
               <Button text={loading?"please wait":"Login"} className={"outline"}/>
               <span>You dont have an account ? <Link href={"/register"} passHref>register</Link> </span>
          </form>
