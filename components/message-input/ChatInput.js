@@ -65,14 +65,8 @@ export default function ChatInput() {
       to: contact?._id
     })
     setMsg(data.sendChat)
-}
-  useEffect(()=>{
-    if(socket.current){
-      socket.current.on("recieved_chat",data=>{   
-            fetchChat()
-       })
-    }
- },[socket])
+  }
+
 
    useEffect(()=>{
     var element = document.getElementById("yourDivID");

@@ -43,10 +43,11 @@ export default function ProfilePicture() {
     },[])
 
     const proflePicture=async()=>{
+      console.log(imagePreview)
         try{
         if(user){
           const {data}=await axios.post(`${profile}/${user.user._id}`,{
-            avartImage:imagePreview?imagePreview:defaultImg,
+            avartImage:imagePreview | defaultImg,
             avatarImageSet:true
           })
           if(data.isSet){
