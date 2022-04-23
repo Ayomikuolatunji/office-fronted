@@ -63,6 +63,7 @@ export default function Profile() {
               <Logout/>
             </div>
         </div>
+       
         <Profilestyle className="currentUser">
             <div className="avatar"> 
                 <Avatar src={`${currentUserImg}`} alt="avatar"
