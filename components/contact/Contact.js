@@ -5,7 +5,6 @@ import { ContactDiv } from '../../styled-compnent/chat'
 import { updateChat } from '../../redux/AllUser-slice'
 import Search from '../search/Search'
 import Profile from '../profile/Profile'
-import Image from 'next/image';
 
 
 export default function Contact({contacts}) {
@@ -45,9 +44,8 @@ export default function Contact({contacts}) {
                       <div key={index}  className={`contact ${selectedChat===index? "selected":" "}`}
                      onClick={()=>changeCurrentChat(index,contact)}
                       >
-                         <Image 
-                         height={150}
-                         width={150}
+                         <Avatar 
+                         className='w-[60px] h-[60px]' 
                          src={`${contact.avartImage}`} 
                          alt="avatar"
                           onClick={()=>setSelectedChat(index)}
