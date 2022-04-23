@@ -51,7 +51,7 @@ export default function Contact({contacts}) {
                           onClick={()=>setSelectedChat(index)}
                        />
                        <div className="userName">
-                           <h5>{contact.username}</h5>
+                           <h1>{contact.username}</h1>
                        </div>
                       </div>
                   )
