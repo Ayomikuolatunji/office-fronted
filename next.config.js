@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     loader: 'imgix',
-    path: 'https://college-img-preview.s3.eu-west-3.amazonaws.com/',
+    path: 'college-img-preview.s3.eu-west-3.amazonaws.com',
   },
 }
 

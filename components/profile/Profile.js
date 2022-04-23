@@ -38,7 +38,7 @@ export default function Profile() {
       localStorage.removeItem("userId")
     }
   }
-    
+    console.log(currentUserImg)
   return (
      <>
        <div className={`${openProfile?"div absolute min-h-full bg-[#131342] left-0 top-0 right-0 z-[999] p-3 duration-1000 transition-all ease-in-out block":"hidden"}`}>
@@ -68,7 +68,7 @@ export default function Profile() {
                 <Avatar src={`${currentUserImg}`} alt="avatar"
                     />
                 <div className="userName -ml-1.5 text-sm">
-                    <h1>{currentUserName.toUpperCase()}</h1>
+                    <h5>{currentUserName.toUpperCase()}</h5>
                 </div>
             </div>
             <GiHamburgerMenu
