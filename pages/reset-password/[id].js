@@ -4,17 +4,17 @@ import { ToastContainer,toast } from 'react-toastify'
 import { useRouter } from 'next/router';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import Button from '../util/Button'
-import InputText from '../util/InputText'
-import { RegistrationHook } from '../helpers/RegistrationHook'
-import {loginApi} from "../api/authApi"
-import {RegisterMain} from "../styled-compnent/index"
+import Button from '../../util/Button'
+import InputText from '../../util/InputText'
+import { RegistrationHook } from '../../helpers/RegistrationHook'
+import {loginApi} from "../../api/authApi"
+import {RegisterMain} from "../../styled-compnent/index"
 
 
 
 
 
-export default function ForgotPassword() {
+export default function ResetPassqord() {
   const [loading,setLoading]=useState(false)
   const router = useRouter()
   const {values,handleChange}=RegistrationHook()
@@ -34,7 +34,7 @@ export default function ForgotPassword() {
 
   const submitLogin=async(e)=>{
     setLoading(true)
-    const {email,password}=values
+    const {password}=values
       e.preventDefault()
         validateRegistration()
       if(validateRegistration()){
@@ -59,13 +59,9 @@ export default function ForgotPassword() {
      
   }
   const validateRegistration=()=>{
-    const {email,password}=values
+    const {password}=values
      if(password.length < 5){
       toast.error("Your paswword should be 8 characters long!", toastOption);
-      return false 
-     }
-     if(!email){
-      toast.error("Email is required!", toastOption);
       return false 
      }
      return true
@@ -74,15 +70,15 @@ export default function ForgotPassword() {
      <>
        <RegisterMain>
          <div className="brand">
-            <h1>Reset Password</h1>
+            <h1>Set new Password</h1>
         </div>
          <form onSubmit={submitLogin}>
-              <InputText 
-                type={"email"}
+           <InputText 
+                type={"password"}
                 onChange={(e)=>handleChange(e)}
-                name={"email"}
-                placeholder={"Enter your email address"}
-                value={values.email}
+                name={"password"}
+                placeholder={"Enter your password"}
+                value={values.password}
                 className="block"
               />
               <Button text={loading?"please wait":"sumbit"} className={"outline"}/>
