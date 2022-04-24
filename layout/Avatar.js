@@ -3,14 +3,14 @@ import React, { useState,useEffect} from 'react'
 import { ToastContainer,toast } from 'react-toastify'
 import Router, { useRouter } from 'next/router';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
-import styled from "styled-components"
+import { Container } from '../styled-compnent';
 import Button from "../util/Button"
 import { profile } from '../api/authApi';
 import Loader from '../util/loader/Loader';
 import {FcOldTimeCamera} from "react-icons/fc"
 import MuiModal from '../util/modal/MuiModal';
-import { useDispatch, useSelector } from 'react-redux';
 import { updateProfileModal } from '../redux/AllUser-slice';
 
 
@@ -108,7 +108,7 @@ export default function ProfilePicture() {
   }
   return (
     <>  
-    {modal && <MuiModal/>}
+    {modal && <MuiModal proflePicture={proflePicture}/>}
         {modal || <Container>
             {loading ? <Loader/> :
             <React.Fragment>
@@ -138,36 +138,3 @@ export default function ProfilePicture() {
   )
 }
 
-const Container=styled.div`
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-direction: column;
-     gap: 3rem;
-     background-color: #131324;
-     position: relative;
-     height: 100vh;
-
-     .title {
-        h1{
-           color: #fff;
-        }
-     }
-
-     button{
-            background-color: #997af0;
-            border-radius: 0.4rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            color: #fff;
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #fff;
-            border: none;
-            transition: 0.5s ease-in-out;
-            &:hover{
-                background-color: #4e0eff; 
-            }
-         }
-`

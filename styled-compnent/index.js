@@ -65,3 +65,70 @@ export const RegisterMain=styled.div`
          }
      }
 `
+
+export const Container=styled.div`
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     gap: 3rem;
+     background-color: #131324;
+     position: relative;
+     height: 100vh;
+
+     .title {
+        h1{
+           color: #fff;
+        }
+     }
+
+     button{
+            background-color: #997af0;
+            border-radius: 0.4rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            color: #fff;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            transition: 0.5s ease-in-out;
+            &:hover{
+                background-color: #4e0eff; 
+            }
+         }
+`
+export const Modalcontainer=styled.div`
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     gap: 3rem;
+     background-color: #131324;
+     position: relative;
+     height: 80vh;
+
+     .title {
+        h1{
+           color: #fff;
+        }
+     }
+
+     button{
+            background-color: #997af0;
+            border-radius: 0.4rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            color: #fff;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            transition: 0.5s ease-in-out;
+            &:hover{
+                background-color: #4e0eff; 
+            }
+         }
+`
