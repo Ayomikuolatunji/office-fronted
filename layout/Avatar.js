@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import React, { useState,useEffect} from 'react'
 import { ToastContainer,toast } from 'react-toastify'
@@ -107,23 +108,23 @@ export default function ProfilePicture() {
     {modal && <MuiModal proflePicture={proflePicture}/>}
         {modal || <Container>
             {loading ? <Loader/> :
-            <React.Fragment>
+              <React.Fragment>
               <div className="thumbnail-img mx-auto mt-10 flex flex-col items-center">
-                <img src={image || defaultImg} className={`${image?"border-red border-4":""}`} style={{width:"200px", borderRadius:"100%",height:"200px"}} alt="avatar"/>
-                <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer'>
-                 <FcOldTimeCamera className='text-3xl my-3'/>
-                 <span className='text-lg text-white'> Upload profile picture</span>
-                  <input
-                    type={"file"} 
-                    id='file' 
-                    className='hidden'
-                    onChange={onImageChange} 
-                  />
+                <img src={image || defaultImg} className={`${image?"border-red border-4":""}`} style={{width:"200px", borderRadius:"100%",height:"200px"}}/>
+                  <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer'>
+                     <FcOldTimeCamera className='text-3xl my-3'/>
+                    <span className='text-lg text-white'> Upload profile picture</span>
+                    <input
+                      type={"file"} 
+                      id='file' 
+                      className='hidden'
+                      onChange={onImageChange} 
+                    />
                 </label>
                </div>
               <Button 
               text={"Set as Profile Picture"}
-              onClick={proflePicture}
+              onClick={()=>proflePicture()}
               type="submit"
               />    
             </React.Fragment>
