@@ -43,7 +43,7 @@ export default function Home() {
       </Head>
       
        {/* <Chat/> */}
-        <h1 className="text-3xl font-bold underline ">
+        <h1 className="text-3xl font-bold underline bg-regal-blue">
         Hello world!
       </h1>
     </div>
