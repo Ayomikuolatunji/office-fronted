@@ -80,7 +80,7 @@ export default function Register() {
          <div className="brand">
             <h1>Create Account</h1>
         </div>
-         <form onSubmit={()=>submitUserInfo()}>
+         <form onSubmit={(e)=>submitUserInfo(e)}>
               <InputText 
                 type={"text"}
                 onChange={(e)=>handleChange(e)}
