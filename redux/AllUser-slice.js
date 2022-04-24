@@ -8,8 +8,8 @@ const AllUserSlice=createSlice({
         user: null,
         chat:null,
         message:null,
-        WebSocket:null
-        
+        WebSocket:null,
+        modal:true
     },
     reducers:{
         currentUser:(state,action)=>{
@@ -23,9 +23,12 @@ const AllUserSlice=createSlice({
         },
         updatesSocket:(state,action)=>{
             state.WebSocket=action.payload
+        },
+        updateProfileModal:(state,action)=>{
+            state.modal=action.payload
         }
     }
 })
 
-export const {currentUser,updateChat,updateMessage,updatesSocket}=AllUserSlice.actions
+export const {currentUser,updateChat,updateMessage,updatesSocket,updateProfileModal}=AllUserSlice.actions
 export default AllUserSlice.reducer

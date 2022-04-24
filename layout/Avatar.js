@@ -7,19 +7,23 @@ import 'react-toastify/dist/ReactToastify.css';
 import styled from "styled-components"
 import Button from "../util/Button"
 import { profile } from '../api/authApi';
-import Loader from '../components/loader/Loader';
+import Loader from '../util/loader/Loader';
 import {FcOldTimeCamera} from "react-icons/fc"
+import MuiModal from '../util/modal/MuiModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateProfileModal } from '../redux/AllUser-slice';
 
 
 export default function ProfilePicture() {
-    const [imagePreview,setImagePreview]=React.useState([]);
+    const [imagePreview,setImagePreview]=React.useState("");
     const [loading,setLoading]=useState(false);
     const [image, setImage] =React.useState("");
     const [user,setUser]=useState([])
     const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
-    
     const router=useRouter()    
-
+    const modal=useSelector(state=>state.users.modal)
+   console.log(modal);
+   const dispatch=useDispatch()
     const toastOption={
         position: "bottom-right",
         autoclose:8000,
@@ -44,7 +48,7 @@ export default function ProfilePicture() {
     },[])
 
     const proflePicture=async()=>{
-      console.log(imagePreview,user.user._id)
+      dispatch(updateProfileModal(false))
       if(imagePreview){
         try{
           if(user){
@@ -90,7 +94,8 @@ export default function ProfilePicture() {
                        method: 'PUT',
                        body:fileUpload
                })
-               if(response.status===200) {
+               console.log(result)
+               if(result.status===200) {
                 setImagePreview(result.url.split("?")[0]) 
                 setLoading(false)  
                }
@@ -102,7 +107,8 @@ export default function ProfilePicture() {
         }
   }
   return (
-    <>
+    <>  
+    {modal && <MuiModal/>}
         <Container>
             {loading ? <Loader/> :
             <React.Fragment>

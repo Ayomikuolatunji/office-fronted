@@ -3,6 +3,7 @@ import {Provider} from "react-redux"
 import { NextUIProvider } from '@nextui-org/react';
 import Head from 'next/head';
 import store from '../redux/store';
+import { PersistGate } from 'redux-persist/integration/react'
 
 
 
@@ -15,9 +16,11 @@ function MyApp({ Component, pageProps }) {
          <link rel="icon" href="/favicon.ico" />
          
       </Head>
-      <Provider store={store}>
+      <Provider store={store.store}>
             <NextUIProvider>
-               <Component {...pageProps} />
+               <PersistGate persistor={store.persistStore}>
+                 <Component {...pageProps} />
+               </PersistGate>
             </NextUIProvider>
       </Provider>
      
