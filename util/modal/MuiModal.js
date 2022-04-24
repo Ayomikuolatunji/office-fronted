@@ -1,50 +1,37 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import { StyledEngineProvider } from '@mui/material/styles';
+import { Modal, useModal, Button, Text } from "@nextui-org/react";
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
-export default function MuiModal() {
-  const [open, setOpen] = React.useState(true);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+export default function MuiModal({}) {
+  const { setVisible, bindings } = useModal();
   return (
-    <StyledEngineProvider injectFirst>
-      <Button onClick={handleOpen}>Open modal</Button>
+    <div>
+      <Button auto flat onClick={() => setVisible(true)}>
+        Open modal
+      </Button>
       <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        className="bg-red-500"
+        scroll
+        fullScreen
+     
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+        {...bindings}
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Profile Picture?
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-          <div className="btn">
-              <button>okay</button>
-              <button>Skill</button>
-          </div>
-        </Box>
+        <Modal.Header>
+          <Text id="modal-title" size={18}>
+            Modal with a lot of content
+          </Text>
+        </Modal.Header>
+        <Modal.Body>
+          <Text id="modal-description">
+               
+          </Text>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button flat auto color="error" onClick={() => setVisible(false)}>
+            set
+          </Button>
+          <Button onClick={() => setVisible(false)}>Skill</Button>
+        </Modal.Footer>
       </Modal>
-    </StyledEngineProvider>
+    </div>
   );
 }
