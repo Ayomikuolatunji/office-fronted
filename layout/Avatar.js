@@ -109,7 +109,6 @@ export default function ProfilePicture() {
     <>  
     {modal && <MuiModal proflePicture={proflePicture}/>}
         {modal || <Container>
-            {loading ? <Loader/> :
               <React.Fragment>
               <div className="thumbnail-img mx-auto mt-10 flex flex-col items-center">
                 <img src={image || defaultImg} className={`${image?"border-red border-4":""}`} style={{width:"200px", borderRadius:"100%",height:"200px"}}/>
@@ -131,7 +130,6 @@ export default function ProfilePicture() {
               type="submit"
               />    
             </React.Fragment>
-              }
         </Container>}
         <ToastContainer limit={1}/>
     </>
