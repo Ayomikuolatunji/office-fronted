@@ -109,7 +109,7 @@ export default function ProfilePicture() {
   return (
     <>  
     {modal && <MuiModal/>}
-        <Container>
+        {modal || <Container>
             {loading ? <Loader/> :
             <React.Fragment>
               <div className="thumbnail-img mx-auto mt-10 flex flex-col items-center">
@@ -132,7 +132,7 @@ export default function ProfilePicture() {
               />    
             </React.Fragment>
               }
-        </Container>
+        </Container>}
         <ToastContainer limit={1}/>
     </>
   )
