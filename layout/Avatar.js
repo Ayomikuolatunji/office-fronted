@@ -4,7 +4,7 @@ import React, { useState,useEffect} from 'react'
 import { ToastContainer,toast } from 'react-toastify'
 import Router, { useRouter } from 'next/router';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import { Container } from '../styled-compnent';
 import Button from "../util/Button"
@@ -12,7 +12,6 @@ import { profile } from '../api/authApi';
 import Loader from '../util/loader/Loader';
 import {FcOldTimeCamera} from "react-icons/fc"
 import MuiModal from '../util/modal/MuiModal';
-import { updateProfileModal } from '../redux/AllUser-slice';
 
 
 export default function ProfilePicture() {
@@ -24,7 +23,7 @@ export default function ProfilePicture() {
     const router=useRouter()    
     const modal=useSelector(state=>state.users.modal)
    console.log(modal);
-   const dispatch=useDispatch()
+ 
     const toastOption={
         position: "bottom-right",
         autoclose:8000,
@@ -49,11 +48,14 @@ export default function ProfilePicture() {
     },[])
 
     const proflePicture=async()=>{
+      if(!imagePreview){
+         return toast.error("Profile picture required!!", toastOption)
+      }
         try{
           if(user){
             const res=await axios.post(`${profile}/${user.user._id}`,{
 
-              avartImage:imagePreview || defaultImg,
+              avartImage:imagePreview,
               avatarImageSet:true
             })
             // if(res.status===200){
@@ -63,7 +65,7 @@ export default function ProfilePicture() {
           }
           }catch(err){
             console.log(err.message)
-              toast.error("Profile picture required", toastOption)
+              toast.error("Network error ", toastOption)
           }
     }
 
@@ -111,14 +113,15 @@ export default function ProfilePicture() {
               <React.Fragment>
               <div className="thumbnail-img mx-auto mt-10 flex flex-col items-center">
                 <img src={image || defaultImg} className={`${image?"border-red border-4":""}`} style={{width:"200px", borderRadius:"100%",height:"200px"}}/>
-                  <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer'>
+                  <label htmlFor="image" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer'>
                      <FcOldTimeCamera className='text-3xl my-3'/>
                     <span className='text-lg text-white'> Upload profile picture</span>
                     <input
                       type={"file"} 
-                      id='file' 
+                      id='image' 
                       className='hidden'
                       onChange={onImageChange} 
+                      style={{display:"none"}}
                     />
                 </label>
                </div>
