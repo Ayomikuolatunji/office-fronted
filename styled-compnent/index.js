@@ -57,7 +57,6 @@ export const RegisterMain=styled.div`
          }
          span{
              color: white;
-             text-transform: capitalize;
              a{
                  color: #4e0eff;
                  text-decoration:none;

@@ -76,7 +76,7 @@ export default function Register() {
   } 
   return (
      <>
-       <RegisterMain className="bg-gradient-to-r from-cyan-500 to-blue-500">
+       <RegisterMain className="bg-gradient-to-r from-purple-500 to-pink-500">
          <div className="brand">
             <h1>Create Account</h1>
         </div>

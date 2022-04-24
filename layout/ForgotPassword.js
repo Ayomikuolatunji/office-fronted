@@ -1,9 +1,9 @@
 import React, { useState,useEffect } from 'react'
 import Link from 'next/link'
 import { ToastContainer,toast } from 'react-toastify'
-import { useRouter } from 'next/router';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import { Alert } from '@mui/material';
 import Button from '../util/Button'
 import InputText from '../util/InputText'
 import { RegistrationHook } from '../helpers/RegistrationHook'
@@ -16,8 +16,8 @@ import {RegisterMain} from "../styled-compnent/index"
 
 export default function ForgotPassword() {
   const [loading,setLoading]=useState(false)
-  const router = useRouter()
   const {values,handleChange}=RegistrationHook()
+  const [isMessage,setIsMessage]=useState(false)
 
   const toastOption={
     position: "bottom-right",
@@ -32,7 +32,7 @@ export default function ForgotPassword() {
   //   }
   // })
 
-  const submitLogin=async(e)=>{
+  const sendResetPassword=async(e)=>{
     setLoading(true)
     const {email,password}=values
       e.preventDefault()
@@ -41,14 +41,10 @@ export default function ForgotPassword() {
         try{
           const res=await axios.post(loginApi,{
           email,
-          password
          })
         if(res.status===200){
           setLoading(false)
         }
-        localStorage.setItem("userId",JSON.stringify(res.data.user))
-        localStorage.setItem("office-user",JSON.stringify(res.data.token))
-        router.push('/')
       }catch(err){
          setLoading(false)
          console.log(err)
@@ -59,24 +55,20 @@ export default function ForgotPassword() {
      
   }
   const validateRegistration=()=>{
-    const {email,password}=values
+    const {password}=values
      if(password.length < 5){
       toast.error("Your paswword should be 8 characters long!", toastOption);
-      return false 
-     }
-     if(!email){
-      toast.error("Email is required!", toastOption);
       return false 
      }
      return true
   } 
   return (
      <>
-       <RegisterMain className="bg-gradient-to-r from-cyan-500 to-blue-500">
+       <RegisterMain className="bg-gradient-to-r from-purple-500 to-pink-500">
          <div className="brand">
             <h1>Reset Password</h1>
         </div>
-         <form onSubmit={submitLogin}>
+         <form onSubmit={sendResetPassword}>
               <InputText 
                 type={"email"}
                 onChange={(e)=>handleChange(e)}
@@ -85,8 +77,10 @@ export default function ForgotPassword() {
                 value={values.email}
                 className="block"
               />
+           {isMessage && <Alert severity="success">This is a success message!</Alert>}
               <Button text={loading?"please wait":"sumbit"} className={"outline"}/>
               <span className='text-gray-500 text-sm '>Provide your email address to change password </span>
+              <span> Back to login <Link href={"/login"} passHref>Login</Link> </span>
          </form>
        </RegisterMain>
        <ToastContainer limit={1}/>

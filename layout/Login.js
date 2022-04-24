@@ -77,7 +77,7 @@ export default function Login() {
   } 
   return (
      <>
-       <RegisterMain className="bg-gradient-to-r from-cyan-500 to-blue-500">
+       <RegisterMain className="bg-gradient-to-r from-purple-500 to-pink-500">
          <div className="brand">
             <h1>Login</h1>
         </div>
@@ -102,7 +102,7 @@ export default function Login() {
               <span className="text-sm">You forgot password ? <Link href={"/reset-password"} passHref>reset password</Link> </span>
 
               <Button text={loading?"please wait":"Login"} className={"outline"}/>
-              <span>You dont have an account ? <Link href={"/register"} passHref>register</Link> </span>
+              <span>You don&apos;t have an account ? <Link href={"/register"} passHref>register</Link> </span>
          </form>
        </RegisterMain>
        <ToastContainer limit={1}/>
