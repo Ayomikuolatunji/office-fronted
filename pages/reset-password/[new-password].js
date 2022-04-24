@@ -7,7 +7,7 @@ import axios from 'axios';
 import Button from '../../util/Button'
 import InputText from '../../util/InputText'
 import { RegistrationHook } from '../../helpers/RegistrationHook'
-import {loginApi} from "../../api/authApi"
+import {loginApi, setPassword} from "../../api/authApi"
 import {RegisterMain} from "../../styled-compnent/index"
 
 
@@ -35,15 +35,15 @@ export default function SetPassword() {
         validateRegistration()
       if(validateRegistration()){
         try{
-          const res=await axios.post(loginApi,{
-          id:"",
-          code:"",  
+          const res=await axios.post(setPassword,{
+          userId:id,
+          resetToken:code,  
           password
          })
-        if(res.status===200){
+         if(res.status===200){
           setLoading(false)
-        }
-   
+         }
+      console.log(res)
       }catch(err){
          setLoading(false)
          console.log(err)
@@ -67,7 +67,7 @@ export default function SetPassword() {
          <div className="brand">
             <h1>new passsword</h1>
         </div>
-         <form onSubmit={()=>submitLogin()}>
+         <form onSubmit={(e)=>submitLogin(e)}>
            <InputText 
                 type={"password"}
                 onChange={(e)=>handleChange(e)}
