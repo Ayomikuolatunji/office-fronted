@@ -1,6 +1,5 @@
 import '../styles/globals.css';
 import {Provider} from "react-redux"
-import Script from 'next/script'
 import { NextUIProvider } from '@nextui-org/react';
 import Head from 'next/head';
 import store from '../redux/store';
@@ -21,10 +20,7 @@ function MyApp({ Component, pageProps }) {
                <Component {...pageProps} />
             </NextUIProvider>
       </Provider>
-      <Script
-       src="https://cdn.tailwindcss.com"
-      strategy="beforeInteractive"
-      /> 
+     
 </div>
     
   )

@@ -26,11 +26,11 @@ export default function Login() {
     draggable:true,
     theme:"dark"
   }
-  useEffect(()=>{
-    if(localStorage.getItem("office-user")){
-      router.push('/')
-    }
-  })
+  // useEffect(()=>{
+  //   if(localStorage.getItem("office-user")){
+  //     router.push('/')
+  //   }
+  // })
 
   const submitLogin=async(e)=>{
     setLoading(true)

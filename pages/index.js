@@ -5,7 +5,7 @@ import Chat from "../layout/Chat"
 import { useDispatch } from 'react-redux';
 import { currentUser } from '../redux/AllUser-slice';
 import { singleUser } from '../api/authApi';
-import Script from 'next/script'
+
 
 
 
@@ -42,11 +42,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-       <Chat/>
-       <Script
-         src="https://cdn.tailwindcss.com"
-         strategy="beforeInteractive"
-    />    
+       {/* <Chat/> */}
+        <h1 className="text-3xl font-bold underline ">
+        Hello world!
+      </h1>
     </div>
   )
 }

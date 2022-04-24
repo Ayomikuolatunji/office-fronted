@@ -1,13 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer base {
-    body,button,input  {
-        @apply font-body
-    }
-}
+
+
+
 
 .styles_scroll-to-top__2A70v {
     background-color: white;
