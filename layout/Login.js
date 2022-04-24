@@ -81,7 +81,7 @@ export default function Login() {
          <div className="brand">
             <h1>Login</h1>
         </div>
-         <form onSubmit={submitLogin}>
+         <form onSubmit={()=>submitLogin()}>
               <InputText 
                 type={"email"}
                 onChange={(e)=>handleChange(e)}

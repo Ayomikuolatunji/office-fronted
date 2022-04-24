@@ -72,7 +72,7 @@ export default function ResetPassqord() {
          <div className="brand">
             <h1>Set new Password</h1>
         </div>
-         <form onSubmit={submitLogin}>
+         <form onSubmit={()=>submitLogin()}>
            <InputText 
                 type={"password"}
                 onChange={(e)=>handleChange(e)}

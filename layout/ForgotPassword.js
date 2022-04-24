@@ -7,7 +7,7 @@ import { Alert } from '@mui/material';
 import Button from '../util/Button'
 import InputText from '../util/InputText'
 import { RegistrationHook } from '../helpers/RegistrationHook'
-import {loginApi} from "../api/authApi"
+import {loginApi,fogetPassword} from "../api/authApi"
 import {RegisterMain} from "../styled-compnent/index"
 
 
@@ -32,16 +32,17 @@ export default function ForgotPassword() {
   //   }
   // })
 
-  const sendResetPassword=async(e)=>{
+  const sendResetPassword=async(event)=>{
     setLoading(true)
-    const {email,password}=values
-      e.preventDefault()
+    const {email}=values
+      event.preventDefault()
         validateRegistration()
       if(validateRegistration()){
         try{
-          const res=await axios.post(loginApi,{
+          const res=await axios.post(fogetPassword,{
           email,
          })
+        setIsMessage(false)
         if(res.status===200){
           setLoading(false)
         }
@@ -55,11 +56,11 @@ export default function ForgotPassword() {
      
   }
   const validateRegistration=()=>{
-    const {password}=values
-     if(password.length < 5){
-      toast.error("Your paswword should be 8 characters long!", toastOption);
+    const {email}=values
+    if(!email){
+      toast.error("Email is required!", toastOption);
       return false 
-     }
+   }
      return true
   } 
   return (
@@ -68,7 +69,7 @@ export default function ForgotPassword() {
          <div className="brand">
             <h1>Reset Password</h1>
         </div>
-         <form onSubmit={sendResetPassword}>
+         <form onSubmit={(e)=>sendResetPassword(e)}>
               <InputText 
                 type={"email"}
                 onChange={(e)=>handleChange(e)}
