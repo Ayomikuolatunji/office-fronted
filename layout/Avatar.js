@@ -46,11 +46,11 @@ export default function ProfilePicture() {
       console.log(imagePreview)
         try{
         if(user){
-          const {data}=await axios.post(`${profile}/${user.user._id}`,{
+          const res=await axios.post(`${profile}/${user.user._id}`,{
             avartImage:imagePreview || defaultImg,
             avatarImageSet:true
           })
-          if(data.isSet){
+          if(res.status===200){
             router.push("/")
           }
         }
@@ -64,6 +64,7 @@ export default function ProfilePicture() {
         router.push('/login')
     }
   },[router])
+  
   const onImageChange=async(event) => {
     try{
         if (event.target.files && event.target.files[0]) {

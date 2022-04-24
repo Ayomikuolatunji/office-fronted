@@ -26,11 +26,11 @@ export default function Login() {
     draggable:true,
     theme:"dark"
   }
-  // useEffect(()=>{
-  //   if(localStorage.getItem("office-user")){
-  //     router.push('/')
-  //   }
-  // })
+  useEffect(()=>{
+    if(localStorage.getItem("office-user")){
+      router.push('/')
+    }
+  })
 
   const submitLogin=async(e)=>{
     setLoading(true)
@@ -81,7 +81,7 @@ export default function Login() {
          <div className="brand">
             <h1>Login</h1>
         </div>
-         <form onSubmit={()=>submitLogin()}>
+         <form onSubmit={(e)=>submitLogin(e)}>
               <InputText 
                 type={"email"}
                 onChange={(e)=>handleChange(e)}

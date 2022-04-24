@@ -1,5 +1,4 @@
-import React, { useState,useEffect } from 'react'
-import Link from 'next/link'
+import React, { useState } from 'react'
 import { ToastContainer,toast } from 'react-toastify'
 import { useRouter } from 'next/router';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,7 +6,7 @@ import axios from 'axios';
 import Button from '../../util/Button'
 import InputText from '../../util/InputText'
 import { RegistrationHook } from '../../helpers/RegistrationHook'
-import {loginApi, setPassword} from "../../api/authApi"
+import {setPassword} from "../../api/authApi"
 import {RegisterMain} from "../../styled-compnent/index"
 
 
@@ -19,7 +18,7 @@ export default function SetPassword() {
   const router = useRouter()
   const {values,handleChange}=RegistrationHook()
   const { id , code } = router.query
-   console.log( id, code)
+ 
   const toastOption={
     position: "bottom-right",
     autoclose:8000,
@@ -42,6 +41,7 @@ export default function SetPassword() {
          })
          if(res.status===200){
           setLoading(false)
+          router.push("/login")
          }
       console.log(res)
       }catch(err){
@@ -75,8 +75,8 @@ export default function SetPassword() {
                 placeholder={"Enter your password"}
                 value={values.password}
                 className="block"
-              />
-              <Button text={loading?"please wait":"sumbit"} className={"outline"}/>
+            />
+            <Button text={loading?"please wait":"sumbit"} className={"outline"}/>
          </form>
        </RegisterMain>
        <ToastContainer limit={1}/>
