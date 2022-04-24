@@ -24,11 +24,11 @@ export default function Register() {
     draggable:true,
     theme:"dark"
   }
-  useEffect(()=>{
-    if(localStorage.getItem("office-user")){
-      router.push('/')
-    }
-  })
+  // useEffect(()=>{
+  //   if(localStorage.getItem("office-user")){
+  //     router.push('/')
+  //   }
+  // })
 
   const submitUserInfo=async(e)=>{
     setLoading(true)
@@ -76,9 +76,9 @@ export default function Register() {
   } 
   return (
      <>
-       <RegisterMain>
+       <RegisterMain className="bg-gradient-to-r from-cyan-500 to-blue-500">
          <div className="brand">
-            <h1>New EMployee Registration</h1>
+            <h1>Create Account</h1>
         </div>
          <form onSubmit={submitUserInfo}>
               <InputText 

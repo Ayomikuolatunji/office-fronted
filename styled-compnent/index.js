@@ -10,7 +10,7 @@ export const RegisterMain=styled.div`
      align-items: center;
      gap: 1rem;
      justify-content: center;
-     background-color: #131342;
+ 
      .brand{
           h1{
             color: #fff;
@@ -57,7 +57,7 @@ export const RegisterMain=styled.div`
          }
          span{
              color: white;
-             text-transform: uppercase;
+             text-transform: capitalize;
              a{
                  color: #4e0eff;
                  text-decoration:none;

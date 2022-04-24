@@ -60,19 +60,24 @@ export default function Login() {
   }
   const validateRegistration=()=>{
     const {email,password}=values
+
+    if(!password || !email){
+        toast.error("No field must be empty", toastOption);
+        return false 
+     }
      if(password.length < 5){
-      toast.error("Your paswword should be 8 characters long!", toastOption);
-      return false 
+        toast.error("Your paswword should be 8 characters long!", toastOption);
+        return false 
      }
      if(!email){
-      toast.error("Email is required!", toastOption);
-      return false 
+        toast.error("Email is required!", toastOption);
+        return false 
      }
      return true
   } 
   return (
      <>
-       <RegisterMain className="bg-gradient-to-r from-cyan-500 to-blue-500 ">
+       <RegisterMain className="bg-gradient-to-r from-cyan-500 to-blue-500">
          <div className="brand">
             <h1>Login</h1>
         </div>
