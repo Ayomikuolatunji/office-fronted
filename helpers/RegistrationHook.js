@@ -14,6 +14,7 @@ export const RegistrationHook=()=>{
 
    return {
        values,
-       handleChange
+       handleChange,
+       setValues
    }
 }

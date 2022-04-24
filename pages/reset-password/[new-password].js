@@ -14,11 +14,12 @@ import {RegisterMain} from "../../styled-compnent/index"
 
 
 
-export default function ResetPassqord() {
+export default function SetPassword() {
   const [loading,setLoading]=useState(false)
   const router = useRouter()
   const {values,handleChange}=RegistrationHook()
-
+  const { id , code } = router.query
+   console.log( id, code)
   const toastOption={
     position: "bottom-right",
     autoclose:8000,
@@ -26,11 +27,6 @@ export default function ResetPassqord() {
     draggable:true,
     theme:"dark"
   }
-  // useEffect(()=>{
-  //   if(localStorage.getItem("office-user")){
-  //     router.push('/')
-  //   }
-  // })
 
   const submitLogin=async(e)=>{
     setLoading(true)
@@ -40,15 +36,14 @@ export default function ResetPassqord() {
       if(validateRegistration()){
         try{
           const res=await axios.post(loginApi,{
-          email,
+          id:"",
+          code:"",  
           password
          })
         if(res.status===200){
           setLoading(false)
         }
-        localStorage.setItem("userId",JSON.stringify(res.data.user))
-        localStorage.setItem("office-user",JSON.stringify(res.data.token))
-        router.push('/')
+   
       }catch(err){
          setLoading(false)
          console.log(err)
@@ -70,7 +65,7 @@ export default function ResetPassqord() {
      <>
        <RegisterMain className="bg-gradient-to-r from-purple-500 to-pink-500">
          <div className="brand">
-            <h1>Set new Password</h1>
+            <h1>new passsword</h1>
         </div>
          <form onSubmit={()=>submitLogin()}>
            <InputText 
@@ -82,7 +77,6 @@ export default function ResetPassqord() {
                 className="block"
               />
               <Button text={loading?"please wait":"sumbit"} className={"outline"}/>
-              <span className='text-gray-500 text-sm '>Provide your email address to change password </span>
          </form>
        </RegisterMain>
        <ToastContainer limit={1}/>

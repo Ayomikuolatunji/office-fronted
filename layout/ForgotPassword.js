@@ -34,6 +34,7 @@ export default function ForgotPassword() {
 
   const sendResetPassword=async(event)=>{
     setLoading(true)
+    setIsMessage(false)
     const {email}=values
       event.preventDefault()
         validateRegistration()
@@ -42,14 +43,16 @@ export default function ForgotPassword() {
           const res=await axios.post(fogetPassword,{
           email,
          })
-        setIsMessage(false)
+         if(res.status===200){
+            setIsMessage(true)
+         }
         console.log(res)
         if(res.status===200){
           setLoading(false)
         }
       }catch(err){
          setLoading(false)
-         console.log(err.message)
+         setIsMessage(false)
          toast.error("Either account does not exits or incorrect passsword or Email",toastOption)
       }
     
@@ -79,8 +82,8 @@ export default function ForgotPassword() {
                 value={values.email}
                 className="block"
               />
-           {isMessage && <Alert severity="success">This is a success message!</Alert>}
-              <Button text={loading?"please wait":"sumbit"} className={"outline"}/>
+           {isMessage && <Alert severity="success">Check your email!</Alert>}
+              <Button text={loading?"please wait":"Reset"} className={"outline"}/>
               <span className='text-gray-500 text-sm '>Provide your email address to change password </span>
               <span> Back to login <Link href={"/login"} passHref>Login</Link> </span>
          </form>
