@@ -48,8 +48,6 @@ export default function ProfilePicture() {
     },[])
 
     const proflePicture=async()=>{
-      dispatch(updateProfileModal(false))
-      if(imagePreview){
         try{
           if(user){
             const res=await axios.post(`${profile}/${user.user._id}`,{
@@ -66,8 +64,6 @@ export default function ProfilePicture() {
             console.log(err.message)
               toast.error("Profile picture required", toastOption)
           }
-      }
-        
     }
 
   useEffect(()=>{
