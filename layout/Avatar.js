@@ -13,7 +13,7 @@ import {FcOldTimeCamera} from "react-icons/fc"
 
 export default function ProfilePicture() {
     const [imagePreview,setImagePreview]=React.useState([]);
-    const [loading,setLoading]=useState(true);
+    const [loading,setLoading]=useState(false);
     const [image, setImage] =React.useState("");
     const [user,setUser]=useState([])
     const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
@@ -44,20 +44,26 @@ export default function ProfilePicture() {
     },[])
 
     const proflePicture=async()=>{
-      console.log(imagePreview)
+      console.log(imagePreview,user.user._id)
+      if(imagePreview){
         try{
-        if(user){
-          const res=await axios.post(`${profile}/${user.user._id}`,{
-            avartImage:imagePreview || defaultImg,
-            avatarImageSet:true
-          })
-          if(res.status===200){
-            router.push("/")
+          if(user){
+            const res=await axios.post(`${profile}/${user.user._id}`,{
+
+              avartImage:imagePreview || defaultImg,
+              avatarImageSet:true
+            })
+            // if(res.status===200){
+            //   router.push("/")
+            // }
+            console.log(res);
           }
-        }
-        }catch(err){
-            toast.error("Profile picture required", toastOption)
-        }
+          }catch(err){
+            console.log(err.message)
+              toast.error("Profile picture required", toastOption)
+          }
+      }
+        
     }
 
   useEffect(()=>{
@@ -67,6 +73,7 @@ export default function ProfilePicture() {
   },[router])
   
   const onImageChange=async(event) => {
+    setLoading(true)
     try{
         if (event.target.files && event.target.files[0]) {
             const fileUpload=event.target.files[0]
@@ -83,7 +90,10 @@ export default function ProfilePicture() {
                        method: 'PUT',
                        body:fileUpload
                })
-               if(response.status===200) setImagePreview(result.url.split("?")[0])   
+               if(response.status===200) {
+                setImagePreview(result.url.split("?")[0]) 
+                setLoading(false)  
+               }
           }
         }catch(error){
            setLoadingImg(false)
@@ -97,22 +107,21 @@ export default function ProfilePicture() {
             {loading ? <Loader/> :
             <React.Fragment>
               <div className="thumbnail-img mx-auto mt-10 flex flex-col items-center">
-              
                 <img src={image || defaultImg} className={`${image?"border-red border-4":""}`} style={{width:"200px", borderRadius:"100%",height:"200px"}} alt="avatar"/>
-                  <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer'>
-                     <FcOldTimeCamera className='text-3xl my-3'/>
-                    <span className='text-lg text-white'> Upload profile picture</span>
-                    <input
-                      type={"file"} 
-                      id='file' 
-                      className='hidden'
-                      onChange={onImageChange} 
-                    />
+                <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer'>
+                 <FcOldTimeCamera className='text-3xl my-3'/>
+                 <span className='text-lg text-white'> Upload profile picture</span>
+                  <input
+                    type={"file"} 
+                    id='file' 
+                    className='hidden'
+                    onChange={onImageChange} 
+                  />
                 </label>
                </div>
               <Button 
               text={"Set as Profile Picture"}
-              onClick={()=>proflePicture()}
+              onClick={proflePicture}
               type="submit"
               />    
             </React.Fragment>
