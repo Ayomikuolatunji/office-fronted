@@ -72,7 +72,7 @@ export default function Login() {
   } 
   return (
      <>
-       <RegisterMain>
+       <RegisterMain className="bg-gradient-to-r from-cyan-500 to-blue-500 ">
          <div className="brand">
             <h1>Login</h1>
         </div>
