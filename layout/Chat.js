@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import { ChatContainer } from '../styled-compnent/chat'; 
 import { allUsers } from '../api/authApi'
 import Contact from '../components/contact/Contact'
-import Loader from "../util/loader"
+import Loader from "../util/loader/Loader"
 import ChatBillBoard from '../components/chat-billbaord.js/ChatBillBoard';
 import SingleChat from '../components/chats/SingleChat';
 
