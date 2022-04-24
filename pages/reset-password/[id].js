@@ -26,11 +26,11 @@ export default function ResetPassqord() {
     draggable:true,
     theme:"dark"
   }
-  useEffect(()=>{
-    if(localStorage.getItem("office-user")){
-      router.push('/')
-    }
-  })
+  // useEffect(()=>{
+  //   if(localStorage.getItem("office-user")){
+  //     router.push('/')
+  //   }
+  // })
 
   const submitLogin=async(e)=>{
     setLoading(true)
@@ -68,7 +68,7 @@ export default function ResetPassqord() {
   } 
   return (
      <>
-       <RegisterMain>
+       <RegisterMain className="bg-gradient-to-r from-cyan-500 to-blue-500">
          <div className="brand">
             <h1>Set new Password</h1>
         </div>

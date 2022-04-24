@@ -26,11 +26,11 @@ export default function ForgotPassword() {
     draggable:true,
     theme:"dark"
   }
-  useEffect(()=>{
-    if(localStorage.getItem("office-user")){
-      router.push('/')
-    }
-  })
+  // useEffect(()=>{
+  //   if(localStorage.getItem("office-user")){
+  //     router.push('/')
+  //   }
+  // })
 
   const submitLogin=async(e)=>{
     setLoading(true)
@@ -72,7 +72,7 @@ export default function ForgotPassword() {
   } 
   return (
      <>
-       <RegisterMain>
+       <RegisterMain className="bg-gradient-to-r from-cyan-500 to-blue-500">
          <div className="brand">
             <h1>Reset Password</h1>
         </div>
