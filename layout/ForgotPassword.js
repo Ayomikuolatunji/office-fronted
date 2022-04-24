@@ -7,7 +7,7 @@ import { Alert } from '@mui/material';
 import Button from '../util/Button'
 import InputText from '../util/InputText'
 import { RegistrationHook } from '../helpers/RegistrationHook'
-import {loginApi,fogetPassword} from "../api/authApi"
+import {fogetPassword} from "../api/authApi"
 import {RegisterMain} from "../styled-compnent/index"
 
 
@@ -43,12 +43,13 @@ export default function ForgotPassword() {
           email,
          })
         setIsMessage(false)
+        console.log(res)
         if(res.status===200){
           setLoading(false)
         }
       }catch(err){
          setLoading(false)
-         console.log(err)
+         console.log(err.message)
          toast.error("Either account does not exits or incorrect passsword or Email",toastOption)
       }
     
