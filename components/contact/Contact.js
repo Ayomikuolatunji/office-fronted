@@ -55,7 +55,7 @@ export default function Contact({contacts}) {
                        </div>
                       </div>
                   )
-               }):<h1 className="text-center">No search found</h1>}
+               }):<h5 className="text-center">No search found</h5>}
            </div>
        </ContactDiv>
     </>
