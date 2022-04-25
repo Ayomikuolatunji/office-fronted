@@ -23,7 +23,8 @@ export default function Home() {
         dispatch(currentUser({mainUser}))
      })
      .catch(err=>{
-       console.log(err.message)
+       console.log(err.message);
+       console.log("for testing purpose")
      })
   })
   
