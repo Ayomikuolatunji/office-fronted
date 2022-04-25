@@ -31,11 +31,9 @@ function Chat() {
           {
               currentChat === null
           ?  
-          // <ChatBillBoard/>
-          <h1>Good</h1>
+          <ChatBillBoard/>
           : 
-          // <SingleChat/>
-          <h2>Bad</h2>
+          <SingleChat/>
           }
         
      </div>
