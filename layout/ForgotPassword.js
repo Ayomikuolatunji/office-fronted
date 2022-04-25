@@ -33,10 +33,10 @@ export default function ForgotPassword() {
   })
 
   const sendResetPassword=async(event)=>{
-    const form=docume
+
     setLoading(true)
     setIsMessage(false)
-    console.log(event.value.email)
+   
     const {email}=values
       event.preventDefault()
         validateRegistration()

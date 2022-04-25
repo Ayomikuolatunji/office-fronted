@@ -61,7 +61,6 @@ export default function ProfilePicture() {
             if(res.status===200){
               router.push("/")
             }
-            console.log(res);
           }
           }catch(err){
             console.log(err.message)
