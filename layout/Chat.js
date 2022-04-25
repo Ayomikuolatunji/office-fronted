@@ -28,13 +28,16 @@ function Chat() {
      <Contact 
          contacts={data.users} 
      />
-     {
-         currentChat === null
-     ?  
-     <ChatBillBoard/>
-     : 
-     <SingleChat/>}
-   
+          {
+              currentChat === null
+          ?  
+          // <ChatBillBoard/>
+          <h1>Good</h1>
+          : 
+          // <SingleChat/>
+          <h2>Bad</h2>
+          }
+        
      </div>
      :
      <Loader/>
