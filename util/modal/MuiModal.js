@@ -2,6 +2,7 @@
 import { Modal, Button,useModal} from "@nextui-org/react";
 import React,{useEffect,useState} from "react";
 import { useDispatch } from "react-redux";
+import Router, { useRouter } from 'next/router';
 import axios from "axios";
 import ButtonText from "../../util/Button"
 import {Modalcontainer} from "../../styled-compnent/index"
@@ -16,6 +17,7 @@ export default function MuiModal() {
   const { bindings } = useModal();
   const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
   const [user,setUser]=useState([])
+  const router=useRouter()  
   const dispatch=useDispatch()
 
    const handler = () => {
@@ -41,12 +43,11 @@ export default function MuiModal() {
     try{
       if(user){
         const res=await axios.post(`${profile}/${user.user._id}`,{
-
           avartImage:defaultImg,
           avatarImageSet:true
         })
         if(res.status===200){
-          router.push("/")
+          router.push("/login")
         }
       }
       }catch(err){

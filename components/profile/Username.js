@@ -46,7 +46,7 @@ export default function Username() {
     }
   return (
     <div className='py-3 mt-6'>
-       <div className="title ml-1.5">
+       <div className="ml-1.5">
            <h5>Your name</h5>
        </div>
        <OverRideInput className="input mt-4 w-full -ml-1">
