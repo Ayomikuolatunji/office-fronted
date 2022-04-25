@@ -45,9 +45,9 @@ export default function MuiModal() {
           avartImage:defaultImg,
           avatarImageSet:true
         })
-        // if(res.status===200){
-        //   router.push("/")
-        // }
+        if(res.status===200){
+          router.push("/")
+        }
         console.log(res);
       }
       }catch(err){

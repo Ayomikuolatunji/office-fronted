@@ -58,9 +58,9 @@ export default function ProfilePicture() {
               avartImage:imagePreview,
               avatarImageSet:true
             })
-            // if(res.status===200){
-            //   router.push("/")
-            // }
+            if(res.status===200){
+              router.push("/")
+            }
             console.log(res);
           }
           }catch(err){
