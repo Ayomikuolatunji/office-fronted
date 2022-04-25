@@ -33,8 +33,7 @@ function Chat() {
           ?  
           <ChatBillBoard/>
           : 
-          // <SingleChat/>
-          <h2>Bad</h2>
+          <SingleChat/>
           }
         
      </div>
