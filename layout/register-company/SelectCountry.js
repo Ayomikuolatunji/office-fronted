@@ -32,7 +32,7 @@ export default function SelectCountry() {
   const theme = useTheme();
   const countries=useSelector(state=>state.country.countries) 
   const dispatch=useDispatch()
-  const [companyName, setCountry] = React.useState([]);
+  const [companyName, setCompany] = React.useState([]);
 
   
   const handleChange = (event) => {
@@ -41,7 +41,7 @@ export default function SelectCountry() {
       target: { value },
     } = event;
   
-    setCountry(
+    setCompany(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
