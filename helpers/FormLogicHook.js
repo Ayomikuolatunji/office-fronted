@@ -10,6 +10,7 @@ export const FormLogicHook=()=>{
        company_location:"",
        company_type:"",
        company_email:"",
+       company_address:"",
        company_password:""  
    })
 

@@ -70,6 +70,9 @@ export default function MultipleSelectPlaceholder() {
           MenuProps={MenuProps}
           inputProps={{ 'aria-label': 'Without label' }}
         >
+          <MenuItem disabled value="">
+            <em></em>
+          </MenuItem>
           {countries.map((name) => (
             <MenuItem
               key={name.name}
