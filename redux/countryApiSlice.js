@@ -2,10 +2,12 @@ import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
+const url="https://restcountries.com/v2/all"
 
-export const fetchAllcountries=createAsyncThunk("country/fetchAllcountries",async()=>{
-    res=await axios('https://restcountries.com/v2/all')
-    return res.data
+export const fetchAllcountries= createAsyncThunk("country/fetchAllcountries",
+   async (_,thunkApi)=>{;
+   const res=await axios(url)
+   return res.data
 })
 
 const countryApiSlice=createSlice({
@@ -19,18 +21,11 @@ const countryApiSlice=createSlice({
        selectedCountry:(state,action)=>{
 
        }
-    },
-    extraReducer:{
-       [fetchAllcountries.fulfilled]:(state,{payload})=>{
-           state.countries=payload
-           state.isCountyLoading=false
-       },
-       [fetchAllcountries.pending]:(state)=>{
-           state.isCountyLoading=true
-       },
-       [fetchAllcountries.rejected]:(state)=>{
-           state.isCountyLoading=false
-       }
+    },extraReducers:{
+        [fetchAllcountries.fulfilled]:(state,action)=>{
+            // console.log(action);
+            state.countries=action.payload
+        }
     }
 })
 

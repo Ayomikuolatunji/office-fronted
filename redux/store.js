@@ -11,7 +11,6 @@ import countryApiSlice from "./countryApiSlice";
 const persistConfig = {
     key: 'users',
     storage,
-    stateReconciler: hardSet,
     blacklist:["country"]
 }
 const rootReducer= combineReducers({

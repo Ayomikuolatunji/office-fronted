@@ -1,9 +1,17 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { FormLogicHook } from '../../helpers/FormLogicHook'
+import { fetchAllcountries } from '../../redux/countryApiSlice'
 import InputText from '../../util/InputText'
 
 export default function RegisterCompanyForm() {
  const  {values, handleChange}=FormLogicHook()
+ const good=useSelector(state=>state.country.countries)
+ console.log(good);
+ const dispatchCountries=useDispatch()
+   useEffect(()=>{
+       dispatchCountries(fetchAllcountries())
+   },[dispatchCountries])
 
   return (
     <div className="right-div bg-gradient-to-r from-purple-500 to-pink-500">
