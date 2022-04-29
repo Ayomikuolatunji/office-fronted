@@ -6,33 +6,44 @@ import SelectCountry from './SelectCountry'
 
 export default function RegisterCompanyForm() {
  const  {values, handleChange}=FormLogicHook()
-
-
-
+ const country=useSelector(state=>state.country.seletedCountry)
+ console.log(country)
   return (
     <div className="right-div bg-gradient-to-r from-purple-500 to-pink-500">
-        <div>
+        <div className="normal-input">
             <InputText 
                 text="text"
                 name={values.company_name}
-                placeholder={"Enter your  company email address"}
+                value={values.company_name}
+                placeholder={"Enter your  company name"}
             />
         </div>
-         <div>
+         <div className="normal-input">
             <InputText 
                 text="email"
+                value={values.company_email}
                 name={values.company_email}
                 placeholder={"Enter your  company email address"}
             />
         </div>
-        <div>
+        <div className="normal-input">
             <InputText 
             text="Email"
             name={values.company_name}
             placeholder={"Enter your  company email address"}
             />
         </div>
-         <SelectCountry/>
+          <div className='normal-input w-full'>
+               <SelectCountry/>
+          </div>
+          <div className="normal-input">
+                <textarea
+                    text="text"
+                    name={values.company_name}
+                    placeholder={"Enter your company state, street and city"}
+                    className="w-full p-5 bg-gray-100"
+                />
+             </div>
     </div>
   )
 }

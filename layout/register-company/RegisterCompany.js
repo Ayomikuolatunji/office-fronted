@@ -36,7 +36,7 @@ const ContainerDiv=styled.div`
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          div{
+          .normal-input{
             width: 70%;
             margin-top: 10px;
             input{
@@ -49,12 +49,13 @@ const ContainerDiv=styled.div`
              width: 100%;
              font-size: 1rem;
 
-             &:hover{
-                 border: 1px solid #997af0;
-                 outline: none;
-             }
-          } 
+                &:hover{
+                    border: 1px solid #997af0;
+                    outline: none;
+                }
+             } 
           }
+         
       }
 
 `
