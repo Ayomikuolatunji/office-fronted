@@ -33,14 +33,16 @@ const ContainerDiv=styled.div`
           width: 50%;
           height: inherit;
           display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
           div{
             width: 70%;
+            margin-top: 10px;
             input{
              /* background: transparent; */
              padding: 1rem;
-             border: 0.3rem solid gray;
+             border: 0.1rem solid gray;
              border-radius: 0.4rem;
              color: white;
              font-weight: bolder;
