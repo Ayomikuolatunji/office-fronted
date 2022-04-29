@@ -6,6 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllcountries} from '../../redux/countryApiSlice'
+import { getCompanies } from '../../redux/companyTypeSlice';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -28,9 +29,9 @@ function getStyles(name, countryName, theme) {
   };
 }
 
-export default function SelectCountry() {
+export default function SelectCompany() {
   const theme = useTheme();
-  const countries=useSelector(state=>state.country.countries) 
+  const companies=useSelector(state=>state.companies.companies) 
   const dispatch=useDispatch()
   const [countryName, setCountry] = React.useState([]);
 
@@ -46,10 +47,9 @@ export default function SelectCountry() {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
-
   useEffect(()=>{
-      dispatch(fetchAllcountries(countryName))
-  },[dispatch,countryName])
+      dispatch(getCompanies("name"))
+  },[dispatch])
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
@@ -62,7 +62,7 @@ export default function SelectCountry() {
           className="bg-gray-100 border-gray-200 border-[1px] w-[100%]"
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em>Select country</em>;
+              return <em>Company type</em>;
             }
 
             return selected;
@@ -71,9 +71,9 @@ export default function SelectCountry() {
           inputProps={{ 'aria-label': 'Without label' }}
         >
           <MenuItem disabled value="">
-            <em>Provide your country </em>
+            <em>What type of company</em>
           </MenuItem>
-          {countries.map((name) => (
+          {companies.map((name) => (
             <MenuItem
               key={name.name}
               value={name.name}

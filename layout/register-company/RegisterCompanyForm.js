@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { registerCompany } from '../../api/authApi'
 import { FormLogicHook } from '../../helpers/FormLogicHook'
 import InputText from '../../util/InputText'
+import SelectCompany from './SelectCompany'
 import SelectCountry from './SelectCountry'
 
 export default function RegisterCompanyForm() {
@@ -47,6 +48,7 @@ export default function RegisterCompanyForm() {
         </div>
           <div className='normal-input w-full'>
              <SelectCountry/>
+             <SelectCompany/>
           </div>
           <div className="normal-input">
                 <textarea

@@ -1,14 +1,16 @@
-import {createSlice,createAsyncThunk} from "@reduxjs/toolkit"
+import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import { allIndustriesApi } from "../api/other-api";
 
 
-const url='localhost:8080/office-api/all-country-list'
 const initialState={
     companies:[],
     selectedCompany:"",
     isCompanyLoading:true
 }
-export const getCompanies=createAsyncThunk("companies/getCompanies",async()=>{
-    const res=await axios(url)
+export const getCompanies=createAsyncThunk("companies/getCompanies",async(name)=>{
+    console.log(name)
+    const res=await axios(allIndustriesApi)
     return res.data
 })
 
@@ -22,7 +24,8 @@ const companySlice=createSlice({
     },
     extraReducers:{
        [getCompanies.fulfilled]:(state,action)=>{
-            state.companies=action.payload
+           console.log(action.payload)
+            state.companies=action.payload.industries
             state.isCompanyLoading=false
        },
        [getCompanies.pending]:(state)=>{
