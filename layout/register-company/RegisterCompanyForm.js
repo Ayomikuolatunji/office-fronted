@@ -3,15 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { FormLogicHook } from '../../helpers/FormLogicHook'
 import { fetchAllcountries } from '../../redux/countryApiSlice'
 import InputText from '../../util/InputText'
+import SelectCountry from './SelectCountry'
 
 export default function RegisterCompanyForm() {
  const  {values, handleChange}=FormLogicHook()
- const good=useSelector(state=>state.country.countries)
- console.log(good);
- const dispatchCountries=useDispatch()
-   useEffect(()=>{
-       dispatchCountries(fetchAllcountries())
-   },[dispatchCountries])
+
+
 
   return (
     <div className="right-div bg-gradient-to-r from-purple-500 to-pink-500">
@@ -36,7 +33,7 @@ export default function RegisterCompanyForm() {
             placeholder={"Enter your  company email address"}
             />
         </div>
-        
+         <SelectCountry/>
     </div>
   )
 }
