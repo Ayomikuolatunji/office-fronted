@@ -60,7 +60,7 @@ export default function RegisterCompanyForm() {
                     className="w-full p-5 bg-gray-100 hover:border-[1px] hover:border-[#997af0] rounded-[0.4rem]"
                 />
              </div>
-             <div className="submit mt-5">
+             <div className="submit mt-5 w-full flex justify-center ">
                  <Button text={"Submit"} />
              </div>
     </form>

@@ -18,6 +18,7 @@ const ContainerDiv=styled.div`
     height: 100vh;
     display: flex;
 
+
       .left-div{
         width: 50%;
         display: block;
@@ -55,11 +56,10 @@ const ContainerDiv=styled.div`
                 }
              } 
           }
-         
-      }
-      button{
+          .submit button{
             background-color: #997af0;
-            width: 100%;
+            width: 70%;
+            margin: auto;
             border-radius: 0.4rem;
             cursor: pointer;
             text-transform: uppercase;
@@ -74,4 +74,5 @@ const ContainerDiv=styled.div`
                 background-color: #4e0eff; 
             }
          }
+      }
 `
