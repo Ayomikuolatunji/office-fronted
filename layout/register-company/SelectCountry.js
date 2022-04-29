@@ -19,20 +19,20 @@ const MenuProps = {
 };
 
 
-function getStyles(name, companyName, theme) {
+function getStyles(name, countryName, theme) {
   return {
     fontWeight:
-      companyName.indexOf(name) === -1
+      countryName.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
 }
 
-export default function SelectCountry() {
+export default function MultipleSelectPlaceholder() {
   const theme = useTheme();
   const countries=useSelector(state=>state.country.countries) 
   const dispatch=useDispatch()
-  const [companyName, setCompany] = React.useState([]);
+  const [countryName, setCountry] = React.useState([]);
 
   
   const handleChange = (event) => {
@@ -41,25 +41,25 @@ export default function SelectCountry() {
       target: { value },
     } = event;
   
-    setCompany(
+    setCountry(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
   };
 
   useEffect(()=>{
-      dispatch(fetchAllcountries(companyName))
-  },[dispatch,companyName])
+      dispatch(fetchAllcountries(countryName))
+  },[dispatch,countryName])
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
         <Select
           multiple={false}
           displayEmpty
-          value={companyName}
+          value={countryName}
           onChange={handleChange}
           input={<OutlinedInput />}
-          className="bg-gray-100 border-gray-200 border-[1px]"
+          className="bg-gray-100 border-gray-200 border-[1px] w-[100%]"
           renderValue={(selected) => {
             if (selected.length === 0) {
               return <em>Select country</em>;
@@ -77,7 +77,7 @@ export default function SelectCountry() {
             <MenuItem
               key={name.name}
               value={name.name}
-              style={getStyles(name.name, companyName, theme)}
+              style={getStyles(name.name, countryName, theme)}
             >
               {name.name}
             </MenuItem>

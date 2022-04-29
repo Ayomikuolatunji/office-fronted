@@ -8,8 +8,8 @@ const initialState={
     selectedCompany:"",
     isCompanyLoading:true
 }
-export const getCompanies=createAsyncThunk("companies/getCompanies",async(name)=>{
-    console.log(name)
+export const getCompanies=createAsyncThunk("companies/getCompanies",async(company,thunkAPI)=>{
+    thunkAPI.dispatch(SelctedCompany(company[0]))
     const res=await axios(allIndustriesApi)
     return res.data
 })

@@ -6,6 +6,7 @@ import { FormLogicHook } from '../../helpers/FormLogicHook'
 import InputText from '../../util/InputText'
 import SelectCompany from './SelectCompany'
 import SelectCountry from './SelectCountry'
+import Button from "../../util/Button"
 
 export default function RegisterCompanyForm() {
  const  {values, handleChange}=FormLogicHook()
@@ -16,7 +17,7 @@ export default function RegisterCompanyForm() {
      })
  }     
   return (
-    <form className="right-div bg-gradient-to-r from-purple-500 to-pink-500" onSubmit={(e)=>handleSubmit(e)}>
+    <form className="right-div bg-gradient-to-r from-purple-500 to-pink-500 mx-a" onSubmit={(e)=>handleSubmit(e)}>
         <div className="text">
             <h3>Register your company</h3>
         </div>
@@ -46,7 +47,7 @@ export default function RegisterCompanyForm() {
             placeholder={"Enter your  company email address"}
             />
         </div>
-          <div className='w-[70%] w-full flex'>
+          <div className='w-[70%] w-full flex mx-auto'>
              <SelectCountry/>
              <SelectCompany/>
           </div>
@@ -58,6 +59,9 @@ export default function RegisterCompanyForm() {
                     placeholder={"Enter your company state, street and city"}
                     className="w-full p-5 bg-gray-100 hover:border-[1px] hover:border-[#997af0] rounded-[0.4rem]"
                 />
+             </div>
+             <div className="normal-input">
+                 <Button />
              </div>
     </form>
   )
