@@ -38,11 +38,12 @@ const ContainerDiv=styled.div`
           div{
             width: 70%;
             input{
-             background: transparent;
+             /* background: transparent; */
              padding: 1rem;
-             border: 0.3rem solid #4e0eff;
+             border: 0.3rem solid gray;
              border-radius: 0.4rem;
              color: white;
+             font-weight: bolder;
              width: 100%;
              font-size: 1rem;
 
