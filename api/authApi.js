@@ -15,3 +15,5 @@ export const singleUser=`${host}/office-api/auth`
 export const fogetPassword=`${host}/office-api/auth/reset_password`
 
 export const setPassword=`${host}/office-api/auth/set_newpassword`
+
+export const registerCompany=`${host}/office-api/auth/create_company_account`
