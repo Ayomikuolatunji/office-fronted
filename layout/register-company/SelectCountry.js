@@ -19,10 +19,10 @@ const MenuProps = {
 };
 
 
-function getStyles(name, countryName, theme) {
+function getStyles(name, companyName, theme) {
   return {
     fontWeight:
-      countryName.indexOf(name) === -1
+      companyName.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
@@ -32,7 +32,7 @@ export default function SelectCountry() {
   const theme = useTheme();
   const countries=useSelector(state=>state.country.countries) 
   const dispatch=useDispatch()
-  const [countryName, setCountry] = React.useState([]);
+  const [companyName, setCountry] = React.useState([]);
 
   
   const handleChange = (event) => {
@@ -48,18 +48,18 @@ export default function SelectCountry() {
   };
 
   useEffect(()=>{
-      dispatch(fetchAllcountries(countryName))
-  },[dispatch,countryName])
+      dispatch(fetchAllcountries(companyName))
+  },[dispatch,companyName])
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
         <Select
           multiple={false}
           displayEmpty
-          value={countryName}
+          value={companyName}
           onChange={handleChange}
           input={<OutlinedInput />}
-          className="bg-gray-100 border-gray-200 border-[1px] w-[100%]"
+          className="bg-gray-100 border-gray-200 border-[1px]"
           renderValue={(selected) => {
             if (selected.length === 0) {
               return <em>Select country</em>;
@@ -77,7 +77,7 @@ export default function SelectCountry() {
             <MenuItem
               key={name.name}
               value={name.name}
-              style={getStyles(name.name, countryName, theme)}
+              style={getStyles(name.name, companyName, theme)}
             >
               {name.name}
             </MenuItem>

@@ -46,7 +46,7 @@ export default function RegisterCompanyForm() {
             placeholder={"Enter your  company email address"}
             />
         </div>
-          <div className='normal-input w-full'>
+          <div className='w-[70%] w-full flex'>
              <SelectCountry/>
              <SelectCompany/>
           </div>

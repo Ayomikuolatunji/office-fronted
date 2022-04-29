@@ -59,7 +59,7 @@ export default function SelectCompany() {
           value={countryName}
           onChange={handleChange}
           input={<OutlinedInput />}
-          className="bg-gray-100 border-gray-200 border-[1px] w-[100%]"
+          className="bg-gray-100 border-gray-200 border-[1px] "
           renderValue={(selected) => {
             if (selected.length === 0) {
               return <em>Company type</em>;
