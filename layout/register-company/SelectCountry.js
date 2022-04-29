@@ -62,7 +62,7 @@ export default function MultipleSelectPlaceholder() {
           className="bg-gray-100 border-gray-200 border-[1px] w-[100%]"
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em>Company country</em>;
+              return <em>Select country</em>;
             }
 
             return selected;
@@ -71,7 +71,7 @@ export default function MultipleSelectPlaceholder() {
           inputProps={{ 'aria-label': 'Without label' }}
         >
           <MenuItem disabled value="">
-            <em></em>
+            <em>Provide your country </em>
           </MenuItem>
           {countries.map((name) => (
             <MenuItem
