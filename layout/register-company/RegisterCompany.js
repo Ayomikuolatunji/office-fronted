@@ -57,5 +57,21 @@ const ContainerDiv=styled.div`
           }
          
       }
-
+      button{
+            background-color: #997af0;
+            width: 100%;
+            border-radius: 0.4rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            color: #fff;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            transition: 0.5s ease-in-out;
+            &:hover{
+                background-color: #4e0eff; 
+            }
+         }
 `
