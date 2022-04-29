@@ -8,6 +8,7 @@ import Button from '../util/Button'
 import InputText from '../util/InputText'
 import { FormLogicHook } from '../helpers/FormLogicHook'
 import {registrationApi} from "../api/authApi"
+import { toastOption } from '../helpers/toastOption';
 import {RegisterMain} from "../styled-compnent/index"
 
 
@@ -17,13 +18,7 @@ export default function Register() {
   const [loading,setLoading]=useState(false)
   const {values,handleChange}=FormLogicHook()
   const router = useRouter()
-  const toastOption={
-    position: "bottom-right",
-    autoclose:8000,
-    pauseOnHover:true,
-    draggable:true,
-    theme:"dark"
-  }
+
   useEffect(()=>{
     if(localStorage.getItem("office-user")){
       router.push('/')

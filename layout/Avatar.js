@@ -12,6 +12,7 @@ import { profile } from '../api/authApi';
 import { Loading} from "@nextui-org/react";
 import {FcOldTimeCamera} from "react-icons/fc"
 import MuiModal from '../util/modal/MuiModal';
+import {toastOption} from "../helpers/"
 
 
 export default function ProfilePicture() {
@@ -22,16 +23,8 @@ export default function ProfilePicture() {
     const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
     const router=useRouter()    
     const modal=useSelector(state=>state.users.modal)
-   console.log(modal);
- 
-    const toastOption={
-        position: "bottom-right",
-        autoclose:8000,
-        pauseOnHover:true,
-        draggable:true,
-        theme:"dark"
-    }
- 
+
+  
     useEffect(()=>{
       const userId=localStorage.getItem("userId")
        fetch(`http://localhost:8080/office-api/auth/${JSON.parse(userId)}`)

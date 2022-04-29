@@ -32,6 +32,26 @@ const ContainerDiv=styled.div`
       .right-div{
           width: 50%;
           height: inherit;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          div{
+            width: 70%;
+            input{
+             background: transparent;
+             padding: 1rem;
+             border: 0.3rem solid #4e0eff;
+             border-radius: 0.4rem;
+             color: white;
+             width: 100%;
+             font-size: 1rem;
+
+             &:hover{
+                 border: 1px solid #997af0;
+                 outline: none;
+             }
+          } 
+          }
       }
 
 `

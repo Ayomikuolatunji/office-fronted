@@ -9,7 +9,7 @@ import InputText from '../util/InputText'
 import { FormLogicHook } from '../helpers/FormLogicHook'
 import {fogetPassword} from "../api/authApi"
 import {RegisterMain} from "../styled-compnent/index"
-
+import { toastOption } from '../helpers/toastOption';
 
 
 
@@ -19,13 +19,7 @@ export default function ForgotPassword() {
   const {values,handleChange}=FormLogicHook()
   const [isMessage,setIsMessage]=useState(false)
 
-  const toastOption={
-    position: "bottom-right",
-    autoclose:8000,
-    pauseOnHover:true,
-    draggable:true,
-    theme:"dark"
-  }
+
   useEffect(()=>{
     if(localStorage.getItem("office-user")){
       router.push('/')
