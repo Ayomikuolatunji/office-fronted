@@ -3,14 +3,14 @@ import styled from "styled-components"
 
 export default function RegisterCompany() {
   return (
-    <div>
+    <ContainerDiv>
       <div className="left-div">
 
       </div>
       <div className="right-div">
 
       </div>
-    </div>
+    </ContainerDiv>
   )
 }
 
