@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Alert } from '@mui/material';
 import Button from '../util/Button'
 import InputText from '../util/InputText'
-import { RegistrationHook } from '../helpers/RegistrationHook'
+import { FormLogicHook } from '../helpers/FormLogicHook'
 import {fogetPassword} from "../api/authApi"
 import {RegisterMain} from "../styled-compnent/index"
 
@@ -16,7 +16,7 @@ import {RegisterMain} from "../styled-compnent/index"
 
 export default function ForgotPassword() {
   const [loading,setLoading]=useState(false)
-  const {values,handleChange}=RegistrationHook()
+  const {values,handleChange}=FormLogicHook()
   const [isMessage,setIsMessage]=useState(false)
 
   const toastOption={

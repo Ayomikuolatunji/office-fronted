@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import Button from '../util/Button'
 import InputText from '../util/InputText'
-import { RegistrationHook } from '../helpers/RegistrationHook'
+import { FormLogicHook } from '../helpers/FormLogicHook'
 import {registrationApi} from "../api/authApi"
 import {RegisterMain} from "../styled-compnent/index"
 
@@ -15,7 +15,7 @@ import {RegisterMain} from "../styled-compnent/index"
 
 export default function Register() {
   const [loading,setLoading]=useState(false)
-  const {values,handleChange}=RegistrationHook()
+  const {values,handleChange}=FormLogicHook()
   const router = useRouter()
   const toastOption={
     position: "bottom-right",
@@ -24,11 +24,11 @@ export default function Register() {
     draggable:true,
     theme:"dark"
   }
-  // useEffect(()=>{
-  //   if(localStorage.getItem("office-user")){
-  //     router.push('/')
-  //   }
-  // })
+  useEffect(()=>{
+    if(localStorage.getItem("office-user")){
+      router.push('/')
+    }
+  })
 
   const submitUserInfo=async(e)=>{
     setLoading(true)

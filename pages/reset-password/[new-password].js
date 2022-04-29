@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Button from '../../util/Button'
 import InputText from '../../util/InputText'
-import { RegistrationHook } from '../../helpers/RegistrationHook'
+import { FormLogicHook } from '../../helpers/FormLogicHook'
 import {setPassword} from "../../api/authApi"
 import {RegisterMain} from "../../styled-compnent/index"
 
@@ -13,10 +13,10 @@ import {RegisterMain} from "../../styled-compnent/index"
 
 
 
-export default function SetPassword() {
+export default function SetNewPassword() {
   const [loading,setLoading]=useState(false)
   const router = useRouter()
-  const {values,handleChange}=RegistrationHook()
+  const {values,handleChange}=FormLogicHook()
   const { id , code } = router.query
  
   const toastOption={

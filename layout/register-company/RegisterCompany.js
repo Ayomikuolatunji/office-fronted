@@ -26,6 +26,7 @@ const ContainerDiv=styled.div`
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
+      background-attachment: fixed;
       }
 
       .right-div{
