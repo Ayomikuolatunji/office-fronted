@@ -36,10 +36,11 @@ export default function Register() {
           email,
           password
          })
+         console.log(res)
          if(res.status===201){
           setLoading(false)
          }
-         localStorage.setItem("userId",JSON.stringify(res.data.user))
+         localStorage.setItem("userId",JSON.stringify(res.data.userId))
          router.push('/profile-picture')
         }catch(err){
          setLoading(false)

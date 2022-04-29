@@ -24,7 +24,6 @@ const companySlice=createSlice({
     },
     extraReducers:{
        [getCompanies.fulfilled]:(state,action)=>{
-           console.log(action.payload)
             state.companies=action.payload.industries
             state.isCompanyLoading=false
        },
