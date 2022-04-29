@@ -12,7 +12,7 @@ import { profile } from '../api/authApi';
 import { Loading} from "@nextui-org/react";
 import {FcOldTimeCamera} from "react-icons/fc"
 import MuiModal from '../util/modal/MuiModal';
-import {toastOption} from "../helpers/"
+import {toastOption} from "../helpers/toastOption"
 
 
 export default function ProfilePicture() {
