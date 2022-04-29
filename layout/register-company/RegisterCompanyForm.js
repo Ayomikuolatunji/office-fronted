@@ -1,7 +1,6 @@
 import React,{useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FormLogicHook } from '../../helpers/FormLogicHook'
-import { fetchAllcountries } from '../../redux/countryApiSlice'
 import InputText from '../../util/InputText'
 import SelectCountry from './SelectCountry'
 

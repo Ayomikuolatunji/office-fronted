@@ -5,6 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useDispatch, useSelector } from 'react-redux'
+import { fetchAllcountries } from '../../redux/countryApiSlice'
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -41,7 +42,8 @@ function getStyles(name, personName, theme) {
 
 export default function MultipleSelectPlaceholder() {
   const theme = useTheme();
-  const good=useSelector(state=>state.country.countries)
+  const countries=useSelector(state=>state.country.countries)
+  console.log(countries)
   const dispatchCountries=useDispatch()
   const [personName, setPersonName] = React.useState([]);
 
@@ -80,11 +82,11 @@ export default function MultipleSelectPlaceholder() {
           <MenuItem disabled value="">
             <em>Placeholder</em>
           </MenuItem>
-          {names.map((name) => (
+          {countries.map((name) => (
             <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, personName, theme)}
+              key={name.name}
+              value={name.name}
+              style={getStyles(name.name, personName, theme)}
             >
               {name}
             </MenuItem>
