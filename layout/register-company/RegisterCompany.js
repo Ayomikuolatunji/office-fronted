@@ -1,15 +1,13 @@
 import React from 'react'
 import styled from "styled-components"
+import RegisterBgImage from './RegisterBgImage'
+import RegisterCompanyForm from './RegisterCompanyForm'
 
 export default function RegisterCompany() {
   return (
     <ContainerDiv>
-      <div className="left-div">
-
-      </div>
-      <div className="right-div bg-gradient-to-r from-purple-500 to-pink-500">
-         
-      </div>
+      <RegisterBgImage/>
+      <RegisterCompanyForm/>
     </ContainerDiv>
   )
 }
