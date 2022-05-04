@@ -45,7 +45,7 @@ const ContainerDiv=styled.div`
              padding: 1rem;
              border: 0.1rem solid gray;
              border-radius: 0.4rem;
-             color: white;
+             color: gray;
              font-weight: bolder;
              width: 100%;
              font-size: 1rem;

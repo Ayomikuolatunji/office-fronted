@@ -7,9 +7,9 @@ import AllUserSlice from "./AllUser-slice";
 import companyTypeSlice from './companyTypeSlice';
 
 const persistConfig = {
-    key: 'users',
+    key: 'onlineoffice',
     storage,
-    blacklist:["country","companies"]
+    blacklist:["country","companies", "users"]
 }
 // first reducer setup for persist storage blacklisting country and companies
 const rootReducer= combineReducers({

@@ -10,21 +10,21 @@ import Button from "../../util/Button"
 
 export default function RegisterCompanyForm() {
  const  {values, handleChange}=FormLogicHook()
- const [address,setAddress]=useState("")
  const country=useSelector(state=>state.country.seletedCountry)
- const company=useSelector(state=>state.companies.companies)
-  const company_location=`${address}, ${country} `
-  console.log(company_location)
+ const company=useSelector(state=>state.companies.selectedCompany)
+ const company_location=`${values.company_address}, ${country} `
+
 
  const handleSubmit=async(event)=>{
      event.preventDefault()
      const res=await axios(registerCompany,{
-          company_email:values.company_password,
+          company_email:values.company_email,
           company_location:company_location,
           company_type:company,
           company_name:values.company_name,
           company_password:values.company_password
      })
+     console.log(res)
  } 
 
   return (
@@ -35,9 +35,9 @@ export default function RegisterCompanyForm() {
         <div className="normal-input">
             <InputText 
                 text="text"
-                name={values.company_name}
+                name={"company_name"}
                 value={values.company_name}
-                onChange={(e)=>handleChange(e.target.value)}
+                onChange={(e)=>handleChange(e)}
                 placeholder={"Enter your  company name"}
             />
         </div>
@@ -45,17 +45,18 @@ export default function RegisterCompanyForm() {
             <InputText 
                 text="email"
                 value={values.company_email}
-                name={values.company_email}
-                onChange={(e)=>handleChange(e.target.value)}
+                name={"company_email"}
+                onChange={(e)=>handleChange(e)}
                 placeholder={"Enter your company email address"}
             />
         </div>
         <div className="normal-input">
             <InputText 
-            text="password"
-            name={values.company_password}
-            onChange={(e)=>handleChange(e.target.value)}
-            placeholder={"Enter your company account password"}
+               text="password"
+               name={"company_password"}
+               value={values.company_password}
+               onChange={(e)=>handleChange(e)}
+               placeholder={"Enter your company account password"}
             />
         </div>
           <div className='w-[70%]  flex mx-auto mf'>
@@ -65,9 +66,9 @@ export default function RegisterCompanyForm() {
           <div className="normal-input">
                 <textarea
                     text="text"
-                    name={"addres"}
-                    value={address}
-                    onChange={(e)=>setAddress(e.target.value)}
+                    name={"company_address"}
+                    value={values.company_address}
+                    onChange={(e)=>handleChange(e)}
                     placeholder={"Enter your company state, street and city"}
                     className="w-full p-5 bg-gray-100 hover:border-[1px] hover:border-[#997af0] rounded-[0.4rem]"
                 />

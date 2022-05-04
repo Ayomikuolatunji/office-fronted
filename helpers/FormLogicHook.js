@@ -4,6 +4,7 @@ export const FormLogicHook=()=>{
    const [values,setValues]=React.useState({
        username:"",
        email:"",
+       role:"",
        password:"",
        confirmPassword:"" ,
        company_name:"",
