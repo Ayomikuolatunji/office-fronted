@@ -40,7 +40,7 @@ export default function ProfilePicture() {
        .catch(err=>{
          console.log(err.message)
        })
-    },[])
+    },[employeeId])
 
     const proflePicture=async()=>{
       if(!imagePreview){
@@ -64,8 +64,8 @@ export default function ProfilePicture() {
     }
 
   useEffect(()=>{
-   
-  },[router])
+    dispatch(getEmployeeData())
+  },[dispatch])
   
   const onImageChange=async(event) => {
     setLoading(true)

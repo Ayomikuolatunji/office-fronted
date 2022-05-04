@@ -8,7 +8,7 @@ import ButtonText from "../../util/Button"
 import {Modalcontainer} from "../../styled-compnent/index"
 import {profile} from "../../api/authApi"
 import { setProfilePictureModal } from "../../redux/modal/modalSlice";
-import { clearEmployeeId } from "../../redux/employee/employeeInfoSlice";
+import { clearEmployeeId, getEmployeeData } from "../../redux/employee/employeeInfoSlice";
 
 
 
@@ -23,7 +23,7 @@ export default function MuiModal() {
   const router=useRouter()  
   const dispatch=useDispatch()
 
-   const handler = () => {
+  const handler = () => {
     dispatch(setProfilePictureModal(false))
      setVisible(false)
   }
@@ -48,15 +48,18 @@ export default function MuiModal() {
           avatarImageSet:true
         })
         if(res.status===200){
-          router.push("/login")
           dispatch(clearEmployeeId())
+          router.push("/login")
         }
       }
       }catch(err){
         console.log(err.message)
         
       }
-}
+  }
+  useEffect(()=>{
+    dispatch(getEmployeeData())
+  })
 
   return (
     <div>

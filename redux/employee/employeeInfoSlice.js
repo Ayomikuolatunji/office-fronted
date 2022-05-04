@@ -1,10 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import { employee } from "../../api/authApi";
 
-// export const FetchUserId=createAsyncThunk()
+export const getEmployeeData=createAsyncThunk("employeeInfo/getEmployeeData",async(_, thunkAPI)=>{
+     console.log(thunkAPI.getState())
+    // const res=await axios(`${employee}/${}`)
+})
 
 const employeeInfo=createSlice({
     name:"employeeInfo",
     initialState:{
+        employeeData:null,
         employeeId:""
     },
     reducers:{
@@ -15,6 +21,11 @@ const employeeInfo=createSlice({
         clearEmployeeId:(state)=>{
             // clear employeeid when employee finish signingup
             state.employeeId=""
+        }
+    },
+    extraReducers:{
+        [getEmployeeData.fulfilled]:(state,action)=>{
+             state.employeeData=action.payload
         }
     }
 })
