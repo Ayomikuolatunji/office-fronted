@@ -26,8 +26,10 @@ export default function Login() {
 
 
   useEffect(()=>{
-    
-  })
+      if(isLoggedIn){
+        router.push("/")
+      }
+  },[router,isLoggedIn])
 
   const submitLogin=async(e)=>{
     setLoading(true)
@@ -45,8 +47,6 @@ export default function Login() {
           router.push('/add-company')
           dispatch(loginEmployee(res.data))
         }
-        localStorage.setItem("userId",JSON.stringify(res.data.user))
-        localStorage.setItem("office-user",JSON.stringify(res.data.token))
       }catch(err){
          setLoading(false)
          console.log(err)

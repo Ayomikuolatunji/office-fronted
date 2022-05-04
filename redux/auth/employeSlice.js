@@ -5,7 +5,7 @@ import {createSlice} from "@reduxjs/toolkit"
 const employeeSlice=createSlice({
     name:"employeeAuth",
     initialState:{
-        credentials:"",
+        credentials:null,
         isLoggedIn:false
     },
     reducers:{
@@ -14,6 +14,7 @@ const employeeSlice=createSlice({
             state.isLoggedIn=true
         },
         logoutEmployee:(state)=>{
+            state.credentials=null
             state.isLoggedIn=false
         }
     }
