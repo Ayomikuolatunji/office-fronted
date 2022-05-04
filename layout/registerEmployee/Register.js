@@ -1,8 +1,9 @@
 import Link from 'next/link'
-import React, { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import Button from '../../util/Button'
 import InputText from '../../util/InputText'
@@ -10,6 +11,8 @@ import { FormLogicHook } from '../../helpers/FormLogicHook'
 import {registrationApi} from "../../api/authApi"
 import { toastOption } from '../../helpers/toastOption';
 import {RegisterMain} from "../../styled-compnent/index"
+import { getEmployeeId } from '../../redux/employee/employeeInfoSlice';
+
 
 
 
@@ -18,12 +21,8 @@ export default function Register() {
   const [loading,setLoading]=useState(false)
   const {values,handleChange}=FormLogicHook()
   const router = useRouter()
+  const dispatch=useDispatch()
 
-  useEffect(()=>{
-    if(localStorage.getItem("office-user")){
-      router.push('/')
-    }
-  })
 
   const submitUserInfo=async(e)=>{
     setLoading(true)
@@ -37,9 +36,9 @@ export default function Register() {
           password,
           role
          })
-
          if(res.status===201){
           setLoading(false)
+          dispatch(getEmployeeId(res.data.employeeId))
          }
          router.push('/profile-picture')
         }catch(err){

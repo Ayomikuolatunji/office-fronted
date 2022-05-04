@@ -1,13 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import { Modal, Button,useModal} from "@nextui-org/react";
 import React,{useEffect,useState} from "react";
-import { useDispatch } from "react-redux";
-import Router, { useRouter } from 'next/router';
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from 'next/router';
 import axios from "axios";
 import ButtonText from "../../util/Button"
 import {Modalcontainer} from "../../styled-compnent/index"
-import { updateProfileModal } from "../../redux/AllUser-slice";
 import {profile} from "../../api/authApi"
+import { setProfilePictureModal } from "../../redux/modal/modalSlice";
+import { clearEmployeeId } from "../../redux/employee/employeeInfoSlice";
 
 
 
@@ -17,16 +18,17 @@ export default function MuiModal() {
   const { bindings } = useModal();
   const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
   const [user,setUser]=useState([])
+  const employeeId=useSelector(state=>state.employeeInfo.employeeId)
+  console.log(employeeId)
   const router=useRouter()  
   const dispatch=useDispatch()
 
-  //  const handler = () => {
-  //   dispatch(updateProfileModal(false))
-  //    setVisible(false)
-  // }
+   const handler = () => {
+    dispatch(setProfilePictureModal(false))
+     setVisible(false)
+  }
   useEffect(()=>{
-    const userId=localStorage.getItem("userId")
-     fetch(`http://localhost:8080/office-api/auth/${JSON.parse(userId)}`)
+     fetch(`http://localhost:8080/office-api/auth/${employeeId}`)
      .then(res=>{
        return res.json()
      })
@@ -36,7 +38,7 @@ export default function MuiModal() {
      .catch(err=>{
        console.log(err.message)
      })
-  },[])
+  },[employeeId])
 
   const proflePicture=async()=>{
     try{
@@ -47,6 +49,7 @@ export default function MuiModal() {
         })
         if(res.status===200){
           router.push("/login")
+          dispatch(clearEmployeeId())
         }
       }
       }catch(err){
@@ -75,7 +78,7 @@ export default function MuiModal() {
                </div>
               <ButtonText 
                 text={"Set Profile Picture"}
-                // onClick={handler}
+                onClick={handler}
                 type="submit"
               />    
            </Modalcontainer>

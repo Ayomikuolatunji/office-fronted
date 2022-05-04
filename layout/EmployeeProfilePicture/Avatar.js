@@ -4,7 +4,7 @@ import React, { useState,useEffect} from 'react'
 import { ToastContainer,toast } from 'react-toastify'
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import { Container } from '../../styled-compnent';
 import Button from "../../util/Button"
@@ -13,6 +13,7 @@ import { Loading} from "@nextui-org/react";
 import {FcOldTimeCamera} from "react-icons/fc"
 import MuiModal from '../../util/modal/MuiModal';
 import {toastOption} from "../../helpers/toastOption"
+import { clearEmployeeId } from '../../redux/employee/employeeInfoSlice';
 
 
 export default function ProfilePicture() {
@@ -22,12 +23,13 @@ export default function ProfilePicture() {
     const [user,setUser]=useState([])
     const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
     const router=useRouter()    
-    // const modal=useSelector(state=>state.users.modal)
-
+    const modal=useSelector(state=>state.modal.isProfilePicture)
+    const employeeId=useSelector(state=>state.employeeInfo.employeeId)
+    const dispatch=useDispatch()
+    
   
     useEffect(()=>{
-      const userId=localStorage.getItem("userId")
-       fetch(`http://localhost:8080/office-api/auth/${JSON.parse(userId)}`)
+       fetch(`http://localhost:8080/office-api/auth/${employeeId}`)
        .then(res=>{
          return res.json()
        })
@@ -51,7 +53,8 @@ export default function ProfilePicture() {
               avatarImageSet:true
             })
             if(res.status===200){
-              router.push("/")
+              router.push("/login")
+              dispatch(clearEmployeeId())
             }
           }
           }catch(err){
@@ -61,9 +64,7 @@ export default function ProfilePicture() {
     }
 
   useEffect(()=>{
-    if(localStorage.getItem("office-user")){
-        router.push('/login')
-    }
+   
   },[router])
   
   const onImageChange=async(event) => {
@@ -97,8 +98,8 @@ export default function ProfilePicture() {
   }
   return (
     <>  
-    {true && <MuiModal proflePicture={proflePicture}/>}
-        {true || <Container>
+
+        {modal  ? <Container>
               <React.Fragment>
               <div className="thumbnail-img mx-auto mt-10 flex flex-col items-center">
                {loading?   <Loading size="xl" /> : <img src={image || defaultImg} className={`${image?"border-red border-4":""}`} style={{width:"200px", borderRadius:"100%",height:"200px"}}/>}
@@ -120,7 +121,9 @@ export default function ProfilePicture() {
               type="submit"
               />    
             </React.Fragment>
-        </Container>}
+        </Container>
+         : <MuiModal proflePicture={proflePicture}/>  
+        }
         <ToastContainer limit={1}/>
     </>
   )
