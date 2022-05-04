@@ -21,6 +21,7 @@ const employeeInfo=createSlice({
         clearEmployeeId:(state)=>{
             // clear employeeid when employee finish signingup
             state.employeeId=""
+            state.employeeData=""
         }
     },
     extraReducers:{

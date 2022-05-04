@@ -19,7 +19,6 @@ export default function MuiModal() {
   const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
   const [user,setUser]=useState([])
   const employeeId=useSelector(state=>state.employeeInfo.employeeId)
-  console.log(employeeId)
   const router=useRouter()  
   const dispatch=useDispatch()
 
@@ -59,7 +58,7 @@ export default function MuiModal() {
   }
   useEffect(()=>{
     dispatch(getEmployeeData())
-  })
+  },[dispatch])
 
   return (
     <div>
