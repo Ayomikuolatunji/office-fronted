@@ -11,7 +11,7 @@ import Button from "../../util/Button"
 import { profile } from '../../api/authApi';
 import { Loading} from "@nextui-org/react";
 import {FcOldTimeCamera} from "react-icons/fc"
-import MuiModal from './MuiModal';
+import DefaultProfilePicture from './DefaultProfilePicture';
 import {toastOption} from "../../helpers/toastOption"
 import { clearEmployeeId, getEmployeeData } from '../../redux/employee/employeeInfoSlice';
 
@@ -122,7 +122,7 @@ export default function ProfilePicture() {
               />    
             </React.Fragment>
         </Container>
-         : <MuiModal proflePicture={proflePicture}/>  
+         : <DefaultProfilePicture proflePicture={proflePicture}/>  
         }
         <ToastContainer limit={1}/>
     </>
