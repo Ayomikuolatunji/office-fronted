@@ -3,8 +3,9 @@ import axios from "axios";
 import { employee } from "../../api/authApi";
 
 export const getEmployeeData=createAsyncThunk("employeeInfo/getEmployeeData",async(_, thunkAPI)=>{
-     console.log(thunkAPI.getState())
-    // const res=await axios(`${employee}/${}`)
+    const {employeeId}=thunkAPI.getState().employeeInfo
+    const res=await axios(`${employee}/${employeeId}`)
+    return res.data
 })
 
 const employeeInfo=createSlice({
@@ -26,6 +27,7 @@ const employeeInfo=createSlice({
     },
     extraReducers:{
         [getEmployeeData.fulfilled]:(state,action)=>{
+              console.log(action.payload)
              state.employeeData=action.payload
         }
     }
