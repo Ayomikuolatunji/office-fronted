@@ -11,3 +11,5 @@ const employeeInfo=createSlice({
         }
     }
 })
+export const {getEmployeeId}=employeeInfo.actions
+export default employeeInfo.reducer

@@ -6,7 +6,7 @@ import countryApiSlice from "./countryApiSlice";
 import companyTypeSlice from './companyTypeSlice';
 import employeeAuth from './auth/employeSlice';
 import modalSlice from './modal/modalSlice';
-
+import employeeInfo from './employee/employeeInfoSlice';
 
 const persistConfig = {
     key: 'onlineoffice',
@@ -15,10 +15,13 @@ const persistConfig = {
 }
 // first reducer setup for persist storage blacklisting country and companies
 const rootReducer= combineReducers({
+   // persist stores 
     country:countryApiSlice,
     companies:companyTypeSlice,
+    // persist employeeAuth
     employeeAuth:employeeAuth,
-    modal:modalSlice
+    modal:modalSlice,
+    employeeInfo:employeeInfo
 })
 
 // persist store
