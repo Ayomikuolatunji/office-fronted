@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState,useEffect} from 'react'
 import { ToastContainer,toast } from 'react-toastify'
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
@@ -47,7 +47,6 @@ export default function ProfilePicture() {
         try{
           if(user){
             const res=await axios.post(`${profile}/${user.user._id}`,{
-
               avartImage:imagePreview,
               avatarImageSet:true
             })
@@ -85,7 +84,6 @@ export default function ProfilePicture() {
                        method: 'PUT',
                        body:fileUpload
                })
-               console.log(result)
                if(result.status===200) {
                 setImagePreview(result.url.split("?")[0]) 
                 setLoading(false)  

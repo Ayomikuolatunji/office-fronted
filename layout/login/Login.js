@@ -41,9 +41,9 @@ export default function Login() {
         if(res.status===200){
           setLoading(false)
         }
+        router.push('/add-company')
         localStorage.setItem("userId",JSON.stringify(res.data.user))
         localStorage.setItem("office-user",JSON.stringify(res.data.token))
-        router.push('/')
       }catch(err){
          setLoading(false)
          console.log(err)
