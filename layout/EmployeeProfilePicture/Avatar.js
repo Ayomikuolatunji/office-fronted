@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState,useEffect} from 'react'
+import React, { useState } from 'react';
 import { ToastContainer,toast } from 'react-toastify'
 import { useRouter } from 'next/router';
 import axios from 'axios';
@@ -13,7 +13,7 @@ import { Loading} from "@nextui-org/react";
 import {FcOldTimeCamera} from "react-icons/fc"
 import DefaultProfilePicture from './DefaultProfilePicture';
 import {toastOption} from "../../helpers/toastOption"
-import { clearEmployeeId, getEmployeeData } from '../../redux/employee/employeeInfoSlice';
+import { clearEmployeeId } from '../../redux/employee/employeeInfoSlice';
 
 
 export default function ProfilePicture() {
@@ -27,20 +27,6 @@ export default function ProfilePicture() {
     const employeeId=useSelector(state=>state.employeeInfo.employeeId)
     const dispatch=useDispatch()
     
-  
-    useEffect(()=>{
-       fetch(`http://localhost:8080/office-api/auth/${employeeId}`)
-       .then(res=>{
-         return res.json()
-       })
-       .then(data=>{
-         setLoading(false)
-         setUser(data)
-       })
-       .catch(err=>{
-         console.log(err.message)
-       })
-    },[employeeId])
 
     const proflePicture=async()=>{
       if(!imagePreview){
@@ -48,7 +34,7 @@ export default function ProfilePicture() {
       }
         try{
           if(user){
-            const res=await axios.post(`${profile}/${user.user._id}`,{
+            const res=await axios.post(`${profile}/${employeeId}`,{
               avartImage:imagePreview,
               avatarImageSet:true
             })
@@ -63,9 +49,6 @@ export default function ProfilePicture() {
           }
     }
 
-  useEffect(()=>{
-    dispatch(getEmployeeData())
-  },[dispatch])
   
   const onImageChange=async(event) => {
     setLoading(true)

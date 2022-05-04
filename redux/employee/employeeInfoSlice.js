@@ -3,7 +3,7 @@ import axios from "axios";
 import { employee } from "../../api/authApi";
 
 export const getEmployeeData=createAsyncThunk("employeeInfo/getEmployeeData",async(_, thunkAPI)=>{
-    const {employeeId}=thunkAPI.getState().employeeInfo
+    const {employeeId}=thunkAPI.getState().employeeAuth.credentials
     const res=await axios(`${employee}/${employeeId}`)
     return res.data
 })

@@ -1,10 +1,18 @@
 import Head from 'next/head';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getEmployeeData } from '../redux/employee/employeeInfoSlice';
 
 
 
 
 export default function Home() {
+   const dispatch=useDispatch()
 
+
+   useEffect(()=>{
+      dispatch(getEmployeeData())
+   })
 
   return (
     <div>
