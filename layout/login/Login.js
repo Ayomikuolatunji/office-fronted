@@ -10,6 +10,8 @@ import { FormLogicHook } from '../../helpers/FormLogicHook'
 import {loginApi} from "../../api/authApi"
 import {RegisterMain} from "../../styled-compnent/index"
 import { toastOption } from '../../helpers/toastOption';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginEmployee } from '../../redux/auth/employeSlice';
 
 
 
@@ -18,13 +20,13 @@ import { toastOption } from '../../helpers/toastOption';
 export default function Login() {
   const [loading,setLoading]=useState(false)
   const router = useRouter()
+  const isLoggedIn=useSelector(state=>state.employeeAuth.isLoggedIn)
+  const dispatch=useDispatch()
   const {values,handleChange}=FormLogicHook()
 
 
   useEffect(()=>{
-    if(localStorage.getItem("office-user")){
-      router.push('/')
-    }
+    
   })
 
   const submitLogin=async(e)=>{
@@ -40,8 +42,9 @@ export default function Login() {
          })
         if(res.status===200){
           setLoading(false)
+          router.push('/add-company')
+          dispatch(loginEmployee(res.data))
         }
-        router.push('/add-company')
         localStorage.setItem("userId",JSON.stringify(res.data.user))
         localStorage.setItem("office-user",JSON.stringify(res.data.token))
       }catch(err){

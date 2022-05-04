@@ -5,6 +5,8 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 import countryApiSlice from "./countryApiSlice";
 import AllUserSlice from "./AllUser-slice";
 import companyTypeSlice from './companyTypeSlice';
+import employeSlice from './auth/employeSlice';
+
 
 const persistConfig = {
     key: 'onlineoffice',
@@ -15,7 +17,8 @@ const persistConfig = {
 const rootReducer= combineReducers({
     users:AllUserSlice,
     country:countryApiSlice,
-    companies:companyTypeSlice
+    companies:companyTypeSlice,
+    employeeAuth:employeSlice
 })
 
 // persist store

@@ -9,15 +9,15 @@ const employeeSlice=createSlice({
         isLoggedIn:false
     },
     reducers:{
-        login:(state,action)=>{
+        loginEmployee:(state,action)=>{
             state.credentials=action.payload
             state.isLoggedIn=true
         },
-        logout:(state,action)=>{
+        logoutEmployee:(state)=>{
             state.isLoggedIn=false
         }
     }
 })
 
-export const {login,logout}=employeeSlice.actions
+export const {loginEmployee,logoutEmployee}=employeeSlice.actions
 export default employeeSlice.reducer
