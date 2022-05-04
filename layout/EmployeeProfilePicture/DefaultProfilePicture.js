@@ -8,7 +8,7 @@ import ButtonText from "../../util/Button"
 import {Modalcontainer} from "../../styled-compnent/index"
 import {profile} from "../../api/authApi"
 import { setProfilePictureModal } from "../../redux/modal/modalSlice";
-import { clearEmployeeId, getEmployeeData } from "../../redux/employee/employeeInfoSlice";
+import { clearEmployeeId} from "../../redux/employee/employeeInfoSlice";
 
 
 
@@ -17,7 +17,6 @@ export default function MuiModal() {
   const [visible, setVisible] = React.useState(true);
   const { bindings } = useModal();
   const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
-  const [user,setUser]=useState([])
   const employeeId=useSelector(state=>state.employeeInfo.employeeId)
   const router=useRouter()  
   const dispatch=useDispatch()
@@ -26,23 +25,11 @@ export default function MuiModal() {
     dispatch(setProfilePictureModal(false))
      setVisible(false)
   }
-  useEffect(()=>{
-     fetch(`http://localhost:8080/office-api/auth/${employeeId}`)
-     .then(res=>{
-       return res.json()
-     })
-     .then(data=>{
-       setUser(data)
-     })
-     .catch(err=>{
-       console.log(err.message)
-     })
-  },[employeeId])
 
   const proflePicture=async()=>{
     try{
-      if(user){
-        const res=await axios.post(`${profile}/${user.user._id}`,{
+      if(employeeId){
+        const res=await axios.post(`${profile}/${employeeId}`,{
           avartImage:defaultImg,
           avatarImageSet:true
         })
@@ -56,9 +43,6 @@ export default function MuiModal() {
         
       }
   }
-  useEffect(()=>{
-    dispatch(getEmployeeData())
-  },[dispatch])
 
   return (
     <div>
