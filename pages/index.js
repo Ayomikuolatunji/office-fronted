@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React,{useEffect} from "react"
 import { useRouter } from 'next/router';
-import Chat from "../layout/Chat"
+import Chat from "../layout/chat/Chat"
 import { useDispatch } from 'react-redux';
 import { currentUser } from '../redux/AllUser-slice';
 import { singleUser } from '../api/authApi';

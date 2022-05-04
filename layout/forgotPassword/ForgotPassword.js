@@ -4,12 +4,12 @@ import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { Alert } from '@mui/material';
-import Button from '../util/Button'
-import InputText from '../util/InputText'
-import { FormLogicHook } from '../helpers/FormLogicHook'
-import {fogetPassword} from "../api/authApi"
-import {RegisterMain} from "../styled-compnent/index"
-import { toastOption } from '../helpers/toastOption';
+import Button from '../../util/Button'
+import InputText from '../../util/InputText'
+import { FormLogicHook } from '../../helpers/FormLogicHook'
+import {fogetPassword} from "../../api/authApi"
+import {RegisterMain} from "../../styled-compnent/index"
+import { toastOption } from '../../helpers/toastOption';
 
 
 

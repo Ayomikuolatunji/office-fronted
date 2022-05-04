@@ -1,5 +1,5 @@
 import React from 'react'
-import Register from "../../layout/Register"
+import Register from "../../layout/registerEmployee/Register"
 
 
 export default function index() {

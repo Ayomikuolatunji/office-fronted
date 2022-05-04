@@ -1,12 +1,12 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import useSWR from 'swr';
-import { ChatContainer } from '../styled-compnent/chat'; 
-import { allUsers } from '../api/authApi'
-import Contact from '../components/contact/Contact'
-import Loader from "../util/loader/Loader"
-import ChatBillBoard from '../components/chat-billbaord.js/ChatBillBoard';
-import SingleChat from '../components/chats/SingleChat';
+import { ChatContainer } from '../../styled-compnent/chat'; 
+import { allUsers } from '../../api/authApi'
+import Contact from '../../components/contact/Contact'
+import Loader from "../../util/loader/Loader"
+import ChatBillBoard from '../../components/chat-billbaord.js/ChatBillBoard';
+import SingleChat from '../../components/chats/SingleChat';
 
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())

@@ -6,13 +6,13 @@ import Router, { useRouter } from 'next/router';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
-import { Container } from '../styled-compnent';
-import Button from "../util/Button"
-import { profile } from '../api/authApi';
+import { Container } from '../../styled-compnent';
+import Button from "../../util/Button"
+import { profile } from '../../api/authApi';
 import { Loading} from "@nextui-org/react";
 import {FcOldTimeCamera} from "react-icons/fc"
-import MuiModal from '../util/modal/MuiModal';
-import {toastOption} from "../helpers/toastOption"
+import MuiModal from '../../util/modal/MuiModal';
+import {toastOption} from "../../helpers/toastOption"
 
 
 export default function ProfilePicture() {

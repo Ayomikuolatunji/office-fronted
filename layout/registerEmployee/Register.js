@@ -4,12 +4,12 @@ import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import Button from '../util/Button'
-import InputText from '../util/InputText'
-import { FormLogicHook } from '../helpers/FormLogicHook'
-import {registrationApi} from "../api/authApi"
-import { toastOption } from '../helpers/toastOption';
-import {RegisterMain} from "../styled-compnent/index"
+import Button from '../../util/Button'
+import InputText from '../../util/InputText'
+import { FormLogicHook } from '../../helpers/FormLogicHook'
+import {registrationApi} from "../../api/authApi"
+import { toastOption } from '../../helpers/toastOption';
+import {RegisterMain} from "../../styled-compnent/index"
 
 
 
@@ -27,14 +27,15 @@ export default function Register() {
 
   const submitUserInfo=async(e)=>{
     setLoading(true)
-    const {username,email,password}=values
+    const {username,email,password,role}=values
       e.preventDefault()
       if(validateRegistration()){
         try{
           const res=await axios.post(registrationApi,{
           username,
           email,
-          password
+          password,
+          role
          })
 
          if(res.status===201){
@@ -51,7 +52,7 @@ export default function Register() {
     
   }
   const validateRegistration=()=>{
-    const {username,email,password,confirmPassword}=values
+    const {username,email,password,confirmPassword,role}=values
      if(password !==confirmPassword){
         toast.error("Password an confirm password should be equal !", toastOption);
         return false    
@@ -68,6 +69,10 @@ export default function Register() {
       toast.error("Email is required!", toastOption);
       return false 
      }
+     if(!role){
+      toast.error("Your employed role is required!", toastOption);
+      return false 
+     }
      return true
   } 
   return (
@@ -81,16 +86,24 @@ export default function Register() {
                 type={"text"}
                 onChange={(e)=>handleChange(e)}
                 name={"username"}
-                placeholder={"Enter your user name"}
+                placeholder={"Enter your username"}
                 value={values.username}
                 className="block"
               />
-                <InputText 
+              <InputText 
                 type={"email"}
                 onChange={(e)=>handleChange(e)}
                 name={"email"}
                 placeholder={"Enter your email address"}
                 value={values.email}
+                className="block"
+              />
+               <InputText 
+                type={"text"}
+                onChange={(e)=>handleChange(e)}
+                name={"role"}
+                placeholder={"Enter your employed role"}
+                value={values.role}
                 className="block"
               />
               <InputText 
