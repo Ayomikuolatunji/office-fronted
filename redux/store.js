@@ -3,22 +3,20 @@ import { configureStore,combineReducers} from '@reduxjs/toolkit'
 import { persistStore, persistReducer,FLUSH, REHYDRATE,PAUSE,PERSIST,PURGE,REGISTER,} from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import countryApiSlice from "./countryApiSlice";
-import AllUserSlice from "./AllUser-slice";
 import companyTypeSlice from './companyTypeSlice';
-import employeSlice from './auth/employeSlice';
+import employeeAuth from './auth/employeSlice';
 
 
 const persistConfig = {
     key: 'onlineoffice',
     storage,
-    blacklist:["country","companies", "users"]
+    blacklist:["country","companies"]
 }
 // first reducer setup for persist storage blacklisting country and companies
 const rootReducer= combineReducers({
-    users:AllUserSlice,
     country:countryApiSlice,
     companies:companyTypeSlice,
-    employeeAuth:employeSlice
+    employeeAuth:employeeAuth
 })
 
 // persist store

@@ -20,11 +20,10 @@ export default function MuiModal() {
   const router=useRouter()  
   const dispatch=useDispatch()
 
-   const handler = () => {
-    dispatch(updateProfileModal(false))
-     setVisible(false)
-  
-  }
+  //  const handler = () => {
+  //   dispatch(updateProfileModal(false))
+  //    setVisible(false)
+  // }
   useEffect(()=>{
     const userId=localStorage.getItem("userId")
      fetch(`http://localhost:8080/office-api/auth/${JSON.parse(userId)}`)
@@ -76,7 +75,7 @@ export default function MuiModal() {
                </div>
               <ButtonText 
                 text={"Set Profile Picture"}
-                onClick={handler}
+                // onClick={handler}
                 type="submit"
               />    
            </Modalcontainer>

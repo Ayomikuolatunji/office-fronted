@@ -41,7 +41,6 @@ export default function Register() {
          if(res.status===201){
           setLoading(false)
          }
-         localStorage.setItem("userId",JSON.stringify(res.data.userId))
          router.push('/profile-picture')
         }catch(err){
          setLoading(false)

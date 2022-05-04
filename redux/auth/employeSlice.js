@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit"
 
 
 
-const employeeSlice=createSlice({
+const employeeAuth=createSlice({
     name:"employeeAuth",
     initialState:{
         credentials:null,
@@ -20,5 +20,5 @@ const employeeSlice=createSlice({
     }
 })
 
-export const {loginEmployee,logoutEmployee}=employeeSlice.actions
-export default employeeSlice.reducer
+export const {loginEmployee,logoutEmployee}=employeeAuth.actions
+export default employeeAuth.reducer

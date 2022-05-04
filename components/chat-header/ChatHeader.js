@@ -8,12 +8,12 @@ export default function ChatHeader() {
     
 
 
-  const currentChat=useSelector(state=>state.users.chat)
+//   const currentChat=useSelector(state=>state.users.chat)
 
   return (
     <>
       <SingleChatDiv>
-          <div className="chat-header">
+          {/* <div className="chat-header">
               <div className="user-details">
                   <div className="avatar">
                     <Avatar src={`${currentChat.contact.avartImage}`} alt="avatar"
@@ -23,7 +23,7 @@ export default function ChatHeader() {
                       <h1>{currentChat.contact.username}</h1>
                   </div>
               </div>
-          </div>
+          </div> */}
       </SingleChatDiv>
     </>
   )

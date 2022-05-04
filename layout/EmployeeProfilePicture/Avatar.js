@@ -22,7 +22,7 @@ export default function ProfilePicture() {
     const [user,setUser]=useState([])
     const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
     const router=useRouter()    
-    const modal=useSelector(state=>state.users.modal)
+    // const modal=useSelector(state=>state.users.modal)
 
   
     useEffect(()=>{
@@ -97,8 +97,8 @@ export default function ProfilePicture() {
   }
   return (
     <>  
-    {modal && <MuiModal proflePicture={proflePicture}/>}
-        {modal || <Container>
+    {true && <MuiModal proflePicture={proflePicture}/>}
+        {true || <Container>
               <React.Fragment>
               <div className="thumbnail-img mx-auto mt-10 flex flex-col items-center">
                {loading?   <Loading size="xl" /> : <img src={image || defaultImg} className={`${image?"border-red border-4":""}`} style={{width:"200px", borderRadius:"100%",height:"200px"}}/>}

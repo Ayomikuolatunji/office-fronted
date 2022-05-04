@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react'
 import Link from 'next/link'
 import { ToastContainer,toast } from 'react-toastify'
 import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Button from '../../util/Button'
@@ -10,7 +11,6 @@ import { FormLogicHook } from '../../helpers/FormLogicHook'
 import {loginApi} from "../../api/authApi"
 import {RegisterMain} from "../../styled-compnent/index"
 import { toastOption } from '../../helpers/toastOption';
-import { useDispatch, useSelector } from 'react-redux';
 import { loginEmployee } from '../../redux/auth/employeSlice';
 
 

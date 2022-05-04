@@ -1,40 +1,40 @@
 import React,{useEffect, useState} from 'react'
 import { useDispatch ,useSelector} from 'react-redux'
-import { Avatar } from '@nextui-org/react';
+// import { Avatar } from '@nextui-org/react';
 import { ContactDiv } from '../../styled-compnent/chat'
-import { updateChat } from '../../redux/AllUser-slice'
-import Search from '../search/Search'
-import Profile from '../profile/Profile'
+// import { updateChat } from '../../redux/AllUser-slice'
+// import Search from '../search/Search'
+// import Profile from '../profile/Profile'
 
 
 export default function Contact({contacts}) {
- const dispatch=useDispatch()
- const [contact,setContact]=useState("")
-  const [selectedChat,setSelectedChat]=useState(undefined)
-  const mainUser=useSelector(state=>state.users.user)
+//  const dispatch=useDispatch()
+//  const [contact,setContact]=useState("")
+//   const [selectedChat,setSelectedChat]=useState(undefined)
+//   const mainUser=useSelector(state=>state.users.user)
   
 
 
-  const changeCurrentChat=(index,contact)=>{
-     setSelectedChat(index) 
-      dispatch(updateChat({contact}))
-  }
-  const otherUsers=(others,element)=>{
-     const newUsers= others.filter(p=>p._id !==element?._id)
-     return newUsers
-  }
-  const filterUser=contacts.filter(p=>{
-    if(p.username.toUpperCase().includes(contact.toUpperCase())){
-      return p
-    }
-    return null
-  })
-  const handleSearch=(e)=>setContact(e.target.value)
+  // const changeCurrentChat=(index,contact)=>{
+  //    setSelectedChat(index) 
+  //     dispatch(updateChat({contact}))
+  // }
+  // const otherUsers=(others,element)=>{
+  //    const newUsers= others.filter(p=>p._id !==element?._id)
+  //    return newUsers
+  // }
+  // const filterUser=contacts.filter(p=>{
+  //   if(p.username.toUpperCase().includes(contact.toUpperCase())){
+  //     return p
+  //   }
+  //   return null
+  // })
+  // const handleSearch=(e)=>setContact(e.target.value)
   
   return (
     <>
       <ContactDiv>
-          <Profile/>
+          {/* <Profile/>
            <div>
              <Search handleSearch={handleSearch} contact={contact}/>
            </div>
@@ -56,7 +56,7 @@ export default function Contact({contacts}) {
                       </div>
                   )
                }):<h5 className="text-center">No search found</h5>}
-           </div>
+           </div> */}
        </ContactDiv>
     </>
   )
