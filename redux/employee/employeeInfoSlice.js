@@ -27,8 +27,7 @@ const employeeInfo=createSlice({
     },
     extraReducers:{
         [getEmployeeData.fulfilled]:(state,action)=>{
-              console.log(action.payload)
-             state.employeeData=action.payload
+             state.employeeData=action.payload.user
         }
     }
 })
