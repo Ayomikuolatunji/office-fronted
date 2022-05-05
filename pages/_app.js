@@ -12,8 +12,8 @@ function MyApp({ Component, pageProps ,...appProps}) {
 
   if (
     [
-      "/employee-dashboard/",
-      '/employee-dashboard/home',
+      "/employee-dashboard",
+      '/employee-dashboard/profile',
       '/employee-dashboard/companies'
     ].includes(appProps.router.pathname)
   ) {

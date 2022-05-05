@@ -20,6 +20,7 @@ export default function MainEmplyeeDashhboard({children}) {
         <InnerDiv>
             <Sidebar/>
             <main>
+                
               {children}
             </main>
         </InnerDiv> 
