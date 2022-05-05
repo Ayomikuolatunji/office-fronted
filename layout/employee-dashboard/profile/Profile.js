@@ -7,7 +7,9 @@ import {FiEdit} from "react-icons/fi"
 
 export default function Profile() {
   const employeeData=useSelector(state=>state.employeeInfo.employeeData)
-  console.log(employeeData);
+  
+
+
   return (
     <ProfileContainer>
         <div className="general flex flex-col w-[40%] border-1 border-gray shadow-md">
@@ -16,9 +18,23 @@ export default function Profile() {
                 <FcOldTimeCamera className='text-5xl absolute bottom-0 right-0 mr-3'/>
            </div>
            <div className="username mt-6 bg-white p-3">
+              <h5 className='text-blue-400'>Your role</h5>
+              <div className='flex justify-between items-center pt-2'> 
+                  <h6>{employeeData.role}</h6>
+                  <FiEdit className='text-2xl cursor-pointer'/>
+              </div>
+           </div>
+           <div className="username mt-6 bg-white p-3">
               <h5 className='text-blue-400'>Your name</h5>
               <div className='flex justify-between items-center pt-2'> 
                   <h6>{employeeData.username}</h6>
+                  <FiEdit className='text-2xl cursor-pointer'/>
+              </div>
+           </div>
+           <div className="username mt-6 bg-white p-3">
+              <h5 className='text-blue-400'>Email address</h5>
+              <div className='flex justify-between items-center pt-2'> 
+                  <h6>{employeeData.email}</h6>
                   <FiEdit className='text-2xl cursor-pointer'/>
               </div>
            </div>
