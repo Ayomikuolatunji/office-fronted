@@ -3,9 +3,15 @@ import Link from 'next/link'
 import React, { useEffect } from 'react'
 import styled from "styled-components"
 import {VscSignOut} from "react-icons/vsc"
+import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
+import {logoutEmployee} from "../../../redux/auth/employeSlice"
 
 
 export default function Sidebar() {
+  const isLoggedIn=useSelector(state=>state.employeeAuth.isLoggedIn)
+  const dispatch=useDispatch()
+  const router=useRouter()
   const employeeCompanies=[
     {route:"/employee-dashboard", item:"Welcome"}, 
     {route:"/employee-dashboard/companies", item:"Your office"},
@@ -13,9 +19,16 @@ export default function Sidebar() {
   ]
 
   useEffect(()=>{
-
+    if(!isLoggedIn) {
+      router.push("/login")
+    }
   })
-
+  const LogoutFunc=()=>{
+    if(isLoggedIn) {
+        router.push("/login")
+        dispatch(logoutEmployee())
+    }
+  }
   return (
     <SidebaarDiv>
          <div className="overflow-y-auto py-4 px-3 rounded dark:bg-gray-800">
@@ -46,7 +59,10 @@ export default function Sidebar() {
             </span>
          </li>
          <li>
-            <span  className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <span  
+            className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" 
+              onClick={LogoutFunc}
+            >
               <VscSignOut className='text-2xl'/>
                <span className="flex-1 ml-3 whitespace-nowrap">Logout</span>
             </span>
