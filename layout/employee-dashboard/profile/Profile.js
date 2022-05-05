@@ -9,17 +9,17 @@ export default function Profile() {
   console.log(employeeData);
   return (
     <ProfileContainer>
-        <div className="general w-[40%] p-2 border-1 border-gray shadow-md">
-           <div className='relative w-[200px] h-[200px] ml-2'>
-           <Image src={employeeData.avartImage} alt={employeeData.username} layout='fill' className='rounded-[50%]'/>
-           <FcOldTimeCamera className='text-5xl absolute bottom-0 right-0 mr-3'/>
+        <div className="general w-[40%] border-1 border-gray shadow-md">
+           <div className='relative w-[200px] h-[200px] self-center'>
+                <Image src={employeeData.avartImage} alt={employeeData.username} layout='fill' className='rounded-[50%]'/>
+                <FcOldTimeCamera className='text-5xl absolute bottom-0 right-0 mr-3'/>
            </div>
-           <div className="username">
-                   
+           <div className="username mt-3 bg-white" >
+           <h2>Your name</h2>
            </div>
         </div>
          <div className="about">
-
+             
          </div>
     </ProfileContainer>
   )
@@ -29,7 +29,6 @@ const ProfileContainer=styled.div`
     display: flex;
     width: 100%;
     padding-top: 30px;
-    padding-right: 30px;
     height: inherit;
 `
 
