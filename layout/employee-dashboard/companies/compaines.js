@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function AddCompany() {
+export default function Companies() {
   return (
     <div>AddCompany</div>
   )

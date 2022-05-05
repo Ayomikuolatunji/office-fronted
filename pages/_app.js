@@ -4,10 +4,29 @@ import { NextUIProvider } from '@nextui-org/react';
 import Head from 'next/head';
 import store from '../redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
+import MainEmplyeeDashhboard from '../layout/employee-dashboard/MainEmplyeeDashhboard';
 
 
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps ,...appProps}) {
+
+  if (
+    [
+      "/employee-dashboard/",
+      '/employee-dashboard/home',
+      '/employee-dashboard/companies'
+    ].includes(appProps.router.pathname)
+  ) {
+    return  <Provider store={store.store}>
+            <NextUIProvider>
+              <PersistGate persistor={store.persistStore}>
+                <MainEmplyeeDashhboard>
+                    <Component {...pageProps} />
+                </MainEmplyeeDashhboard>
+              </PersistGate>
+            </NextUIProvider>
+        </Provider>
+  }
   return (
    <div>
       <Head>
