@@ -44,7 +44,7 @@ export default function Login() {
          })
         if(res.status===200){
           setLoading(false)
-          router.push('/add-company')
+          router.push('/employee-dashboard')
           dispatch(loginEmployee(res.data))
         }
       }catch(err){

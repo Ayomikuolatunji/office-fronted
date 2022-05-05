@@ -23,6 +23,7 @@ export default function Home() {
       </Head>
       
        {/* <Chat/> */}
+       <h1>Home page</h1>
     </div>
   )
 }
