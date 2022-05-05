@@ -8,8 +8,8 @@ import {VscSignOut} from "react-icons/vsc"
 export default function Sidebar() {
   const employeeCompanies=[
     {route:"/employee-dashboard", item:"Welcome"}, 
-    {route:"/employee-dashboard/companies", item:"companies"},
-    {route:"/employee-dashboard/profile",item:"profile"}
+    {route:"/employee-dashboard/companies", item:"Your office"},
+    {route:"/employee-dashboard/profile",item:"Profile"}
   ]
 
   useEffect(()=>{
