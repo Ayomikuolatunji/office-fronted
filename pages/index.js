@@ -22,7 +22,11 @@ export default function Home() {
     }
    })
 
-
+   useEffect(()=>{
+    if(router.asPath==="/"){
+      router.push("/employee-dashboard")
+    }
+   },[router])
   return (
     <div>
       <Head>
