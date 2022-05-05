@@ -5,7 +5,6 @@ import styled from "styled-components"
 
 export default function Main() {
   const employeeData=useSelector(state=>state.employeeInfo.employeeData)
-   console.log(employeeData);
 
   return (
     <MainDiv>

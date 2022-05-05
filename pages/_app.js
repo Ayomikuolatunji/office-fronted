@@ -14,7 +14,8 @@ function MyApp({ Component, pageProps ,...appProps}) {
     [
       "/employee-dashboard",
       '/employee-dashboard/profile',
-      '/employee-dashboard/companies'
+      '/employee-dashboard/companies',
+      '/employee-dashboard/inbox'
     ].includes(appProps.router.pathname)
   ) {
     return  <Provider store={store.store}>
