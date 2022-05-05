@@ -27,9 +27,9 @@ export default function Login() {
 
   useEffect(()=>{
       if(isLoggedIn){
-        router.push("/")
+        router.push("/employee-dashboard")
       }
-  },[router,isLoggedIn])
+  })
 
   const submitLogin=async(e)=>{
     setLoading(true)

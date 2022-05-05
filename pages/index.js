@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { getEmployeeData } from '../redux/employee/employeeInfoSlice';
 
 
@@ -8,11 +9,19 @@ import { getEmployeeData } from '../redux/employee/employeeInfoSlice';
 
 export default function Home() {
    const dispatch=useDispatch()
-
+   const router = useRouter()
+   const isLoggedIn=useSelector(state=>state.employeeAuth.isLoggedIn)
 
    useEffect(()=>{
       dispatch(getEmployeeData())
    })
+
+   useEffect(()=>{
+    if(!isLoggedIn){
+      router.push("/login")
+    }
+   })
+
 
   return (
     <div>
