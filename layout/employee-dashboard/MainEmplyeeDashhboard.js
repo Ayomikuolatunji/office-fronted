@@ -41,7 +41,7 @@ const InnerDiv=styled.div`
     height: 70vh;
     margin: auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #fff;
     @media(max-width:500px){
