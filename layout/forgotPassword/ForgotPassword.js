@@ -4,7 +4,7 @@ import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { Alert } from '@mui/material';
-import Button from '../../util/Button'
+import CustomButton from '../../util/CumstomButton'
 import InputText from '../../util/InputText'
 import { FormLogicHook } from '../../helpers/FormLogicHook'
 import {fogetPassword} from "../../api/authApi"
@@ -79,7 +79,7 @@ export default function ForgotPassword() {
                 className="block"
               />
            {isMessage && <Alert severity="success">Check your email!</Alert>}
-              <Button text={loading?"please wait":"Reset"} className={"outline"}/>
+              <CustomButton text={loading?"please wait":"Reset"} className={"outline"}>Testing Purpose </CustomButton>
               <span className='text-gray-500 text-sm '>Provide your email address to change password </span>
               <span> Back to login <Link href={"/login"} passHref>Login</Link> </span>
          </form>

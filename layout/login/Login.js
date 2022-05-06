@@ -5,19 +5,24 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import Button from '../../util/Button'
+import { Grid, Paper,Avatar,Typography} from '@mui/material';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import CustomButton from '../../util/CumstomButton'
 import InputText from '../../util/InputText'
 import { FormLogicHook } from '../../helpers/FormLogicHook'
 import {loginApi} from "../../api/authApi"
-import {RegisterMain} from "../../styled-compnent/index"
+// import {RegisterMain} from "../../styled-compnent/index"
 import { toastOption } from '../../helpers/toastOption';
 import { loginEmployee } from '../../redux/auth/employeSlice';
+import { PaperStyle } from '../../Material-Ui/Login';
+import { SX } from '../../Material-Ui/Login';
 
 
 
 
 
-export default function Login() {
+
+export default function Login() { 
   const [loading,setLoading]=useState(false)
   const router = useRouter()
   const isLoggedIn=useSelector(state=>state.employeeAuth.isLoggedIn)
@@ -73,39 +78,83 @@ export default function Login() {
      }
      return true
   } 
-  return (
-     <>
-       <RegisterMain className="bg-gradient-to-r from-purple-500 to-pink-500">
+  return ( <>
+       {/* <RegisterMain className="bg-gradient-to-r from-purple-500 to-pink-500">
          <div className="brand">
             <h1>Login</h1>
-        </div>
+  </div> */}
+
+           <Grid style={SX}>
+            <Paper style={PaperStyle} elevation ={10}>
+
+            <Grid align = "center">  
+                <Avatar sx = {{marginBottom : "0.6em"}}>
+                  <LockOpenIcon />
+                </Avatar>
+                <h2 style={{fontFamily : "Roboto"}}>
+                Sign In
+                </h2>   
+              </Grid>
+
          <form onSubmit={(e)=>submitLogin(e)}>
+
               <InputText 
                 type={"email"}
                 onChange={(e)=>handleChange(e)}
                 name={"email"}
-                placeholder={"Enter your email address"}
                 value={values.email}
-                className="block"
+                // className="block"
+                variant = {"outlined"}
+                label = {"Email"}
+                
               />
-              <InputText 
-                type={"password"}
-                onChange={(e)=>handleChange(e)}
+
+              <InputText
+               type= {"password"} 
+               value={values.password}
+               onChange={(e)=>handleChange(e)}
                 name={"password"}
-                placeholder={"Enter your password"}
-                value={values.password}
-                className="block"
+               label = "Password"
+               fullWidth
+               variant= {"outlined"}
+               required
               />
+    
+              
 
-              <span className="text-sm">You forgot password ? <Link href={"/reset-password"} passHref>reset password</Link> </span>
+              <CustomButton 
+              text={loading?"please wait":"Login"} 
+              variant={"contained"} 
+              type = {"submit"}
+              
+              >
+                   Submit
+              </CustomButton>
 
-              <Button text={loading?"please wait":"Login"} className={"outline"}/>
-              <span>You don&apos;t have an account ? <Link href={"/register"} passHref>register</Link> </span>
+              <Typography sx = {{marginBottom : "0.7em", marginTop : "0.7em"}}>
+               <Link href={"/reset-password"} passHref>
+                 Forgotten Password ?
+               </Link>
+             </Typography>
+
+             <Typography>
+               Don't have an Account ?
+                 <Link href={"/register"} passHref sx = {{paddingLeft : "0.3em", paddingBottom : "0.6em"}}>
+                 Sign Up
+               </Link>
+             </Typography>
+              {/* <span className="text-sm">You forgot password ? <Link href={"/reset-password"} passHref>reset password</Link> </span>
+              <span>You don&apos;t have an account ? <Link href={"/register"} passHref>register</Link> </span>  
+              */}
          </form>
-       </RegisterMain>
+         </Paper>
+         </Grid>
+        
+       {/* </RegisterMain> */}
+
        <ToastContainer limit={1}/>
-     </>
-  )
+       </>
+  );
 }
 
 

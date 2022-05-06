@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import Button from '../../util/Button'
+import CustomButton from '../../util/CumstomButton'
 import InputText from '../../util/InputText'
 import { FormLogicHook } from '../../helpers/FormLogicHook'
 import {registrationApi} from "../../api/authApi"
@@ -120,7 +120,7 @@ export default function Register() {
                 value={values.confirmPassword}
                 className="block"
               />
-              <Button text={loading?"please wait":"register"} className={"outline"}/>
+              <CustomButton text={loading?"please wait":"register"} className={"outline"}></CustomButton>
               <span>Already have an account ? <Link href={"/login"} passHref>Login</Link> </span>
          </form>
        </RegisterMain>
