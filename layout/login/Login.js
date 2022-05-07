@@ -89,7 +89,7 @@ export default function Login() {
        pb-5
        overflow-hidden">
   
-           <Grid style={SX}>
+           <Grid style={SX} >
             <Paper style={PaperStyle} elevation ={10}>
 
             <Grid align = "center">  
@@ -101,17 +101,16 @@ export default function Login() {
                 </h2>   
               </Grid>
 
-         <form onSubmit={(e)=>submitLogin(e)}>
+         <form onSubmit={(e)=>submitLogin(e)} style = {{height : "100%"}}>
 
               <InputText 
                 type={"email"}
                 onChange={(e)=>handleChange(e)}
                 name={"email"}
                 value={values.email}
-                // className="block"
                 variant = {"outlined"}
                 label = {"Email"}
-                
+                fullWidth
               />
 
               <InputText
@@ -148,9 +147,7 @@ export default function Login() {
                  Sign Up
                </Link>
              </Typography>
-              {/* <span className="text-sm">You forgot password ? <Link href={"/reset-password"} passHref>reset password</Link> </span>
-              <span>You don&apos;t have an account ? <Link href={"/register"} passHref>register</Link> </span>  
-              */}
+    
          </form>
          </Paper>
          </Grid>

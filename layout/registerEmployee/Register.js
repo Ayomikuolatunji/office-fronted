@@ -5,13 +5,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
+import { Grid, Paper, Avatar, Typography } from '@mui/material';
 import CustomButton from '../../util/CumstomButton'
 import InputText from '../../util/InputText'
 import { FormLogicHook } from '../../helpers/FormLogicHook'
 import {registrationApi} from "../../api/authApi"
 import { toastOption } from '../../helpers/toastOption';
-import {RegisterMain} from "../../styled-compnent/index"
 import { getEmployeeId } from '../../redux/employee/employeeInfoSlice';
+import { PaperStyle } from '../../Material-Ui/Login';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 
 
@@ -73,57 +75,96 @@ export default function Register() {
      }
      return true
   } 
-  return (
-     <>
-       <RegisterMain className="bg-gradient-to-r from-purple-500 to-pink-500">
-         <div className="brand">
-            <h1>Create Account</h1>
-        </div>
+  return (  <>
+    
+    <div 
+      className="bg-[url('../Image/login.jpg')]
+       bg-center 
+       bg-no-repeat 
+       bg-cover 
+       overflow-hidden">
+                  <Grid sx={{
+                    height : "100% !important",
+                    maxHeight : "660px"
+                  }}>
+            <Paper style={PaperStyle} elevation ={10}>
+
+            <Grid align = "center">  
+                <Avatar sx = {{marginBottom : "0.6em",backgroundColor : "secondary"}}>
+                  <LockOpenIcon color = "primary"/>
+                </Avatar>
+                <h2 style={{fontFamily : "Roboto"}}>
+                Sign Up
+                </h2>   
+              </Grid>
+
+            
+
          <form onSubmit={(e)=>submitUserInfo(e)}>
               <InputText 
                 type={"text"}
                 onChange={(e)=>handleChange(e)}
                 name={"username"}
-                placeholder={"Enter your username"}
+                label = {"Username"}
                 value={values.username}
-                className="block"
+                fullwidth
+                variant = {"outlined"} 
               />
               <InputText 
                 type={"email"}
                 onChange={(e)=>handleChange(e)}
                 name={"email"}
-                placeholder={"Enter your email address"}
+                label = {"Email"}
                 value={values.email}
-                className="block"
+                fullwidth
+                variant = {"outlined"} 
               />
                <InputText 
                 type={"text"}
                 onChange={(e)=>handleChange(e)}
                 name={"role"}
-                placeholder={"Enter your employed role"}
+                label = {"your role"}
                 value={values.role}
-                className="block"
+                fullwidth
+                variant = {"outlined"}
               />
               <InputText 
                 type={"password"}
                 onChange={(e)=>handleChange(e)}
                 name={"password"}
-                placeholder={"Enter your password"}
+                label = {"Password"}
                 value={values.password}
-                className="block"
+                fullwidth
+                variant = {"outlined"}
              />
              <InputText 
                 type={"password"}
                 onChange={(e)=>handleChange(e)}
                 name={"confirmPassword"}
-                placeholder={"Comfirm your password"}
+                label = {"Confirm password"}
                 value={values.confirmPassword}
-                className="block"
+                fullwidth
+                variant = {"outlined"}
               />
-              <CustomButton text={loading?"please wait":"register"} className={"outline"}></CustomButton>
-              <span>Already have an account ? <Link href={"/login"} passHref>Login</Link> </span>
+              <CustomButton sx = {{padding : "0.30rem"}}
+              text={loading?"please wait":"register"}
+               variant = {"contained"}
+               type = {"submit"}>
+                Register
+              </CustomButton>
+
+              <Typography sx = {{marginBottom : "0.7em", marginTop : "0.7em"}}>
+              Already have an account ?
+
+               <Link href={"/login"} passHref>
+                 Login
+               </Link>
+             </Typography>
+
          </form>
-       </RegisterMain>
+         </Paper>
+              </Grid>
+          </div>
        <ToastContainer limit={6}/>
      </>
   )
