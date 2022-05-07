@@ -10,8 +10,7 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import CustomButton from '../../util/CumstomButton'
 import InputText from '../../util/InputText'
 import { FormLogicHook } from '../../helpers/FormLogicHook'
-import {loginApi} from "../../api/authApi"
-// import {RegisterMain} from "../../styled-compnent/index"
+import {loginApi} from "../../api/authApi";
 import { toastOption } from '../../helpers/toastOption';
 import { loginEmployee } from '../../redux/auth/employeSlice';
 import { PaperStyle } from '../../Material-Ui/Login';
@@ -79,17 +78,23 @@ export default function Login() {
      return true
   } 
   return ( <>
-       {/* <RegisterMain className="bg-gradient-to-r from-purple-500 to-pink-500">
-         <div className="brand">
-            <h1>Login</h1>
-  </div> */}
-
+      
+      <div 
+      className="bg-[url('../Image/login.jpg')]
+       bg-center 
+       bg-no-repeat 
+       bg-cover 
+       h-full 
+       pt-5
+       pb-5
+       overflow-hidden">
+  
            <Grid style={SX}>
             <Paper style={PaperStyle} elevation ={10}>
 
             <Grid align = "center">  
-                <Avatar sx = {{marginBottom : "0.6em"}}>
-                  <LockOpenIcon />
+                <Avatar sx = {{marginBottom : "0.6em",backgroundColor : "secondary"}}>
+                  <LockOpenIcon color = "primary"/>
                 </Avatar>
                 <h2 style={{fontFamily : "Roboto"}}>
                 Sign In
@@ -149,8 +154,7 @@ export default function Login() {
          </form>
          </Paper>
          </Grid>
-        
-       {/* </RegisterMain> */}
+         </div>
 
        <ToastContainer limit={1}/>
        </>
