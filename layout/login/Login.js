@@ -87,7 +87,7 @@ export default function Login() {
        h-full 
        pt-5
        pb-5
-       overflow-hidden">
+       overflow-hidden" style={{height : "100vh"}}>
   
            <Grid style={SX} >
             <Paper style={PaperStyle} elevation ={10}>
@@ -118,7 +118,7 @@ export default function Login() {
                value={values.password}
                onChange={(e)=>handleChange(e)}
                 name={"password"}
-               label = "Password"
+               label = {"Password"}
                fullWidth
                variant= {"outlined"}
                required

@@ -81,24 +81,25 @@ export default function Register() {
       className="bg-[url('../Image/login.jpg')]
        bg-center 
        bg-no-repeat 
-       bg-cover 
-       overflow-hidden">
+       bg-cover
+       overflow-hidden 
+       " style = {{height : "100vh"}}>
                   <Grid sx={{
-                    height : "100% !important",
+                    height : "100%",
+                    marginBottom : "1rem",
                     maxHeight : "660px"
                   }}>
+                    
             <Paper style={PaperStyle} elevation ={10}>
 
             <Grid align = "center">  
-                <Avatar sx = {{marginBottom : "0.6em",backgroundColor : "secondary"}}>
+                <Avatar sx = {{backgroundColor : "secondary"}}>
                   <LockOpenIcon color = "primary"/>
                 </Avatar>
                 <h2 style={{fontFamily : "Roboto"}}>
                 Sign Up
                 </h2>   
               </Grid>
-
-            
 
          <form onSubmit={(e)=>submitUserInfo(e)}>
               <InputText 
@@ -146,14 +147,14 @@ export default function Register() {
                 fullwidth
                 variant = {"outlined"}
               />
-              <CustomButton sx = {{padding : "0.30rem"}}
+              <CustomButton 
               text={loading?"please wait":"register"}
                variant = {"contained"}
                type = {"submit"}>
                 Register
               </CustomButton>
 
-              <Typography sx = {{marginBottom : "0.7em", marginTop : "0.7em"}}>
+              <Typography sx = {{marginBottom : "0.4m", marginTop : "0.4em"}}>
               Already have an account ?
 
                <Link href={"/login"} passHref>

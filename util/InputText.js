@@ -11,10 +11,9 @@ export default function InputText({type,label,onChange,name,value, outlined}) {
      label={label} 
      onChange={onChange}
      name={name}
-    //  className={className}
      value={value}
      variant = {outlined}
-     style = {{ margin: "0.8em 0"}}
+     style = {{ margin: "0.6em 0"}}
      fullWidth
      />
   )

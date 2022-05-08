@@ -11,7 +11,7 @@ export default function CustomButton({variant,text,onClick, type}) {
       type = {type}
        color = "primary" 
        fullWidth
-      //  style={SX}
+       sx = {{padding : "0.75rem"}}
 >{text}</Button>
   )
 }

@@ -3,12 +3,12 @@ import Link from 'next/link'
 import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import { Alert } from '@mui/material';
+import { Alert,Grid, Paper, Typography } from '@mui/material';
 import CustomButton from '../../util/CumstomButton'
 import InputText from '../../util/InputText'
+import {PaperStyle} from "../../Material-Ui/Login"
 import { FormLogicHook } from '../../helpers/FormLogicHook'
 import {fogetPassword} from "../../api/authApi"
-import {RegisterMain} from "../../styled-compnent/index"
 import { toastOption } from '../../helpers/toastOption';
 
 
@@ -63,27 +63,60 @@ export default function ForgotPassword() {
    }
      return true
   } 
-  return (
-     <>
-       <RegisterMain className="bg-gradient-to-r from-purple-500 to-pink-500">
-         <div className="brand">
-            <h1>Reset Password</h1>
-        </div>
-         <form onSubmit={(e)=>sendResetPassword(e)}>
+  return ( <>
+      <div 
+      className="bg-[url('../Image/login.jpg')]
+       bg-center 
+       bg-no-repeat 
+       bg-cover 
+       h-full 
+       pt-5
+       pb-5
+       overflow-hidden" style = {{height : "100vh"}}>
+  
+           <Grid sx={{marginTop :"7.5rem"}}>
+            <Paper style={PaperStyle} 
+            elevation ={10}>
+
+            <Grid align = "center" sx = {{padding : "0.75rem 0.45rem"}}>  
+                <h3 style={{fontFamily : "Roboto"}}>
+                RESET PASSWORD
+                </h3>   
+              </Grid>
+
+         <form onSubmit={(e)=>sendResetPassword(e)}
+         className = "p-4">
               <InputText 
                 type={"email"}
                 onChange={(e)=>handleChange(e)}
                 name={"email"}
-                placeholder={"Enter your email address"}
+                label = {"Enter email account"}
                 value={values.email}
-                className="block"
+                variant = {"outlined"}
+                fullwidth
+                
               />
+              
            {isMessage && <Alert severity="success">Check your email!</Alert>}
-              <CustomButton text={loading?"please wait":"Reset"} className={"outline"}>Testing Purpose </CustomButton>
-              <span className='text-gray-500 text-sm '>Provide your email address to change password </span>
-              <span> Back to login <Link href={"/login"} passHref>Login</Link> </span>
+              <CustomButton
+              type = {"button"}
+              text={loading?"please wait":"Reset"} 
+              variant={"contained"}
+              fullwidth
+              >
+              </CustomButton>
+
+              <p className='text-base text-center'>
+               Provide your email address to change password
+              <br />
+              Back to login <Link href={"/login"} passHref sx = {{paddingLeft : "0.5em", paddingBottom : "0.em"}}>
+                 Login
+               </Link>
+             </p>
          </form>
-       </RegisterMain>
+         </Paper>
+         </Grid>
+       </div>
        <ToastContainer limit={1}/>
      </>
   )
