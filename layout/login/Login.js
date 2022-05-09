@@ -13,8 +13,6 @@ import { FormLogicHook } from '../../helpers/FormLogicHook'
 import {loginApi} from "../../api/authApi";
 import { toastOption } from '../../helpers/toastOption';
 import { loginEmployee } from '../../redux/auth/employeSlice';
-import { PaperStyle } from '../../Material-Ui/Login';
-import { SX } from '../../Material-Ui/Login';
 
 
 
@@ -33,7 +31,7 @@ export default function Login() {
       if(isLoggedIn){
         router.push("/employee-dashboard")
       }
-  })
+  },[router,isLoggedIn])
 
   const submitLogin=async(e)=>{
     setLoading(true)
@@ -80,29 +78,18 @@ export default function Login() {
   return ( <>
       
       <div 
-      className="bg-[url('../Image/login.jpg')]
-       bg-center 
-       bg-no-repeat 
-       bg-cover 
-       h-full 
-       pt-5
-       pb-5
-       overflow-hidden" style={{height : "100vh"}}>
-  
-           <Grid style={SX} >
-            <Paper style={PaperStyle} elevation ={10}>
-
-            <Grid align = "center">  
-                <Avatar sx = {{marginBottom : "0.6em",backgroundColor : "secondary"}}>
-                  <LockOpenIcon color = "primary"/>
-                </Avatar>
-                <h2 style={{fontFamily : "Roboto"}}>
-                Sign In
-                </h2>   
-              </Grid>
-
-         <form onSubmit={(e)=>submitLogin(e)} style = {{height : "100%"}}>
-
+      className="bg-[url('/images/office.jpg')] bg-center bg-no-repeat bg-cover pt-5 pb-5 overflow-hidden h-screen flex justify-center items-center">
+        <Grid>
+        <Paper  className='w-[350px] mx-auto mt-[20px] p-[20px]'>
+        <Grid align = "center">   
+            <Avatar className="mb-5">
+              <LockOpenIcon color = "primary"/>
+            </Avatar>
+            <h2>
+            Sign In
+            </h2>   
+          </Grid>    
+         <form onSubmit={(e)=>submitLogin(e)}>
               <InputText 
                 type={"email"}
                 onChange={(e)=>handleChange(e)}
@@ -112,7 +99,6 @@ export default function Login() {
                 label = {"Email"}
                 fullWidth
               />
-
               <InputText
                type= {"password"} 
                value={values.password}
@@ -123,31 +109,29 @@ export default function Login() {
                variant= {"outlined"}
                required
               />
-    
-              
-
               <CustomButton 
               text={loading?"please wait":"Login"} 
               variant={"contained"} 
               type = {"submit"}
               
               >
-                   Submit
+                Submit
               </CustomButton>
-
-              <Typography sx = {{marginBottom : "0.7em", marginTop : "0.7em"}}>
-               <Link href={"/reset-password"} passHref>
-                 Forgotten Password ?
-               </Link>
-             </Typography>
-
-             <Typography>
-               Don &apos;t have an Account ?
-                 <Link href={"/register"} passHref sx = {{paddingLeft : "0.3em", paddingBottom : "0.6em"}}>
+              <div className='mt-4'>
+                <Typography className='mt-4'>
+                <Link href={"/reset-password"} passHref>
+                  Forgotten Password ?
+                </Link>
+              </Typography>
+              </div>
+              <div className='mt-2'>
+                <Typography>
+               Don&apos;t have an Account ?
+                 <Link href={"/register"} passHref>
                  Sign Up
                </Link>
              </Typography>
-    
+              </div>
          </form>
          </Paper>
          </Grid>

@@ -3,23 +3,3 @@
 @tailwind utilities;
 
 
-
-
-.styles_scroll-to-top__2A70v {
-    background-color: white;
-    right: 40px;
-    bottom: 40px;
-    position: fixed;
-    z-index: 2;
-    cursor: pointer;
-    border-radius: 7px;
-    width: 50px !important;
-    height: 50px !important;
-    transition: opacity 1s ease-in-out;
-    box-shadow: 0 9px 25px 0 rgb(132 128 177 / 28%);
-    border: none;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    outline: none;
-}

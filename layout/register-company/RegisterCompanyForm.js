@@ -1,11 +1,11 @@
 import axios from 'axios'
-import React,{useState} from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { registerCompany } from '../../api/authApi'
 import { FormLogicHook } from '../../helpers/FormLogicHook'
 import InputText from '../../util/InputText'
-import SelectCompany from './SelectCompany'
-import SelectCountry from './SelectCountry'
+import SelectCompany from '../../util/SelectCompany'
+import SelectCountry from '../../util/SelectCountry'
 import Button from "../../util/Button"
 
 export default function RegisterCompanyForm() {
@@ -38,7 +38,9 @@ export default function RegisterCompanyForm() {
                 name={"company_name"}
                 value={values.company_name}
                 onChange={(e)=>handleChange(e)}
-                placeholder={"Enter your  company name"}
+                label = {"Company name"}
+                fullwidth
+                variant = {"outlined"}
             />
         </div>
          <div className="normal-input">
@@ -47,7 +49,9 @@ export default function RegisterCompanyForm() {
                 value={values.company_email}
                 name={"company_email"}
                 onChange={(e)=>handleChange(e)}
-                placeholder={"Enter your company email address"}
+                fullwidth
+                label = {"Email"}
+                variant = {"outlined"} 
             />
         </div>
         <div className="normal-input">
@@ -56,7 +60,7 @@ export default function RegisterCompanyForm() {
                name={"company_password"}
                value={values.company_password}
                onChange={(e)=>handleChange(e)}
-               placeholder={"Enter your company account password"}
+               label = {"Password"}
             />
         </div>
           <div className='w-[70%]  flex mx-auto mf'>
