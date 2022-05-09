@@ -142,7 +142,7 @@ export default function Login() {
              </Typography>
 
              <Typography>
-               Don't have an Account ?
+               Don &apos;t have an Account ?
                  <Link href={"/register"} passHref sx = {{paddingLeft : "0.3em", paddingBottom : "0.6em"}}>
                  Sign Up
                </Link>
