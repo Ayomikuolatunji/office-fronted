@@ -1,16 +1,20 @@
 import React from 'react'
+import { TextField } from '@mui/material'
 
-export default function InputText({type,placeholder,onChange,name,className,value}) {
+export default function InputText({type,label,onChange,name,value, outlined}) {
+  // className
 
 
   return (
-     <input 
+     <TextField 
      type={type} 
-     placeholder={placeholder} 
+     label={label} 
      onChange={onChange}
      name={name}
-     className={className}
      value={value}
+     variant = {outlined}
+     style = {{ margin: "0.6em 0"}}
+     fullWidth
      />
   )
 }
