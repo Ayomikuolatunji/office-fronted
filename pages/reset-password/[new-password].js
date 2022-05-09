@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
 import { ToastContainer,toast } from 'react-toastify'
 import { useRouter } from 'next/router';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import { Alert,Grid, Paper} from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import InputText from '../../util/InputText'
 import { FormLogicHook } from '../../helpers/FormLogicHook'
 import {setPassword} from "../../api/authApi"
-import {RegisterMain} from "../../styled-compnent/index"
 import { toastOption } from '../../helpers/toastOption';
 import CustomButton from '../../util/CumstomButton';
 

@@ -12,7 +12,6 @@ import { FormLogicHook } from '../../helpers/FormLogicHook'
 import {registrationApi} from "../../api/authApi"
 import { toastOption } from '../../helpers/toastOption';
 import { getEmployeeId } from '../../redux/employee/employeeInfoSlice';
-import { PaperStyle } from '../../Material-Ui/Login';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 
