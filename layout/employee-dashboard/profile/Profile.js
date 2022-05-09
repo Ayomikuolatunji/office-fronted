@@ -9,8 +9,7 @@ import Role from '../../../components/profile-components/Role';
 
 export default function Profile() {
   const employeeData=useSelector(state=>state.employeeInfo.employeeData)
-  const [edit,setEdit]=useState(true)
-  const [role,setRole]=useState(employeeData?.role)
+
   
 
 
@@ -22,7 +21,7 @@ export default function Profile() {
                 <FcOldTimeCamera className='text-5xl absolute bottom-0 right-0 mr-3'/>
            </div>
            {/*role */}
-           <Role/>
+           <Role employeeData={employeeData}/>
            <div className="username mt-6 bg-white p-3">
               <h5 className='text-blue-400'>Your name</h5>
               <div className='flex justify-between items-center pt-2'> 

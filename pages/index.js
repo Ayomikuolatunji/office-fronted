@@ -35,7 +35,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-       {/* <Chat/> */}
        <h1>Home page</h1>
     </div>
   )
