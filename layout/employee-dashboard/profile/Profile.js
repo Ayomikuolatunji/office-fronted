@@ -6,6 +6,7 @@ import {FcOldTimeCamera} from "react-icons/fc"
 import {FiEdit} from "react-icons/fi"
 import {CgProfile} from "react-icons/cg"
 import Role from '../../../components/profile-components/Role';
+import ProfilePicture from '../../../components/profile-components/PofilePicture';
 
 export default function Profile() {
   const employeeData=useSelector(state=>state.employeeInfo.employeeData)
@@ -16,10 +17,8 @@ export default function Profile() {
   return (
     <ProfileContainer>
         <div className="general flex flex-col w-[40%] border-1 border-gray shadow-md mt-14">
-           <div className='relative w-[200px] h-[200px] self-center'>
-                <Image src={employeeData.avartImage} alt={employeeData.username} layout='fill' className='rounded-[50%]'/>
-                <FcOldTimeCamera className='text-5xl absolute bottom-0 right-0 mr-3'/>
-           </div>
+          {/* profile picture */}
+          <ProfilePicture employeeData={employeeData}/>
            {/*role */}
            <Role employeeData={employeeData}/>
            <div className="username mt-6 bg-white p-3">
@@ -72,7 +71,7 @@ export default function Profile() {
                     <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
                         <span className="tracking-wide">Education</span>
                     </div>
-                    <ul className="list-inside space-y-2">
+                    <ul className="list-insid ">
                         <li>
                             <div className="text-blue-500">Masters Degree in Oxford</div>
                             <div className="text-gray-500 text-xs">March 2020 - Now</div>

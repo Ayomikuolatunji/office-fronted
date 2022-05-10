@@ -7,15 +7,44 @@ import { toastOption } from '../../helpers/toastOption';
 export default function Role({employeeData}) {
     const [edit,setEdit]=useState(true)
     const [role,setRole]=useState(employeeData?.role)
+
     
     const handleChange=(e)=>{
        setRole(e.target.value)
     }
+    const graphQuery={
+        query:`   
+        mutation {
+            update_Employee_Role(id:"${employeeData._id}",role_update:{role:"${role}"})
+         {
+           _id
+         }
+       }
+        `
+      }
     const Edit=()=>{
         if(!role){
             return  toast.error("Role can't be empty",toastOption)
         }
         setEdit(!edit)
+        if(edit){
+          fetch("http://localhost:8080/graphql",{
+            method:"POST",
+            headers:{
+              "Content-Type":"application/json"
+            },
+            body:JSON.stringify(graphQuery)
+          })
+          .then(js=>{
+            return js.json()
+          })
+          .then(data=>{
+            console.log(data)
+          })
+          .catch(err=>{
+            console.log(err.message)
+          })
+        }
     }
     
   return (
