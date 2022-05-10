@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { ToastContainer,toast } from 'react-toastify'
 import { useRouter } from 'next/router';
@@ -32,33 +32,38 @@ export default function Login() {
         router.push("/employee-dashboard")
       }
   },[router,isLoggedIn])
+  
+  useEffect(()=>{
+    // prefetch employee dashboard
+    router.prefetch("/employee-dashboard")
+  },[router])
 
-  const submitLogin=async(e)=>{
-    setLoading(true)
-    const {email,password}=values
-      e.preventDefault()
-        validateRegistration()
-      if(validateRegistration()){
-        try{
-          const res=await axios.post(loginApi,{
-          email,
-          password
-         })
-        if(res.status===200){
-          setLoading(false)
-          router.push('/employee-dashboard')
-          dispatch(loginEmployee(res.data))
+  const submitLogin=useCallback(async(e)=>{
+      setLoading(true)
+      const {email,password}=values
+        e.preventDefault()
+          validateRegistration()
+        if(validateRegistration()){
+          try{
+            const res=await axios.post(loginApi,{
+            email,
+            password
+           })
+          if(res.status===200){
+            setLoading(false)
+            router.push('/employee-dashboard')
+            dispatch(loginEmployee(res.data))
+          }
+        }catch(err){
+           setLoading(false)
+           console.log(err)
+           toast.error("Either account does not exits or incorrect passsword or Email",toastOption)
         }
-      }catch(err){
-         setLoading(false)
-         console.log(err)
-         toast.error("Either account does not exits or incorrect passsword or Email",toastOption)
+      
       }
-    
-    }
-     
-  }
-  const validateRegistration=()=>{
+  },[dispatch, values, validateRegistration,router])
+
+  const validateRegistration=useCallback(()=>{
     const {email,password}=values
 
     if(!password || !email){
@@ -74,9 +79,11 @@ export default function Login() {
         return false 
      }
      return true
-  } 
-  return ( <>
-      
+  },[values]) 
+
+  
+  return ( 
+    <>    
       <div 
       className="bg-[url('/images/office.jpg')] bg-center bg-no-repeat bg-cover pt-5 pb-5 overflow-hidden h-screen flex justify-center items-center">
         <Grid>

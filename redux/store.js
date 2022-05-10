@@ -15,12 +15,12 @@ const persistConfig = {
 }
 // first reducer setup for persist storage blacklisting country and companies
 const rootReducer= combineReducers({
-   // persist stores 
+   //don't persist stores below 
     country:countryApiSlice,
-    companies:companyTypeSlice,
-    // persist employeeAuth
-    employeeAuth:employeeAuth,
     modal:modalSlice,
+    companies:companyTypeSlice,
+    // persist the stores below
+    employeeAuth:employeeAuth,
     employeeInfo:employeeInfo
 })
 

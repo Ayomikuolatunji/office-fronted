@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -25,7 +25,7 @@ export default function Register() {
   const dispatch=useDispatch()
 
 
-  const submitUserInfo=async(e)=>{
+  const submitUserInfo=useCallback(async(e)=>{
     setLoading(true)
     const {username,email,password,role}=values
       e.preventDefault()
@@ -48,32 +48,34 @@ export default function Register() {
          toast.error(err.message,toastOption)
       }
       }
-    
-  }
-  const validateRegistration=()=>{
+  },[dispatch,values,validateRegistration,router])
+  
+  const validateRegistration=useCallback(()=>{
     const {username,email,password,confirmPassword,role}=values
-     if(password !==confirmPassword){
-        toast.error("Password an confirm password should be equal !", toastOption);
-        return false    
-     }
-     if(username.length < 4){
-        toast.error("Your user name should be more than 3 characters !", toastOption);
-        return false     
-     }
-     if(password.length < 5){
-      toast.error("Your paswword should be 8 characters long!", toastOption);
-      return false 
-     }
-     if(!email){
-      toast.error("Email is required!", toastOption);
-      return false 
-     }
-     if(!role){
-      toast.error("Your employed role is required!", toastOption);
-      return false 
-     }
-     return true
-  } 
+    if(password !==confirmPassword){
+       toast.error("Password an confirm password should be equal !", toastOption);
+       return false    
+    }
+    if(username.length < 4){
+       toast.error("Your user name should be more than 3 characters !", toastOption);
+       return false     
+    }
+    if(password.length < 5){
+     toast.error("Your paswword should be 8 characters long!", toastOption);
+     return false 
+    }
+    if(!email){
+     toast.error("Email is required!", toastOption);
+     return false 
+    }
+    if(!role){
+     toast.error("Your employed role is required!", toastOption);
+     return false 
+    }
+    return true
+  },[values])
+
+
   return (  <>
     
     <div className="bg-[url('/images/office.jpg')] bg-center bg-no-repeat bg-cover pt-5 pb-5 overflow-hidden h-screen flex justify-center items-center">

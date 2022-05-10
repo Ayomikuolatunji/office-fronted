@@ -6,23 +6,20 @@ import {VscSignOut} from "react-icons/vsc"
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import {logoutEmployee} from "../../../redux/auth/employeSlice"
+import { employeeCompanies } from '../../../helpers/employeeCompanies'
 
 
 export default function Sidebar() {
   const isLoggedIn=useSelector(state=>state.employeeAuth.isLoggedIn)
   const dispatch=useDispatch()
   const router=useRouter()
-  const employeeCompanies=[
-    {route:"/employee-dashboard", item:"Welcome"}, 
-    {route:"/employee-dashboard/companies", item:"Your office"},
-    {route:"/employee-dashboard/profile",item:"Profile"}
-  ]
 
   useEffect(()=>{
     if(!isLoggedIn) {
       router.push("/login")
     }
-  })
+  },[router,isLoggedIn])
+
   const LogoutFunc=()=>{
     if(isLoggedIn) {
         router.push("/login")
@@ -61,7 +58,7 @@ export default function Sidebar() {
          <li>
             <span  
             className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" 
-              onClick={LogoutFunc}
+              onClick={()=>LogoutFunc()}
             >
               <VscSignOut className='text-2xl'/>
                <span className="flex-1 ml-3 whitespace-nowrap">Logout</span>
@@ -69,7 +66,6 @@ export default function Sidebar() {
          </li>
          </ul>
          </div>
-         
     </SidebaarDiv>
   )
 }

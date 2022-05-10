@@ -14,13 +14,13 @@ export default function MainEmplyeeDashhboard({children}) {
 
     useEffect(()=>{
         dispatch(getEmployeeData())
-    })
+    },[dispatch])
+    
   return (
     <ContainerDiv>
         <InnerDiv>
             <Sidebar/>
             <main>
-                
               {children}
             </main>
         </InnerDiv> 

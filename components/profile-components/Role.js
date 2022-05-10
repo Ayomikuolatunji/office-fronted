@@ -35,12 +35,6 @@ export default function Role({employeeData}) {
             },
             body:JSON.stringify(graphQuery)
           })
-          .then(js=>{
-            return js.json()
-          })
-          .then(data=>{
-            console.log(data)
-          })
           .catch(err=>{
             console.log(err.message)
           })

@@ -15,4 +15,4 @@ export const upload=(file, link,setProgress,setUrl)=>{
     };
     xhr.open("PUT", link);
     xhr.send(file);
-  }
+}

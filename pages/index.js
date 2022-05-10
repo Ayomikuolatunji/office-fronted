@@ -14,13 +14,13 @@ export default function Home() {
 
    useEffect(()=>{
       dispatch(getEmployeeData())
-   })
+   },[dispatch])
 
    useEffect(()=>{
     if(!isLoggedIn){
       router.push("/login")
     }
-   })
+   },[router, isLoggedIn])
 
    useEffect(()=>{
     if(router.asPath==="/"){
