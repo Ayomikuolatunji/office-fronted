@@ -3,16 +3,21 @@ import {FiEdit} from "react-icons/fi"
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer,toast } from 'react-toastify'
 import { toastOption } from '../../helpers/toastOption';
+import {getEmployeeData} from "../../redux/employee/employeeInfoSlice"
+import {useDispatch} from "react-redux"
 
 export default function Role({employeeData}) {
     const [edit,setEdit]=useState(true)
     const [role,setRole]=useState(employeeData?.role)
+    const dispatch=useDispatch()
 
     
     const handleChange=(e)=>{
        setRole(e.target.value)
     }
-    const graphQuery={
+
+    const Edit=()=>{
+      const graphQuery={
         query:`   
         mutation {
             update_Employee_Role(id:"${employeeData._id}",role_update:{role:"${role}"})
@@ -22,19 +27,21 @@ export default function Role({employeeData}) {
        }
         `
       }
-    const Edit=()=>{
-        setEdit(!edit)
-        if(edit){
-          fetch("http://localhost:8080/graphql",{
+      fetch("http://localhost:8080/graphql",{
             method:"POST",
             headers:{
               "Content-Type":"application/json"
             },
             body:JSON.stringify(graphQuery)
           })
+          .then(()=>{
+            dispatch(getEmployeeData())
+          })
           .catch(err=>{
             console.log(err.message)
           })
+        if(!edit){
+          return 
         }
         if(!role){
           return  toast.error("Role can't be empty",toastOption)
@@ -49,7 +56,8 @@ export default function Role({employeeData}) {
             defaultValue={role} 
             className={`border-r-0 outline-none border-t-0 border-l-0 bg-none ${edit? "border-b-0" :"border-b-[2px] border-blue-500"}`} disabled={edit} 
             onChange={(e)=>handleChange(e)}/>
-            <FiEdit className='text-2xl cursor-pointer' onClick={()=>Edit()}/>
+            <FiEdit className='text-2xl cursor-pointer' onClick={
+              ()=>{Edit();setEdit(!edit)}}/>
         </div>
         <ToastContainer limit={1}/>
     </div>
