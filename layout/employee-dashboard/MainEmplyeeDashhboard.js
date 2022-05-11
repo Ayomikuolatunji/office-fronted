@@ -39,7 +39,7 @@ const ContainerDiv=styled.div`
 `
 
 const InnerDiv=styled.div`
-    width: 80vw;
+    width: 70vw;
     height: 70vh;
     margin: auto;
     display: flex;
