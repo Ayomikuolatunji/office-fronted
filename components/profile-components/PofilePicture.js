@@ -41,7 +41,6 @@ export default function ProfilePicture({employeeData}) {
           return res.json()
         })
         .then(data=>{
-          console.log(data)
           setLoading(false)
           dispatch(getEmployeeData())
         })
