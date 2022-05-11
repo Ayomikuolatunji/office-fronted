@@ -56,8 +56,9 @@ export default function ProfilePicture({employeeData}) {
   
   return (
     <div className='relative w-[200px] h-[250px] self-center'>
-      {loading && <CircleProgressbar/>}
-      <Image src={employeeData.avartImage} alt={employeeData.username} layout='fill' className={`${loading ? "hidden" :" block"} rounded-[50%]`} />
+     {loading ? <CircleProgressbar/> : <div className='relative w-[200px] h-[250px] self-center'>
+        <Image src={employeeData.avartImage} alt={employeeData.username} layout='fill' className={`${loading ? "hidden" :" block"} rounded-[50%]`} />
+      </div>}
       <label htmlFor="files" className='text-5xl absolute bottom-0 right-0 mr-3x]'>
         <FcOldTimeCamera className='text-6xl my-3 cursor-pointer'/>
         <input
