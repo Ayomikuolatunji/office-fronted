@@ -74,7 +74,7 @@ export default function ProfilePicture() {
                }
           }
         }catch(error){
-           setLoadingImg(false)
+          setLoading(false)
            toast.error("uploading failed", toastOption);
            return false 
         }

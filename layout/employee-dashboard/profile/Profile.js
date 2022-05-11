@@ -1,12 +1,11 @@
-import Image from 'next/image';
-import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import styled from "styled-components"
-import {FcOldTimeCamera} from "react-icons/fc"
 import {FiEdit} from "react-icons/fi"
 import {CgProfile} from "react-icons/cg"
 import Role from '../../../components/profile-components/UpdateRole';
 import ProfilePicture from '../../../components/profile-components/UpdatePofilePicture';
+import UpdateEmail from '../../../components/profile-components/UpdateEmail';
+import UpdateName from '../../../components/profile-components/UpdateName';
 
 export default function Profile() {
   const employeeData=useSelector(state=>state.employeeInfo.employeeData)
@@ -21,20 +20,10 @@ export default function Profile() {
           <ProfilePicture employeeData={employeeData}/>
            {/*role */}
            <Role employeeData={employeeData}/>
-           <div className="username mt-6 bg-white p-3">
-              <h5 className='text-blue-400'>Your name</h5>
-              <div className='flex justify-between items-center pt-2'> 
-                  <h6>{employeeData?.username}</h6>
-                  <FiEdit className='text-2xl cursor-pointer'/>
-              </div>
-           </div>
-           <div className="username mt-6 bg-white p-3">
-              <h5 className='text-blue-400'>Email address</h5>
-              <div className='flex justify-between items-center pt-2'> 
-                  <h6>{employeeData?.email}</h6>
-                  <FiEdit className='text-2xl cursor-pointer'/>
-              </div>
-           </div>
+           {/* name */}
+           <UpdateName employeeData={employeeData}/>
+          {/* email */}
+          <UpdateEmail employeeData={employeeData}/>
         </div>
          <div className="about w-[60%] bg-white p-3 shadow-sm rounded-sm">
             <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
