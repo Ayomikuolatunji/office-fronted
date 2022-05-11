@@ -10,7 +10,6 @@ export default function ProfilePicture({employeeData}) {
 
    const handleUpload = (uploadEvent) => {
     uploadEvent.persist();
-    setUploading(true);
 
     const [file] = uploadEvent.target.files;
     const reader = new FileReader();
@@ -18,7 +17,7 @@ export default function ProfilePicture({employeeData}) {
       const graphQuery={
         query:`
         mutation {
-         update_Profile_Picture(id: "${"627a2056e4d0048ad86566e7"}", update_picture: {key:"${file.name}", data:"${onLoadEndEvent.target.result.split(",")[1]}"}) {
+         update_Profile_Picture(id: "${employeeData._id}", update_picture: {key:"${file.name}", data:"${onLoadEndEvent.target.result.split(",")[1]}"}) {
            _id
          }
        }  
@@ -26,6 +25,7 @@ export default function ProfilePicture({employeeData}) {
        }
         fetch("http://localhost:8080/graphql",{
           method:"POST",
+          mode: "cors",
           headers:{
             "Content-Type":"application/json"
           },
@@ -49,7 +49,7 @@ export default function ProfilePicture({employeeData}) {
   
   return (
     <div className='relative w-[200px] h-[200px] self-center'>
-    <Image src={employeeData.avatarImage} alt={employeeData.username} layout='fill' className='rounded-[50%]'/>
+    <Image src={employeeData.avartImage} alt={employeeData.username} layout='fill' className='rounded-[50%]'/>
     <label htmlFor="files" className='text-5xl absolute bottom-0 right-0 mr-3x]'>
       <FcOldTimeCamera className='text-6xl my-3 cursor-pointer'/>
       <input
