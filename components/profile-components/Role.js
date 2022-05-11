@@ -23,9 +23,6 @@ export default function Role({employeeData}) {
         `
       }
     const Edit=()=>{
-        if(!role){
-            return  toast.error("Role can't be empty",toastOption)
-        }
         setEdit(!edit)
         if(edit){
           fetch("http://localhost:8080/graphql",{
@@ -39,6 +36,9 @@ export default function Role({employeeData}) {
             console.log(err.message)
           })
         }
+        if(!role){
+          return  toast.error("Role can't be empty",toastOption)
+      }
     }
     
   return (
@@ -47,7 +47,7 @@ export default function Role({employeeData}) {
         <div className='flex justify-between items-center pt-2'> 
             <input type="text" 
             defaultValue={role} 
-            className="border-r-0 outline-none border-t-0 border-l-0 bg-none" disabled={edit} 
+            className={`border-r-0 outline-none border-t-0 border-l-0 bg-none ${edit? "border-b-0" :"border-b-[2px] border-blue-500"}`} disabled={edit} 
             onChange={(e)=>handleChange(e)}/>
             <FiEdit className='text-2xl cursor-pointer' onClick={()=>Edit()}/>
         </div>
