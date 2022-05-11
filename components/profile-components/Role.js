@@ -23,6 +23,7 @@ export default function Role({employeeData}) {
             update_Employee_Role(id:"${employeeData._id}",role_update:{role:"${role}"})
          {
            _id
+           role
          }
        }
         `
@@ -34,8 +35,11 @@ export default function Role({employeeData}) {
             },
             body:JSON.stringify(graphQuery)
           })
-          .then(()=>{
+          .then(res=>res.json())
+          .then((data)=>{
+            console.log(data)
             dispatch(getEmployeeData())
+            setRole(data.update_Employee_Role.role)
           })
           .catch(err=>{
             console.log(err.message)
