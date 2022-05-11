@@ -1,17 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
+import React, { useState } from 'react'
 import {FcOldTimeCamera} from "react-icons/fc"
 import {getEmployeeData} from "../../redux/employee/employeeInfoSlice"
 import {useDispatch} from "react-redux"
-import Image from 'next/image';
+import Image from 'next/image'
+import Loader from '../../util/loader/Loader'
 
 export default function ProfilePicture({employeeData}) {
+  const [loading ,setLoading]=useState(false)
   const dispatch=useDispatch()
 
 
    const handleUpload = (uploadEvent) => {
     uploadEvent.persist();
-
+    setLoading(true)
     const [file] = uploadEvent.target.files;
     const reader = new FileReader();
     reader.onloadend =(onLoadEndEvent) => {
@@ -37,6 +39,7 @@ export default function ProfilePicture({employeeData}) {
         })
         .then(data=>{
           console.log(data)
+          setLoading(false)
           dispatch(getEmployeeData())
         })
         .catch(err=>{
@@ -51,7 +54,8 @@ export default function ProfilePicture({employeeData}) {
   
   return (
     <div className='relative w-[200px] h-[250px] self-center'>
-      <Image src={employeeData.avartImage} alt={employeeData.username} layout='fill' className='rounded-[50%]'/>
+      {loading && <Loader/>}
+      <Image src={employeeData.avartImage} alt={employeeData.username} layout='fill' className={`${loading ? "hidden" :" block"} rounded-[50%]`} />
       <label htmlFor="files" className='text-5xl absolute bottom-0 right-0 mr-3x]'>
         <FcOldTimeCamera className='text-6xl my-3 cursor-pointer'/>
         <input
