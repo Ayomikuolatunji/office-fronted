@@ -5,8 +5,8 @@ import styled from "styled-components"
 import {FcOldTimeCamera} from "react-icons/fc"
 import {FiEdit} from "react-icons/fi"
 import {CgProfile} from "react-icons/cg"
-import Role from '../../../components/profile-components/Role';
-import ProfilePicture from '../../../components/profile-components/PofilePicture';
+import Role from '../../../components/profile-components/UpdateRole';
+import ProfilePicture from '../../../components/profile-components/UpdatePofilePicture';
 
 export default function Profile() {
   const employeeData=useSelector(state=>state.employeeInfo.employeeData)
