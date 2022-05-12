@@ -4,13 +4,15 @@ import React,{useEffect,useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from 'next/router';
 import axios from "axios"
-import Image from 'next/image'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer,toast } from 'react-toastify'
 import {FcOldTimeCamera} from "react-icons/fc"
 import ButtonText from "../../util/Button"
 import {Modalcontainer} from "../../styled-compnent/index"
 import {clearEmployeeId} from "../../redux/employee/employeeInfoSlice";
 import CircleProgressbar from "../../components/materialUi/CircleProgressBar"
 import {profile} from "../../api/authApi"
+import { toastOption } from "../../helpers/toastOption";
 
 
 
@@ -18,6 +20,7 @@ export default function ProfilePicture() {
   const { bindings } = useModal();
   const [image, setImage] =React.useState("");
   const [loading ,setLoading]=useState(false)
+  const [isProfileSet,setIsprofileSet]=useState("")
   const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
   const employeeId=useSelector(state=>state.employeeInfo.employeeId)
   const router=useRouter()  
@@ -55,6 +58,7 @@ export default function ProfilePicture() {
         .then(data=>{
           dispatch(clearEmployeeId())
           setLoading(false)
+          setIsprofileSet("yes it is set")
         })
         .catch(err=>{
            setLoading(false)
@@ -72,7 +76,6 @@ export default function ProfilePicture() {
           avatarImageSet:true
         })
         if(res.status===200){
-
           dispatch(clearEmployeeId())
           router.push("/login")
         }
@@ -98,7 +101,7 @@ export default function ProfilePicture() {
                 <div className='absolute z-50 top-[40%] left-[35%]'>
                 {loading && <CircleProgressbar/>}
                 </div>
-                <img src={image ? image : defaultImg } alt={"profile-picture"} layout='fill' className={`${loading ? "hidden" :" block"} rounded-[50%]`} />
+                <img src={image ? image : defaultImg } alt={"profile-picture"} layout='fill' className={`${loading ? "hidden" :" block"} rounded-[50%] h-[200px]`} />
                 <label htmlFor="files" className='text-5xl absolute bottom-0 right-0 mr-3x]'>
                   <FcOldTimeCamera className='text-6xl my-3 cursor-pointer'/>
                   <input
@@ -111,7 +114,13 @@ export default function ProfilePicture() {
           </div>
               <ButtonText 
                 text={"Set Profile Picture"}
-               
+               onClick={()=>{
+                 if(!isProfileSet){
+                   return  toast.error("Role can't be empty",toastOption)
+                 }
+                 router.push("/")
+                 
+               }}
                 type="submit"
               />    
            </Modalcontainer>
@@ -120,6 +129,7 @@ export default function ProfilePicture() {
           <Button onClick={()=>proflePicture()}>Skip</Button>
         </Modal.Footer>
       </Modal>
+      <ToastContainer limit={1}/>
     </div>
   );
 }
