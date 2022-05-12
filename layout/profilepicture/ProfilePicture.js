@@ -53,7 +53,7 @@ export default function ProfilePicture() {
           return res.json()
         })
         .then(data=>{
-          console.log(data)
+          dispatch(clearEmployeeId())
           setLoading(false)
         })
         .catch(err=>{
@@ -72,9 +72,9 @@ export default function ProfilePicture() {
           avatarImageSet:true
         })
         if(res.status===200){
-          console.log(res.data)
-          // dispatch(clearEmployeeId())
-          // router.push("/login")
+
+          dispatch(clearEmployeeId())
+          router.push("/login")
         }
       }
       }catch(err){
