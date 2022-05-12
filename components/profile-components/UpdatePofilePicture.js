@@ -45,6 +45,7 @@ export default function ProfilePicture({employeeData}) {
           dispatch(getEmployeeData())
         })
         .catch(err=>{
+           setLoading(false)
           console.log(err.message)
         })
        }
@@ -55,7 +56,7 @@ export default function ProfilePicture({employeeData}) {
 
   
   return (
-    <div className='relative w-[200px] h-[250px] self-center'>
+    <div className='relative w-[200px] h-[200px] self-center'>
        <div className='absolute z-50 top-[40%] left-[35%]'>
        {loading && <CircleProgressbar/>}
        </div>
