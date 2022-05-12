@@ -40,17 +40,11 @@ export default function UpdateName({employeeData}) {
        .then((data)=>{
          console.log(data)
          dispatch(getEmployeeData())
-         setName(data.update_Employee_Role.username)
+         setName(data.update_Profile_Username.username)
        })
        .catch(err=>{
          console.log(err.message)
        })
-     if(!edit){
-       return 
-     }
-     if(!role){
-       return  toast.error("Role can't be empty",toastOption)
-   }
  }
 
 
