@@ -55,16 +55,10 @@ export default function MuiModal() {
       >     
         <Modal.Body>
           <Modalcontainer>
-              <div className="thumbnail-img mx-auto  flex flex-col items-center">
-                <img src={defaultImg} className={`${defaultImg?      "border-red border-4":""}`} style={{width:"200px", borderRadius:"100%",height:"200px"}} alt="avatar"/>
-                <label htmlFor="file" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer'>
-                
-                 <span className='text-lg text-white'> Upload profile picture</span>
-                </label>
-               </div>
+             
               <ButtonText 
                 text={"Set Profile Picture"}
-                onClick={handler}
+               
                 type="submit"
               />    
            </Modalcontainer>

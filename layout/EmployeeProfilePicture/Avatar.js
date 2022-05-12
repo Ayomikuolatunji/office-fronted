@@ -81,32 +81,7 @@ export default function ProfilePicture() {
   }
   return (
     <>  
-
-        {modal  ? <Container>
-              <React.Fragment>
-              <div className="thumbnail-img mx-auto mt-10 flex flex-col items-center">
-               {loading?   <Loading size="xl" /> : <img src={image || defaultImg} className={`${image?"border-red border-4":""}`} style={{width:"200px", borderRadius:"100%",height:"200px"}}/>}
-                  <label htmlFor="image" className='flex justify-center flex-col items-center  file z-[999]  cursor-pointer'>
-                     <FcOldTimeCamera className='text-3xl my-3'/>
-                    <span className='text-lg text-white'> Upload profile picture</span>
-                    <input
-                      type={"file"} 
-                      id='image' 
-                      className='hidden'
-                      onChange={onImageChange} 
-                      style={{display:"none"}}
-                    />
-                </label>
-               </div>
-              <Button 
-              text={"Set as Profile Picture"}
-              onClick={()=>proflePicture()}
-              type="submit"
-              />    
-            </React.Fragment>
-        </Container>
-         : <DefaultProfilePicture proflePicture={proflePicture}/>  
-        }
+     <DefaultProfilePicture proflePicture={proflePicture}/>     
         <ToastContainer limit={1}/>
     </>
   )
