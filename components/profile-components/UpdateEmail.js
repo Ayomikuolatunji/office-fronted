@@ -40,17 +40,14 @@ export default function UpdateEmail({employeeData}) {
           .then((data)=>{
             console.log(data)
             dispatch(getEmployeeData())
-            setemail(data.update_Employee_email.email)
+            // setemail(data.update_Employee_Email.email)
           })
           .catch(err=>{
-            console.log(err.message)
+            console.log(err.stack)
           })
-        if(!edit){
-          return 
-        }
         if(!email){
           return  toast.error("email can't be empty",toastOption)
-      }
+        }
     }
   return (
     <div className="username mt-6 bg-white p-3">
