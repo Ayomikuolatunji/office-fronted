@@ -23,14 +23,13 @@ export default function UpdateName({employeeData}) {
      mutation {
       update_Profile_Username(id:"${employeeData._id}",update_username:{username:"${name}"})
       {
-        _id
         username
       }
     }
      `
    }
    fetch("http://localhost:8080/graphql",{
-         method:"POST",
+        method:"POST",
          headers:{
            "Content-Type":"application/json"
          },
@@ -43,7 +42,8 @@ export default function UpdateName({employeeData}) {
          setName(data.update_Profile_Username.username)
        })
        .catch(err=>{
-         console.log(err.message)
+         console.log(err.stack)
+         return  toast.error("Error updating username",toastOption)
        })
  }
 
