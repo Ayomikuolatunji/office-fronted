@@ -4,8 +4,8 @@ import React,{useEffect,useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from 'next/router';
 import axios from "axios"
-import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer,toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import {FcOldTimeCamera} from "react-icons/fc"
 import ButtonText from "../../util/Button"
 import {Modalcontainer} from "../../styled-compnent/index"
@@ -114,12 +114,11 @@ export default function ProfilePicture() {
           </div>
               <ButtonText 
                 text={"Set Profile Picture"}
-               onClick={()=>{
+                onClick={()=>{
                  if(!isProfileSet){
-                   return  toast.error("Role can't be empty",toastOption)
+                   return toast.error("profile picture is not set",toastOption)
                  }
-                 router.push("/")
-                 
+                 router.push("/login")
                }}
                 type="submit"
               />    
