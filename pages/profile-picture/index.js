@@ -1,8 +1,8 @@
 import React from 'react'
-import Avatar from '../../layout/EmployeeProfilePicture/Avatar'
+import ProfilePicture from '../../layout/profilepicture/ProfilePicture'
 
 export default function AvatarPage() {
   return (
-      <Avatar/>
+      < ProfilePicture/>
   )
 }

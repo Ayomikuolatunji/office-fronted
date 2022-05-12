@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react'
-import {FcOldTimeCamera} from "react-icons/fc"
-import {getEmployeeData} from "../../redux/employee/employeeInfoSlice"
 import {useDispatch} from "react-redux"
 import Image from 'next/image'
+import {FcOldTimeCamera} from "react-icons/fc"
+import {getEmployeeData} from "../../redux/employee/employeeInfoSlice"
 import CircleProgressbar from '../materialUi/CircleProgressBar'
 
 
