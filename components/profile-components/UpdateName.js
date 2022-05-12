@@ -21,7 +21,7 @@ export default function UpdateName({employeeData}) {
    const graphQuery={
      query:`   
      mutation {
-         update_Employee_Role(id:"${employeeData._id}",role_update:{username:"${name}"})
+      update_Profile_Username(id:"${employeeData._id}",update_username:{username:"${name}"})
       {
         _id
         username
@@ -38,6 +38,7 @@ export default function UpdateName({employeeData}) {
        })
        .then(res=>res.json())
        .then((data)=>{
+         console.log(data)
          dispatch(getEmployeeData())
          setName(data.update_Employee_Role.username)
        })

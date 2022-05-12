@@ -40,7 +40,7 @@ export default function UpdateEmail({employeeData}) {
           .then((data)=>{
             console.log(data)
             dispatch(getEmployeeData())
-            // setemail(data.update_Employee_Email.email)
+            setemail(data.update_Employee_Email.email)
           })
           .catch(err=>{
             console.log(err.stack)
