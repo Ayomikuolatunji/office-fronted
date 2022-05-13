@@ -6,6 +6,9 @@ import Role from '../../../components/profile-components/UpdateRole';
 import ProfilePicture from '../../../components/profile-components/UpdatePofilePicture';
 import UpdateEmail from '../../../components/profile-components/UpdateEmail';
 import UpdateName from '../../../components/profile-components/UpdateName';
+import AboutUpdate from "../../../components/profile-components/AboutUpdate"
+
+
 
 export default function Profile() {
   const employeeData=useSelector(state=>state.employeeInfo.employeeData)
@@ -30,13 +33,7 @@ export default function Profile() {
                 <CgProfile className='text-4xl'/>
                 <span className="tracking-wide">Other Info</span>
             </div>
-            <div className="username mt-6 bg-white p-3">
-              <h5 className='text-blue-400'>About yourself</h5>
-              <div className='flex justify-between items-center pt-2'> 
-                  <h6>{employeeData?.about}</h6>
-                  <FiEdit className='text-2xl cursor-pointer '/>
-              </div>
-           </div>
+            <AboutUpdate/>
            <div className="username mt-6 bg-white p-3">
               <h5 className='text-blue-400'>Current location</h5>
               <div className='flex justify-between items-center pt-2'> 
