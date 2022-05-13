@@ -9,22 +9,22 @@ import { useState } from 'react';
 
 export default function AboutUpdate({employeeData}) {
   const [edit,setEdit]=useState(true)
-    const [email,setemail]=useState(employeeData?.abort)
+    const [about,setabout]=useState(employeeData?.about)
     const dispatch=useDispatch()
 
     
     const handleChange=(e)=>{
-       setemail(e.target.value)
+       setabout(e.target.value)
     }
 
     const Edit=()=>{
       const graphQuery={
         query:`   
         mutation {
-          update_Employee_Email(id:"${employeeData._id}",email_update:{email:"${email}"})
+          update_Employee_about(id:"${employeeData._id}",about_update:{about:"${about}"})
          {
            _id
-           email
+           about
          }
        }
         `
@@ -40,21 +40,21 @@ export default function AboutUpdate({employeeData}) {
           .then((data)=>{
             console.log(data)
             dispatch(getEmployeeData())
-            setemail(data.update_Employee_Email.email)
+            setabout(data.update_Employee_about.about)
           })
           .catch(err=>{
             console.log(err.stack)
           })
-        if(!email){
-          return  toast.error("email can't be empty",toastOption)
+        if(!about){
+          return  toast.error("about can't be empty",toastOption)
         }
     }
   return (
     <div className="username mt-6 bg-white p-3">
-       <h5 className='text-blue-400'>Email</h5>
+       <h5 className='text-blue-400'>About </h5>
        <div className='flex justify-between items-center pt-2'> 
             <input type="text" 
-            defaultValue={email} 
+            defaultValue={about} 
             className={`border-r-0 outline-none border-t-0 border-l-0 bg-none ${edit? "border-b-0" :"border-b-[2px] border-blue-500"}`} disabled={edit} 
             onChange={(e)=>handleChange(e)}/>
             <FiEdit className='text-2xl cursor-pointer' 
