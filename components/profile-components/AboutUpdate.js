@@ -21,7 +21,7 @@ export default function AboutUpdate({employeeData}) {
       const graphQuery={
         query:`   
         mutation {
-          update_Employee_about(id:"${employeeData._id}",about_update:{about:"${about}"})
+          update_Employeer_About(id:"${employeeData._id}",about_update:{about:"${about}"})
          {
            _id
            about
@@ -53,9 +53,10 @@ export default function AboutUpdate({employeeData}) {
     <div className="username mt-6 bg-white p-3">
        <h5 className='text-blue-400'>About </h5>
        <div className='flex justify-between items-center pt-2'> 
+          {edit && <h5>{about}</h5>}
             <input type="text" 
             defaultValue={about} 
-            className={`border-r-0 outline-none border-t-0 border-l-0 bg-none ${edit? "border-b-0" :"border-b-[2px] border-blue-500"}`} disabled={edit} 
+            className={`border-r-0 outline-none border-t-0 border-l-0 bg-none ${edit? "border-b-0 hidden" :"border-b-[2px] border-blue-500"}`} disabled={edit} 
             onChange={(e)=>handleChange(e)}/>
             <FiEdit className='text-2xl cursor-pointer' 
             onClick={

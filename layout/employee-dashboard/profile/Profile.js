@@ -33,7 +33,7 @@ export default function Profile() {
                 <CgProfile className='text-4xl'/>
                 <span className="tracking-wide">Other Info</span>
             </div>
-            <AboutUpdate/>
+            <AboutUpdate employeeData={employeeData}/>
            <div className="username mt-6 bg-white p-3">
               <h5 className='text-blue-400'>Current location</h5>
               <div className='flex justify-between items-center pt-2'> 
