@@ -9,7 +9,7 @@ module.exports = {
     moduleNameMapper: {
       /* Handle CSS imports (with CSS modules)
       https://jestjs.io/docs/webpack#mocking-css-modules */
-      '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   
       // Handle CSS imports (without CSS modules)
       '^.+\\.(css|sass|scss)$': './__mocks__/styleMock.js',

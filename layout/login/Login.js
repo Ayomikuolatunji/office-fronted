@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ToastContainer,toast } from 'react-toastify'
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { Grid, Paper,Avatar,Typography} from '@mui/material';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
