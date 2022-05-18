@@ -15,11 +15,21 @@ const MockRedux=()=>{
 
 
 describe('Home', () => {
-  it('renders a heading', () => {
+  it('login btn renders a text of Login ', () => {
       render(
          <MockRedux/>
       )
       const loginBtnText=screen.getByTestId("login-btn")
       expect(loginBtnText.textContent).toBe("Login")
   })
+  it('login anchor tag of forgot password ', () => {
+    render(
+       <MockRedux/>
+    )
+    const linkBtnText=screen.getByRole("link",
+    {
+        name:"Forgotten Password ?"
+    })
+    expect(linkBtnText.textContent).toBe("Forgotten Password ?")
+})
 })
