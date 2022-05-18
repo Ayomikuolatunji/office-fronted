@@ -20,7 +20,6 @@ describe('Home', () => {
          <MockRedux/>
       )
       const loginBtnText=screen.getByTestId("login-btn")
-      expect(loginBtnText.textContent).toBe("Sign in")
-      expect(sum).toBe(20)
+      expect(loginBtnText.textContent).toBe("Login")
   })
 })
