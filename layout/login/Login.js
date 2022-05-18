@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ToastContainer,toast } from 'react-toastify'
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { Grid, Paper,Avatar,Typography} from '@mui/material';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
@@ -33,10 +33,30 @@ export default function Login() {
       }
   },[router,isLoggedIn])
   
-  useEffect(()=>{
-    // prefetch employee dashboard
-    router.prefetch("/employee-dashboard")
-  },[router])
+  // useEffect(()=>{
+  //   // prefetch employee dashboard
+  //   router.prefetch("/employee-dashboard")
+  // },[router])
+
+
+  const validateRegistration=useCallback(()=>{
+    const {email,password}=values
+
+    if(!password || !email){
+        toast.error("No field must be empty", toastOption);
+        return false 
+     }
+     if(password.length < 5){
+        toast.error("Your paswword should be 8 characters long!", toastOption);
+        return false 
+     }
+     if(!email){
+        toast.error("Email is required!", toastOption);
+        return false 
+     }
+     return true
+  },[values]) 
+
 
   const submitLogin=useCallback(async(e)=>{
       setLoading(true)
@@ -62,24 +82,6 @@ export default function Login() {
       
       }
   },[dispatch, values, validateRegistration,router])
-
-  const validateRegistration=useCallback(()=>{
-    const {email,password}=values
-
-    if(!password || !email){
-        toast.error("No field must be empty", toastOption);
-        return false 
-     }
-     if(password.length < 5){
-        toast.error("Your paswword should be 8 characters long!", toastOption);
-        return false 
-     }
-     if(!email){
-        toast.error("Email is required!", toastOption);
-        return false 
-     }
-     return true
-  },[values]) 
 
   
   return ( 
@@ -120,7 +122,7 @@ export default function Login() {
               text={loading?"please wait":"Login"} 
               variant={"contained"} 
               type = {"submit"}
-              
+              testid={"login-btn"}
               >
                 Submit
               </CustomButton>
