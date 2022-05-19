@@ -33,10 +33,10 @@ export default function Login() {
       }
   },[router,isLoggedIn])
   
-  // useEffect(()=>{
-  //   // prefetch employee dashboard
-  //   router.prefetch("/employee-dashboard")
-  // },[router])
+  useEffect(()=>{
+    // prefetch employee dashboard
+    router.prefetch("/employee-dashboard")
+  },[router])
 
 
   const validateRegistration=useCallback(()=>{
@@ -49,6 +49,10 @@ export default function Login() {
      if(password.length < 5){
         toast.error("Your paswword should be 8 characters long!", toastOption);
         return false 
+     }
+     if(password==="number"){
+      toast.error("Numeric password is not allow!", toastOption);
+      return false 
      }
      if(!email){
         toast.error("Email is required!", toastOption);
@@ -76,7 +80,6 @@ export default function Login() {
           }
         }catch(err){
            setLoading(false)
-           console.log(err)
            toast.error("Either account does not exits or incorrect passsword or Email",toastOption)
         }
       

@@ -71,8 +71,8 @@ export default function Register() {
          if(res.status===201){
           setLoading(false)
           dispatch(getEmployeeId(res.data.employeeId))
+          router.push('/profile-picture')
          }
-         router.push('/profile-picture')
         }catch(err){
          toast.error("Email already exist or check your internet connction",toastOption)
          setLoading(false)
