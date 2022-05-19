@@ -24,32 +24,6 @@ export default function Register() {
   const router = useRouter()
   const dispatch=useDispatch()
 
-
-  const submitUserInfo=useCallback(async(e)=>{
-    setLoading(true)
-    const {username,email,password,role}=values
-      e.preventDefault()
-      if(validateRegistration()){
-        try{
-          const res=await axios.post(registrationApi,{
-          username,
-          email,
-          password,
-          role
-         })
-         if(res.status===201){
-          setLoading(false)
-          dispatch(getEmployeeId(res.data.employeeId))
-         }
-         router.push('/profile-picture')
-        }catch(err){
-         setLoading(false)
-         console.log(err)
-         toast.error(err.message,toastOption)
-      }
-      }
-  },[dispatch,values,validateRegistration,router])
-  
   const validateRegistration=useCallback(()=>{
     const {username,email,password,confirmPassword,role}=values
     if(password !==confirmPassword){
@@ -74,6 +48,39 @@ export default function Register() {
     }
     return true
   },[values])
+
+  const submitUserInfo=useCallback(async(e)=>{
+    setLoading(true)
+    const {username,email,password,role}=values
+      e.preventDefault()
+      if(validateRegistration()){
+        try{
+          const res=await axios({
+            method:"POST",
+            headers:{
+              "Content-Type":"application/json"
+            },
+            data:JSON.stringify({
+              username,
+              email,
+              password,
+              role
+            }),
+            url:registrationApi
+         })
+         if(res.status===201){
+          setLoading(false)
+          dispatch(getEmployeeId(res.data.employeeId))
+         }
+         router.push('/profile-picture')
+        }catch(err){
+         toast.error("Email already exist or check your internet connction",toastOption)
+         setLoading(false)
+      }
+      }
+  },[dispatch,values,validateRegistration,router])
+  
+
 
 
   return (  <>
