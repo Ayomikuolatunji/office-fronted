@@ -37,6 +37,7 @@ export default function Role({employeeData}) {
           })
           .then(res=>res.json())
           .then((data)=>{
+            console.log(data)
             dispatch(getEmployeeData())
             setRole(data.update_Employee_Role.role)
           })

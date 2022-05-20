@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link'
 import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -28,8 +28,15 @@ export default function ForgotPassword() {
       router.push("/employee-dashboard")
     }
 },[router,isLoggedIn])
-
-  const sendResetPassword=async(event)=>{
+  const validateRegistration=useCallback(()=>{
+    const {email}=values
+    if(!email){
+      toast.error("Email is required!", toastOption);
+      return false 
+  }
+    return true
+  },[values])
+  const sendResetPassword=useCallBack(async(event)=>{
     setLoading(true)
     setIsMessage(false)
     const {email}=values
@@ -53,16 +60,8 @@ export default function ForgotPassword() {
       }
     
     }
-     
-  }
-  const validateRegistration=()=>{
-    const {email}=values
-    if(!email){
-      toast.error("Email is required!", toastOption);
-      return false 
-   }
-     return true
-  } 
+  },[validateRegistration,values])
+
   return ( <>
       <div className="bg-[url('/images/office.jpg')] bg-center bg-no-repeat bg-cover pt-5 pb-5 overflow-hidden h-screen flex justify-center items-center">
            <Grid sx={{marginTop :"7.5rem"}}>
