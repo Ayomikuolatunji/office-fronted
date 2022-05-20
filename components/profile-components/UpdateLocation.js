@@ -7,21 +7,21 @@ import {useDispatch} from "react-redux"
 import { useState } from 'react';
 
 
-export default function AboutUpdate({employeeData}) {
+export default function UpdateLocation({employeeData}) {
   const [edit,setEdit]=useState(true)
-    const [about,setAbout]=useState(employeeData?.about)
+    const [location,setLocation]=useState(employeeData?.location)
     const dispatch=useDispatch()
 
     
     const handleChange=(e)=>{
-       setAbout(e.target.value)
+       setLocation(e.target.value)
     }
 
     const Edit=()=>{
       const graphQuery={
         query:`   
         mutation {
-          update_Employee_About(id:"${employeeData._id}",about_update:{about:"${about}"})
+          update_Employee_Location(id:"${employeeData._id}",location_update:{location:"${location}"})
          {
            _id
            about
@@ -39,7 +39,7 @@ export default function AboutUpdate({employeeData}) {
           .then(res=>res.json())
           .then((data)=>{
             dispatch(getEmployeeData())
-            setAbout(data.update_Employee_about.about)
+            setLocation(data.update_Employee_about.about)
           })
           .catch(err=>{
           })
