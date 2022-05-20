@@ -20,14 +20,14 @@ export default function SetNewPassword() {
   const { id , code } = router.query
 
 
-  const validateRegistration=()=>{
+  const validateRegistration=useCallback(()=>{
     const {password}=values
-     if(password.length < 5){
-      toast.error("Your paswword should be 8 characters long!", toastOption);
-      return false 
-     }
-     return true
-  } 
+    if(password.length < 5){
+     toast.error("Your paswword should be 8 characters long!", toastOption);
+     return false 
+    }
+    return true
+  },[values])
 
   const submitLogin=useCallback(async(event)=>{
     setLoading(true)
@@ -52,7 +52,7 @@ export default function SetNewPassword() {
       }
     
     }
-  },[])
+  },[validateRegistration, values,router, id, code])
 
   return (
      <div className="bg-[url('/images/office.jpg')] bg-center bg-no-repeat bg-cover pt-5 pb-5 overflow-hidden h-screen flex justify-center items-center">
