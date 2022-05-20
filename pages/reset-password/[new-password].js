@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { ToastContainer,toast } from 'react-toastify'
 import { useRouter } from 'next/router';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,7 +20,16 @@ export default function SetNewPassword() {
   const { id , code } = router.query
 
 
-  const submitLogin=async(e)=>{
+  const validateRegistration=()=>{
+    const {password}=values
+     if(password.length < 5){
+      toast.error("Your paswword should be 8 characters long!", toastOption);
+      return false 
+     }
+     return true
+  } 
+
+  const submitLogin=useCallback(async(event)=>{
     setLoading(true)
     const {password}=values
       e.preventDefault()
@@ -39,21 +48,12 @@ export default function SetNewPassword() {
       console.log(res)
       }catch(err){
          setLoading(false)
-         console.log(err)
          toast.error("Either account does not exits or incorrect passsword or Email",toastOption)
       }
     
     }
-     
-  }
-  const validateRegistration=()=>{
-    const {password}=values
-     if(password.length < 5){
-      toast.error("Your paswword should be 8 characters long!", toastOption);
-      return false 
-     }
-     return true
-  } 
+  },[])
+
   return (
      <div className="bg-[url('/images/office.jpg')] bg-center bg-no-repeat bg-cover pt-5 pb-5 overflow-hidden h-screen flex justify-center items-center">
        <Grid sx={{marginTop :"7.5rem"}}>

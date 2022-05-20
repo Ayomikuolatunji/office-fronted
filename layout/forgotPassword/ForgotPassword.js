@@ -36,7 +36,7 @@ export default function ForgotPassword() {
   }
     return true
   },[values])
-  const sendResetPassword=useCallBack(async(event)=>{
+  const sendResetPassword=useCallback(async(event)=>{
     setLoading(true)
     setIsMessage(false)
     const {email}=values
