@@ -10,7 +10,7 @@ export const allUsers=`${host}/office-api/auth/all_employees`
 
 export const deleteUserApi=`${host}/office-api/auth/delete_user`
 
-export const employee=`${host}/office-api/auth`
+export const employee=`${host}/office-api/auth/employee`
 
 export const fogetPassword=`${host}/office-api/auth/reset_password`
 

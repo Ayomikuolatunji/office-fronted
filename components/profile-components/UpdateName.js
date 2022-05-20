@@ -39,7 +39,7 @@ export default function UpdateName({employeeData}) {
        .then((data)=>{
          console.log(data)
          dispatch(getEmployeeData())
-         setName(data.update_Profile_Username.username)
+         setName(data.update_Profile_Username?.username)
        })
        .catch(err=>{
          console.log(err.stack)

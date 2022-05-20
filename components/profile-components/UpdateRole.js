@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import {FiEdit} from "react-icons/fi"
 import 'react-toastify/dist/ReactToastify.css';
+import {useDispatch} from "react-redux"
 import { ToastContainer,toast } from 'react-toastify'
 import { toastOption } from '../../helpers/toastOption';
 import {getEmployeeData} from "../../redux/employee/employeeInfoSlice"
-import {useDispatch} from "react-redux"
 
 export default function Role({employeeData}) {
     const [edit,setEdit]=useState(true)
@@ -37,7 +37,6 @@ export default function Role({employeeData}) {
           })
           .then(res=>res.json())
           .then((data)=>{
-            console.log(data)
             dispatch(getEmployeeData())
             setRole(data.update_Employee_Role.role)
           })
