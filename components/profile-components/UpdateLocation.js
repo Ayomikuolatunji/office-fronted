@@ -24,7 +24,7 @@ export default function UpdateLocation({employeeData}) {
           update_Employee_Location(id:"${employeeData._id}",location_update:{location:"${location}"})
          {
            _id
-           about
+           location
          }
        }
         `
@@ -39,24 +39,24 @@ export default function UpdateLocation({employeeData}) {
           .then(res=>res.json())
           .then((data)=>{
             dispatch(getEmployeeData())
-            setLocation(data.update_Employee_about.about)
+            setLocation(data.update_Employee_Location.location)
           })
           .catch(err=>{
           })
-        if(!about){
-          return  toast.error("about can't be empty",toastOption)
+        if(!location){
+          return  toast.error("location can't be empty",toastOption)
         }
     }
   return (
     <div className="username mt-6 bg-white p-3">
-       <h5 className='text-blue-400'>About </h5>
+       <h5 className='text-blue-400'>Location </h5>
        <div className='flex justify-between items-center pt-2'> 
           <div>
           {edit ?  
-             <h5>{about}</h5>
+             <h5>{location}</h5>
             : 
             <input type="text" 
-            defaultValue={about} 
+            defaultValue={location} 
             className={`border-r-0 outline-none border-t-0 border-l-0 bg-none ${edit? "border-b-0 hidden" :"border-b-[2px] border-blue-500"}`} disabled={edit} 
             onChange={(e)=>handleChange(e)}
             />
