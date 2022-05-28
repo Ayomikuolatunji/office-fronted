@@ -3,21 +3,19 @@ import { useDispatch } from 'react-redux'
 import { getEmployeeData } from '../../redux/employee/employeeInfoSlice'
 import styled from "styled-components"
 import Sidebar from "./sidebar/Sidebar"
-
-
-
+import { Header } from './Header/Header'
 
 
 export default function MainEmplyeeDashhboard({children}) {
     const dispatch=useDispatch()
   
-
     useEffect(()=>{
         dispatch(getEmployeeData())
     },[dispatch])
     
   return (
     <ContainerDiv>
+        <Header />
         <InnerDiv>
             <Sidebar/>
             <main>
@@ -30,22 +28,19 @@ export default function MainEmplyeeDashhboard({children}) {
 
 
 const ContainerDiv=styled.div`
-   display: flex;
-   justify-content: center;
-   align-items: center;
+   /* display: flex; */
+   display: block;
+   position: relative;
    width: 100%;
-   height: 100vh;
-   background-color: #131342;
 `
 
 const InnerDiv=styled.div`
-    width: 70vw;
-    height: 70vh;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
+    width: 100vw;
+    height: 100%;
+    /* display: flex; */
+    /* justify-content: space-between;
     align-items: center;
-    background-color: #fff;
+    background-color: #fff; */
 
     main{
         width: 80%;
