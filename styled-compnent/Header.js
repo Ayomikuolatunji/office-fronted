@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 export const HeaderPage = styled.div `
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
   position: relative;
   display: block;
    background: #72a1e5;

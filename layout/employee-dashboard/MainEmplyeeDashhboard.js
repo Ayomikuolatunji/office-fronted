@@ -28,19 +28,23 @@ export default function MainEmplyeeDashhboard({children}) {
 
 
 const ContainerDiv=styled.div`
-   /* display: flex; */
-   display: block;
-   position: relative;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
    width: 100%;
+   height: 100vh;
+   background-color: #131342;
 `
 
 const InnerDiv=styled.div`
-    width: 100vw;
-    height: 100%;
-    /* display: flex; */
-    /* justify-content: space-between;
+    width: 80vw;
+    margin: 0 auto;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    background-color: #fff; */
+    background-color: #fff;
 
     main{
         width: 80%;

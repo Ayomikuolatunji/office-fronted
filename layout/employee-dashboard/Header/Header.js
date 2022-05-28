@@ -49,15 +49,15 @@ export const Header = () => {
 						<Communication>
 							{/* Check console for some errors */}
 
-							<Link href={'https://www.google.com'}>
+							<Link href={'https://www.google.com'} passHref>
 								<FaVideo className="Link" />
 							</Link>
 
-							<Link href={'https://www.google.com'}>
+							<Link href={'https://www.google.com'} passHref>
 								<RiUserSettingsFill className="Link" />
 							</Link>
 
-							<Link href={'https://www.google.com'}>
+							<Link href={'https://www.google.com'} passHref>
 								<IoIosNotificationsOutline className="Link" />
 							</Link>
 							{/* <span className="absolute-not">0</span> */}
