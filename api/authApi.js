@@ -1,4 +1,4 @@
-const host=`http://localhost:8080`
+const host=`http://localhost:8080/v1`
 
 export const registrationApi=`${host}/office-api/auth/register_employee`
 

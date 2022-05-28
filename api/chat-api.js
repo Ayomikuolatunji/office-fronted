@@ -1,6 +1,6 @@
 
 
-const host="http://localhost:8080"
+const host="http://localhost:8080/v1"
 
 export const sendChatApi=`${host}/office-api/chats`
 

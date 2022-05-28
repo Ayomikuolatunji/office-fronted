@@ -33,10 +33,6 @@ export default function Login() {
       }
   },[router,isLoggedIn])
   
-  useEffect(()=>{
-    // prefetch employee dashboard
-    router.prefetch("/employee-dashboard")
-  },[router])
 
 
   const validateRegistration=useCallback(()=>{

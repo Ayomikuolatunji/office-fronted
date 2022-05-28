@@ -2,8 +2,8 @@
 import { configureStore,combineReducers} from '@reduxjs/toolkit'
 import { persistStore, persistReducer,FLUSH, REHYDRATE,PAUSE,PERSIST,PURGE,REGISTER,} from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
-import countryApiSlice from "./countryApiSlice";
-import companyTypeSlice from './companyTypeSlice';
+import countryApiSlice from "./country/countryApiSlice";
+import companyTypeSlice from './company/companyTypeSlice';
 import employeeAuth from './auth/employeSlice';
 import modalSlice from './modal/modalSlice';
 import employeeInfo from './employee/employeeInfoSlice';
