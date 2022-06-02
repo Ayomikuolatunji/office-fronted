@@ -4,6 +4,7 @@ import { getEmployeeData } from '../../redux/employee/employeeInfoSlice'
 import styled from "styled-components"
 import Sidebar from "./sidebar/Sidebar"
 import { Header } from './Header/Header'
+import { Copyright } from '@mui/icons-material'
 
 
 export default function MainEmplyeeDashhboard({children}) {
@@ -23,14 +24,16 @@ export default function MainEmplyeeDashhboard({children}) {
             <main>
               {children}
             </main>
-        </InnerDiv> 
+        </InnerDiv>
+        <Footer> 
+        <p>All right reserved <Copyright /></p>
+        </Footer> 
     </ContainerDiv>
   )
 }
 
 
 const ContainerDiv=styled.div`
-   /* display: flex; */
    display: block;
    position: relative;
    width: 100%;
@@ -41,12 +44,7 @@ const InnerDiv=styled.div`
     height: 100%;
     position: relative;
     display: flex;
-    /* margin-top: 1rem; */
-    /* display: flex; */
-    /* justify-content: space-between;
-    align-items: center;
-    background-color: #fff; */
-    /* background-color: #d9d9d9; */
+    background : #94A8B6;
 
     .SidebarLayer {
         position :  relative;
@@ -55,17 +53,27 @@ const InnerDiv=styled.div`
     }
 
     main{
-        width: 84%; 
-        /* display: flex; */
-        background-color: #c0caad;
+        width: 100%; 
+        background-color: #F1F5F8;
         margin: auto;
-        /* justify-content: center;
-        align-items: center;
-        height: 100%;
-        position: relative; */
+        margin-bottom : 0.45em;
+        min-height: calc(100vh - 8rem);
     }
     @media(max-width:500px){
         width: 100%;
         height: 100vh;
     }
+`
+
+const Footer = styled.footer `
+  width: 75%;
+  text-align: center;
+  height: 100%;
+  position: relative;
+  margin: auto;
+  p {
+    margin: 0;
+    padding-top: 0.45em;
+  }
+  
 `

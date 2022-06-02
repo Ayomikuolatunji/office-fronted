@@ -7,13 +7,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { logoutEmployee } from '../../../redux/auth/employeSlice';
 import { employeeCompanies } from '../../../helpers/employeeCompanies';
+import { Wrapper, SideNav, MappedArray } from 'styled-compnent/Sidebar';
 
 export default function Sidebar() {
 	const isLoggedIn = useSelector((state) => state.employeeAuth.isLoggedIn);
 	const dispatch = useDispatch();
 	const router = useRouter();
 
-  console.log(logoutEmployee())
+	console.log(logoutEmployee());
 
 	useEffect(
 		() => {
@@ -32,39 +33,21 @@ export default function Sidebar() {
 	};
 	return (
 		<SidebaarDiv>
-			<div className="flex flex-col justify-center items-center">
-        <div className='block'>Online Office</div>
-				<ul className="">
-					<span className="">
-						<span className="">Onlineoffice</span>
-					</span>
-					<li>
-						<span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-							<svg
-								className=""
-								fill="currentColor"
-								viewBox="0 0 20 20"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-								<path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-							</svg>
-							<span className="">Dashboard</span>
-						</span>
-					</li>
-					{employeeCompanies.map((company, index) => {
-            console.log(company.item)
-						return (
-							<li
-								key={index}
-								className=""
-							>
-								<Link href={company.route}>{company.item}</Link>
-							</li>
-						);
-					})}
-					<li>
-						<span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+			<Wrapper>
+				<div className="Title">
+					<h5>Online Office</h5>
+				</div>
+				<SideNav>
+					<ul className="SideNavList">
+						{employeeCompanies.map((company, index) => {
+							console.log(company.item);
+							return (
+								<MappedArray key={index}>
+									<Link href={company.route}>{company.item}</Link>
+								</MappedArray>
+							);
+						})}
+						<li className="Found">
 							<svg
 								className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
 								fill="currentColor"
@@ -80,19 +63,17 @@ export default function Sidebar() {
 							<span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
 								3
 							</span>
-						</span>
-					</li>
-					<li>
-						<span
-							className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
-							onClick={() => LogoutFunc()}
-						>
-							<VscSignOut className="text-2xl" />
-							<span className="flex-1 ml-3 whitespace-nowrap">Logout</span>
-						</span>
-					</li>
-				</ul>
-			</div>
+						</li>
+
+						<li className="bottom">
+							<span className = "bottom-item" onClick={() => LogoutFunc()}>
+								<VscSignOut className="display-block" />
+								<span className='block'>Logout</span>
+							</span>
+						</li>
+					</ul>
+				</SideNav>
+			</Wrapper>
 		</SidebaarDiv>
 	);
 }
@@ -100,6 +81,6 @@ export default function Sidebar() {
 const SidebaarDiv = styled.div`
 	height: 100vh;
 	position: fixed;
-	background-color: #9da9a0;
-	box-shadow: 1px 2px #bdb4bf;
+	background-color: #536c7c;
+	margin-bottom: 1em;
 `;

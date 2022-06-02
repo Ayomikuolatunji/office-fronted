@@ -5,7 +5,6 @@ export const HeaderPage = styled.div `
   position: relative;
   display: block;
    background: #72a1e5;
-   /* height: 4rem; */
 `
 
 export const InnerPage = styled.div `
