@@ -18,7 +18,6 @@ export default function Main() {
 }
 const MainDiv=styled.div`
     width: 80%;
-    background-color: gainsboro;
     display: flex;
     justify-content: center;
     align-items: center;

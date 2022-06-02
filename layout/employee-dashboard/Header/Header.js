@@ -31,7 +31,7 @@ export const Header = () => {
 							<form onSubmit={HandleSubmit}>
 								<TextField
 									id="form2"
-									sx={{ width: '100%', marginRight: '1em' }}
+									sx={{ width: '100%', marginRight: '1em', marginLeft : "0.45em" }}
 									label="Type your search"
 									type="search"
 									variant="outlined"

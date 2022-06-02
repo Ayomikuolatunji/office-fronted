@@ -66,6 +66,7 @@ padding: 1em;
     object-fit: contain;
     text-align: center;
     position: relative;
+    cursor: pointer;
 }
 
 
