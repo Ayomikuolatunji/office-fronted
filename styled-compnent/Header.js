@@ -4,7 +4,7 @@ export const HeaderPage = styled.div `
   width: 100%;
   position: relative;
   display: block;
-   background: #72a1e5;
+   background: #536c7c;
 `
 
 export const InnerPage = styled.div `
@@ -38,13 +38,13 @@ export const InnerPage = styled.div `
           display: flex;
           align-items: center;
           justify-content: space-between;
-
+          color: white;
       }
   }
 
   #form2 {
       padding : 0.65em 0.75em !important;
-    
+      color : white;
   }
 `
 
@@ -61,7 +61,7 @@ padding: 1em;
     margin-right:  1.5em;
     font-size: 1.3em;
     border-radius: 50%;
-    color: black;
+    color: white;
     object-fit: contain;
     text-align: center;
     position: relative;
