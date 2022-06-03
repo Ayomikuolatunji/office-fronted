@@ -1,5 +1,5 @@
 import React from 'react'
-import AddCompany from '../../../layout/employee-dashboard/companies/compaines'
+import AddCompany from '../../../layouts/employee-dashboard/companies/compaines'
 
 
 

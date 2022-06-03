@@ -12,6 +12,7 @@ export const Wrapper = styled.div `
     display: block;
     width: 100%;
     position : relative;
+    border: 1px solid #E0E0E0;
 
     h5{
         text-align: center;

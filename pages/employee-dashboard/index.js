@@ -1,5 +1,5 @@
 import React from 'react'
-import Main from '../../layout/employee-dashboard/home'
+import Main from '../../layouts/employee-dashboard/home'
 
 
 export default function index() {

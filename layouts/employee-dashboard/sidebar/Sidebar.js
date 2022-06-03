@@ -35,6 +35,7 @@ export default function Sidebar() {
 				<div className="Title">
 					<h5>Online Office</h5>
 				</div>
+	            
 				<SideNav>
 				    {employeeCompanies.map((company, index) => {
 						console.log(company.item);

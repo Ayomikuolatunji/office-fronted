@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterCompany from '../../layout/register-company/RegisterCompany'
+import RegisterCompany from '../../layouts/register-company/RegisterCompany'
 
 
 export default function index() {

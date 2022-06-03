@@ -4,7 +4,7 @@ import { NextUIProvider } from '@nextui-org/react';
 import Head from 'next/head';
 import store from '../redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
-import MainEmplyeeDashhboard from '../layout/employee-dashboard/MainEmplyeeDashhboard';
+import MainEmplyeeDashhboard from '../layouts/employee-dashboard/MainEmplyeeDashhboard';
 
 
 

@@ -65,15 +65,18 @@ const InnerDiv=styled.div`
 
     .SidebarLayer {
         position :  relative;
-        width : 20%;
+        width : 15%;
         height: 100%;
     }
 
     main{
-        width: 80%; 
+        width: 85%; 
         background-color: #F1F5F8;
         margin: auto;
         height: inherit;
+        display: flex;
+        justify-content: center;
+        
     }
 `
 

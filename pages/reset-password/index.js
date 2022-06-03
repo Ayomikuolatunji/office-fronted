@@ -1,5 +1,5 @@
 import React from 'react'
-import ForgotPassword from '../../layout/forgotPassword/ForgotPassword'
+import ForgotPassword from '../../layouts/forgotPassword/ForgotPassword'
 
 
 
