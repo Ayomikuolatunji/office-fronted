@@ -4,6 +4,7 @@ import { getEmployeeData } from '../../redux/employee/employeeInfoSlice'
 import styled from "styled-components"
 import Sidebar from "./sidebar/Sidebar"
 import { Header } from './Header/Header'
+import { Copyright } from '@mui/icons-material'
 
 
 export default function MainEmplyeeDashhboard({children}) {
@@ -14,49 +15,77 @@ export default function MainEmplyeeDashhboard({children}) {
     },[dispatch])
     
   return (
-    <ContainerDiv>
+    <MainDiv className='bg-[#03284d]'>
+       <ContainerDiv>
         <Header />
         <InnerDiv>
+            <div className='SidebarLayer'>
             <Sidebar/>
+            </div>
             <main>
               {children}
             </main>
-        </InnerDiv> 
+        </InnerDiv>
     </ContainerDiv>
+        <Footer> 
+          <p>All right reserved <Copyright /></p>
+        </Footer> 
+    </MainDiv>
   )
 }
 
 
-const ContainerDiv=styled.div`
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
-   align-items: center;
-   width: 100%;
+const MainDiv=styled.div`
+   display: block;
    height: 100vh;
-   background-color: #131342;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+    align-items: center;
+`
+
+const ContainerDiv=styled.div`
+   width: 75%;
+   height: 80vh;
+   margin: auto;
+
+  @media(min-width: 1850px){
+    width: 85%;
+  }
+
 `
 
 const InnerDiv=styled.div`
-    width: 80vw;
-    margin: 0 auto;
-    height: 80%;
+    width: 100%;
+    height: inherit;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
+    background : #94A8B6;
+
+    .SidebarLayer {
+        position :  relative;
+        width : 20%;
+        height: 100%;
+    }
 
     main{
-        width: 80%;
-        background-color: gainsboro;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        position: relative;
+        width: 80%; 
+        background-color: #F1F5F8;
+        margin: auto;
+        height: inherit;
     }
-    @media(max-width:500px){
-        width: 100%;
-        height: 100vh;
-    }
+`
+
+const Footer = styled.footer `
+  width: 100%;
+  text-align: center;
+  position: relative;
+  margin: auto;
+  p {
+    margin: 0;
+    padding-top: 0.45em;
+    color: #fff
+  }
+  
 `
