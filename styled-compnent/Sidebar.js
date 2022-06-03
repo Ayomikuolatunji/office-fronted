@@ -43,6 +43,7 @@ margin-top: 2em;
       padding: 0.45em 0.75em;
       font-size: 1em;
       text-align: center;
+      z-index: 2;
 
        .bottom-item {
            display: flex;
@@ -55,12 +56,9 @@ margin-top: 2em;
            border: 0.12em solid #F1F5F8;
            transition: background .2s ease;
            :hover {
-               background-color: black;
-               
+               background-color: black;     
            }
        }
-
-       
        
   }
 
