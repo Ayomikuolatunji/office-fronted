@@ -15,7 +15,7 @@ export default function MainEmplyeeDashhboard({children}) {
     },[dispatch])
     
   return (
-    <MainDiv className='bg-[#03284d]'>
+    <MainDiv>
        <ContainerDiv>
         <Header />
         <InnerDiv>
@@ -40,6 +40,7 @@ const MainDiv=styled.div`
    height: 100vh;
    width: 100%;
    display: flex;
+   background-color: #03284d;
    flex-direction: column;
     align-items: center;
 `

@@ -10,7 +10,7 @@ display: flex;
 export const Setter = styled.div`
  position: relative;
   text-align: center;
-  background-color: #DCDBE4;
+  /* background-color: #DCDBE4; */
   width: 20%;
 
   .settings-overlap {
@@ -19,29 +19,8 @@ export const Setter = styled.div`
     font-family: sans-serif;
     text-transform: capitalize;
     /* padding: 1em 0.75em; */
-    margin : 1em 0;
   }
 
-  .underline {
-      width: 4em;
-      height: 0.25em;
-      background-color: #7B544B;
-      position: relative;
-      margin: auto;
-      border-radius: 1em;
-  }
-
-  ::after {
-      content: "";
-      height: calc(100vh - 8em);
-      width : .15em;
-      border-radius: .45em;
-      top: 0;
-      background-color: #997965;
-      display: block;
-      right: 0;
-      position: absolute;
-  }
 `
 
 export const UserSettings = styled.div`
