@@ -22,8 +22,8 @@ describe('ForgotPassword', () => {
         const forgotPassword=screen.getByText(/Provide your email address to change password/i)
         expect(forgotPassword.textContent).toBe("Provide your email address to change password")
     }) 
-    // it('should render forgot password', () => {
-    //     const BackToLogin=screen.getByText(/Back to login/i)
-    //     expect(BackToLogin.textContent).toBe("Back to login")
-    // })
+    it('should render forgot password', () => {
+        const BackToLogin=screen.getByText(/Back to login/i)
+        expect(BackToLogin.textContent).toBe("Back to login")
+    })
 })
