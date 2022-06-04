@@ -1,5 +1,5 @@
 // __tests__/index.test.jsx
-import { render, screen } from '@testing-library/react'
+import { render, screen,getByLabelText } from '@testing-library/react'
 import Login from "../Login"
 import {Provider} from "react-redux"
 import store from '../../../../redux/store';
@@ -15,6 +15,8 @@ const MockRedux=()=>{
 
 
 describe('Home', () => {
+
+    //test if Login was in extacted from the component 
   it('login btn renders a text of Login ', () => {
       render(
          <MockRedux/>
@@ -32,5 +34,28 @@ describe('Home', () => {
         name:"Forgotten Password ?"
     })
     expect(linkBtnText.textContent).toBe("Forgotten Password ?")
- })
+   })
+
+   it('login anchor tag of signup ', () => {
+    render(
+       <MockRedux/>
+    )
+    const linkBtnText=screen.getByRole("link",
+    {
+        name:"Don't have an Account ? Signup"
+    })
+
+    // confirm if input fields are empty when page loads
+    expect(linkBtnText.textContent).toBe('Don\'t have an Account ? Signup')
+     })
+
+    it('expect email and password values from login form inputs ', async() => {
+         render(
+            <MockRedux/>
+         )
+         const inputNode1 = screen.getByLabelText('Email')
+         const inputNode2 = screen.getByLabelText('Password')
+         expect(inputNode1.value).toBe('')
+         expect(inputNode2.value).toBe('')
+    })
 })
