@@ -1,10 +1,10 @@
 import React from 'react'
-import Login from '../../components/employeeAuth/login/Login'
+import CreateAcount from '../../components/employeeAuth/signup/CreateAccount'
 
 const index = () => {
   return (
     <div>
-        <Login/>
+        <CreateAcount/>
     </div>
   )
 }

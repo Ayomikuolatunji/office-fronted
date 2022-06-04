@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { employee } from "../../api/authApi";
+import { employee } from "../../hooks/employeeApis";
 
 export const getEmployeeData=createAsyncThunk("employeeInfo/getEmployeeData",async(_, thunkAPI)=>{
     const {employeeId}=thunkAPI.getState().employeeAuth.credentials

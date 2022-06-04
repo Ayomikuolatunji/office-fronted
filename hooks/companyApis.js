@@ -1,0 +1,1 @@
+export const registerCompany=`${host}/office-api/auth/create_company_account`
