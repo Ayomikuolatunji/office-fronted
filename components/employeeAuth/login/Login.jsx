@@ -66,7 +66,7 @@ export default function Login() {
            })
           if(res.status===200){
             setLoading(false)
-            router.push('/create-account-as-employee')
+            router.push('/')
             console.log(res.data)
             dispatch(loginEmployee(res.data))
           }

@@ -71,8 +71,11 @@ export default function ForgotPassword() {
                 </h3>   
               </Grid>
 
-         <form onSubmit={(e)=>sendResetPassword(e)}
-         className = "p-4">
+         <form 
+         onSubmit={(e)=>sendResetPassword(e)}
+         className = "p-4"
+          data-testid="forgot-password-form"
+         >
               <InputText 
                 type={"email"}
                 onChange={(e)=>handleChange(e)}
@@ -93,7 +96,6 @@ export default function ForgotPassword() {
               />
               <p>Provide your email address to change password</p>
               <p className='text-base text-center'>
-              <br />
                 Back to login <Link href={"/login"} passHref>
                  Login
                </Link>

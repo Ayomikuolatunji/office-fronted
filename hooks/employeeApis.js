@@ -4,7 +4,7 @@ export const createAccount=`${host}/office-api/auth/register_employees`
 
 export const loginApi=`${host}/office-api/auth/login_employee`
 
-export const profile=`${host}/office-api/auth/profile_picture`
+export const profile=`${host}/office-api/auth/employee_profile_picture`
 
 export const allUsers=`${host}/office-api/auth/all_employees`
 
