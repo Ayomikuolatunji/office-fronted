@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { logoutEmployee } from '../redux/auth/employeSlice';
 import { employeeCompanies } from '../helpers/employeeCompanies';
-import { Wrapper, SideNav} from 'styled-compnent/Sidebar';
 
 export default function Sidebar() {
 	const isLoggedIn = useSelector((state) => state.employeeAuth.isLoggedIn);
@@ -30,13 +29,13 @@ export default function Sidebar() {
 		}
 	};
 	return (
-		<SidebaarDiv>
-			<Wrapper>
-				<div className="Title">
-					<h5>Online Office</h5>
+		<div className='w-[100%] h-[100%] mb-[1rem]'>
+			<div className='flex justify-between flex-col h-[inherent] relative items-center '>
+				<div className="block w-[100%] border-2 border-[#E0E0E0]">
+					<h5 className='text-center text[1em] p-[1em]'>Online Office</h5>
 				</div>
 	            
-				<SideNav>
+				<div>
 				    {employeeCompanies.map((company, index) => {
 						console.log(company.item);
 						return (
@@ -45,29 +44,24 @@ export default function Sidebar() {
 							</li>
 						);
 					})}
-					<li className="inbox">
-						<MdMoveToInbox className='text-2xl inline'/>
+					<li className="inbox flex text-[1em] py-[0.45em]">
+						<MdMoveToInbox className='text-2xl inline text-[white]'/>
 						<Link href={'/employee-dashboard/inbox'}>
-							Inbox
+							 <a className='text-[#f1f5f8] pl-[0.45em]'>Inbox</a>
 						</Link>
 						<span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
 							3
 						</span>
 					</li>
-				</SideNav>
-				<div className="bottom">
-					<span className = "bottom-item" onClick={() => LogoutFunc()}>
+				</div>
+				<div className="text-[#F1F5F8] py-[0.45em] px-[0.75em] text-[1rem] w-[70%] z-[2] my-[0] mx-auto">
+					<span className="flex items-center justify-around p-[0.45em] rounded-[1.7em] transition-[background] duration-[.25] hover:bg-[black]" onClick={() => LogoutFunc()}>
 						<VscSignOut className="display-block" />
 						<span className='block'>Logout</span>
 					</span>
 			    </div>
-			</Wrapper>
-		</SidebaarDiv>
+			</div>
+		</div>
 	);
 }
 
-const SidebaarDiv = styled.div`
-    width: 100%;
-	height: 100%;
-	margin-bottom: 1em;
-`;
