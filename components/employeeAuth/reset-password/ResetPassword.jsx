@@ -4,11 +4,11 @@ import { useRouter } from 'next/router';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { Grid, Paper } from '@mui/material';
-import InputText from '../../util/InputText'
-import { FormLogicHook } from '../../helpers/FormLogicHook'
-import {setPassword} from "../../api/authApi"
-import { toastOption } from '../../helpers/toastOption';
-import CustomButton from '../../util/CumstomButton';
+import InputText from '../../../util/InputText';
+import { FormLogicHook } from '../../../helpers/FormLogicHook'
+import {setPassword} from "../../../hooks/employeeApis";
+import { toastOption } from '../../../helpers/toastOption';
+import CustomButton from '../../../util/CumstomButton';
 
 
 
@@ -32,7 +32,7 @@ export default function ResetPassword() {
   const submitLogin=useCallback(async(event)=>{
     setLoading(true)
     const {password}=values
-      e.preventDefault()
+      event.preventDefault()
         validateRegistration()
       if(validateRegistration()){
         try{

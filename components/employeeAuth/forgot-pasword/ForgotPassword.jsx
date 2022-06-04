@@ -7,7 +7,7 @@ import {useSelector } from 'react-redux';
 import { Alert,Grid, Paper} from '@mui/material';
 import { useRouter } from 'next/router';
 import CustomButton from '../../../util/CumstomButton'
-import InputText from '../../../../util/InputText'
+import InputText from '../../../util/InputText'
 import { FormLogicHook } from '../../../helpers/FormLogicHook'
 import {fogetPassword} from "../../../hooks/employeeApis";
 import { toastOption } from '../../../helpers/toastOption';
@@ -91,10 +91,10 @@ export default function ForgotPassword() {
               variant={"contained"}
               fullwidth
               />
+              <p>Provide your email address to change password</p>
               <p className='text-base text-center'>
-               Provide your email address to change password
               <br />
-              Back to login <Link href={"/login"} passHref sx = {{paddingLeft : "0.5em", paddingBottom : "0.em"}}>
+                Back to login <Link href={"/login"} passHref>
                  Login
                </Link>
              </p>

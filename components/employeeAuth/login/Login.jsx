@@ -90,10 +90,10 @@ export default function Login() {
               <RiAccountPinCircleLine color = "primary"/>
             </Avatar>
             <h2>
-            Sign In
+               Sign In
             </h2>   
           </Grid>    
-         <form onSubmit={(e)=>submitLogin(e)}>
+         <form onSubmit={(e)=>submitLogin(e)} data-testid="login-form">
               <InputText 
                 type={"email"}
                 onChange={(e)=>handleChange(e)}
@@ -131,7 +131,10 @@ export default function Login() {
               <div className='mt-2'>
               <Link href={"/create-account-as-employee"} passHref>
                   <a>
-                    Don&apos;t have an Account ? Signup
+                    Don&apos;t have an Account ? 
+                    <span className='ml-2 text-black'>
+                      Signup
+                  </span>
                 </a>
                </Link>
               </div>

@@ -1,6 +1,6 @@
 const host=`http://localhost:8080/v1`
 
-export const registrationApi=`${host}/office-api/auth/register_employee`
+export const createAccount=`${host}/office-api/auth/register_employees`
 
 export const loginApi=`${host}/office-api/auth/login_employee`
 

@@ -10,7 +10,7 @@ import { Grid, Paper, Avatar, Typography } from '@mui/material';
 import CustomButton from '../../../util/CumstomButton'
 import InputText from '../../../util/InputText'
 import { FormLogicHook } from '../../../helpers/FormLogicHook'
-import {registrationApi} from "../../../hooks/employeeApis";
+import {createAccount} from "../../../hooks/employeeApis";
 import { toastOption } from '../../../helpers/toastOption';
 import { getEmployeeId } from '../../../redux/employee/employeeInfoSlice';
 
@@ -67,7 +67,7 @@ export default function CreateAcount() {
               password,
               role
             }),
-            url:registrationApi
+            url:createAccount
          })
          if(res.status===201){
           setLoading(false)
