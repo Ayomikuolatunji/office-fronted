@@ -12,7 +12,7 @@ export const deleteUserApi=`${host}/office-api/auth/delete_employee`
 
 export const employee=`${host}/office-api/auth/employee`
 
-export const fogetPassword=`${host}/office-api/auth/reset_password`
+export const fogetPassword=`${host}/office-api/auth/reset_employee_password`
 
-export const setPassword=`${host}/office-api/auth/set_newpassword`
+export const setPassword=`${host}/office-api/auth/set_employee_new_password`
 

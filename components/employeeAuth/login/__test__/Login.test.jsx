@@ -35,7 +35,8 @@ describe('Home', () => {
     })
     expect(linkBtnText.textContent).toBe("Forgotten Password ?")
    })
-
+   
+//    confirm if sinup btn has a text
    it('login anchor tag of signup ', () => {
     render(
        <MockRedux/>

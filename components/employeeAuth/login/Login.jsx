@@ -1,4 +1,4 @@
-import React, { useState,useEffect, useCallback, useMemo } from 'react'
+import { useState, useCallback } from 'react';
 import Link from 'next/link'
 import { ToastContainer,toast } from 'react-toastify'
 import { useRouter } from 'next/router';
@@ -28,7 +28,9 @@ export default function Login() {
 
 
 
-  const validateRegistration=useMemo(()=>{
+
+
+  const validateRegistration=useCallback(()=>{
     const {email,password}=values
 
     if(!password || !email){
@@ -48,7 +50,7 @@ export default function Login() {
         return false 
      }
      return true
-  },[values])
+  },[values]) 
 
 
   const submitLogin=useCallback(async(e)=>{
@@ -121,7 +123,7 @@ export default function Login() {
               </CustomButton>
               <div className='mt-4'>
                 <Typography className='mt-4'>
-                <Link href={"/create-account-as-employee"} passHref>
+                <Link href={"/forgot-password"} passHref>
                   Forgotten Password ?
                 </Link>
               </Typography>
