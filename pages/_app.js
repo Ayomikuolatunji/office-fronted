@@ -14,6 +14,8 @@ function MyApp({ Component, pageProps ,...appProps}) {
 
 
   if (["/employee-dashboard",'/employee-dashboard/profile', '/employee-dashboard/companies',  '/employee-dashboard/inbox'].includes(appProps.router.pathname)) {
+
+    
     return  <Provider store={store.store}>
             <NextUIProvider>
               <PersistGate persistor={store.persistStore}>

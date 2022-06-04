@@ -1,8 +1,9 @@
 import React from 'react'
-import MainEmplyeeDashhboard from '../../layouts/EmplyeeDashhboard'
+import Welcome from '../../components/employee/welcome/Welcome'
+
 
 const index = () => {
-  return <MainEmplyeeDashhboard/>
+  return <Welcome/>
 }
 
 export default index

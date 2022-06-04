@@ -41,10 +41,6 @@ export default function Login() {
         toast.error("Your paswword should be 8 characters long!", toastOption);
         return false 
      }
-     if(password==="number"){
-      toast.error("Numeric password is not allow!", toastOption);
-      return false 
-     }
      if(!email){
         toast.error("Email is required!", toastOption);
         return false 
@@ -66,7 +62,7 @@ export default function Login() {
            })
           if(res.status===200){
             setLoading(false)
-            router.push('/')
+            router.push('/employee-dashboard')
             console.log(res.data)
             dispatch(loginEmployee(res.data))
           }

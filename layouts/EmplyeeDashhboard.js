@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { getEmployeeData } from '../redux/employee/employeeInfoSlice'
-// import styled from "styled-components"
-// import Sidebar from "../layouts/employee-dashboard/sidebar/Sidebar"
+import Sidebar from './Sidebar'
+
 // import { Header } from '../components/employee/Header/Header'
 // import { Copyright } from '@mui/icons-material'
 
@@ -15,22 +15,23 @@ export default function MainEmplyeeDashhboard({children}) {
     },[dispatch])
     
   return (
-    <div>
-       {/* <ContainerDiv>
+    <div className='h-[100vh] w-[100%] bg-[#03284d] flex justify-center'>
      
-        <InnerDiv>
-            <div className='SidebarLayer'>
-            <Sidebar/>
+            <div className='w-[80vw] m-auto h-[70vh] flex justify-between items-center bg-[#94A8B6]'>
+                <div 
+                className='relative w-[15%] h-[100%] bg-[#797878]'
+                >
+                  <Sidebar/>
+                </div>
+                <main 
+                  className='w-[85%] h-[inherent] justify-center m-[auto] bg-[#F1F5F8]'
+                >
+                  {children}
+                </main>
             </div>
-            <main>
-              {children}
-            </main>
-        </InnerDiv>
-    </ContainerDiv>
-        <Footer> 
+        {/* <Footer> 
           <p>All right reserved <Copyright /></p>
         </Footer>  */}
-        maion
     </div>
   )
 }

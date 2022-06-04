@@ -8,6 +8,7 @@ import { RiUserSettingsFill } from 'react-icons/ri';
 import { IoIosNotificationsOutline } from 'react-icons/io';
 import { BsSearch } from 'react-icons/bs';
 import { HeaderPage, InnerPage, Communication, Profile } from '../../../styled-compnent/Header';
+import { icons } from 'react-icons';
 
 export const Header = () => {
 	const [ search, setSearch ] = useState('');
@@ -16,21 +17,40 @@ export const Header = () => {
 		ev.preventDefault();
 	};
 
+	const Icons=[
+		{
+		   icon:<FaVideo 
+		   className="Link mr-[1.5em] text-[1.3em] text-[#fff] text-center relative cursor-pointer " 
+		   />,
+		   link:"#"	
+		},
+		{
+			icon:<RiUserSettingsFill className="Link" />,
+			link:"#"
+		},{
+			icon:<IoIosNotificationsOutline className="Link" />,
+			link:"#"
+		},{
+			icon:<BsSearch className="Link" />,
+			link:"#"
+		}
+	]
+
 	return (
-		<HeaderPage>
-			<InnerPage>
-				<main>
-					<header>
+		<div className='w-[100%] relative block bg-[#536c7c]'>
+			<div className='relative w-[100%] h-[inherent]'>
+				<main className='block w-[100%] h-[inherent]'>
+					<div className='flex items-center w-[95%] m-auto pb-[0.45em] pt-[0.45em] '>
 						<div className="logo">
 							<Stack direction="row">
 								<Avatar sx={{ bgcolor: deepPurple[500] }} src="../../../public/images/Logo.jpg" />
 							</Stack>
 						</div>
 
-						<div className="formContainer">
-							<form onSubmit={HandleSubmit}>
+						<div className="w-[50%] ml-[1rem] m-auto">
+							<form onSubmit={HandleSubmit} className="flex items-center justify-between text-[#fff]">
 								<TextField
-									id="form2"
+									className='py-[0.65em] px-[0.75em]'
 									sx={{ width: '100%', marginRight: '1em', marginLeft : "0.45em", borderColor : "white" }}
 									type="search"
 									variant="outlined"
@@ -45,31 +65,30 @@ export const Header = () => {
 							</form>
 						</div>
 
-						<Communication>
+						<div className="ml-auto mr-[1rem] flex justify-between p-[1rem]">
 							{/* Check console for some errors */}
+							{
+								Icons.map((icon,index)=>{
+									return (
+										<Link key={index}>
+											{icon.icon}
+										</Link>
+									)
+								})
+							}
+						</div>
 
-							<Link href={'https://www.google.com'} passHref>
-								<FaVideo className="Link" />
-							</Link>
-
-							<Link href={'https://www.google.com'} passHref>
-								<RiUserSettingsFill className="Link" />
-							</Link>
-
-							<Link href={'https://www.google.com'} passHref>
-								<IoIosNotificationsOutline className="Link" />
-							</Link>
-							{/* <span className="absolute-not">0</span> */}
-						</Communication>
-
-						<Profile>
+						<div className='mr-[1.5em] relative'>
 							<Stack direction="row">
 								<Avatar sx={{ bgcolor: deepPurple[500] }}>O</Avatar>
 							</Stack>
-						</Profile>
-					</header>
+						</div>
+					</div>
 				</main>
-			</InnerPage>
-		</HeaderPage>
+			</div>
+		</div>
 	);
 };
+
+
+

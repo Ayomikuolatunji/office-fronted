@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
 import {MdMoveToInbox} from "react-icons/md"
 import { VscSignOut } from 'react-icons/vsc';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,7 +13,6 @@ export default function Sidebar() {
 	const dispatch = useDispatch();
 	const router = useRouter();
 
-	console.log(logoutEmployee());
 
 	useEffect(() => {
 			if (!isLoggedIn) {
