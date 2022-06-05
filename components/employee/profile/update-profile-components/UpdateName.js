@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
 import { FiEdit } from 'react-icons/fi'
 import { ToastContainer,toast } from 'react-toastify'
-import { toastOption } from '../../../helpers/toastOption';
-import {getEmployeeData} from "../../../redux/employee/employeeInfoSlice"
+import { toastOption } from '../../../../helpers/toastOption';
+import {getEmployeeData} from "../../../../redux/employee/employeeInfoSlice"
 import {useDispatch} from "react-redux"
 
 

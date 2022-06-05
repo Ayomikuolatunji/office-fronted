@@ -6,8 +6,8 @@ import axios from 'axios';
 import {useSelector } from 'react-redux';
 import { Alert,Grid, Paper} from '@mui/material';
 import { useRouter } from 'next/router';
-import CustomButton from '../../../util/CumstomButton'
-import InputText from '../../../util/InputText'
+import CustomButton from '../../../utils/CumstomButton'
+import InputText from '../../../utils/InputText'
 import { FormLogicHook } from '../../../helpers/FormLogicHook'
 import {fogetPassword} from "../../../hooks/employeeApis";
 import { toastOption } from '../../../helpers/toastOption';
