@@ -29,9 +29,6 @@ export const Header = () => {
 		},{
 			icon:<IoIosNotificationsOutline  className="Link mr-[1.5em] text-[1.3em] text-[#fff] text-center relative cursor-pointer " />,
 			link:"#"
-		},{
-			icon:<BsSearch  className="Link mr-[1.5em] text-[1.3em] text-[#fff] text-center relative cursor-pointer " />,
-			link:"#"
 		}
 	]
 

@@ -28,7 +28,7 @@ export default function MainEmplyeeDashhboard({children}) {
                 </div>
                 <main 
                   className='w-[85%] h-[100%] 
-                  bg-[#F1F5F8] m-2'
+                  bg-[#F1F5F8] mx-1'
                 >
                   {children}
                 </main>

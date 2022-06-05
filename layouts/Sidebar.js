@@ -29,8 +29,8 @@ export default function Sidebar() {
 	return (
 		<div className='w-[100%] h-[100%] mb-[1rem]'>
 			<div className='flex justify-between flex-col h-[100%] relative items-center '>
-				<div className="block w-[100%] border-[1px] border-[#E0E0E0]">
-					<h5 className='text-center text[1em] p-[1em]'>Online Office</h5>
+				<div className="w-[100%] border-t-2 border-b-2">
+					<h5 className='text-center text[1em] p-[1em] text-[#fff]'>Online Office</h5>
 				</div>
 	            
 				<div className='-mt-[250px]'>
