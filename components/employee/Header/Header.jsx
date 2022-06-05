@@ -69,7 +69,9 @@ export const Header = () => {
 								Icons.map((icon,index)=>{
 									return (
 										<Link key={index} href={icon.link}>
+											<a>
 											{icon.icon}
+											</a>
 										</Link>
 									)
 								})

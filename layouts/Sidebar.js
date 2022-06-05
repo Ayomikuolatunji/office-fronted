@@ -35,7 +35,6 @@ export default function Sidebar() {
 	            
 				<div className='-mt-[250px]'>
 				    {employeeCompanies.map((company, index) => {
-						console.log(company.item);
 						return (
 							<li key={index} className="mb-10 no-underline cursor-pointer">
 								<Link href={company.route}>

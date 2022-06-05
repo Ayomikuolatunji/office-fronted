@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Sidebar from './Sidebar'
 import OfficeBody from './office-body/OfficeBody'
+import { useDispatch } from 'react-redux'
+import { fetchEmployeeCompanies } from '../../../redux/employee/employeeInfoSlice'
+
 
 const Office = () => {
+   const dispatch=useDispatch()     
+
+
+  useEffect(()=>{
+      dispatch(fetchEmployeeCompanies())      
+  },[dispatch])
+
   return (
     <div className='w-[100%] h-[100%] bg-[white]'>
         <div className='flex justify-between w-full h-[100%]'>
