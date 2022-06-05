@@ -7,8 +7,8 @@ import { useDispatch } from 'react-redux';
 import {RiAccountPinCircleLine} from 'react-icons/ri';
 import { useRouter } from 'next/router';
 import { Grid, Paper, Avatar, Typography } from '@mui/material';
-import CustomButton from '../../../util/CumstomButton'
-import InputText from '../../../util/InputText'
+import CustomButton from '../../../utils/CumstomButton'
+import InputText from '../../../utils/InputText'
 import { FormLogicHook } from '../../../helpers/FormLogicHook'
 import {createAccount} from "../../../hooks/employeeApis";
 import { toastOption } from '../../../helpers/toastOption';
