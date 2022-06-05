@@ -28,17 +28,21 @@ export default function Sidebar() {
 	};
 	return (
 		<div className='w-[100%] h-[100%] mb-[1rem]'>
-			<div className='flex justify-between flex-col h-[inherent] relative items-center '>
-				<div className="block w-[100%] border-2 border-[#E0E0E0]">
+			<div className='flex justify-between flex-col h-[100%] relative items-center '>
+				<div className="block w-[100%] border-[1px] border-[#E0E0E0]">
 					<h5 className='text-center text[1em] p-[1em]'>Online Office</h5>
 				</div>
 	            
-				<div>
+				<div className='-mt-[250px]'>
 				    {employeeCompanies.map((company, index) => {
 						console.log(company.item);
 						return (
-							<li key={index}>
-								<Link href={company.route}>{company.item}</Link>
+							<li key={index} className="mb-10">
+								<Link href={company.route}>
+									<a className='text-white'>
+									{company.item}
+									</a>
+								</Link>
 							</li>
 						);
 					})}

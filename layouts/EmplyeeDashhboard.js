@@ -22,7 +22,7 @@ export default function MainEmplyeeDashhboard({children}) {
             <Header/>
             <div className='w-[100%] m-auto h-[100%] flex justify-between items-center bg-[#94A8B6]'>
                 <div 
-                className='relative w-[15%] h-[100%] bg-[#797878]'
+                className='relative w-[15%] h-[100%] bg-[#536c7c]'
                 >
                   <Sidebar/>
                 </div>
