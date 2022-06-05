@@ -8,7 +8,7 @@ import { fetchEmployeeCompanies } from '../../../redux/employee/employeeInfoSlic
 const Office = () => {
    const dispatch=useDispatch()     
 
-
+  
   useEffect(()=>{
       dispatch(fetchEmployeeCompanies())      
   },[dispatch])
