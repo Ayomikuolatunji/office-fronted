@@ -12,10 +12,10 @@ const AddCompany = () => {
 
   return (
     <>
-        <div className="add-company-modal absolute top-0 left-0 right-0 bottom-0 bg-[transparent] text-white flex justify-center items-center">
+        <div className="add-company-modal absolute top-0 left-0 right-0 bottom-0 bg-[transparent] flex justify-center items-center">
             <div className="add-company-modal-content bg-[white]">
                 <div className="add-company-modal-header">
-                    <h2>Add Company</h2>
+                    <h2>Add Company with company id and name</h2>
                 </div>
                 <div className="add-company-modal-body">
                     <div className="add-company-modal-body-input">
