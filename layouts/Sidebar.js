@@ -37,7 +37,7 @@ export default function Sidebar() {
 				    {employeeCompanies.map((company, index) => {
 						console.log(company.item);
 						return (
-							<li key={index} className="mb-10">
+							<li key={index} className="mb-10 no-underline">
 								<Link href={company.route}>
 									<a className='text-white'>
 									{company.item}

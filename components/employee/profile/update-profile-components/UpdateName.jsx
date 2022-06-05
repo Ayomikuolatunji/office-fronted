@@ -47,7 +47,7 @@ export default function UpdateName({employeeData}) {
        })
  }
 
-
+ console.log(employeeData)
 
   return (
     <div className="username mt-6 bg-white p-3">

@@ -27,7 +27,7 @@ export default function MainEmplyeeDashhboard({children}) {
                   <Sidebar/>
                 </div>
                 <main 
-                  className='w-[85%] h-[inherent] justify-center
+                  className='w-[85%] h-[inherent] 
                   bg-[#F1F5F8] m-2'
                 >
                   {children}
