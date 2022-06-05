@@ -1,5 +1,6 @@
 import React from 'react'
 import Sidebar from './Sidebar'
+import OfficeBody from './office-body/OfficeBody'
 
 const Office = () => {
   return (
@@ -9,7 +10,7 @@ const Office = () => {
               <Sidebar />
             </div>
             <div className="main bg-[#dfdfdf] h-[100%] w-[89%]">
-
+               <OfficeBody />
             </div>
             <div className="right bg-[green] h-[100%] w-[15%] hidden">
 
