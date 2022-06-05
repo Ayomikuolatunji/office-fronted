@@ -1,5 +1,5 @@
 import React from 'react'
-import ResetPassword from '../../components/employeeAuth/reset-password/ResetPassword'
+import ResetPassword from '../../components/employee-authentications/reset-password/ResetPassword'
 
 const index = () => {
   return <ResetPassword/>

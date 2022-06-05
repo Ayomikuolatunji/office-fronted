@@ -7,9 +7,9 @@ import axios from "axios"
 import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import {FcOldTimeCamera} from "react-icons/fc"
-import ButtonText from "../../../util/Button"
+import ButtonText from "../../../utils/Button"
 import {clearEmployeeId} from "../../../redux/employee/employeeInfoSlice";
-import CircleProgressbar from "../../../util/materialUi/CircleProgressBar"
+import CircleProgressbar from "../../../utils/materialUi/CircleProgressBar"
 import {profile} from "../../../hooks/employeeApis"
 import { toastOption } from "../../../helpers/toastOption";
 

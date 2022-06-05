@@ -4,11 +4,11 @@ import { useRouter } from 'next/router';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { Grid, Paper } from '@mui/material';
-import InputText from '../../../util/InputText';
+import InputText from '../../../utils/InputText';
 import { FormLogicHook } from '../../../helpers/FormLogicHook'
 import {setPassword} from "../../../hooks/employeeApis";
 import { toastOption } from '../../../helpers/toastOption';
-import CustomButton from '../../../util/CumstomButton';
+import CustomButton from '../../../utils/CumstomButton';
 
 
 

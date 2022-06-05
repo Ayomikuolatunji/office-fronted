@@ -7,8 +7,7 @@ import { FaVideo } from 'react-icons/fa';
 import { RiUserSettingsFill } from 'react-icons/ri';
 import { IoIosNotificationsOutline } from 'react-icons/io';
 import { BsSearch } from 'react-icons/bs';
-import { HeaderPage, InnerPage, Communication, Profile } from '../../../styled-compnent/Header';
-import { icons } from 'react-icons';
+
 
 export const Header = () => {
 	const [ search, setSearch ] = useState('');
@@ -25,13 +24,13 @@ export const Header = () => {
 		   link:"#"	
 		},
 		{
-			icon:<RiUserSettingsFill className="Link" />,
+			icon:<RiUserSettingsFill  className="Link mr-[1.5em] text-[1.3em] text-[#fff] text-center relative cursor-pointer " />,
 			link:"#"
 		},{
-			icon:<IoIosNotificationsOutline className="Link" />,
+			icon:<IoIosNotificationsOutline  className="Link mr-[1.5em] text-[1.3em] text-[#fff] text-center relative cursor-pointer " />,
 			link:"#"
 		},{
-			icon:<BsSearch className="Link" />,
+			icon:<BsSearch  className="Link mr-[1.5em] text-[1.3em] text-[#fff] text-center relative cursor-pointer " />,
 			link:"#"
 		}
 	]
@@ -40,14 +39,14 @@ export const Header = () => {
 		<div className='w-[100%] relative block bg-[#536c7c]'>
 			<div className='relative w-[100%] h-[inherent]'>
 				<main className='block w-[100%] h-[inherent]'>
-					<div className='flex items-center w-[95%] m-auto pb-[0.45em] pt-[0.45em] '>
+					<div className='w-[95%] m-auto pb-[0.45em] pt-[0.45em] flex justify-between items-center'>
 						<div className="logo">
 							<Stack direction="row">
 								<Avatar sx={{ bgcolor: deepPurple[500] }} src="../../../public/images/Logo.jpg" />
 							</Stack>
 						</div>
 
-						<div className="w-[50%] ml-[1rem] m-auto">
+						<div className="w-[50%] mx-auto">
 							<form onSubmit={HandleSubmit} className="flex items-center justify-between text-[#fff]">
 								<TextField
 									className='py-[0.65em] px-[0.75em]'
@@ -65,12 +64,12 @@ export const Header = () => {
 							</form>
 						</div>
 
-						<div className="ml-auto mr-[1rem] flex justify-between p-[1rem]">
+						<div className="ml-auto mr-[1rem] flex justify-between ">
 							{/* Check console for some errors */}
 							{
 								Icons.map((icon,index)=>{
 									return (
-										<Link key={index}>
+										<Link key={index} href={icon.link}>
 											{icon.icon}
 										</Link>
 									)

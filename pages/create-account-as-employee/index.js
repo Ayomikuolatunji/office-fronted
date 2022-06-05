@@ -1,5 +1,5 @@
 import React from 'react'
-import CreateAcount from '../../components/employeeAuth/signup/CreateAccount'
+import CreateAcount from '../../components/employee-authentications/signup/CreateAccount'
 
 const index = () => {
   return (

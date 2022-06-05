@@ -1,5 +1,5 @@
 import React from 'react'
-import Login from '../../components/employeeAuth/login/Login'
+import Login from '../../components/employee-authentications/login/Login'
 
 
 const index = () => {

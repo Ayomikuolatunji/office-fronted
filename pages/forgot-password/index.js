@@ -1,5 +1,5 @@
 import React from 'react'
-import ForgotPassword from '../../components/employeeAuth/forgot-pasword/ForgotPassword'
+import ForgotPassword from '../../components/employee-authentications/forgot-pasword/ForgotPassword'
 
 const index = () => {
   return  <ForgotPassword/>

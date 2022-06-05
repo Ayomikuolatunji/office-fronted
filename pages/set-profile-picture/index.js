@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfilePicture from '../../components/employeeAuth/set-profilepicture/ProfilePicture'
+import ProfilePicture from '../../components/employee-authentications/set-profilepicture/ProfilePicture'
 
 const index = () => {
   return <ProfilePicture/>
