@@ -11,12 +11,30 @@ const AddCompany = () => {
 
 
   return (
-    <div className='w-full border-b-[1px]  flex justify-center items-center py-2'>
-
-        <button className='text-sm rounded-full w-[150px] h-[50px] bg-black text-white'>
-            Add company
-        </button>
-    </div>
+    <>
+        <div className="add-company-modal absolute top-0 left-0 right-0 bottom-0 bg-[transparent] text-white flex justify-center items-center">
+            <div className="add-company-modal-content bg-[white]">
+                <div className="add-company-modal-header">
+                    <h2>Add Company</h2>
+                </div>
+                <div className="add-company-modal-body">
+                    <div className="add-company-modal-body-input">
+                        <label>Company Id</label>
+                        <input type="text" placeholder="Company Id" />
+                    </div>
+                    <div className="add-company-modal-body-input">
+                        <label>Company Name</label>
+                        <input type="text" placeholder="Company Name" />
+                    </div>
+                </div>
+            </div>
+         </div>
+         <div className='w-full border-b-[1px]  flex justify-center items-center py-2'>
+                <button className='text-sm rounded-full w-[150px] h-[50px] bg-black text-white'>
+                    Add company
+                </button>
+         </div>
+    </>
   )
 
 
