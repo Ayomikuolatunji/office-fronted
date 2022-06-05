@@ -7,9 +7,11 @@ import { FaVideo } from 'react-icons/fa';
 import { RiUserSettingsFill } from 'react-icons/ri';
 import { IoIosNotificationsOutline } from 'react-icons/io';
 import { BsSearch } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
 
 
 export const Header = () => {
+	const employeeData=useSelector(state=>state.employeeInfo.employeeData)
 	const [ search, setSearch ] = useState('');
 
 	const HandleSubmit = (ev) => {
@@ -39,7 +41,7 @@ export const Header = () => {
 					<div className='w-[95%] m-auto pb-[0.45em] pt-[0.45em] flex justify-between items-center'>
 						<div className="logo">
 							<Stack direction="row">
-								<Avatar sx={{ bgcolor: deepPurple[500] }} src="../../../public/images/Logo.jpg" />
+								<Avatar sx={{ bgcolor: deepPurple[500] }} src={employeeData?.avartImage} />
 							</Stack>
 						</div>
 
