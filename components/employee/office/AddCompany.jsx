@@ -1,7 +1,23 @@
-import React, { useState } from 'react'
+import React,{ useState } from 'react';
+import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
+import { Box } from '@mui/material';
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 500,
+    p: 4,
+  };
+
 
 const AddCompany = () => {
     const [open,setOpen]=useState(false)
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+  
 //   1. Create a new company
 //   2. Add the company to the user's company list
 //   3. Add the user to the company's user list
@@ -12,25 +28,49 @@ const AddCompany = () => {
 
   return (
     <>
-        <div className="add-company-modal absolute top-0 left-0 right-0 bottom-0 bg-[transparent] flex justify-center items-center">
-            <div className="add-company-modal-content bg-[white]">
-                <div className="add-company-modal-header">
-                    <h2>Add Company with company id and name</h2>
+   <div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+       <Box style={style}>
+       <div className="add-company-modal bg-[transparent] flex justify-center items-center w-full">
+            <div className="add-company-modal-content bg-[white] p-4 flex flex-col justify-center items-center w-full">
+                <div className="add-company-modal-header mb-3">
+                    <h2 className='text-lg'>Add Company with company id and name</h2>
                 </div>
-                <div className="add-company-modal-body">
-                    <div className="add-company-modal-body-input">
-                        <label>Company Id</label>
-                        <input type="text" placeholder="Company Id" />
+                <div className="add-company-modal-body w-full">
+                    <div className="add-company-modal-body-input w-full">
+                        <input 
+                        type="text" 
+                        placeholder="Company Id"  
+                        className="w-full border-2 p-2 mb-5"
+                        />
                     </div>
                     <div className="add-company-modal-body-input">
-                        <label>Company Name</label>
-                        <input type="text" placeholder="Company Name" />
+                        <input 
+                        type="text" 
+                        placeholder="Company Name"
+                        className="w-full border-2 p-2 mb-5" 
+                        />
+                    </div>
+                    <div className="btn w-full">
+                        <button 
+                        className="btn-primary bg-[#536c7c] block w-full p-3 text-[white] hover:bg-[#477491]">Add compnay</button>
                     </div>
                 </div>
             </div>
          </div>
+       </Box>
+      </Modal>
+    </div>
          <div className='w-full border-b-[1px]  flex justify-center items-center py-2'>
-                <button className='text-sm rounded-full w-[150px] h-[50px] bg-black text-white'>
+                <button 
+                className='text-sm rounded-full w-[150px] h-[50px] bg-black text-white'
+                onClick={handleOpen}
+                >
                     Add company
                 </button>
          </div>

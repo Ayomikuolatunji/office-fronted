@@ -37,7 +37,7 @@ export default function Sidebar() {
 				    {employeeCompanies.map((company, index) => {
 						console.log(company.item);
 						return (
-							<li key={index} className="mb-10 no-underline">
+							<li key={index} className="mb-10 no-underline cursor-pointer">
 								<Link href={company.route}>
 									<a className='text-white'>
 									{company.item}
@@ -46,7 +46,7 @@ export default function Sidebar() {
 							</li>
 						);
 					})}
-					<li className="inbox flex text-[1em] py-[0.45em]">
+					<li className="inbox flex text-[1em] py-[0.45em] cursor-pointer">
 						<MdMoveToInbox className='text-2xl inline text-[white]'/>
 						<Link href={'/employee-dashboard/inbox'}>
 							 <a className='text-[#f1f5f8] pl-[0.45em]'>Inbox</a>
