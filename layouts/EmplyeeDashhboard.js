@@ -27,7 +27,7 @@ export default function MainEmplyeeDashhboard({children}) {
                   <Sidebar/>
                 </div>
                 <main 
-                  className='w-[85%] h-[inherent] 
+                  className='w-[85%] h-[100%] 
                   bg-[#F1F5F8] m-2'
                 >
                   {children}
