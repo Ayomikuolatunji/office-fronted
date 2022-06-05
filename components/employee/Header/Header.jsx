@@ -24,10 +24,6 @@ export const Header = () => {
 		   className="Link mr-[1.5em] text-[1.3em] text-[#fff] text-center relative cursor-pointer " 
 		   />,
 		   link:"#"	
-		},
-		{
-			icon:<RiUserSettingsFill  className="Link mr-[1.5em] text-[1.3em] text-[#fff] text-center relative cursor-pointer " />,
-			link:"#"
 		},{
 			icon:<IoIosNotificationsOutline  className="Link mr-[1.5em] text-[1.3em] text-[#fff] text-center relative cursor-pointer " />,
 			link:"#"

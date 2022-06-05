@@ -13,6 +13,7 @@ import { FormLogicHook } from '../../../helpers/FormLogicHook'
 import {loginApi} from "../../../hooks/employeeApis";
 import { toastOption } from '../../../helpers/toastOption';
 import { loginEmployee } from '../../../redux/auth/employeSlice';
+import { getEmployeeId } from '../../../redux/employee/employeeInfoSlice';
 
 
 
@@ -63,8 +64,8 @@ export default function Login() {
           if(res.status===200){
             setLoading(false)
             router.push('/employee-dashboard')
-            console.log(res.data)
             dispatch(loginEmployee(res.data))
+            dispatch(getEmployeeId(res.data.employeeId))
           }
         }catch(err){
            setLoading(false)

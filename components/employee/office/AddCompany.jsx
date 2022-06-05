@@ -2,6 +2,7 @@ import React,{ useState } from 'react';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 const style = {
     position: 'absolute',
@@ -14,6 +15,7 @@ const style = {
 
 
 const AddCompany = () => {
+    const employeeId=useSelector(state=>state.employeeInfo.employeeId)
     const [open,setOpen]=useState(false)
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
