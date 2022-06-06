@@ -31,6 +31,7 @@ const AddCompany = () => {
 //get company name
 
   const addNewCompany=useCallback(async()=>{
+      setError("")
      try {
        const response=await axios.post(`${add_new_company}/${`627a2056e4d0048ad86566e7`}`,{
             companyId:"629d29f829bc0bfd035bc2a0"
@@ -77,7 +78,9 @@ const AddCompany = () => {
                         />
                     </div>
                     <div className="error">
-                        {error}
+                       <span>
+                         {error}
+                       </span>
                     </div>
                     <div className="btn w-full">
                         <button 
