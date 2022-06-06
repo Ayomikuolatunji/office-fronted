@@ -1,7 +1,7 @@
 import React,{ useState,useCallback } from 'react';
-import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/material';
+
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { add_new_company } from '../../../hooks/employeeApis';
@@ -26,25 +26,24 @@ const AddCompany = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
   
-//   1. Create a new company
-//   2. Add the company to the user's company list
-//   3. Add the user to the company's user list
+   //   1. Create a new company
+  //   2. Add the company to the user's company list
+  //   3. Add the employee to the company's user list
 
-// get the company id
-//get company name
-  console.log(employeeId,values.company_id,values.company_name)
+  // get the company id
+  //get company name
   const addNewCompany=useCallback(async()=>{
       setError("")
      try {
-       const response=await axios.post(`${add_new_company}/${employeeId.toString()}`,{
+       const response=await axios.post(`${add_new_company}/${employeeId}`,{
             companyId:values.company_id.trim(),
             company_name:values.company_name.trim()
        })
-       console.log(response)
-        // if(response.status===200){
-        //   fetchEmployeeCompanies()
-        //   handleClose()
-        // }
+        if(response.status===200){
+          fetchEmployeeCompanies()
+          handleClose()
+          setError("")
+        }
      } catch (error) {
       if( error.response ){
         console.log(error.response.data); // => the response payload 
@@ -98,7 +97,7 @@ const AddCompany = () => {
                     <div className="btn w-full">
                         <button 
                         onClick={addNewCompany}
-                        className="btn-primary bg-[#536c7c] block w-full p-3 text-[white] hover:bg-[#477491]">Add compnay</button>
+                        className="btn-primary bg-[#536c7c] block w-full p-3 text-[white] hover:bg-[#477491]">Add company</button>
                     </div>
                 </div>
             </div>
