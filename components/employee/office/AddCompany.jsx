@@ -5,6 +5,7 @@ import { Box } from '@mui/material';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { add_new_company } from '../../../hooks/employeeApis';
+import { FormLogicHook } from '../../../helpers/FormLogicHook';
 
 const style = {
     position: 'absolute',
@@ -18,6 +19,7 @@ const style = {
 
 const AddCompany = () => {
     const employeeId=useSelector(state=>state.employeeInfo.employeeId)
+    const {values,handleChange}=FormLogicHook()
     const [open,setOpen]=useState(false)
     const [error,setError]=useState('')
     const handleOpen = () => setOpen(true);
@@ -33,18 +35,18 @@ const AddCompany = () => {
   const addNewCompany=useCallback(async()=>{
       setError("")
      try {
-       const response=await axios.post(`${add_new_company}/${`627a2056e4d0048ad86566e7`}`,{
-            companyId:"629d29f829bc0bfd035bc2a0"
+       const response=await axios.post(`${add_new_company}/${employeeId}`,{
+            companyId:values.company_id,
+            company_Name:values.company_name
        })
        console.log(response.json())
      } catch (error) {
       if( error.response ){
         console.log(error.response.data); // => the response payload 
-
         setError(error.response.data.message)}
      } 
     
-  },[])
+  },[employeeId,values])
 
 
   return (
@@ -68,6 +70,7 @@ const AddCompany = () => {
                         type="text" 
                         placeholder="Company Id"  
                         className="w-full border-2 p-2 mb-5"
+                          values={values}
                         />
                     </div>
                     <div className="add-company-modal-body-input">
@@ -77,7 +80,7 @@ const AddCompany = () => {
                         className="w-full border-2 p-2 mb-5" 
                         />
                     </div>
-                    <div className="error">
+                    <div className="error my-3 text-red-500 text-center">
                        <span>
                          {error}
                        </span>
