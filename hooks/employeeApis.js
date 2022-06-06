@@ -16,6 +16,6 @@ export const fogetPassword=`${host}/office-api/auth/reset_employee_password`
 
 export const setPassword=`${host}/office-api/auth/set_employee_new_password`
 
-export const add_new_company=`${host}/office-api/auth/add_employee_to_company/`
+export const add_new_company=`${host}/office-api/auth/add_employee_to_company`
 
 export const employeeCompanies=`${host}/office-api/employee_companies`

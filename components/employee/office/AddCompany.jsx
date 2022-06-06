@@ -3,6 +3,8 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/material';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { add_new_company } from '../../../hooks/employeeApis';
 
 const style = {
     position: 'absolute',
@@ -17,6 +19,7 @@ const style = {
 const AddCompany = () => {
     const employeeId=useSelector(state=>state.employeeInfo.employeeId)
     const [open,setOpen]=useState(false)
+    const [error,setError]=useState('')
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
   
@@ -28,8 +31,18 @@ const AddCompany = () => {
 //get company name
 
   const addNewCompany=useCallback(async()=>{
-     
-  })
+     try {
+       const response=await axios.post(`${add_new_company}/${`627a2056e4d0048ad86566e7`}`,{
+            companyId:"629d29f829bc0bfd035bc2a0"
+       })
+       console.log(response.json())
+     } catch (error) {
+      if( error.response ){
+        console.log(error.response.data); // => the response payload 
+    }
+     } 
+    
+  },[])
 
 
   return (
@@ -64,6 +77,7 @@ const AddCompany = () => {
                     </div>
                     <div className="btn w-full">
                         <button 
+                        onClick={addNewCompany}
                         className="btn-primary bg-[#536c7c] block w-full p-3 text-[white] hover:bg-[#477491]">Add compnay</button>
                     </div>
                 </div>

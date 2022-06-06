@@ -17,7 +17,7 @@ const Sidebar = () => {
        <div className="company-lists mt-2 flex w-[100%] mx-auto flex-col h-[70vh]">
             {employeeCompainess?.employee_companies?.map(company=>{
                 return <li 
-                className='text-sm space-y-4 mt-2 bg-slate-500 p-3 text-white'
+                className='text-sm space-y-4 mt-2 bg-slate-500 p-3 text-white cursor-pointer'
                 key={company._id}>
                   {company.company_name}
               </li>
