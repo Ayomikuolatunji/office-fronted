@@ -8,6 +8,7 @@ import AddCompany from './AddCompany'
 
 const Sidebar = () => {
   const employeeCompaines=useSelector(state=>state.employeeInfo.employeeCompanies)
+  const isCompanyOpen = useSelector(state => state.modal.isCompanyOpen)
   const dispatch=useDispatch()
 
    
@@ -20,27 +21,32 @@ const Sidebar = () => {
        })
   }
 
+  let opacity=0
+  if(isCompanyOpen===100){
+   opacity=1
+  }
+
 
   return (
-    <div>
+    <div className={`opacity-[${opacity}]`}>
        <div className="add-company">
            <AddCompany/>
        </div>
        <div className="company-lists mt-2 flex w-[100%] mx-auto flex-col h-[70vh]">
             {employeeCompaines?.employee_companies?.map(company=>{
                 return <div 
-                className='text-sm space-y-4 mt-2 bg-slate-500 p-2 text-white inline-flex items-center justify-between'
+                className='text-sm space-y-4 mt-2  p-2 text-white inline-flex items-center justify-between'
                 key={company._id}
                   onClick={()=>{
                     dispatch(openCompany())
                     getSelectCompanyFunc(company._id)
                   }}
                 >
-                  <div className="logo">
-                      <Image src={company.company_profile_picture} alt="img" width={40} height={40}/>
+                  <div className="logo w-[25%]">
+                      <img src={company.company_profile_picture} alt="img" className='max-w-full w-[60px]'/>
                   </div>
-                  <div className="company-name text-left cursor-pointer">
-                      <h5>
+                  <div className="company-name text-left cursor-pointer text-black border-b-2 w-[75%] p-2">
+                      <h5 className='font-normal'>
                         {company.company_name}
                       </h5>
                   </div>

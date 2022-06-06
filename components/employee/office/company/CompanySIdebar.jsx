@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import {VscArrowLeft} from "react-icons/vsc"
 import { closeCompany} from '../../../../redux/modal/modalSlice'
 
 const CompanySIdebar = () => {
@@ -21,8 +22,8 @@ const CompanySIdebar = () => {
 
 
   return (
-    <div className={`bg-red-500 w-[100%] h-[100%] 
-    ml-[${str}]  transition-[margin-left] duration-200 absolute top-0 right-0 left-0 bottom-0 opacity-[${opacity}]`}>
+    <div className={`w-[100%] h-[100%] 
+    ml-[${str}]  transition-[margin-left] duration-300 absolute top-0 right-0 left-0 bottom-0 opacity-[${opacity}]`}>
       <div className="go-back">
         <button className="go-back-btn" onClick={()=>{
           dispatch(closeCompany())
@@ -31,7 +32,9 @@ const CompanySIdebar = () => {
           go back
         </button>
       </div>
- 
+     <main>
+       {selectedCompany?.company_name}
+     </main>
     </div>
   )
 }
