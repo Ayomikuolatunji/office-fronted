@@ -1,8 +1,7 @@
 import React,{ useState,useCallback } from 'react';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/material';
-
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { add_new_company } from '../../../hooks/employeeApis';
 import { FormLogicHook } from '../../../helpers/FormLogicHook';
@@ -21,36 +20,40 @@ const style = {
 const AddCompany = () => {
     const employeeId=useSelector(state=>state.employeeInfo.employeeId)
     const {values,handleChange}=FormLogicHook()
+    const [loading,setLoading]=useState(false)
     const [open,setOpen]=useState(false)
     const [error,setError]=useState('')
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-  
+    const dispatch=useDispatch()     
    //   1. Create a new company
   //   2. Add the company to the user's company list
   //   3. Add the employee to the company's user list
 
   // get the company id
   //get company name
-  const addNewCompany=useCallback(async()=>{
+  const addNewCompany=async()=>{
+      setLoading(true)
       setError("")
      try {
        const response=await axios.post(`${add_new_company}/${employeeId}`,{
             companyId:values.company_id.trim(),
             company_name:values.company_name.trim()
        })
-        if(response.status===200){
-          fetchEmployeeCompanies()
-          handleClose()
+       setLoading(false)
+       if(response.status===200){
           setError("")
-        }
+          dispatch(fetchEmployeeCompanies())  
+          handleClose()
+       }
      } catch (error) {
       if( error.response ){
+        setLoading(false)
         console.log(error.response.data); // => the response payload 
         setError(error.response.data.message)}
      } 
     
-  },[employeeId,values])
+  }
 
 
   return (
@@ -110,7 +113,9 @@ const AddCompany = () => {
                 className='text-sm rounded-full w-[150px] h-[50px] bg-black text-white'
                 onClick={handleOpen}
                 >
-                    Add company
+                    {
+                      loading? "please wait..." : "Add company"
+                    }
                 </button>
          </div>
     </>
