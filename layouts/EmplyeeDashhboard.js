@@ -18,11 +18,11 @@ export default function MainEmplyeeDashhboard({children}) {
   return (
     <div className='h-[100vh] w-[100%] bg-[#03284d] flex justify-center'>
             
-      <div className='w-[90vw] m-auto h-[85vh] flex justify-between items-center flex-col'>
+      <div className='w-[90vw] m-auto h-[90vh] flex justify-between items-center flex-col'>
             <Header/>
-            <div className='w-[100%] m-auto h-[100%] flex justify-between items-center bg-[#94A8B6]'>
+            <div className='w-[100%] m-auto h-[100%] flex justify-between items-center bg-[#94A8B6] relative'>
                 <div 
-                className='relative w-[15%] h-[100%] bg-[#536c7c]'
+                className='relative w-[15%] h-[100%] bg-[#536c7c] z-[50]'
                 >
                   <Sidebar/>
                 </div>
