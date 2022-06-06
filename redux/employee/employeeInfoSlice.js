@@ -28,7 +28,7 @@ const employeeInfo=createSlice({
         clearEmployeeId:(state)=>{
             // clear employeeid when employee finish signingup
             state.employeeId=""
-        },
+        }
     },
     extraReducers:{
         [getEmployeeData.fulfilled]:(state,action)=>{
@@ -39,5 +39,5 @@ const employeeInfo=createSlice({
         }
     }
 })
-export const {getEmployeeId,clearEmployeeId}=employeeInfo.actions
+export const {getEmployeeId,clearEmployeeId,getSelectedCompany}=employeeInfo.actions
 export default employeeInfo.reducer

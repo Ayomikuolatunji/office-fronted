@@ -5,6 +5,10 @@ import { closeCompany} from '../../../../redux/modal/modalSlice'
 const CompanySIdebar = () => {
     const isCompanyOpen = useSelector(state => state.modal.isCompanyOpen)
     const dispatch=useDispatch()
+    const selectedCompany=useSelector(state=>state.employeeCompanyInfo.selectedCompany)
+
+      console.log(selectedCompany)
+
      let str=0
      let opacity=0
      if(isCompanyOpen===100){

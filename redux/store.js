@@ -7,17 +7,19 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 import employeeAuth from './auth/employeSlice';
 import modalSlice from './modal/modalSlice';
 import employeeInfo from './employee/employeeInfoSlice';
+import employeeCompanyInfo from './employee/employeeCompanySlice';
 
 const persistConfig = {
     key: 'onlineoffice',
     storage,
-    blacklist:["modal"],
+    blacklist:["modal","employeeCompanyInfo"],
 }
 // first reducer setup for persist storage blacklisting country and companies
 const rootReducer= combineReducers({
    //don't persist stores below 
     // country:countryApiSlice,
     modal:modalSlice,
+    employeeCompanyInfo:employeeCompanyInfo,
     // companies:companyTypeSlice,
     // persist the stores below
     employeeAuth:employeeAuth,

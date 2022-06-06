@@ -2,15 +2,23 @@
 import Image from 'next/image'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { getSelectedCompany } from '../../../redux/employee/employeeCompanySlice'
 import { openCompany } from '../../../redux/modal/modalSlice'
 import AddCompany from './AddCompany'
 
 const Sidebar = () => {
-  const employeeCompainess=useSelector(state=>state.employeeInfo.employeeCompanies)
+  const employeeCompaines=useSelector(state=>state.employeeInfo.employeeCompanies)
   const dispatch=useDispatch()
 
-  console.log(employeeCompainess)
-
+   
+  const getSelectCompanyFunc=(id)=>{
+       return employeeCompaines?.employee_companies?.map(country=>{
+          if(country._id===id){
+             dispatch(getSelectedCompany(country))
+            return country
+          }
+       })
+  }
 
 
   return (
@@ -19,12 +27,13 @@ const Sidebar = () => {
            <AddCompany/>
        </div>
        <div className="company-lists mt-2 flex w-[100%] mx-auto flex-col h-[70vh]">
-            {employeeCompainess?.employee_companies?.map(company=>{
+            {employeeCompaines?.employee_companies?.map(company=>{
                 return <div 
                 className='text-sm space-y-4 mt-2 bg-slate-500 p-2 text-white inline-flex items-center justify-between'
                 key={company._id}
                   onClick={()=>{
                     dispatch(openCompany())
+                    getSelectCompanyFunc(company._id)
                   }}
                 >
                   <div className="logo">
