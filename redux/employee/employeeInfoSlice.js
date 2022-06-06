@@ -18,7 +18,8 @@ const employeeInfo=createSlice({
     initialState:{
         employeeData:null,
         employeeId:"",
-        employeeCompanies:null
+        employeeCompanies:null,
+        isCompanyOpen:false
     },
     reducers:{
         getEmployeeId:(state,action)=>{
@@ -28,6 +29,9 @@ const employeeInfo=createSlice({
         clearEmployeeId:(state)=>{
             // clear employeeid when employee finish signingup
             state.employeeId=""
+        },
+        openCcmpany:(state)=>{
+            state.isCompanyOpen=true
         }
     },
     extraReducers:{
@@ -39,5 +43,5 @@ const employeeInfo=createSlice({
         }
     }
 })
-export const {getEmployeeId,clearEmployeeId}=employeeInfo.actions
+export const {getEmployeeId,clearEmployeeId,openCcmpany}=employeeInfo.actions
 export default employeeInfo.reducer
