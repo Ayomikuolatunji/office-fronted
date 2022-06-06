@@ -39,7 +39,8 @@ const AddCompany = () => {
      } catch (error) {
       if( error.response ){
         console.log(error.response.data); // => the response payload 
-    }
+
+        setError(error.response.data.message)}
      } 
     
   },[])
@@ -74,6 +75,9 @@ const AddCompany = () => {
                         placeholder="Company Name"
                         className="w-full border-2 p-2 mb-5" 
                         />
+                    </div>
+                    <div className="error">
+                        {error}
                     </div>
                     <div className="btn w-full">
                         <button 
