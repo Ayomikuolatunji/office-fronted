@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState,useCallback } from 'react';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/material';
@@ -26,6 +26,10 @@ const AddCompany = () => {
 
 // get the company id
 //get company name
+
+  const addNewCompany=useCallback(async()=>{
+     
+  })
 
 
   return (
