@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { add_new_company } from '../../../hooks/employeeApis';
 import { FormLogicHook } from '../../../helpers/FormLogicHook';
+import { fetchEmployeeCompanies } from '../../../redux/employee/employeeInfoSlice';
 
 const style = {
     position: 'absolute',
@@ -31,15 +32,19 @@ const AddCompany = () => {
 
 // get the company id
 //get company name
-
+  console.log(employeeId,values.company_id,values.company_name)
   const addNewCompany=useCallback(async()=>{
       setError("")
      try {
-       const response=await axios.post(`${add_new_company}/${employeeId}`,{
-            companyId:values.company_id,
-            company_Name:values.company_name
+       const response=await axios.post(`${add_new_company}/${employeeId.toString()}`,{
+            companyId:values.company_id.trim(),
+            company_name:values.company_name.trim()
        })
-       console.log(response.json())
+       console.log(response)
+        // if(response.status===200){
+        //   fetchEmployeeCompanies()
+        //   handleClose()
+        // }
      } catch (error) {
       if( error.response ){
         console.log(error.response.data); // => the response payload 
@@ -67,10 +72,12 @@ const AddCompany = () => {
                 <div className="add-company-modal-body w-full">
                     <div className="add-company-modal-body-input w-full">
                         <input 
-                        type="text" 
-                        placeholder="Company Id"  
-                        className="w-full border-2 p-2 mb-5"
-                          values={values}
+                          type="password"
+                          placeholder="Company Id"  
+                          className="w-full border-2 p-2 mb-5"
+                          values={values.company_id}
+                          name="company_id"
+                          onChange={handleChange}
                         />
                     </div>
                     <div className="add-company-modal-body-input">
@@ -78,6 +85,9 @@ const AddCompany = () => {
                         type="text" 
                         placeholder="Company Name"
                         className="w-full border-2 p-2 mb-5" 
+                        values={values.company_name}
+                        name="company_name"
+                        onChange={handleChange}
                         />
                     </div>
                     <div className="error my-3 text-red-500 text-center">
