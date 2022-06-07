@@ -53,7 +53,7 @@ export default function AboutUpdate({employeeData}) {
        <div className='flex justify-between items-center pt-2'> 
           <div>
           {edit ?  
-             <h5>{about}</h5>
+             <h5 className='font-normal'>{about}</h5>
             : 
             <input type="text" 
             defaultValue={about} 

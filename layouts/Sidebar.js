@@ -55,7 +55,7 @@ export default function Sidebar() {
 						</span>
 					</li>
 				</div>
-				<div className="text-[#F1F5F8] py-[0.45em] px-[0.75em] text-[1rem] w-[70%] z-[2] my-[0] mx-auto">
+				<div className="text-[#F1F5F8] py-[0.45em] px-[0.75em] text-[1rem] w-[70%] z-[2] my-[0] mx-auto cursor-pointer">
 					<span className="flex items-center justify-around p-[0.45em] rounded-[1.7em] transition-[background] duration-[.25] hover:bg-[black]" onClick={() => LogoutFunc()}>
 						<VscSignOut className="display-block" />
 						<span className='block'>Logout</span>

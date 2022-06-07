@@ -24,12 +24,13 @@ const CompanySIdebar = () => {
   return (
     <div className={`w-[100%] h-[100%] 
     ml-[${str}]  transition-[margin-left] duration-300 absolute top-0 right-0 left-0 bottom-0 opacity-[${opacity}]`}>
-      <div className="go-back">
+      <div className="go-back bg-[#899daa] p-5">
         <button className="go-back-btn" onClick={()=>{
           dispatch(closeCompany())
         }}
         >
-          go back
+          <VscArrowLeft className='text-white text-3xl inline mr-4'/>
+           back
         </button>
       </div>
      <main>

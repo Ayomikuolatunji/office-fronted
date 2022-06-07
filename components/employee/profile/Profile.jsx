@@ -1,16 +1,19 @@
+/* eslint-disable @next/next/no-img-element */
 import { useSelector } from 'react-redux';
-import {FiEdit} from "react-icons/fi"
 import {CgProfile} from "react-icons/cg"
 import ProfilePicture from './update-profile-components/UpdatePofilePicture';
 import UpdateName from './update-profile-components/UpdateName';
 import UpdateEmail from './update-profile-components/UpdateEmail';
 import UpdateRole from './update-profile-components/UpdateRole';
+import AboutUpdate from "./update-profile-components/AboutUpdate";
+import UpdateLocation from './update-profile-components/UpdateLocation';
 
 
 export default function Profile() {
   const employeeData=useSelector(state=>state.employeeInfo.employeeData)
+  const employeeCompaines=useSelector(state=>state.employeeInfo.employeeCompanies)
 
-  
+  console.log(employeeCompaines)
 
 
   return (
@@ -30,30 +33,23 @@ export default function Profile() {
                 <CgProfile className='text-4xl'/>
                 <span className="tracking-wide">Other Info</span>
             </div>
-            <div className="username mt-6 bg-white p-3">
-              <h5 className='text-blue-400'>About yourself</h5>
-              <div className='flex justify-between items-center pt-2'> 
-                  <h6>{employeeData?.about}</h6>
-                  <FiEdit className='text-2xl cursor-pointer '/>
-              </div>
-           </div>
-           <div className="username mt-6 bg-white p-3">
-              <h5 className='text-blue-400'>Current location</h5>
-              <div className='flex justify-between items-center pt-2'> 
-                  <h6>{employeeData?.address}</h6>
-                  <FiEdit className='text-2xl cursor-pointer '/>
-              </div>
-           </div>
+           <AboutUpdate employeeData={employeeData}/>
+           <UpdateLocation employeeData={employeeData}/>
             <div className="grid grid-cols-2">
                 <div>
                     <div className="flex items-center font-semibold text-gray-900 leading-8 mb-3 ml-4">
                         <span className="tracking-wide">Companies</span>
                     </div>
                     <ul className="list-inside space-y-2">
-                        <li>
-                            <div className="text-blue-500">Owner at Her Company Inc.</div>
-                            <div className="text-gray-500 text-xs">March 2020 - Now</div>
-                        </li>
+                    {employeeCompaines?.employee_companies?.map(company=>{
+                     return  <li key={company._id}>
+                                <div className="text-blue-500">{company.company_name}</div>
+                                <div className="text-gray-500 text-xs">
+                                {new Date(company.createdAt).toLocaleDateString()}
+                                </div>
+                            </li>
+                         })
+                        }
                     </ul>
                 </div>
                 <div>

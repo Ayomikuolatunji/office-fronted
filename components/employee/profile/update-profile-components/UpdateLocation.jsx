@@ -1,7 +1,7 @@
 import { FiEdit } from 'react-icons/fi'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer,toast } from 'react-toastify'
-import { toastOption } from '../../../helpers/toastOption';
+import { toastOption } from '../../../../helpers/toastOption';
 import {getEmployeeData} from "../../../../redux/employee/employeeInfoSlice"
 import {useDispatch} from "react-redux"
 import { useState } from 'react';
