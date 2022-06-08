@@ -57,7 +57,7 @@ const AddCompany = () => {
 
 
   return (
-    <>
+    <div>
    <div>
       <Modal
         open={open}
@@ -100,7 +100,7 @@ const AddCompany = () => {
                     <div className="btn w-full">
                         <button 
                         onClick={addNewCompany}
-                        className="btn-primary bg-[#536c7c] block w-full p-3 text-[white] hover:bg-[#477491]">Add company</button>
+                        className="btn-primary bg-blue-400 block w-full p-3 text-[white] hover:bg-[blue]">Add company</button>
                     </div>
                 </div>
             </div>
@@ -110,14 +110,14 @@ const AddCompany = () => {
     </div>
        {/* add company btn */}
         <button 
-        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded-md'
+        className='bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-md font-serif'
         onClick={handleOpen}
         >
             {
                 loading? "please wait..." : "Add company"
             }
         </button>
-    </>
+    </div>
   )
 
 
