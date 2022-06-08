@@ -9,15 +9,17 @@ const ProfileSettings = () => {
 
   return (
     <div 
-    className={`fixed left-0 right-0 bottom-0 bg-red-400 
+    className={`fixed left-0 right-0 bottom-0 bg-blue-400 
     h-[100vh] z-[999] w-[20%] ${isCompanyOpen ? 'opacity-100':'opacity-0 hidden'}`}>
-       <div className="go-back bg-[#899daa] p-5">
+       <div className="go-back bg-blue-500 p-5">
         <button className="go-back-btn" onClick={()=>{
           dispatch(closeCompany(false))
         }}
         >
           <VscArrowLeft className='text-white text-3xl inline mr-4'/>
-           back
+            <span className='text-white'>
+                Go Back
+            </span>
         </button>
       </div>
     </div>

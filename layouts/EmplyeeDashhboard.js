@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfileSettings from '../components/employee-dashboard/profile/ProfileSettings'
+import ProfileSettings from '../components/employee-dashboard/profile-settings/ProfileSettings'
 import Header from '../components/employee-header/Header'
 import Sidebar from './Sidebar'
 
