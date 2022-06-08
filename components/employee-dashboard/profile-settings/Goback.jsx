@@ -8,7 +8,7 @@ const Goback = () => {
     const dispatch=useDispatch() 
 
   return (
-    <div className="go-back bg-blue-500 py-8 px-5">
+    <div className="go-back bg-blue-500 py-6 px-5">
     <button className="go-back-btn" onClick={()=>{
       dispatch(closeCompany(false))
     }}

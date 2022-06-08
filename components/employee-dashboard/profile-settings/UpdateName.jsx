@@ -49,7 +49,7 @@ export default function UpdateName({employeeData}) {
 
 
   return (
-    <div className="username mt-6 bg-white p-3">
+    <div className="username mt-4 bg-white p-3">
         <h5 className='text-blue-400'>Profile name</h5>
         <div className='flex justify-between items-center pt-2'> 
             <input type="text" 
