@@ -1,9 +1,9 @@
 import React from 'react'
-import Welcome from '../../components/employee/welcome/Welcome'
-
 
 const index = () => {
-  return <Welcome/>
+  return (
+    <div>index</div>
+  )
 }
 
 export default index

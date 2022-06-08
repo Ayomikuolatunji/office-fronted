@@ -20,4 +20,5 @@ const modalSlice=createSlice({
     }
 })
 export const {setProfilePictureModal,openCompany,closeCompany}=modalSlice.actions
+
 export default modalSlice.reducer
