@@ -34,7 +34,7 @@ const Sidebar = () => {
                 className='text-sm space-y-4 mt-2  p-2 text-white inline-flex items-center justify-between'
                 key={company._id}
                   onClick={()=>{
-                    dispatch(openCompany())
+                    dispatch(openCompany(true))
                     getSelectCompanyFunc(company._id)
                   }}
                 >

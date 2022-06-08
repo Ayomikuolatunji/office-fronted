@@ -1,16 +1,16 @@
 import React from 'react'
 import {GiHamburgerMenu} from "react-icons/gi";
 import {BsSearch} from "react-icons/bs";
-import AddCompany from './add-company/AddCompany';
+import  CreateProject from './create-project/CreateProject';
 import { useDispatch} from 'react-redux';
-import { openCompany } from '../../redux/modal/modalSlice';
+import { openProfileModal } from '../../redux/modal/modalSlice';
 
 
 const Header = () => {
   const dispatch=useDispatch()
 
 
-  const handleOpenCompany = () => dispatch(openCompany(true))
+  const handleOpenCompany = () => dispatch(openProfileModal(true))
 
   return (
     <div className='w-[100%] flex justify-center'>
@@ -32,7 +32,7 @@ const Header = () => {
                 </div>
              </div>
              <div className="add-company w-[30%] flex justify-end">
-                  <AddCompany/>
+                  < CreateProject/>
              </div>
         </div>
     </div>

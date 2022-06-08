@@ -1,7 +1,7 @@
 import React from 'react'
 import {VscArrowLeft} from "react-icons/vsc"
 import { useDispatch } from 'react-redux'
-import { closeCompany } from '../../../redux/modal/modalSlice'
+import { closeProfileModal } from '../../../redux/modal/modalSlice'
 
 
 const Goback = () => {
@@ -10,7 +10,7 @@ const Goback = () => {
   return (
     <div className="go-back bg-blue-500 py-6 px-5">
     <button className="go-back-btn" onClick={()=>{
-      dispatch(closeCompany(false))
+      dispatch(closeProfileModal(false))
     }}
     >
       <VscArrowLeft className='text-white text-3xl inline mr-4'/>

@@ -15,7 +15,7 @@ const ProfileSettings = () => {
   const dispatch=useDispatch()
   const isLoggedIn = useSelector((state) => state.employeeAuth.isLoggedIn);
   const employeeData=useSelector(state=>state.employeeInfo.employeeData)
-  const isCompanyOpen=useSelector(state=>state.modal.isCompanyOpen)
+  const isProfileOpen=useSelector(state=>state.modal.isProfileOpen)
   
   const router = useRouter();
 
@@ -37,7 +37,7 @@ const ProfileSettings = () => {
   return (
     <div 
     className={`fixed left-0 right-0 bottom-0 bg-blue-400 
-    h-[100vh] z-[999] w-[20%] ${isCompanyOpen ? 'opacity-100':'opacity-0 hidden transition-opacity duration-200 ease-out'}`}>
+    h-[100vh] z-[999] w-[20%] ${isProfileOpen ? 'opacity-100':'opacity-0 hidden transition-opacity duration-200 ease-out'}`}>
         {/* go back */}
         <Goback/>
          {/* profile components */}
