@@ -1,10 +1,19 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import ProfileSettings from '../components/employee-dashboard/profile-settings/ProfileSettings'
 import Header from '../components/employee-header/Header'
+import { getEmployeeData } from '../redux/employee/employeeInfoSlice'
 import Sidebar from './Sidebar'
 
 
 const EmplyeeDashhboard = ({children}) => {
+  
+  const dispatch=useDispatch()
+  
+  useEffect(()=>{
+      dispatch(getEmployeeData())
+  },[dispatch])
+  
   return (
     <div className='w-full flex h-[100vh]'>
          <ProfileSettings/>
