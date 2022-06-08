@@ -58,19 +58,19 @@ export default function UpdateProfilePicture({employeeData}) {
   
   return (
     <div className='relative w-[200px] h-[200px] self-center'>
-       <div className='absolute z-50 top-[40%] left-[35%]'>
-       {loading && <CircleProgressbar/>}
-       </div>
-      <Image src={employeeData.avartImage} alt={employeeData.username} layout='fill' className={`${loading ? "hidden" :" block"} rounded-[50%]`} />
-      <label htmlFor="files" className='text-5xl absolute bottom-0 right-0 mr-3x]'>
-        <FcOldTimeCamera className='text-6xl my-3 cursor-pointer'/>
-        <input
-          type={"file"} 
-          id='files' 
-          className='hidden'
-          onChange={(e)=>handleUpload(e)} 
-        />
-    </label>
-</div>
+        <div className='absolute z-50 top-[40%] left-[35%] flex ju'>
+        {loading && <CircleProgressbar/>}
+        </div>
+        <Image src={employeeData.avartImage} alt={employeeData.username} layout='fill' className={`${loading ? "hidden" :" block"} rounded-[50%]`} />
+        <label htmlFor="files" className='text-5xl absolute bottom-0 right-0 mr-3x]'>
+            <FcOldTimeCamera className='text-6xl my-3 cursor-pointer'/>
+            <input
+            type={"file"} 
+            id='files' 
+            className='hidden'
+            onChange={(e)=>handleUpload(e)} 
+            />
+        </label>
+  </div>
   )
 }

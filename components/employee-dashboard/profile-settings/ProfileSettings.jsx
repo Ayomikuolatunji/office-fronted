@@ -13,8 +13,11 @@ const ProfileSettings = () => {
     h-[100vh] z-[999] w-[20%] ${isCompanyOpen ? 'opacity-100':'opacity-0 hidden'}`}>
         {/* go back */}
         <Goback/>
-        {/* update profile picture */}
-        <UpdateProfilePicture employeeData={employeeData}/>
+         {/* profile components */}
+         <div className='w-full flex justify-center mt-7'>
+            {/* update profile picture */}
+           <UpdateProfilePicture employeeData={employeeData}/>
+         </div>
     </div>
   )
 }
