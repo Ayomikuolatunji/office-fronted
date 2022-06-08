@@ -14,8 +14,8 @@ const modalSlice=createSlice({
        openCompany:(state,action)=>{
         state.isCompanyOpen=action.payload
       },
-      closeCompany:(state)=>{
-        state.isCompanyOpen=false
+      closeCompany:(state,action)=>{
+        state.isCompanyOpen=action.payload
       }
     }
 })

@@ -2,14 +2,13 @@ import React from 'react'
 import {GiHamburgerMenu} from "react-icons/gi";
 import {BsSearch} from "react-icons/bs";
 import AddCompany from './add-company/AddCompany';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { openCompany } from '../../redux/modal/modalSlice';
 
 
 const Header = () => {
   const dispatch=useDispatch()
-  const isCompanyOpen=useSelector(state=>state.modal.isCompanyOpen)
-  console.log(isCompanyOpen)
+
 
   const handleOpenCompany = () => dispatch(openCompany(true))
 
