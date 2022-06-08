@@ -9,6 +9,7 @@ import UpdateAbout from './UpdateAbout'
 import UpdateLocation from './UpdateLocation'
 import { VscSignOut } from 'react-icons/vsc'
 import { useRouter } from 'next/router'
+import { logoutEmployee } from '../../../redux/auth/employeSlice';
 
 const ProfileSettings = () => { 
   const dispatch=useDispatch()
@@ -49,10 +50,11 @@ const ProfileSettings = () => {
            <UpdateAbout employeeData={employeeData}/>
            <UpdateLocation employeeData={employeeData}/>
          </div>
-         <div className="text-[#F1F5F8] py-[0.45em] px-[0.75em] text-[1rem] w-[70%] z-[2] my-[0] mx-auto cursor-pointer">
+          {/*logout  */}
+         <div className="text-[#F1F5F8] py-[0.45em] px-[0.75em] text-[1rem] w-[50%] z-[2] mt-6 mx-auto cursor-pointer">
 					<span className="flex items-center justify-around p-[0.45em] rounded-[1.7em] transition-[background] duration-[.25] hover:bg-[black]" onClick={() => LogoutFunc()}>
 						<VscSignOut className="display-block" />
-						<span className='block'>Logout</span>
+						<span className='block text0z'>Logout</span>
 					</span>
 			    </div>
     </div>
