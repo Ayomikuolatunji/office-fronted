@@ -61,7 +61,7 @@ export default function UpdateProfilePicture({employeeData}) {
         <div className='absolute z-50 top-[40%] left-[35%] flex ju'>
         {loading && <CircleProgressbar/>}
         </div>
-        <Image src={employeeData.avartImage} alt={employeeData.username} layout='fill' className={`${loading ? "hidden" :" block"} rounded-[50%]`} />
+        <Image src={employeeData.avartImage} alt={employeeData.username} layout='fill' className={`${loading ? "hidden" :" block"} rounded-[50%] border-2`} />
         <label htmlFor="files" className='text-5xl absolute bottom-0 right-0 mr-3x]'>
             <FcOldTimeCamera className='text-6xl my-3 cursor-pointer'/>
             <input

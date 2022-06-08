@@ -6,6 +6,7 @@ import UpdateEmail from "./UpdateEmail"
 import UpdateProfilePicture from './UpdateProfilePicture'
 import UpdateRole from './UpdateRole'
 import UpdateAbout from './UpdateAbout'
+import UpdateLocation from './UpdateLocation'
 
 const ProfileSettings = () => { 
   const employeeData=useSelector(state=>state.employeeInfo.employeeData)
@@ -25,6 +26,7 @@ const ProfileSettings = () => {
            <UpdateEmail  employeeData={employeeData}/>
            <UpdateRole employeeData={employeeData}/>
            <UpdateAbout employeeData={employeeData}/>
+           <UpdateLocation employeeData={employeeData}/>
          </div>
     </div>
   )
