@@ -24,7 +24,7 @@ const Sidebar = () => {
 
 
   return (
-    <div className={`opacity-[${isCompanyOpen ? "opacity-[1] hidden" : "opacity-[0] bloack"}]`}>
+    <div className={`opacity-[${isCompanyOpen ? "opacity-[0] hidden" : "opacity-[1] block"}]`}>
        <div className="add-company">
            <AddCompany/>
        </div>

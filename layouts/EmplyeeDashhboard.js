@@ -27,7 +27,7 @@ const EmplyeeDashhboard = ({children}) => {
                     {children}
                 </main>
             </div>
-            <div className='w-[20%] bg-[#e9e8e8] h-[100%]'>
+            <div className='w-[20%] bg-[#e9e8e8] h-[100%] border-r-2'>
               <Office/>
           </div>
         </div>

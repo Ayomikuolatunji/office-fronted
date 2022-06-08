@@ -15,7 +15,7 @@ const modalSlice=createSlice({
        openProfileModal:(state,action)=>{
           state.isProfileOpen=action.payload           
        },
-       closeProfileModal:(state)=>{
+       closeProfileModal:(state,action)=>{
          state.isProfileOpen=action.payload
        },
        openCompany:(state,action)=>{

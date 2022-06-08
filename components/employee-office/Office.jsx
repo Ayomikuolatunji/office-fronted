@@ -15,13 +15,9 @@ const Office = () => {
   },[dispatch])
 
   return (
-    <div className='w-[100%] h-[100%] bg-[white] relative'>
-        <div className='flex justify-between w-full h-[100%]'>
-            <div className="sidebar h-[100%]  border-r-2 relative overflow-hidden">
+    <div className='w-[100%] h-[100%] bg-[white] relative overflow-hidden'>
               <Sidebar />
               <CompanySidebar/>
-            </div>
-        </div>
     </div>
   )
 }
