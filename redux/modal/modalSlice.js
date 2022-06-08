@@ -5,17 +5,17 @@ const modalSlice=createSlice({
     name:"modal",
     initialState:{
         isProfilePicture:false,
-        isCompanyOpen:100
+        isCompanyOpen:false
     },
     reducers:{
-       setProfilePictureModal:(state,)=>{
+       setProfilePictureModal:(state)=>{
            state.isProfilePicture=true
        },
-       openCompany:(state)=>{
-        state.isCompanyOpen=0
+       openCompany:(state,action)=>{
+        state.isCompanyOpen=action.payload
       },
       closeCompany:(state)=>{
-        state.isCompanyOpen=100
+        state.isCompanyOpen=false
       }
     }
 })
