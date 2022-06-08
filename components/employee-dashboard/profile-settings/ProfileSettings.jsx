@@ -51,8 +51,8 @@ const ProfileSettings = () => {
            <UpdateLocation employeeData={employeeData}/>
          </div>
           {/*logout  */}
-         <div className="text-[#F1F5F8] py-[0.45em] px-[0.75em] text-[1rem] w-[50%] z-[2] mt-6 mx-auto cursor-pointer">
-					<span className="flex items-center justify-around p-[0.45em] rounded-[1.7em] transition-[background] duration-[.25] hover:bg-[black]" onClick={() => LogoutFunc()}>
+         <div className="text-[#F1F5F8] bg-black py-[0.45em] px-[0.75em] text-[1rem] w-[50%] z-[2] mt-6 mx-auto cursor-pointer">
+					<span className="flex items-center justify-around p-[0.45em] rounded-4xl transition-[background] duration-[.25] hover:bg-[#3d3d3d]" onClick={() => LogoutFunc()}>
 						<VscSignOut className="display-block" />
 						<span className='block text0z'>Logout</span>
 					</span>

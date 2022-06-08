@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import ProfileSettings from '../components/employee-dashboard/profile-settings/ProfileSettings'
 import Header from '../components/employee-header/Header'
+import Office from '../components/employee-office/Office'
 import { getEmployeeData } from '../redux/employee/employeeInfoSlice'
-import Sidebar from './Sidebar'
+
 
 
 const EmplyeeDashhboard = ({children}) => {
@@ -22,10 +23,12 @@ const EmplyeeDashhboard = ({children}) => {
                 <div className="w-[100%] header">
                    <Header />
                 </div>
-              {children}
+                <main className='w-[90%] mx-auto'>
+                    {children}
+                </main>
             </div>
-            <div className='w-[20%] bg-black h-[100%]'>
-             <Sidebar/>
+            <div className='w-[20%] bg-[#e9e8e8] h-[100%]'>
+              <Office/>
           </div>
         </div>
     </div>
