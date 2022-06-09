@@ -2,7 +2,7 @@ import React from 'react'
 
 const CompanDepartments = () => {
   return (
-    <div className='w-[95%] mx-auto'>
+    <div className='w-[95%] mx-auto mt-4'>
        <div className="intro">
           <h4 className='text-gray-400 '>Chat with Groups</h4>
        </div>

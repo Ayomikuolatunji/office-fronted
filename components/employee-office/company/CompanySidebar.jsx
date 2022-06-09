@@ -11,7 +11,7 @@ const CompanySidebar = () => {
 
   return (
     <div className={`w-[100%] h-[100%] 
-    duration-500 absolute transition-[margin-left] top-0 right-0 left-0 bottom-0 ${isCompanyOpen ? "block mr-0" :"hidden -mr-[100%]"}`}>
+    duration-500 absolute transition-[margin-left] top-0 right-0 left-0 bottom-0 z-[999] ${isCompanyOpen ? "mr-0" :"ml-[100%]"}`}>
      <main>
        {/* company header */}
         <CompanyHeader/>

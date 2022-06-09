@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useDispatch, useSelector } from 'react-redux';
 import { getSelectedCompany } from '../../redux/employee/employeeCompanySlice';
 import { openCompany } from '../../redux/modal/modalSlice'
@@ -20,7 +21,7 @@ const Sidebar = () => {
 
 
   return (
-    <div className={`${isCompanyOpen ? "opacity-[0] hidden":"block opacity-100"}]`}>
+    <div className={`${isCompanyOpen ? "opacity-[0] hidden":"block opacity-100"}] bg-[#e9e8e8]`}>
        <div className="add-company">
            <AddCompany/>
        </div>
