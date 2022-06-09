@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react'
 import {VscArrowLeft} from "react-icons/vsc"
 import { useDispatch } from 'react-redux'
-import { getEmployeeData } from '../../../redux/employee/employeeInfoSlice'
 import { closeProfileModal } from '../../../redux/modal/modalSlice'
 
 
 const Goback = () => {
     const dispatch=useDispatch()
 
-
-    useEffect(()=>{
-      dispatch(getEmployeeData())
-   },[dispatch])
 
   return (
     <div className="go-back bg-blue-500 py-6 px-5" onClick={()=>{

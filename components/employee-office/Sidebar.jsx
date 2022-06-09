@@ -1,7 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
-import React,{useEffect} from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchEmployeeCompanies, getSelectedCompany } from '../../redux/employee/employeeCompanySlice'
+import { useDispatch, useSelector } from 'react-redux';
+import { getSelectedCompany } from '../../redux/employee/employeeCompanySlice';
 import { openCompany } from '../../redux/modal/modalSlice'
 import AddCompany from './AddCompany'
 
@@ -20,10 +18,6 @@ const Sidebar = () => {
        })
   }
 
-
-  useEffect(()=>{
-    dispatch(fetchEmployeeCompanies())
-  },)
 
   return (
     <div className={`${isCompanyOpen ? "opacity-[0] hidden":"block opacity-100"}]`}>

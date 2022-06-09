@@ -19,9 +19,10 @@ const style = {
 
 
 const AddCompany = () => {
-    const employeeId=useSelector(state=>state.employeeInfo.employeeId)
+    const employeeId=useSelector(state=>state.employeeInfo.employeeData)
     const {values,handleChange}=FormLogicHook()
     const employeeCompaines=useSelector(state=>state.employeeInfo.employeeCompanies)
+    console.log(employeeId)
     const [loading,setLoading]=useState(false)
     const [open,setOpen]=useState(false)
     const [error,setError]=useState('')
