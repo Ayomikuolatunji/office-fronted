@@ -7,8 +7,7 @@ import { getEmployeeData } from '../redux/employee/employeeInfoSlice'
 
 
 
-const EmplyeeDashhboard = ({children}) => {
-  
+const EmplyeeDashhboard = ({children}) => { 
   const dispatch=useDispatch()
   
   useEffect(()=>{

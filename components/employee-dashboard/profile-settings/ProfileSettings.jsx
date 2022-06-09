@@ -12,7 +12,7 @@ import { useRouter } from 'next/router'
 import {closeProfileModal,closeCompany} from "../../../redux/modal/modalSlice"
 import { logoutEmployee } from '../../../redux/auth/employeSlice';
 import { clearEmployeeCompanies, clearSelectedCompany } from '../../../redux/employee/employeeCompanySlice'
-import {clearEmployeData,clearEmployeeId} from '../../../redux/employee/employeeInfoSlice'
+import {clearEmployeData,clearEmployeeId, getEmployeeData} from '../../../redux/employee/employeeInfoSlice'
 
 const ProfileSettings = () => { 
   const dispatch=useDispatch()
@@ -21,7 +21,10 @@ const ProfileSettings = () => {
   const isProfileOpen=useSelector(state=>state.modal.isProfileOpen)
   
   const router = useRouter();
-
+   
+  useEffect(()=>{
+    dispatch(getEmployeeData())
+},[dispatch])
 
 	useEffect(() => {
 			if (!isLoggedIn) {
