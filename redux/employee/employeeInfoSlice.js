@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { employee,employeeCompanies } from "../../hooks/employeeApis";
+import { employee} from "../../hooks/employeeApis";
 
 export const getEmployeeData=createAsyncThunk("employeeInfo/getEmployeeData",async(_, thunkAPI)=>{
     const {employeeId}=thunkAPI.getState().employeeAuth.credentials
@@ -8,17 +8,12 @@ export const getEmployeeData=createAsyncThunk("employeeInfo/getEmployeeData",asy
     return res.data
 })
 
-export const fetchEmployeeCompanies=createAsyncThunk("employeeInfo/fetchEmployeeCompanies",async(_, thunkAPI)=>{
-    const res=await axios(`${employeeCompanies}/${thunkAPI.getState().employeeAuth.credentials.employeeId}`)
-    return res.data
-})
 
 const employeeInfo=createSlice({
     name:"employeeInfo",
     initialState:{
         employeeData:null,
         employeeId:"",
-        employeeCompanies:null,
     },
     reducers:{
         getEmployeeId:(state,action)=>{
@@ -28,16 +23,16 @@ const employeeInfo=createSlice({
         clearEmployeeId:(state)=>{
             // clear employeeid when employee finish signingup
             state.employeeId=""
+        },
+        clearEmployeData:(state)=>{
+            state.employeeData=null
         }
     },
     extraReducers:{
         [getEmployeeData.fulfilled]:(state,action)=>{
              state.employeeData=action.payload.user
         },
-        [fetchEmployeeCompanies.fulfilled]:(state,action)=>{
-            state.employeeCompanies=action.payload
-        }
     }
 })
-export const {getEmployeeId,clearEmployeeId,getSelectedCompany}=employeeInfo.actions
+export const {getEmployeeId,clearEmployeeId,getSelectedCompany,clearEmployeData}=employeeInfo.actions
 export default employeeInfo.reducer

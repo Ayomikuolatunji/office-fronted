@@ -1,12 +1,12 @@
 import React,{ useState,useCallback } from 'react';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/material';
-import {BsPlus} from "react-icons/bs"
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { add_new_company } from '../../hooks/employeeApis';
 import { FormLogicHook } from '../../helpers/FormLogicHook';
-import { fetchEmployeeCompanies } from '../../redux/employee/employeeInfoSlice';
+import { fetchEmployeeCompanies } from '../../redux/employee/employeeCompanySlice';
+
 
 const style = {
     position: 'absolute',
@@ -103,7 +103,7 @@ const AddCompany = () => {
                         <button 
                         onClick={addNewCompany}
                         className="btn-primary bg-blue-500 block w-full p-3 text-[white] hover:bg-[blue]">
-                            {loading?<span className="spinner"></span>:<span>Add Company</span>}
+                            {loading?<span className="spinner">Please wait...</span>:<span>Add Company</span>}
                         </button>
                     </div>
                 </div>

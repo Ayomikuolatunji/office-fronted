@@ -1,18 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from 'next/image'
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getSelectedCompany } from '../../redux/employee/employeeCompanySlice'
+import { fetchEmployeeCompanies, getSelectedCompany } from '../../redux/employee/employeeCompanySlice'
 import { openCompany } from '../../redux/modal/modalSlice'
 import AddCompany from './AddCompany'
 
 const Sidebar = () => {
-  const employeeCompaines=useSelector(state=>state.employeeInfo.employeeCompanies)
+  const employeeCompaines=useSelector(state=>state.employeeCompanyInfo.employeeCompanies)
   const isCompanyOpen = useSelector(state => state.modal.isCompanyOpen)
   const dispatch=useDispatch()
 
    
-  const getSelectCompanyFunc=(id)=>{
+  const getSingleCompanyFunc=(id)=>{
        return employeeCompaines?.employee_companies?.map(country=>{
           if(country._id===id){
              dispatch(getSelectedCompany(country))
@@ -22,20 +21,19 @@ const Sidebar = () => {
   }
 
 
-
   return (
     <div className={`opacity-[${!isCompanyOpen && "opacity-[0] hidden"}]`}>
        <div className="add-company">
            <AddCompany/>
        </div>
        <div className="company-lists mt-2 flex w-[100%] mx-auto flex-col h-[70vh]">
-            {employeeCompaines?.employee_companies>0? employeeCompaines?.employee_companies.map(company=>{
+            {employeeCompaines?.employee_companies?.length>0? employeeCompaines?.employee_companies.map(company=>{
                 return <div 
                 className='text-sm space-y-4 mt-2  p-2 text-white inline-flex items-center justify-between'
                 key={company._id}
                   onClick={()=>{
                     dispatch(openCompany(true))
-                    getSelectCompanyFunc(company._id)
+                    getSingleCompanyFunc(company._id)
                   }}
                 >
                   <div className="logo w-[25%]">
@@ -49,8 +47,10 @@ const Sidebar = () => {
               </div>
             })
             :
-            <div className="text-center text-white">
-              <h5>No Company</h5>
+            <div className="text-center">
+              <h5>
+                You dont have any company yet.
+              </h5>
             </div>
           }
        </div>

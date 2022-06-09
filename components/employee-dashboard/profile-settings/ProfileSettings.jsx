@@ -9,7 +9,10 @@ import UpdateAbout from './UpdateAbout'
 import UpdateLocation from './UpdateLocation'
 import { VscSignOut } from 'react-icons/vsc'
 import { useRouter } from 'next/router'
+import {closeProfileModal,closeCompany} from "../../../redux/modal/modalSlice"
 import { logoutEmployee } from '../../../redux/auth/employeSlice';
+import { clearEmployeeCompanies, clearSelectedCompany } from '../../../redux/employee/employeeCompanySlice'
+import {clearEmployeData,clearEmployeeId} from '../../../redux/employee/employeeInfoSlice'
 
 const ProfileSettings = () => { 
   const dispatch=useDispatch()
@@ -29,7 +32,14 @@ const ProfileSettings = () => {
 	const LogoutFunc = () => {
 		if (isLoggedIn) {
 			router.push('/login');
+      // empty the redux store for employeeSlices
 			dispatch(logoutEmployee());
+      dispatch(clearEmployeeCompanies())
+      dispatch(clearSelectedCompany())
+      dispatch(clearEmployeData())
+      dispatch(closeCompany(false))
+      dispatch(closeProfileModal(false))
+      dispatch(clearEmployeeId())
 		}
 	};
 

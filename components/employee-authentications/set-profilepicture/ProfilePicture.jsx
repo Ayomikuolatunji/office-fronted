@@ -13,14 +13,13 @@ import CircleProgressbar from "../../../utils/materialUi/CircleProgressBar"
 import {profile} from "../../../hooks/employeeApis"
 import { toastOption } from "../../../helpers/toastOption";
 
-
+export const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
 
 export default function ProfilePicture() {
   const { bindings } = useModal();
   const [image, setImage] =React.useState("");
   const [loading ,setLoading]=useState(false)
   const [isProfileSet,setIsprofileSet]=useState("")
-  const defaultImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJF7LAdiF7JlRs24nLsBKz7nWamkcdXPODQ&usqp=CAU'
   const employeeId=useSelector(state=>state.employeeInfo.employeeId)
   const router=useRouter()  
   const dispatch=useDispatch()

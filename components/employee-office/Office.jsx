@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import Sidebar from './Sidebar'
 import { useDispatch } from 'react-redux'
-import { fetchEmployeeCompanies } from '../../redux/employee/employeeInfoSlice'
 import CompanySidebar from './company/CompanySidebar'
+import { fetchEmployeeCompanies } from '../../redux/employee/employeeCompanySlice'
 
 
 const Office = () => {
