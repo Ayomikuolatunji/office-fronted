@@ -3,11 +3,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer,toast } from 'react-toastify'
 import { toastOption } from '../../../helpers/toastOption';
 import {getEmployeeData} from "../../../redux/employee/employeeInfoSlice"
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import { useState } from 'react';
 
 
-export default function AboutUpdate({employeeData}) {
+export default function AboutUpdate() {
+  const employeeData=useSelector(state=>state.employeeInfo.employeeData)
+  const loading=useSelector(state=>state.employeeInfo.loading)
   const [edit,setEdit]=useState(true)
     const [about,setAbout]=useState(employeeData?.about)
     const dispatch=useDispatch()

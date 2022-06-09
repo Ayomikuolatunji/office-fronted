@@ -6,7 +6,6 @@ import { employeeCompanies } from "../../hooks/employeeApis";
 
 
 export const fetchEmployeeCompanies=createAsyncThunk("employeeInfo/fetchEmployeeCompanies",async(_, thunkAPI)=>{
-    console.log(thunkAPI.getState())
     const res=await axios(`${employeeCompanies}/${thunkAPI.getState().employeeAuth.credentials.employeeId}`)
     return res.data
 })
@@ -31,7 +30,6 @@ const employeeCompanyInfo=createSlice({
     },
     extraReducers:{
         [fetchEmployeeCompanies.fulfilled]:(state,action)=>{
-            console.log(action.payload)
             state.employeeCompanies=action.payload
         }
     }

@@ -13,6 +13,7 @@ const employeeInfo=createSlice({
     name:"employeeInfo",
     initialState:{
         employeeData:null,
+        loading:false,
         employeeId:"",
     },
     reducers:{
@@ -30,8 +31,17 @@ const employeeInfo=createSlice({
     },
     extraReducers:{
         [getEmployeeData.fulfilled]:(state,action)=>{
+            state.loading=false
              state.employeeData=action.payload.user
         },
+        [getEmployeeData.rejected]:(state,action)=>{
+            state.employeeData=null
+
+        },
+        [getEmployeeData.pending]:(state,action)=>{
+            state.loading=true
+            state.employeeData=null
+        }
     }
 })
 export const {getEmployeeId,clearEmployeeId,getSelectedCompany,clearEmployeData}=employeeInfo.actions
