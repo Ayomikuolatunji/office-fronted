@@ -11,7 +11,7 @@ const Sidebar = () => {
   const dispatch=useDispatch()
 
    
-  const getSingleCompanyFunc=(id)=>{
+  const getSCompanyFunc=(id)=>{
        return employeeCompaines?.employee_companies?.map(country=>{
           if(country._id===id){
              dispatch(getSelectedCompany(country))
@@ -21,8 +21,12 @@ const Sidebar = () => {
   }
 
 
+  useEffect(()=>{
+    dispatch(fetchEmployeeCompanies())
+  },)
+
   return (
-    <div className={`opacity-[${!isCompanyOpen && "opacity-[0] hidden"}]`}>
+    <div className={`${isCompanyOpen ? "opacity-[0] hidden":"block hidden"}]`}>
        <div className="add-company">
            <AddCompany/>
        </div>
@@ -33,7 +37,7 @@ const Sidebar = () => {
                 key={company._id}
                   onClick={()=>{
                     dispatch(openCompany(true))
-                    getSingleCompanyFunc(company._id)
+                    getSCompanyFunc(company._id)
                   }}
                 >
                   <div className="logo w-[25%]">
