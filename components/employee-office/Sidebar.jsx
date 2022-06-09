@@ -29,7 +29,7 @@ const Sidebar = () => {
            <AddCompany/>
        </div>
        <div className="company-lists mt-2 flex w-[100%] mx-auto flex-col h-[70vh]">
-            {employeeCompaines?.employee_companies?.map(company=>{
+            {employeeCompaines?.employee_companies>0? employeeCompaines?.employee_companies.map(company=>{
                 return <div 
                 className='text-sm space-y-4 mt-2  p-2 text-white inline-flex items-center justify-between'
                 key={company._id}
@@ -48,6 +48,10 @@ const Sidebar = () => {
                   </div>
               </div>
             })
+            :
+            <div className="text-center text-white">
+              <h5>No Company</h5>
+            </div>
           }
        </div>
     </div>
