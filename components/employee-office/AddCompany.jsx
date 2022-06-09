@@ -1,6 +1,7 @@
 import React,{ useState,useCallback } from 'react';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/material';
+import {BsPlus} from "react-icons/bs"
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { add_new_company } from '../../hooks/employeeApis';
@@ -20,6 +21,7 @@ const style = {
 const AddCompany = () => {
     const employeeId=useSelector(state=>state.employeeInfo.employeeId)
     const {values,handleChange}=FormLogicHook()
+    const employeeCompaines=useSelector(state=>state.employeeInfo.employeeCompanies)
     const [loading,setLoading]=useState(false)
     const [open,setOpen]=useState(false)
     const [error,setError]=useState('')
@@ -100,7 +102,9 @@ const AddCompany = () => {
                     <div className="btn w-full">
                         <button 
                         onClick={addNewCompany}
-                        className="btn-primary bg-[#536c7c] block w-full p-3 text-[white] hover:bg-[#477491]">Add company</button>
+                        className="btn-primary bg-blue-500 block w-full p-3 text-[white] hover:bg-[blue]">
+                            {loading?<span className="spinner"></span>:<span>Add Company</span>}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -108,14 +112,18 @@ const AddCompany = () => {
        </Box>
       </Modal>
     </div>
-         <div className='w-full border-b-[1px]  flex justify-center items-center py-2'>
+         <div className='w-full flex justify-between'>
+               <button   className='p-3 text-[white] bg-blue-500 w-full text-center'>
+                 {
+                   employeeCompaines?.employee_companies.length==0?"No company available":"Current companies"
+                 }
+
+               </button>
                 <button 
-                className='text-sm rounded-full w-[150px] h-[50px] bg-black text-white'
+                className='p-3 text-blue-500 border-blue-500 w-full text-center hover:bg-[#0479c7] hover:text-white border-2'
                 onClick={handleOpen}
                 >
-                    {
-                      loading? "please wait..." : "Add company"
-                    }
+                    Join your company
                 </button>
          </div>
     </>
