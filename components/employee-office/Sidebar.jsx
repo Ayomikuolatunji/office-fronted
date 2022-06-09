@@ -39,9 +39,9 @@ const Sidebar = () => {
                   }}
                 >
                   <div className="logo w-[25%]">
-                      <img src={company.company_profile_picture} alt="img" className='max-w-full w-[60px]'/>
+                      <img src={company.company_profile_picture} alt="img" className='max-w-full w-[65px]'/>
                   </div>
-                  <div className="company-name text-left cursor-pointer text-black border-b-2 w-[75%] p-2">
+                  <div className="company-name text-left cursor-pointer text-black border-b-2 border-gray-500 w-[75%] p-2">
                       <h5 className='font-normal'>
                         {company.company_name}
                       </h5>
