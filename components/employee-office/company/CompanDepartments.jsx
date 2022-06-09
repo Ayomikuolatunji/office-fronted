@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Groups = () => {
+const CompanDepartments = () => {
   return (
     <div>Groups</div>
   )
 }
 
-export default Groups
+export default CompanDepartments
