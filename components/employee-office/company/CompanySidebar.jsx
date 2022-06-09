@@ -22,7 +22,7 @@ const CompanySidebar = () => {
                 placeholder="Search members,groups"
                 />
           </div>
-          <div className="go-back flex justify-center items-center w-[30%] bg-white">
+          <div className="go-back flex justify-center items-center w-[25%] bg-white">
             <BsArrowRightShort className='text-4xl inline mr-4 text-blue-500 font-extrabold cursor-pointer'
               onClick={()=>{
                 dispatch(closeCompany(false))

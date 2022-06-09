@@ -120,7 +120,7 @@ const AddCompany = () => {
 
                </button>
                 <button 
-                className='p-3 text-blue-500 border-blue-500 w-full text-center hover:bg-blue-500 hover:text-white border-2'
+                className='p-3 text-blue-500 border-blue-500 w-full text-center border-2'
                 onClick={handleOpen}
                 >
                     Join your company
