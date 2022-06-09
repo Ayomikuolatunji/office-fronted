@@ -22,11 +22,13 @@ const AddCompany = () => {
     const employeeId=useSelector(state=>state.employeeInfo.employeeData)
     const {values,handleChange}=FormLogicHook()
     const employeeCompaines=useSelector(state=>state.employeeInfo.employeeCompanies)
-    console.log(employeeId)
     const [loading,setLoading]=useState(false)
     const [open,setOpen]=useState(false)
     const [error,setError]=useState('')
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+      setOpen(true)
+      setError('')
+    };
     const handleClose = () => setOpen(false);
     const dispatch=useDispatch()     
    //   1. Create a new company
@@ -39,7 +41,7 @@ const AddCompany = () => {
       setLoading(true)
       setError("")
      try {
-       const response=await axios.post(`${add_new_company}/${employeeId}`,{
+       const response=await axios.post(`${add_new_company}/${employeeId._id}`,{
             companyId:values.company_id.trim(),
             company_name:values.company_name.trim()
        })

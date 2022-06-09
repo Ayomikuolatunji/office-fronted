@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import CompanDepartments from './CompanDepartments'
 import CompanyHeader from './CompanyHeader'
+import Conversations from './Conversations'
 
 
 const CompanySidebar = () => {
@@ -16,6 +17,8 @@ const CompanySidebar = () => {
         <CompanyHeader/>
         {/* company groups */}
         <CompanDepartments/>
+        {/* conversation */}
+        <Conversations/>
      </main>
     </div>
   )
