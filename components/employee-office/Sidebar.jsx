@@ -10,7 +10,7 @@ const Sidebar = () => {
   const dispatch=useDispatch()
 
    
-  const getSCompanyFunc=(id)=>{
+  const getSingleCompanyFunc=(id)=>{
        return employeeCompaines?.employee_companies?.map(country=>{
           if(country._id===id){
              dispatch(getSelectedCompany(country))
@@ -32,7 +32,7 @@ const Sidebar = () => {
                 key={company._id}
                   onClick={()=>{
                     dispatch(openCompany(true))
-                    getSCompanyFunc(company._id)
+                    getSingleCompanyFunc(company._id)
                   }}
                 >
                   <div className="logo w-[25%]">
