@@ -96,7 +96,7 @@ export default function ForgotPassword() {
               />
               <p>Provide your email address to change password</p>
               <p className='text-base text-center'>
-                Back to login <Link href={"/login"} passHref>
+                Back to login <Link href={"/login-as-employee"} passHref>
                  Login
                </Link>
              </p>
