@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import store from '../redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
 import MainEmplyeeDashhboard from '../layouts/EmplyeeDashhboard';
+import CompanyDashBoard from '../layouts/CompanyDashBoard';
 
 
 
@@ -24,6 +25,19 @@ function MyApp({ Component, pageProps ,...appProps}) {
     )
   }
 
+  if (["/admin-dashboard"].includes(appProps.router.pathname)) {
+    return  <Provider store={store.store}>
+            <NextUIProvider>
+              <PersistGate persistor={store.persistStore}>
+                <CompanyDashBoard>
+                    <Component {...pageProps} />
+                </CompanyDashBoard>
+              </PersistGate>
+            </NextUIProvider>
+        </Provider>
+  }
+
+   
   if (["/employee-dashboard",'/employee-dashboard/profile', '/employee-dashboard/companies',  '/employee-dashboard/inbox'].includes(appProps.router.pathname)) {
     return  <Provider store={store.store}>
             <NextUIProvider>
@@ -35,8 +49,6 @@ function MyApp({ Component, pageProps ,...appProps}) {
             </NextUIProvider>
         </Provider>
   }
-
-
 
   return (
    <div>
