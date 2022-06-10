@@ -1,7 +1,6 @@
-const host=`http://localhost:8080/v1`
 
 
-export const registerCompany=`${host}/office-api/auth/create_company_account`
+export const registerCompany=`${process.env.NEXT_PUBLIC_HOST_URL}/office-api/auth/create_company_account`
 
 
-export const employeeCompanies=`${host}/office-api/all_companies`
+export const employeeCompanies=`${process.env.NEXT_PUBLIC_HOST_URL}/office-api/all_companies`
