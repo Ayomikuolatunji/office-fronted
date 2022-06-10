@@ -1,4 +1,5 @@
 import { AiOutlineTeam, AiTwotoneCalendar } from "react-icons/ai";
+import { FcSettings } from "react-icons/fc";
 import { GoReport } from "react-icons/go";
 import { GrDiamond, GrProjects } from "react-icons/gr";
 import { MdPayment } from "react-icons/md";
@@ -25,7 +26,7 @@ export const adminSidebarItems=[
   }
 ]
 
-const AdminSidebarSettings = [
+export const AdminSidebarSettings = [
    {
     route:"/admin-dashboard/upgrade-plan",
     item:"Upgrade Plan",
@@ -34,5 +35,9 @@ const AdminSidebarSettings = [
     route:"/admin-dashboard/payments",
     item:"Payments",
     icon: <MdPayment/>
+   },{
+    route:"/admin-dashboard/app-settings",
+    item:"App Settings",
+    icon: <FcSettings/>
    }
 ]

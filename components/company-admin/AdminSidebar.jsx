@@ -4,9 +4,7 @@ import {GrProjects} from "react-icons/gr";
 import {BiTask} from "react-icons/bi";
 import {AiOutlineTeam, AiTwotoneCalendar} from "react-icons/ai"
 import {GoReport} from "react-icons/go";
-import { FcSettings } from 'react-icons/fc';
-import {GrDiamond} from "react-icons/gr";
-import {MdPayment} from "react-icons/md"
+import { AdminSidebarSettings } from '../../helpers/adminSidebarItems';
 
 
 
@@ -71,24 +69,16 @@ const AdminSidebar = () => {
             </ul>
             <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
                <li>
-                  <a href="#" className="flex items-center p-2 text-base font-normal text-white rounded-lg transition duration-75 hover:bg-gray-600 dark:hover:bg-gray-700 dark:text-white group">
-                     <GrDiamond/>
-                     <span className="ml-4">Upgrade to Pro</span>
-                  </a>
-               </li>
-               <li>
-                  <a href="#" className="flex items-center p-2 text-base font-normal text-white rounded-lg transition duration-75 hover:bg-gray-600 dark:hover:bg-gray-700 dark:text-white group">
-                     <MdPayment/>
-                     <span className="ml-3">Payments</span>
-                  </a>
-               </li>
-               <li>
-                  <a href="#" className="flex items-center p-2 text-base font-normal text-white rounded-lg transition duration-75 hover:bg-gray-600 dark:hover:bg-gray-700 dark:text-white group">
-                     <FcSettings/>
-                     <span className="ml-3">
-                        App settings
-                     </span>
-                  </a>
+               {
+                  AdminSidebarSettings.map((menuItem, index) => {
+                   return  <a href="#" className="flex menuItems-center p-2 text-base font-normal text-white rounded-lg transition duration-75 hover:bg-gray-600 dark:hover:bg-gray-700 dark:text-white group" key={index}>
+                    {menuItem.icon}
+                   <span className="ml-4">
+                      {menuItem.item}
+                   </span>
+                </a>      
+                  })
+               }
                </li>
             </ul>
          </div>
