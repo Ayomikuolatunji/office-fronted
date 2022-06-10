@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "@nextui-org/react";
-// import Errsvg from "../public/images/Errsvg.svg"
 
  const CustomError=() => {
     return (
