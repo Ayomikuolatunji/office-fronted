@@ -1,9 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
-import {GrProjects} from "react-icons/gr";
-import {BiTask} from "react-icons/bi";
-import {AiOutlineTeam, AiTwotoneCalendar} from "react-icons/ai"
-import {GoReport} from "react-icons/go";
 import { adminSidebarItems, AdminSidebarSettings } from '../../helpers/adminSidebarItems';
 import Link from 'next/link';
 
