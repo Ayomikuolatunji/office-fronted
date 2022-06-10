@@ -4,7 +4,8 @@ import {GrProjects} from "react-icons/gr";
 import {BiTask} from "react-icons/bi";
 import {AiOutlineTeam, AiTwotoneCalendar} from "react-icons/ai"
 import {GoReport} from "react-icons/go";
-import { AdminSidebarSettings } from '../../helpers/adminSidebarItems';
+import { adminSidebarItems, AdminSidebarSettings } from '../../helpers/adminSidebarItems';
+import Link from 'next/link';
 
 
 
@@ -32,39 +33,18 @@ const AdminSidebar = () => {
                   </a>
                </li>
                <li>
-                  <a href="#" className="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-600 dark:hover:bg-gray-700">
-                     <GrProjects/>
-                     <span className="flex-1 ml-3 whitespace-nowrap">Projects</span>
-            
-                  </a>
-               </li>
-               <li>
-                  <a href="#" className="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-600 dark:hover:bg-gray-700">
-                    <BiTask/>
-                     <span className="flex-1 ml-3 whitespace-nowrap">Tasks</span>
-                  </a>
-               </li>
-               <li>
-                  <a href="#" className="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-600 dark:hover:bg-gray-700">
-                     <AiOutlineTeam/>
-                     <span className="flex-1 ml-3 whitespace-nowrap">Employees</span>
-                  </a>
-               </li>
-               <li>
-                  <a href="#" className="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-600 dark:hover:bg-gray-700">
-                     <AiTwotoneCalendar/>
-                     <span className="flex-1 ml-3 whitespace-nowrap">
-                        Calendar
-                     </span>
-                  </a>
-               </li>
-               <li>
-                  <a href="#" className="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-600 dark:hover:bg-gray-700">
-                     <GoReport/>
-                     <span className="flex-1 ml-3 whitespace-nowrap">
-                        Reports
-                     </span>
-                  </a>
+               {
+               adminSidebarItems.map((menuItem, index) => {
+                  return (
+                     <Link key={index} href={menuItem.route}>
+                           <a href="#" className="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-600 dark:hover:bg-gray-700">
+                            {menuItem.icon}
+                           <span className="flex-1 ml-3 whitespace-nowrap">{menuItem.item}</span>
+                        </a>
+                     </Link>
+                  )  
+                  })
+            }
                </li>
             </ul>
             <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
