@@ -154,7 +154,7 @@ export default function CreateAcount() {
               <Typography>
                 Already have an account ?
 
-               <Link href={"/login"} passHref>
+               <Link href={"/login-as-employee"} passHref>
                  Login
                </Link>
              </Typography>
