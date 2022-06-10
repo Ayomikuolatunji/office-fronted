@@ -1,4 +1,5 @@
 import { AiOutlineTeam, AiTwotoneCalendar } from "react-icons/ai";
+import { BiTask } from "react-icons/bi";
 import { FcSettings } from "react-icons/fc";
 import { GoReport } from "react-icons/go";
 import { GrDiamond, GrProjects } from "react-icons/gr";
@@ -11,6 +12,11 @@ export const adminSidebarItems=[
     item:"Projects",
     icon: <GrProjects/>
   },{
+    route:"/admin-dashboard/tasks",
+    item:"Tasks",
+    icon:  <BiTask/>
+  }
+  ,{
     route:"/admin-dashboard/employees",
     item:"Employees",
     icon: <AiOutlineTeam/>
