@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from '../components/admin-header/Header'
 import AdminSidebar from '../components/company-admin/AdminSidebar'
 
 const CompanyDashBoard = ({children}) => {
@@ -11,6 +12,8 @@ const CompanyDashBoard = ({children}) => {
                  <AdminSidebar/>
              </div>
              <main className="main w-[75%]">
+               {/* header */}
+                <Header/>
                 {children}
              </main>
          </div>

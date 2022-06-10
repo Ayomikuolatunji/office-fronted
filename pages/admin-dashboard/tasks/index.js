@@ -1,9 +1,8 @@
 import React from 'react'
+import Tasks from '../../../components/company-admin/tasks/Tasks'
 
 const index = () => {
-  return (
-    <div>index</div>
-  )
+  return <Tasks/>
 }
 
 export default index
