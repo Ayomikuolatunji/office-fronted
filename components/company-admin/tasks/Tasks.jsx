@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../../../utils/Button'
+import CreateTask from './CreateTask'
 import SelectTask from "./SelectTask"
 
 
@@ -9,15 +10,16 @@ const Tasks = () => {
   
   return (
     <main className='tasks-body w-[80%] mx-auto mt-7'>
+      {/* header */}
         <div className="create-select-task flex justify-between">
           <div>
            <SelectTask/>
           </div>
-
-          <Button  className='bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-md font-serif'
-            text='Create Task'
-          />
+          <div>
+             <CreateTask/>
+          </div>           
         </div>
+      {/* end header */}
     </main>
   )
 }
