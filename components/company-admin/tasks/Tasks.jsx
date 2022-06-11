@@ -2,9 +2,9 @@ import React from 'react'
 
 const Tasks = () => {
   return (
-    <div>
+    <main className='tasks-body'>
         
-    </div>
+    </main>
   )
 }
 
