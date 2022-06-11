@@ -37,10 +37,10 @@ const CreateTask = () => {
         >
           <Box sx={style}>
               <div className="create-task-container">
-                <div className="create-a-new-task w-full border-b-2">
+                <div className="create-a-new-task w-full border-b-2 p-3 font-serif">
                    <div className='flex items-center justify-center '>
-                    <MdOutlineAssignmentTurnedIn className='text-blue-500 text-2xl'/>
-                     <span className='text-gray-600 text-2xl'>Create a new task</span>
+                    <MdOutlineAssignmentTurnedIn className='text-blue-500 text-3xl'/>
+                     <span className='text-gray-800 text-4xl'>Create a new task</span>
                    </div>
                 </div>
                 <div className="task-title">
