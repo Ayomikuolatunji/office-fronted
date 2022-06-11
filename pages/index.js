@@ -1,10 +1,28 @@
 import Head from 'next/head'
-import Image from "../public/images/Logo.jpg"
+import { useState } from 'react';
 import styles from '../styles/Home.module.css'
+import Button from '@mui/material/Button';
+import {RiArrowDropDownLine, RiArrowDropUpLine} from "react-icons/ri"
+import {Links} from "../components/RootMenu/IndexMenu"
+import { TogglerNav } from '../components/RootMenu/TogglerButton';
+import { loginApi } from '../hooks/employeeApis';
 
 export default function Home() {
+  const [Nav, setNav] = useState(false);
+
+  const Toggler = ()=> {
+    if (Nav) {
+    setNav(false)
+  }
+    else {
+      setNav(true)
+    }
+  }
+  console.log(loginApi)
+
   return (
       <>
+      <div className={`w-screen ${styles.container} h-screen`}>
     <header 
     className={
     `relative 
@@ -19,7 +37,7 @@ export default function Home() {
         w-full 
         p-1.5`}>
 
-      {/* Logo Section */}
+      {/* Logo Section */}    
       <section 
       className={
        `h-14 
@@ -54,32 +72,75 @@ export default function Home() {
               w-full 
               justify-between 
               items-center`}>
-             <li>
-               <a href='#' className={`text-white ${styles.link}`}>Product</a>
-             </li>
-
-             <li>
-               <a href='#' className={`text-white ${styles.link}`}>Resources</a>
-             </li>
-
-             <li>
-               <a href='#' className={`text-white ${styles.link}`}>Support</a>
-             </li>
-
-             <li>
-               <a href='#' className={`text-white ${styles.link}`}>Premium</a>
-             </li>
+             {Links.map((link) => {
+               const {id, name, path} = link
+               return (
+                 <li key={id}>
+                   <a href = {path} className= {`${styles.link} text-white`}>{name}</a>
+                 </li>
+               )
+             })}
            </ul>
+         </section>
+
+         <section className={`mr-6`} onClick = {Toggler}>
+         <Button variant="outlined" endIcon={Nav ? <RiArrowDropDownLine /> : <RiArrowDropUpLine /> } color = "success">
+          Sign in
+         </Button>
+         {Nav? <TogglerNav /> : null}
          </section>
       </main>
 
     </header>
 
-   <div className= {`${styles.color1} w-screen h-screen relative flex justify-center items-center`}>
+   <div className= {`
+   ${styles.container} 
+   w-screen 
+   relative 
+   flex 
+ `}>
+
+     <div className={`relative 
+     ${styles.center} 
+     w-screen 
+     flex 
+     justify-center
+     bg-black
+     text-white 
+     items-center
+     flex-col`}>
+
+       <div className={`${styles.negative} text-center`}>
+         <h2 className={`p-1`}>Create your Account </h2>
+         <p className={`p-1`}>setup your Company Database and 
+           have a easy flow of communication with your employees at a faster pace
+           </p> 
+       </div>
+
+       <div className={`w-full relative block`}>
+         <div className={`flex justify-between items-stretch w-3/5 mx-auto text-center md:flex-col`}>
+            <div className={`w-6/12 mx-2 md:w-full mb-3`}>
+            <Button href="#outlined-buttons" 
+            className={`w-3/5`}
+             sx = {{padding : "1em", color :"white"}} variant = "outlined" color = "success">
+        Sign up as an Employee
+      </Button>
+                        </div>
+
+            <div className={`w-6/12 mx-2 md:w-full`}>
+            <Button href="#outlined-buttons" 
+            className={`w-3/5`}
+             sx = {{padding : "1em", color :"white"}} variant = "outlined" color = "success">
+        Sign up as an Admin
+      </Button>
+         
+            </div>
+         </div>
+         
+       </div>
+     </div>
      
-     <div><h3>Hello </h3></div>
-     
-     <h1>Hi sir</h1>
+    </div>
     </div>
     </>
      )
