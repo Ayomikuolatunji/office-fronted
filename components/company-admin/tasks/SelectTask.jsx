@@ -6,26 +6,26 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function SelectTask() {
-  const [age, setAge] = React.useState('');
+  const [task, setTask] = React.useState('');
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setTask(event.target.value);
   };
 
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-label">All Tasks</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
-          label="Age"
+          value={task}
+          label="All Tasks"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={"task 1"}>Task 1</MenuItem>
+          <MenuItem value={"task 2"}>Task 2</MenuItem>
+          <MenuItem value={"task 3"}>Task 3</MenuItem>
         </Select>
       </FormControl>
     </Box>

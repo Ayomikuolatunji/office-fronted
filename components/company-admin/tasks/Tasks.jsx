@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '../../../utils/Button'
-import SelectTask from "SelectTask"
+import SelectTask from "./SelectTask"
 
 
 
