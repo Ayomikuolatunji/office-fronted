@@ -2,8 +2,8 @@
 import { configureStore,combineReducers} from '@reduxjs/toolkit'
 import { persistStore, persistReducer,FLUSH, REHYDRATE,PAUSE,PERSIST,PURGE,REGISTER,} from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
-// import countryApiSlice from "./country/countryApiSlice";
-// import companyTypeSlice from './company/companyTypeSlice';
+import countryApiSlice from "./country/countryApiSlice";
+import companyTypeSlice from './company/companyTypeSlice';
 import employeeAuth from './auth/employeSlice';
 import modalSlice from './modal/modalSlice';
 import employeeInfo from './employee/employeeInfoSlice';
@@ -17,11 +17,12 @@ const persistConfig = {
 // first reducer setup for persist storage blacklisting country and companies
 const rootReducer= combineReducers({
    //don't persist stores below 
-    // country:countryApiSlice,
+
     modal:modalSlice,
     employeeCompanyInfo:employeeCompanyInfo,
-    // companies:companyTypeSlice,
     // persist the stores below
+    companies:companyTypeSlice,
+    country:countryApiSlice,
     employeeAuth:employeeAuth,
     employeeInfo:employeeInfo
 })
