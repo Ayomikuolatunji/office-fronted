@@ -50,17 +50,24 @@ const CreateTask = () => {
                   className="w-full border-b-2 p-2"
                   />
                 </div>
-                <div className="task-description">
+                <div className="task-description w-full p-3 flex flex-col">
                   <label>Task Description</label>
                   <textarea placeholder="Enter task description" />
                 </div>
-                <div className="task-deadline">
+                <div className="task-deadline w-full p-3 flex flex-col">
                   <label>Task Deadline</label>
                   <input type="date" />
                 </div>
-                <div className="department-of-that-needs-the-task">
+                <div className="department-of-that-needs-the-task w-full p-3 flex flex-col mb-3">
                   <label>Department of that needs the task</label>
                   <input type="text" placeholder="Enter department name" />
+                </div>
+                <div className="create-task-btn">
+                  <Button
+                    text="Create Task"
+                    type="submit"
+                    className='w-full bg-blue-500 text-white p-4'
+                  />
                 </div>
               </div>
           </Box>
