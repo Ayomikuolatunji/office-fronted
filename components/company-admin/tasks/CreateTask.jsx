@@ -14,6 +14,7 @@ const style = {
   bgcolor: 'background.paper',
   border: '1px solid lightgray',
   boxShadow: 24,
+  borderRadius: '5px'
 };
 
 
@@ -54,7 +55,7 @@ const CreateTask = () => {
                   <label>Task Description</label>
                   <textarea 
                   placeholder="Enter task description" 
-                  className='w-full border-2 p-2'
+                  className='w-full border-2 p-4'
                   />
                 </div>
                 <div className="task-deadline w-full p-3 flex flex-col">

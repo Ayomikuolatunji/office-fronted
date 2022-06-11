@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps ,...appProps}) {
     )
   }
 
-  if (["/admin-dashboard","/admin-dashboard/tasks"].includes(appProps.router.pathname)) {
+  if (["/admin-dashboard","/admin-dashboard/tasks","/admin-dashboard/departments"].includes(appProps.router.pathname)) {
     return  <Provider store={store.store}>
             <NextUIProvider>
               <PersistGate persistor={store.persistStore}>
