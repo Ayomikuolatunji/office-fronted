@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import {MdOutlineAssignmentTurnedIn} from "react-icons/md";
 import Button from "../../../utils/Button"
 
 
@@ -13,7 +14,6 @@ const style = {
   bgcolor: 'background.paper',
   border: '1px solid lightgray',
   boxShadow: 24,
-  p: 2,
 };
 
 
@@ -37,8 +37,11 @@ const CreateTask = () => {
         >
           <Box sx={style}>
               <div className="create-task-container">
-                <div className="create-a-new-task w-full p-3 text-center">
-                   <h4>Create a new task</h4>
+                <div className="create-a-new-task w-full border-b-2">
+                   <div className='flex items-center justify-center '>
+                    <MdOutlineAssignmentTurnedIn className='text-blue-500 text-2xl'/>
+                     <span className='text-gray-600 text-2xl'>Create a new task</span>
+                   </div>
                 </div>
                 <div className="task-title">
                   <label>Task Title</label>
