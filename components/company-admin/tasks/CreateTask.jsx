@@ -37,7 +37,7 @@ const CreateTask = () => {
         >
           <Box sx={style}>
               <div className="create-task-container">
-                <div className="create-a-new-task">
+                <div className="create-a-new-task w-full p-3 text-center">
                    <h4>Create a new task</h4>
                 </div>
                 <div className="task-title">
@@ -52,11 +52,10 @@ const CreateTask = () => {
                   <label>Task Deadline</label>
                   <input type="date" />
                 </div>
-                <div className="task-assignee">
-                  <label>Task Assignee</label>
-                  <input type="text" placeholder="Enter task assignee" />
+                <div className="department-of-that-needs-the-task">
+                  <label>Department of that needs the task</label>
+                  <input type="text" placeholder="Enter department name" />
                 </div>
-               
               </div>
           </Box>
         </Modal>
