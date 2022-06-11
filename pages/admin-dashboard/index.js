@@ -1,5 +1,5 @@
 import React from 'react'
-import HomePage from '../../components/company-admin/HomePage'
+import HomePage from '../../components/company-admin/home/HomePage'
 
 const index = () => {
   return <HomePage/>
