@@ -10,7 +10,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 700,
+  width: 500,
   bgcolor: 'background.paper',
   border: '1px solid lightgray',
   boxShadow: 24,
@@ -43,9 +43,12 @@ const CreateTask = () => {
                      <span className='text-gray-800 text-4xl'>Create a new task</span>
                    </div>
                 </div>
-                <div className="task-title">
+                <div className="task-title w-full p-3 flex flex-col">
                   <label>Task Title</label>
-                  <input type="text" placeholder="Enter task title" />
+                  <input type="text" 
+                  placeholder="Enter task title" 
+                  className="w-full border-b-2 p-2"
+                  />
                 </div>
                 <div className="task-description">
                   <label>Task Description</label>
