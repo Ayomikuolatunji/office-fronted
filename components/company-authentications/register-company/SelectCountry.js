@@ -53,7 +53,7 @@ export default function MultipleSelectPlaceholder() {
   },[dispatch,countryName])
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
+      <FormControl>
         <Select
           multiple={false}
           displayEmpty

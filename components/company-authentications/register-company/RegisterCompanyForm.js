@@ -28,7 +28,7 @@ export default function RegisterCompanyForm() {
  } 
 
   return (
-    <form className="w-[50%] h-[inherent] flex flex-col" onSubmit={(e)=>handleSubmit(e)}>
+    <form className="w-[50%] h-[inherent] flex flex-col relative" onSubmit={(e)=>handleSubmit(e)}>
         <div className="text">
             <h3>Register your company</h3>
         </div>
