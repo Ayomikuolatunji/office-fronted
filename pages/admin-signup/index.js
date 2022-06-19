@@ -1,8 +1,10 @@
 import React from 'react'
-import CreateAccount from '../../components/company-authentications/signup/CreateAccount'
+import RegisterCompany from '../../components/company-authentications/register-company'
+
+
 
 const index = () => {
-  return <CreateAccount/>
+  return <RegisterCompany/>
 }
 
 export default index

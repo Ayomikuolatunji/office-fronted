@@ -1,12 +1,12 @@
 import axios from 'axios'
 import React,{useState} from 'react'
 import { useSelector } from 'react-redux'
-import { registerCompany } from '../../api/authApi'
-import { FormLogicHook } from '../../helpers/FormLogicHook'
-import InputText from '../../util/InputText'
+import { registerCompany } from '../../../hooks/companyApis'
+import { FormLogicHook } from '../../../helpers/FormLogicHook'
+import InputText from '../../../utils/InputText'
 import SelectCompany from './SelectCompany'
 import SelectCountry from './SelectCountry'
-import Button from "../../util/Button"
+import Button from "../../../utils/Button"
 
 export default function RegisterCompanyForm() {
  const  {values, handleChange}=FormLogicHook()
