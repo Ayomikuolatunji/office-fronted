@@ -59,7 +59,7 @@ export default function RegisterCompanyForm() {
                placeholder={"Enter your company account password"}
             />
         </div>
-          <div className='w-[70%]  flex mx-auto mf'>
+          <div className='w-[100%]  flex mx-auto relative'>
              <SelectCountry/>
              <SelectCompany/>
           </div>
