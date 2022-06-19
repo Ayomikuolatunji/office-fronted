@@ -10,7 +10,7 @@ const initialState={
 }
 export const getCompanies=createAsyncThunk("companies/getCompanies",async(company,thunkAPI)=>{
     thunkAPI.dispatch(SelctedCompany(company[0]))
-    const res=await axios("http://localhost:8080/v1/office-api/all-country-lists")
+    const res=await axios(allIndustriesApi)
     return res.data
 })
 
