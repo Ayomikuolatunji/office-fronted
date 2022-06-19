@@ -11,6 +11,7 @@ const initialState={
 export const getCompanies=createAsyncThunk("companies/getCompanies",async(company,thunkAPI)=>{
     thunkAPI.dispatch(SelctedCompany(company[0]))
     const res=await axios(allIndustriesApi)
+    console.log(res)
     return res.data
 })
 
