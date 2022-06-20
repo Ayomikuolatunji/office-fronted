@@ -29,7 +29,7 @@ function getStyles(name, countryName, theme) {
   };
 }
 
-export default function MultipleSelectPlaceholder() {
+export default function SelectCountry() {
   const theme = useTheme();
   const countries=useSelector(state=>state.country.countries) 
   const dispatch=useDispatch()
@@ -63,7 +63,7 @@ export default function MultipleSelectPlaceholder() {
           onChange={handleChange}
           input={<OutlinedInput />}
           className="bg-gray-100 border-gray-200 border-[1px] 
-          w-[100%]"
+          w-[100%] relative"
           renderValue={(selected) => {
             if (selected.length === 0) {
               return <em>Select country</em>;
