@@ -22,7 +22,6 @@ export default function RegisterCompanyForm() {
         event.preventDefault()
         const res=await axios(registerCompany,{
              company_email:values.company_email,
-             company_location:company_location,
              company_type:company,
              company_name:values.company_name,
              company_password:values.company_password
