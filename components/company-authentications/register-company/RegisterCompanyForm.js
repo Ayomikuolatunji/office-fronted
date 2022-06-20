@@ -81,11 +81,11 @@ export default function RegisterCompanyForm() {
         <div className='w-[100%] flex mx-auto relative p-3'>
              <SelectCompany/>
         </div>
-        <div className="w-full error p-3 flex mx-auto">
-            <div className='text-white bg-red-500'>
-                {error}
+       {error && <div className="w-full error p-3 flex mx-auto">
+            <div className='text-white bg-red-500 w-full text-center px-2 py-3'>
+               {error}
             </div>
-        </div>
+        </div>}
          <div className="submit mt-5 w-full p-3 flex justify-center ">
             <Button 
               text={"Submit"} 
