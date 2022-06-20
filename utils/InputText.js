@@ -14,7 +14,7 @@ export default function InputText({type,label,onChange,name,value, outlined,...r
        name={name}
        value={value}
        variant = {outlined}
-       style = {{ margin: "0.6em 0"}}
+       style = {{ margin: "0.6em 0", borderTop: "none", borderLeft: "none", borderRight: "none", borderBottom: "2px solid #e0e0e0" }}
      />
   )
 }

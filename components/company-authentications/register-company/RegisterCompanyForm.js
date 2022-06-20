@@ -45,7 +45,7 @@ export default function RegisterCompanyForm() {
                 className="w-full border-b-2 border-r-0 border-l-0 border-t-0"
             />
         </div>
-         <div className="normal-input p-3">
+         <div className="normal-input p-3 w-full">
             <InputText 
                 text="email"
                 value={values.company_email}
@@ -54,9 +54,10 @@ export default function RegisterCompanyForm() {
                 name={"company_email"}
                 onChange={(e)=>handleChange(e)}
                 placeholder={"Enter your company email address"}
+                className="w-full border-b-2 border-r-0 border-l-0 border-t-0"
             />
         </div>
-        <div className="normal-input p-3">
+        <div className="normal-input p-3 w-full">
             <InputText 
                text="password"
                label={"Company Password"}
@@ -72,7 +73,7 @@ export default function RegisterCompanyForm() {
              <SelectCountry/>
              <SelectCompany/>
           </div>
-          <div className="normal-input">
+          <div className="normal-input p-3">
                 <textarea
                     text="text"
                     name={"company_address"}
@@ -82,8 +83,11 @@ export default function RegisterCompanyForm() {
                     className="w-full p-5 bg-gray-100 hover:border-[1px] hover:border-[#997af0] rounded-[0.4rem]"
                 />
          </div>
-         <div className="submit mt-5 w-full flex justify-center ">
-            <Button text={"Submit"} />
+         <div className="submit mt-5 w-full p-3 flex justify-center ">
+            <Button 
+              text={"Submit"} 
+              className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
+            />
         </div>
     </form>
      </div>
