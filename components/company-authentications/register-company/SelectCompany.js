@@ -52,8 +52,8 @@ export default function SelectCompany() {
       dispatch(getCompanies(companyName))
   },[dispatch,companyName])
   return (
-    <div>
-      <FormControl>
+    <div className='w-[100%]'>
+      <FormControl style={{width:"100%"}}>
         <Select
           multiple={false}
           displayEmpty

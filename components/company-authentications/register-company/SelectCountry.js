@@ -52,15 +52,16 @@ export default function MultipleSelectPlaceholder() {
       dispatch(fetchAllcountries(countryName))
   },[dispatch,countryName])
   return (
-    <div>
-      <FormControl>
+    <div className='w-[100%]'>
+      <FormControl style={{width:"100%"}}>
         <Select
           multiple={false}
           displayEmpty
           value={countryName}
           onChange={handleChange}
           input={<OutlinedInput />}
-          className="bg-gray-100 border-gray-200 border-[1px] w-[100%]"
+          className="bg-gray-100 border-gray-200 border-[1px] 
+          w-[100%]"
           renderValue={(selected) => {
             if (selected.length === 0) {
               return <em>Select country</em>;

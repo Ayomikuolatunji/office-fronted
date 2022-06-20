@@ -69,20 +69,12 @@ export default function RegisterCompanyForm() {
                className="w-full border-b-2 border-r-0 border-l-0 border-t-0"
             />
         </div>
-          <div className='w-[100%] flex mx-auto relative p-3'>
+        <div className='w-[100%] flex mx-auto relative p-3'>
              <SelectCountry/>
+        </div>
+        <div className='w-[100%] flex mx-auto relative p-3'>
              <SelectCompany/>
-          </div>
-          <div className="normal-input p-3">
-                <textarea
-                    text="text"
-                    name={"company_address"}
-                    value={values.company_address}
-                    onChange={(e)=>handleChange(e)}
-                    placeholder={"Enter your company state, street and city"}
-                    className="w-full p-5 bg-gray-100 hover:border-[1px] hover:border-[#997af0] rounded-[0.4rem]"
-                />
-         </div>
+        </div>
          <div className="submit mt-5 w-full p-3 flex justify-center ">
             <Button 
               text={"Submit"} 
