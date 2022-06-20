@@ -51,8 +51,10 @@ export default function MultipleSelectPlaceholder() {
   useEffect(()=>{
       dispatch(fetchAllcountries(countryName))
   },[dispatch,countryName])
+
+
   return (
-    <div className='w-[100%]'>
+    <div className='w-[100%] relative'>
       <FormControl style={{width:"100%"}}>
         <Select
           multiple={false}
