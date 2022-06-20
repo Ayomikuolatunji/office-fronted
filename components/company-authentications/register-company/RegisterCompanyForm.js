@@ -28,11 +28,12 @@ export default function RegisterCompanyForm() {
  } 
 
   return (
-    <form className="w-[50%] h-[inherent] flex flex-col relative" onSubmit={(e)=>handleSubmit(e)}>
-        <div className="text">
+     <div className='w-[60%] mx-auto flex justify-center items-center'>
+         <form className="w-[50%] h-[inherent] flex flex-col relative border-2 shadow-xl" onSubmit={(e)=>handleSubmit(e)}>
+        <div className="text-center p-3">
             <h3>Register your company</h3>
         </div>
-        <div className="normal-input">
+        <div className="normal-input p-3">
             <InputText 
                 text="text"
                 name={"company_name"}
@@ -72,10 +73,11 @@ export default function RegisterCompanyForm() {
                     placeholder={"Enter your company state, street and city"}
                     className="w-full p-5 bg-gray-100 hover:border-[1px] hover:border-[#997af0] rounded-[0.4rem]"
                 />
-             </div>
-             <div className="submit mt-5 w-full flex justify-center ">
-                 <Button text={"Submit"} />
-             </div>
+         </div>
+         <div className="submit mt-5 w-full flex justify-center ">
+            <Button text={"Submit"} />
+        </div>
     </form>
+     </div>
   )
 }
