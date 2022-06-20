@@ -20,7 +20,7 @@ export default function RegisterCompanyForm() {
  const handleSubmit=async(event)=>{
       try{
         event.preventDefault()
-        const res=await axios(registerCompany,{
+        const res=await axios.post("http://localhost:8080/v1/office-api/auth/create_company_account",{
              company_email:values.company_email,
              company_type:company,
              company_name:values.company_name,
@@ -28,6 +28,7 @@ export default function RegisterCompanyForm() {
         })
         console.log(res)
       }catch(error){
+        console.log(error.message);
          setError(error.response.data.error)
       }
  } 
