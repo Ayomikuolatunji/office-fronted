@@ -37,30 +37,38 @@ export default function RegisterCompanyForm() {
             <InputText 
                 text="text"
                 name={"company_name"}
+                variant="outlined"
+                label={"Company Name"}
                 value={values.company_name}
                 onChange={(e)=>handleChange(e)}
                 placeholder={"Enter your  company name"}
+                className="w-full border-b-2 border-r-0 border-l-0 border-t-0"
             />
         </div>
-         <div className="normal-input">
+         <div className="normal-input p-3">
             <InputText 
                 text="email"
                 value={values.company_email}
+                label={"Company Email"}
+                variant="outlined"
                 name={"company_email"}
                 onChange={(e)=>handleChange(e)}
                 placeholder={"Enter your company email address"}
             />
         </div>
-        <div className="normal-input">
+        <div className="normal-input p-3">
             <InputText 
                text="password"
+               label={"Company Password"}
+               variant="outlined"
                name={"company_password"}
                value={values.company_password}
                onChange={(e)=>handleChange(e)}
                placeholder={"Enter your company account password"}
+               className="w-full border-b-2 border-r-0 border-l-0 border-t-0"
             />
         </div>
-          <div className='w-[100%]  flex mx-auto relative'>
+          <div className='w-[100%] flex mx-auto relative p-3'>
              <SelectCountry/>
              <SelectCompany/>
           </div>
