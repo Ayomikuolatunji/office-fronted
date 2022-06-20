@@ -14,17 +14,17 @@ export default function RegisterCompanyForm() {
  const [loading,setLoading]=useState(false)
  const country=useSelector(state=>state.country.seletedCountry)
  const company=useSelector(state=>state.companies.selectedCompany)
- const company_location=`${values.company_address}, ${country} `
 
 
  const handleSubmit=async(event)=>{
       try{
         event.preventDefault()
-        const res=await axios.post("http://localhost:8080/v1/office-api/auth/create_company_account",{
-             company_email:values.company_email,
-             company_type:company,
-             company_name:values.company_name,
-             company_password:values.company_password
+        const res=await axios("http://localhost:8080/v1/office-api/auth/create_company_account",{
+            company_name:values.company_name,
+            company_password:values.company_password,
+            company_email:values.company_email,
+            company_country:country,
+            company_type:company,
         })
         console.log(res)
       }catch(error){
