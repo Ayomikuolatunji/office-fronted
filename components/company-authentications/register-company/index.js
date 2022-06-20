@@ -27,7 +27,7 @@ export default function RegisterCompany() {
                      Already have an office? 
                    </span>
                   <Link href='/login-admin'>
-                       <button className=''>
+                       <button className='ml-3 p-3 border-[blue] border-2 text-white rounded-md hover:bg-[blue] hover:text-white'>
                             Login to your office
                        </button>
                   </Link>

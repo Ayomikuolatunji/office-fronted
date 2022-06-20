@@ -10,21 +10,27 @@ import Button from "../../../utils/Button"
 
 export default function RegisterCompanyForm() {
  const  {values, handleChange}=FormLogicHook()
+ const [error,setError]=useState('')
+ const [loading,setLoading]=useState(false)
  const country=useSelector(state=>state.country.seletedCountry)
  const company=useSelector(state=>state.companies.selectedCompany)
  const company_location=`${values.company_address}, ${country} `
 
 
  const handleSubmit=async(event)=>{
-     event.preventDefault()
-     const res=await axios(registerCompany,{
-          company_email:values.company_email,
-          company_location:company_location,
-          company_type:company,
-          company_name:values.company_name,
-          company_password:values.company_password
-     })
-     console.log(res)
+      try{
+        event.preventDefault()
+        const res=await axios(registerCompany,{
+             company_email:values.company_email,
+             company_location:company_location,
+             company_type:company,
+             company_name:values.company_name,
+             company_password:values.company_password
+        })
+        console.log(res)
+      }catch(error){
+         setError(error.response.data.error)
+      }
  } 
 
   return (
@@ -74,6 +80,11 @@ export default function RegisterCompanyForm() {
         </div>
         <div className='w-[100%] flex mx-auto relative p-3'>
              <SelectCompany/>
+        </div>
+        <div className="w-full error p-3 flex mx-auto">
+            <div className='text-white bg-red-500'>
+                {error}
+            </div>
         </div>
          <div className="submit mt-5 w-full p-3 flex justify-center ">
             <Button 
