@@ -32,7 +32,6 @@ function getStyles(name, companyName, theme) {
 export default function SelectCompany() {
   const theme = useTheme();
   const companies=useSelector(state=>state.companies.companies) 
-  console.log(companies)
   const dispatch=useDispatch()
   const [companyName, setCompany] = React.useState([]);
 
