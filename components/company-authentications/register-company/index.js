@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link'
 import React from 'react'
 import RegisterCompanyForm from './RegisterCompanyForm'
 
@@ -11,11 +12,26 @@ export default function RegisterCompany() {
                     <img src={"/images/Logo.jpg"} alt="logo" className='w-24 h-24 rounded-full'/>
                 </div>
            </div>
-           <div className="content flex justify-center items-center flex-col top-[50%]">
+           <div className="content flex justify-center items-center flex-col mt-[30%]">
                <h1>Welcome to onlineoffice</h1>
-               <p>
+               <p className='text-white font-semibold'>
                   Onlineoffice allows connect you to your office and your office to you.
                </p>
+                <p className='text-white'>
+                  You can register your company and get access to your office.
+                </p>
+           </div>
+           <div className='account-login text-center mt-10'>
+                <p>
+                   <span className=''>
+                     Already have an office? 
+                   </span>
+                  <Link href='/login-admin'>
+                       <button className=''>
+                            Login to your office
+                       </button>
+                  </Link>
+                </p>
            </div>
        </div>
       <RegisterCompanyForm/>
