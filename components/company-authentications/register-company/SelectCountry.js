@@ -37,7 +37,6 @@ export default function SelectCountry() {
 
   
   const handleChange = (event) => {
-   
     const {
       target: { value },
     } = event;
