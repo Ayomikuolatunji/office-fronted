@@ -9,7 +9,7 @@ const initialState={
     isCompanyLoading:true
 }
 export const getCompanies=createAsyncThunk("companies/getCompanies",async(company,thunkAPI)=>{
-    thunkAPI.dispatch(SelctedCompany(company[0]))
+    thunkAPI.dispatch(SelctedCompany(company))
     const res=await axios(allIndustriesApi)
     return res.data
 })

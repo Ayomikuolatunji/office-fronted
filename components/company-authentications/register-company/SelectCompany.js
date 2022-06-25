@@ -1,9 +1,5 @@
 import  React,{useEffect} from 'react';
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import { useDispatch, useSelector } from 'react-redux'
 
 
@@ -29,12 +25,9 @@ export default function SelectCompany() {
     <div className='w-[100%] relative block'>
       
       <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
         <select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
           value={companyName}
-          className="w-full p-4 appearance-none bg-gray-50 border border-gray-300 text-gray-900 block"
+          className="w-full p-4 appearance-none bg-gray-50 border border-gray-300 text-gray-500 block border-b-4"
           onChange={handleChange}
         >
            <option disabled value="" className='p-5 bg-black text-white'>
@@ -50,7 +43,6 @@ export default function SelectCompany() {
             </option>
           ))}
         </select>
-      </FormControl>
     </Box>
     </div>
   );

@@ -31,7 +31,7 @@ export default function RegisterCompanyForm() {
           company_password
       }=values
        
-      if(company_email.trim()===""|| company_name.trim()===""|| company_password.trim()===""){
+      if(company_email.trim()===""|| company_name.trim()===""|| company_password.trim()==="" || company==="" || country===""){
           setLoading(false)
           toast.error("Please fill all the fields",toastOption)
           return 
@@ -58,6 +58,8 @@ export default function RegisterCompanyForm() {
        }
     }
  },[values,country,company])
+
+ console.log(company)
 
   return (
      <div className='w-[60%] mx-auto flex justify-center items-center'>
