@@ -33,7 +33,8 @@ export default function RegisterCompanyForm() {
         }=values
          
         if(company_email.trim()===""|| company_name.trim()===""|| company_password.trim()===""){
-            setError("No field must be empty")
+            setLoading(false)
+            toast.error("Please fill all the fields",toastOption)
             return 
         }else{
             const res=await axios.post(registerCompany,{

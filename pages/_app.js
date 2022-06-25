@@ -27,6 +27,18 @@ function MyApp({ Component, pageProps ,...appProps}) {
       </NextUIProvider> 
     )
   }
+  if (router.pathname.startsWith('/admin-signup')) {
+    return (
+      <NextUIProvider>
+         <Provider store={store.store}>
+            <PersistGate persistor={store.persistStore}>
+                <Component {...pageProps} />
+            </PersistGate>
+        </Provider>
+        <ToastContainer limit={1}/>
+      </NextUIProvider> 
+    )
+  }
 
   if (["/admin-dashboard","/admin-dashboard/tasks","/admin-dashboard/departments"].includes(appProps.router.pathname)) {
     return  <Provider store={store.store}>
@@ -34,10 +46,10 @@ function MyApp({ Component, pageProps ,...appProps}) {
               <PersistGate persistor={store.persistStore}>
                 <CompanyDashBoard>
                     <Component {...pageProps} />
-                    <ToastContainer limit={1}/>
                 </CompanyDashBoard>
               </PersistGate>
             </NextUIProvider>
+            <ToastContainer limit={1}/>
         </Provider>
   }
 
