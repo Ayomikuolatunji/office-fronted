@@ -3,7 +3,7 @@ import { Button } from '@mui/material'
 
 // import SX from "../Material-Ui/Login"
 
-export default function CustomButton({variant,text,onClick, type,testid}) {
+export default function CustomButton({variant,text,onClick, type,testid,spinner}) {
   return (
       <Button 
        variant={variant} 
@@ -13,7 +13,9 @@ export default function CustomButton({variant,text,onClick, type,testid}) {
        color = "primary" 
        fullWidth
        sx = {{padding : "0.75rem"}}
-      >{text}
+      >
+       {text}
+       {btn? btn : null}
       </Button>
   )
 }

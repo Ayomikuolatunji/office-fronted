@@ -110,7 +110,8 @@ export default function RegisterCompanyForm() {
                 </div>
                 <div className="submit mt-5 w-full p-3 flex justify-center ">
                     <Button 
-                    text={loading ? <CircleProgressbar/> :"Signup"} 
+                    text={"Signup"} 
+                    btn={`${loading? <CircleProgressbar/> : null}`}
                     className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
                     />
                 </div>
