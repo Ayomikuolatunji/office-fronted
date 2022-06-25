@@ -1,9 +1,10 @@
-import React,{useEffect} from 'react';
-import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+
 import { useDispatch, useSelector } from 'react-redux'
 import {getCompanies} from "../../../redux/company/companyTypeSlice"
 
@@ -51,39 +52,31 @@ export default function SelectCompany() {
       dispatch(getCompanies(companyName))
   },[dispatch,companyName])
   return (
-    <div className='w-[100%]'>
-      <FormControl style={{width:"100%"}}>
+    <div className='w-[100%] relative block'>
+      
+      <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Age</InputLabel>
         <Select
-          multiple={false}
-          displayEmpty
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
           value={companyName}
           onChange={handleChange}
-          input={<OutlinedInput />}
-          className="bg-gray-100 border-gray-200 border-[1px] "
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return <em>Company type</em>;
-            }
-
-            return selected;
-          }}
-          MenuProps={MenuProps}
-          inputProps={{ 'aria-label': 'Without label' }}
         >
-          <MenuItem disabled value="">
+           <MenuItem disabled value="">
             <em>What type of company</em>
           </MenuItem>
           {companies.map((name) => (
             <MenuItem
               key={name.name}
               value={name.name}
-              style={getStyles(name.name, companyName, theme)}
             >
               {name.name}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
+    </Box>
     </div>
   );
 }

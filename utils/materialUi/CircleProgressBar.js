@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 export default function CircleProgressbar() {
   return (
      <Box sx={{ display: 'flex' }}>
-         <CircularProgress />
+         <CircularProgress color="inherit" />
     </Box>
   );
 }

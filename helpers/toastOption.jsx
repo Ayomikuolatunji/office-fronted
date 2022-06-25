@@ -1,6 +1,6 @@
 export const toastOption={
     position: "bottom-right",
-    autoclose:8000,
+    autoclose:4000,
     pauseOnHover:true,
     draggable:true,
     theme:"dark"
