@@ -38,11 +38,11 @@ export default function RegisterCompanyForm() {
             company_country:country,
             company_type:company,
         })
-        console.log(values.company_name, values.company_email,company, country, values.company_password)
         }
       }catch(error){
           console.log(error.message);
-         setError(error.response.data.error)
+         setError(error.response.data.message)
+         console.log(error.response.data);
       }
  } 
 
@@ -95,7 +95,7 @@ export default function RegisterCompanyForm() {
              <SelectCompany/>
         </div>
        {error && <div className="w-full error p-3 flex mx-auto">
-            <div className='text-white bg-red-500 w-full text-center px-2 py-3'>
+            <div className='text-white bg-red-300 w-full text-center px-2 py-3'>
                {error}
             </div>
         </div>}
