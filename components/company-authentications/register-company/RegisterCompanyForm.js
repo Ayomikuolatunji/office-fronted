@@ -38,11 +38,11 @@ export default function RegisterCompanyForm() {
             return 
         }else{
             const res=await axios.post(registerCompany,{
-            company_name:values.company_name,
-            company_password:values.company_password,
-            company_email:values.company_email,
-            company_country:country,
-            company_type:company,
+            company_name:company_name.trim(),
+            company_password:company_password.trim(),
+            company_email:company_email.trim(),
+            company_country:country.trim(),
+            company_type:company.trim(),
         })
             if(res.status===200){
                 setLoading(false)
@@ -51,9 +51,7 @@ export default function RegisterCompanyForm() {
       }catch(error){
         setLoading(false)
          if(error.response){
-            if(error.response.data.message==="Email already exists"){
-                toast.error(error.response.data.message,toastOption)
-            }
+            toast.error(error.response.data.message,toastOption)
          }else if(error.request){
             toast.error("Network error",toastOption)
          }else{
