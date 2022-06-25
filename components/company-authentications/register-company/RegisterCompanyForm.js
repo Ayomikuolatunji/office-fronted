@@ -2,6 +2,7 @@ import axios from 'axios'
 import React,{useCallback, useState} from 'react'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
+
 import { registerCompany } from '../../../hooks/companyApis'
 import { FormLogicHook } from '../../../helpers/FormLogicHook'
 import InputText from '../../../utils/InputText'
