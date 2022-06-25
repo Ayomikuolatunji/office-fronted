@@ -100,7 +100,7 @@ export default function RegisterCompanyForm() {
                 </div>
                 <div className="normal-input p-3 w-full">
                     <InputText 
-                    text="password"
+                    type="password"
                     label={"Company Password"}
                     variant="outlined"
                     name={"company_password"}
