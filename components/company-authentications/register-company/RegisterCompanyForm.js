@@ -17,23 +17,35 @@ export default function RegisterCompanyForm() {
 
 
  const handleSubmit=async(event)=>{
+     setError("")
       try{
         event.preventDefault()
-        const res=await axios.post("http://localhost:8080/v1/office-api/auth/create_company_account",{
-            company_name:"values.company_name",
-            company_password:"values.company_password",
-            company_email:"values.company_email",
+        const {
+            company_name,
+            company_email,
+            company_password
+        }=values
+         
+        if(company_email.trim()===""|| company_name.trim()===""|| company_password.trim()===""){
+            setError("No field must be empty")
+            return 
+        }else{
+            setError("")
+            const res=await axios.post("http://localhost:8080/v1/office-api/auth/create_company_account",{
+            company_name:values.company_name,
+            company_password:values.company_password,
+            company_email:values.company_email,
             company_country:country,
             company_type:company,
         })
-        console.log(res)
+        console.log(values.company_name, values.company_email,company, country, values.company_password)
+        }
       }catch(error){
           console.log(error.message);
          setError(error.response.data.error)
       }
  } 
 
- console.log(company)
   return (
      <div className='w-[60%] mx-auto flex justify-center items-center'>
          <form className="w-[50%] h-[inherent] flex flex-col relative border-2 shadow-xl" onSubmit={(e)=>handleSubmit(e)}>
