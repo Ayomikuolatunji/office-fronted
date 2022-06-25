@@ -6,7 +6,7 @@ const url="https://restcountries.com/v2/all"
 
 export const fetchAllcountries= createAsyncThunk("country/fetchAllcountries",
    async (country, thunkAPI)=>{
-    thunkAPI.dispatch(selectedCountry(country[0]))
+    thunkAPI.dispatch(selectedCountry(country))
     try {
         const res=await axios(url)
         return res.data

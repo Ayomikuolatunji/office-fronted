@@ -50,16 +50,19 @@ export default function RegisterCompanyForm() {
     }catch(error){
       setLoading(false)
        if(error.response){
-          toast.error(error.response.data.message,toastOption)
+          if(error.response.data){
+              toast.error(error.response.data.message,toastOption)
+          }
        }else if(error.request){
           toast.error("Network error",toastOption)
        }else{
-          toast.error("Something went wrong",toastOption)
+        toast.error("Something went wrong",toastOption)
+        console.log(error.response.data)
        }
     }
+
  },[values,country,company])
 
- console.log(company)
 
   return (
      <div className='w-[60%] mx-auto flex justify-center items-center'>
