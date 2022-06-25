@@ -77,13 +77,13 @@ export default function SelectCountry() {
             <em>Provide your country </em>
           </MenuItem>
           {countries.map((name) => (
-            <MenuItem
+            <option
               key={name.name}
               value={name.name}
               style={getStyles(name.name, countryName, theme)}
             >
               {name.name}
-            </MenuItem>
+            </option>
           ))}
         </Select>
       </FormControl>

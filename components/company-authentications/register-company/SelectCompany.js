@@ -34,15 +34,15 @@ export default function SelectCompany() {
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={companyName}
-          className="w-full p-3 appearance-none"
+          className="w-full p-4 appearance-none bg-gray-50 border border-gray-300 text-gray-900 block"
           onChange={handleChange}
         >
-           <option disabled value="" className='p-3'>
+           <option disabled value="" className='p-5 bg-black text-white'>
             <em>What type of company</em>
           </option>
           {companies.map((name) => (
             <option
-              className='p-3'
+              className='p-3 mb-3'
               key={name.name}
               value={name.name}
             >
