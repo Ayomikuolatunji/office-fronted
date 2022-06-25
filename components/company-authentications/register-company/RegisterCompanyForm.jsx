@@ -48,6 +48,7 @@ export default function RegisterCompanyForm() {
       })
           if(res.status===200){
               setLoading(false)
+              router.push("/admin-signup-success")
           }
       }
     }catch(error){
@@ -64,7 +65,7 @@ export default function RegisterCompanyForm() {
        }
     }
 
- },[values,country,company])
+ },[values,country,company,router])
 
 
   return (
