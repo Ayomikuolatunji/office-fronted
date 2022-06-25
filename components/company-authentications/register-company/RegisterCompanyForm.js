@@ -1,12 +1,18 @@
 import axios from 'axios'
 import React,{useState} from 'react'
 import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 import { registerCompany } from '../../../hooks/companyApis'
 import { FormLogicHook } from '../../../helpers/FormLogicHook'
 import InputText from '../../../utils/InputText'
 import SelectCompany from './SelectCompany'
 import SelectCountry from './SelectCountry'
 import Button from "../../../utils/Button"
+import { toastOption } from '../../../helpers/toastOption'
+import CircleProgressbar from '../../../utils/materialUi/CircleProgressBar'
+
+
+
 
 export default function RegisterCompanyForm() {
  const  {values, handleChange}=FormLogicHook()
@@ -17,7 +23,7 @@ export default function RegisterCompanyForm() {
 
 
  const handleSubmit=async(event)=>{
-     setError("")
+     setLoading(true)
       try{
         event.preventDefault()
         const {
@@ -30,82 +36,86 @@ export default function RegisterCompanyForm() {
             setError("No field must be empty")
             return 
         }else{
-            setError("")
-            const res=await axios.post("http://localhost:8080/v1/office-api/auth/create_company_account",{
+            const res=await axios.post(registerCompany,{
             company_name:values.company_name,
             company_password:values.company_password,
             company_email:values.company_email,
             company_country:country,
             company_type:company,
         })
+            if(res.status===200){
+                setLoading(false)
+            }
         }
       }catch(error){
-          console.log(error.message);
-         setError(error.response.data.message)
-         console.log(error.response.data);
+        setLoading(false)
+         if(error.response){
+            if(error.response.data.message==="Email already exists"){
+                toast.error(error.response.data.message,toastOption)
+            }
+         }else if(error.request){
+            toast.error("Network error",toastOption)
+         }else{
+            toast.error("Something went wrong",toastOption)
+         }
       }
  } 
 
   return (
      <div className='w-[60%] mx-auto flex justify-center items-center'>
-         <form className="w-[50%] h-[inherent] flex flex-col relative border-2 shadow-xl" onSubmit={(e)=>handleSubmit(e)}>
-        <div className="text-center p-3">
-            <h3>Register your company</h3>
-        </div>
-        <div className="normal-input p-3">
-            <InputText 
-                text="text"
-                name={"company_name"}
-                variant="outlined"
-                label={"Company Name"}
-                value={values.company_name}
-                onChange={(e)=>handleChange(e)}
-                placeholder={"Enter your  company name"}
-                className="w-full border-b-2 border-r-0 border-l-0 border-t-0"
-            />
-        </div>
-         <div className="normal-input p-3 w-full">
-            <InputText 
-                text="email"
-                value={values.company_email}
-                label={"Company Email"}
-                variant="outlined"
-                name={"company_email"}
-                onChange={(e)=>handleChange(e)}
-                placeholder={"Enter your company email address"}
-                className="w-full border-b-2 border-r-0 border-l-0 border-t-0"
-            />
-        </div>
-        <div className="normal-input p-3 w-full">
-            <InputText 
-               text="password"
-               label={"Company Password"}
-               variant="outlined"
-               name={"company_password"}
-               value={values.company_password}
-               onChange={(e)=>handleChange(e)}
-               placeholder={"Enter your company account password"}
-               className="w-full border-b-2 border-r-0 border-l-0 border-t-0"
-            />
-        </div>
-        <div className='w-[100%] flex mx-auto relative p-3'>
-             <SelectCountry/>
-        </div>
-        <div className='w-[100%] flex mx-auto relative p-3'>
-             <SelectCompany/>
-        </div>
-       {error && <div className="w-full error p-3 flex mx-auto">
-            <div className='text-white bg-red-300 w-full text-center px-2 py-3'>
-               {error}
-            </div>
-        </div>}
-         <div className="submit mt-5 w-full p-3 flex justify-center ">
-            <Button 
-              text={"Submit"} 
-              className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
-            />
-        </div>
-    </form>
-     </div>
+        <form className="w-[50%] h-[inherent] flex flex-col relative border-2 shadow-xl" onSubmit={(e)=>handleSubmit(e)}>
+                <div className="text-center p-3">
+                   <h3>Register your company</h3>
+                </div>
+                <div className="normal-input p-3">
+                   <InputText 
+                        text="text"
+                        name={"company_name"}
+                        variant="outlined"
+                        label={"Company Name"}
+                        value={values.company_name}
+                        onChange={(e)=>handleChange(e)}
+                        placeholder={"Enter your  company name"}
+                        className="w-full border-b-2 border-r-0 border-l-0 border-t-0"
+                      />
+                    </div>
+                <div className="normal-input p-3 w-full">
+                    <InputText 
+                        text="email"
+                        value={values.company_email}
+                        label={"Company Email"}
+                        variant="outlined"
+                        name={"company_email"}
+                        onChange={(e)=>handleChange(e)}
+                        placeholder={"Enter your company email address"}
+                        className="w-full border-b-2 border-r-0 border-l-0 border-t-0"
+                    />
+                </div>
+                <div className="normal-input p-3 w-full">
+                    <InputText 
+                    text="password"
+                    label={"Company Password"}
+                    variant="outlined"
+                    name={"company_password"}
+                    value={values.company_password}
+                    onChange={(e)=>handleChange(e)}
+                    placeholder={"Enter your company account password"}
+                    className="w-full border-b-2 border-r-0 border-l-0 border-t-0"
+                    />
+                </div>
+                <div className='w-[100%] flex mx-auto relative p-3'>
+                    <SelectCountry/>
+                </div>
+                <div className='w-[100%] flex mx-auto relative p-3'>
+                    <SelectCompany/>
+                </div>
+                <div className="submit mt-5 w-full p-3 flex justify-center ">
+                    <Button 
+                    text={loading ? <CircleProgressbar/> :"Signup"} 
+                    className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
+                    />
+                </div>
+        </form>
+    </div>
   )
 }

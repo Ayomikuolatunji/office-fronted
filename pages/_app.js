@@ -2,6 +2,8 @@ import '../styles/globals.css';
 import {Provider} from "react-redux"
 import { NextUIProvider } from '@nextui-org/react';
 import Head from 'next/head';
+import { ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router'
 import store from '../redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
@@ -21,6 +23,7 @@ function MyApp({ Component, pageProps ,...appProps}) {
                 <Component {...pageProps} />
             </PersistGate>
         </Provider>
+        <ToastContainer limit={1}/>
       </NextUIProvider> 
     )
   }
@@ -31,6 +34,7 @@ function MyApp({ Component, pageProps ,...appProps}) {
               <PersistGate persistor={store.persistStore}>
                 <CompanyDashBoard>
                     <Component {...pageProps} />
+                    <ToastContainer limit={1}/>
                 </CompanyDashBoard>
               </PersistGate>
             </NextUIProvider>
@@ -47,6 +51,7 @@ function MyApp({ Component, pageProps ,...appProps}) {
                 </MainEmplyeeDashhboard>
               </PersistGate>
             </NextUIProvider>
+            <ToastContainer limit={1}/>
         </Provider>
   }
 

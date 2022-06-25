@@ -1,9 +1,8 @@
 import { useState, useCallback } from 'react';
 import Link from 'next/link'
-import { ToastContainer,toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { Grid, Paper,Avatar,Typography} from '@mui/material';
 import {RiAccountPinCircleLine} from 'react-icons/ri';
@@ -139,7 +138,6 @@ export default function Login() {
          </Paper>
          </Grid>
          </div>
-       <ToastContainer limit={1}/>
        </>
   );
 }
