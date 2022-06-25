@@ -2,6 +2,7 @@ import axios from 'axios'
 import React,{useCallback, useState} from 'react'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/router'
 
 import { registerCompany } from '../../../hooks/companyApis'
 import { FormLogicHook } from '../../../helpers/FormLogicHook'
@@ -14,8 +15,10 @@ import { toastOption } from '../../../helpers/toastOption'
 
 
 
+
 export default function RegisterCompanyForm() {
  const  {values, handleChange}=FormLogicHook()
+ const router=useRouter()
  const [loading,setLoading]=useState(false)
  const country=useSelector(state=>state.country.seletedCountry)
  const company=useSelector(state=>state.companies.selectedCompany)
