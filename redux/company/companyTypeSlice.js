@@ -4,7 +4,7 @@ import {allIndustriesApi} from "../../hooks/otherApi"
 
 
 const initialState={
-    companies:[],
+    companies:null,
     selectedCompany:"",
     isCompanyLoading:true
 }

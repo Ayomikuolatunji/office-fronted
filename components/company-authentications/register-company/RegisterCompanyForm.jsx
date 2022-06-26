@@ -23,6 +23,8 @@ export default function RegisterCompanyForm() {
  const country=useSelector(state=>state.country.seletedCountry)
  const company=useSelector(state=>state.companies.selectedCompany)
 
+ console.log(country,company)
+
 
  const handleSubmit=useCallback(async(event)=>{
     setLoading(true)
@@ -34,7 +36,7 @@ export default function RegisterCompanyForm() {
           company_password
       }=values
        
-      if(company_email.trim()===""|| company_name.trim()===""|| company_password.trim()==="" || !company || !country){
+      if(company_email.trim()===""|| company_name.trim()===""|| company_password.trim()==="" || !company.length || !country.length){
           setLoading(false)
           toast.error("Please fill all the fields",toastOption)
           return 
