@@ -54,6 +54,7 @@ export default function RegisterCompanyForm() {
          }
       }
     }catch(error){
+       
        if(error.response){
           if(error.response.data){
               setLoading(false)
@@ -62,11 +63,10 @@ export default function RegisterCompanyForm() {
        }else if(error.request){
           setLoading(false)
           toast.error("Network error")
-       }else{
+       }
         setLoading(false)
         toast.error("Something went wrong")
-       }
-       setLoading(false)
+       
     }
 
  },[values,country,company,router])
