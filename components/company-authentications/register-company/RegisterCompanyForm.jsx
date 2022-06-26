@@ -10,7 +10,6 @@ import InputText from '../../../utils/InputText'
 import SelectCompany from './SelectCompany'
 import SelectCountry from './SelectCountry'
 import Button from "../../../utils/Button"
-import { toastOption } from '../../../helpers/toastOption'
 
 
 
@@ -52,19 +51,22 @@ export default function RegisterCompanyForm() {
          if(res.status===200){
             setLoading(false)
             router.push("/admin-signup-success")
-        }
+         }
       }
     }catch(error){
-      setLoading(false)
        if(error.response){
           if(error.response.data){
-              toast.error(error.response.data.message)
+              setLoading(false)
+              toast.error(error?.response?.data?.message)
           }
        }else if(error.request){
+          setLoading(false)
           toast.error("Network error")
        }else{
+        setLoading(false)
         toast.error("Something went wrong")
        }
+       setLoading(false)
     }
 
  },[values,country,company,router])
