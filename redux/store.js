@@ -12,7 +12,7 @@ import employeeCompanyInfo from './employee/employeeCompanySlice';
 const persistConfig = {
     key: 'onlineoffice',
     storage,
-    blacklist:["modal","employeeCompanyInfo"],
+    blacklist:["modal","employeeCompanyInfo","companies","country"],
 }
 // first reducer setup for persist storage blacklisting country and companies
 const rootReducer= combineReducers({
