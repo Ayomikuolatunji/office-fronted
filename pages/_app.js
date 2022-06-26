@@ -23,7 +23,18 @@ function MyApp({ Component, pageProps ,...appProps}) {
                 <Component {...pageProps} />
             </PersistGate>
         </Provider>
-        <ToastContainer limit={1}/>
+        <ToastContainer 
+           theme='dark'
+           position='bottom-center'
+           autoClose={5000}
+           hideProgressBar
+           newestOnTop={false}
+           closeOnClick
+           rtl={false}
+           pauseOnFocusLoss
+           draggable
+           pauseOnHover
+        />
       </NextUIProvider> 
     )
   }
@@ -35,7 +46,18 @@ function MyApp({ Component, pageProps ,...appProps}) {
                 <Component {...pageProps} />
             </PersistGate>
         </Provider>
-        <ToastContainer limit={1}/>
+        <ToastContainer 
+           theme='dark'
+           position='bottom-center'
+           autoClose={5000}
+           hideProgressBar
+           newestOnTop={false}
+           closeOnClick
+           rtl={false}
+           pauseOnFocusLoss
+           draggable
+           pauseOnHover
+        />
       </NextUIProvider> 
     )
   }
@@ -49,7 +71,18 @@ function MyApp({ Component, pageProps ,...appProps}) {
                 </CompanyDashBoard>
               </PersistGate>
             </NextUIProvider>
-            <ToastContainer limit={1}/>
+            <ToastContainer 
+               theme='dark'
+               position='bottom-center'
+               autoClose={5000}
+               hideProgressBar
+               newestOnTop={false}
+               closeOnClick
+               rtl={false}
+               pauseOnFocusLoss
+               draggable
+               pauseOnHover
+            />
         </Provider>
   }
 
@@ -63,7 +96,18 @@ function MyApp({ Component, pageProps ,...appProps}) {
                 </MainEmplyeeDashhboard>
               </PersistGate>
             </NextUIProvider>
-            <ToastContainer limit={1}/>
+            <ToastContainer 
+               theme='dark'
+               position='bottom-center'
+               autoClose={5000}
+               hideProgressBar
+               newestOnTop={false}
+               closeOnClick
+               rtl={false}
+               pauseOnFocusLoss
+               draggable
+               pauseOnHover
+            />
         </Provider>
   }
 
@@ -80,8 +124,19 @@ function MyApp({ Component, pageProps ,...appProps}) {
                  <Component {...pageProps} />
                </PersistGate>
             </NextUIProvider>
+            <ToastContainer 
+               theme='dark'
+               position='bottom-center'
+               autoClose={5000}
+               hideProgressBar
+               newestOnTop={false}
+               closeOnClick
+               rtl={false}
+               pauseOnFocusLoss
+               draggable
+               pauseOnHover
+            />
       </Provider>
-     
 </div>
     
   )
