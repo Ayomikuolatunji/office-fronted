@@ -11,7 +11,7 @@ import {getCompanies} from "../../../redux/company/companyTypeSlice"
 export default function SelectCompany() {
   const companies=useSelector(state=>state.companies.companies) 
   const dispatch=useDispatch()
-  const [companyName, setCompany] = React.useState([]);
+  const [companyName, setCompany] = React.useState("");
 
   
   const handleChange = (event) => {

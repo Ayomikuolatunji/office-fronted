@@ -8,7 +8,7 @@ import {fetchAllcountries} from "../../../redux/country/countryApiSlice"
 export default function SelectCountry() {
   const countries=useSelector(state=>state.country.countries) 
   const dispatch=useDispatch()
-  const [countryName, setCountry] = React.useState([]);
+  const [countryName, setCountry] = React.useState("");
 
   
   const handleChange = (event) => {
