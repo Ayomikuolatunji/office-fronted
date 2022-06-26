@@ -34,7 +34,7 @@ export default function SelectCompany() {
            <option  value="" className='p-5 bg-black text-white'>
              What type of company
           </option>
-          {companies.map((name) => (
+          {companies?.map((name) => (
             <option
               className='p-3 mb-3'
               key={name.name}

@@ -30,7 +30,7 @@ export default function SelectCountry() {
           <option  value=""  className='p-5 bg-black text-white'>
             Provide your country
           </option>
-          {countries.map((name) => (
+          {countries?.map((name) => (
             <option
               key={name.name}
               value={name.name}
