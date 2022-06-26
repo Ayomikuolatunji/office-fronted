@@ -38,7 +38,7 @@ export default function RegisterCompanyForm() {
        
       if(company_email.trim()===""|| company_name.trim()===""|| company_password.trim()==="" || !company.length || !country.length){
           setLoading(false)
-          toast.error("Please fill all the fields",toastOption)
+          toast.error("Please fill all the fields")
           return 
       }else{
           const res=await axios.post(registerCompany,{
@@ -58,12 +58,12 @@ export default function RegisterCompanyForm() {
       setLoading(false)
        if(error.response){
           if(error.response.data){
-              toast.error(error.response.data.message,toastOption)
+              toast.error(error.response.data.message)
           }
        }else if(error.request){
-          toast.error("Network error",toastOption)
+          toast.error("Network error")
        }else{
-        toast.error("Something went wrong",toastOption)
+        toast.error("Something went wrong")
        }
     }
 
