@@ -34,7 +34,7 @@ export default function RegisterCompanyForm() {
           company_password
       }=values
        
-      if(company_email.trim()===""|| company_name.trim()===""|| company_password.trim()==="" || company==="" || country===""){
+      if(company_email.trim()===""|| company_name.trim()===""|| company_password.trim()==="" || !company || !country){
           setLoading(false)
           toast.error("Please fill all the fields",toastOption)
           return 
@@ -45,11 +45,12 @@ export default function RegisterCompanyForm() {
           company_email:company_email.trim(),
           company_country:country.trim(),
           company_type:company.trim(),
+          
       })
-          if(res.status===200){
-              setLoading(false)
-              router.push("/admin-signup-success")
-          }
+         if(res.status===200){
+            setLoading(false)
+            router.push("/admin-signup-success")
+        }
       }
     }catch(error){
       setLoading(false)
@@ -61,13 +62,10 @@ export default function RegisterCompanyForm() {
           toast.error("Network error",toastOption)
        }else{
         toast.error("Something went wrong",toastOption)
-        console.log(error.response.data)
        }
     }
 
  },[values,country,company,router])
-
-
   return (
      <div className='w-[60%] mx-auto flex justify-center items-center'>
         <form className="w-[50%] h-[inherent] flex flex-col relative border-2 shadow-xl" onSubmit={(e)=>handleSubmit(e)}>

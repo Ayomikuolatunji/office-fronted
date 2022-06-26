@@ -16,7 +16,7 @@ export const fetchAllcountries= createAsyncThunk("country/fetchAllcountries",
 })
 
 const initialState={
-    seletedCountry:"",
+    seletedCountry:null,
     countries:[],
     isCountyLoading:true
 }

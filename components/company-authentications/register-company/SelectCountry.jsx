@@ -27,8 +27,8 @@ export default function SelectCountry() {
           onChange={handleChange}
           className="w-full p-4 appearance-none bg-gray-50 border border-gray-300 text-gray-500 block border-b-4"
         >
-          <option disabled value=""  className='p-5 bg-black text-white'>
-            <em>Provide your country </em>
+          <option  value=""  className='p-5 bg-black text-white'>
+            Provide your country
           </option>
           {countries.map((name) => (
             <option

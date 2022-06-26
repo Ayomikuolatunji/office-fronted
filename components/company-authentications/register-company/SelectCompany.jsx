@@ -24,14 +24,15 @@ export default function SelectCompany() {
   return (
     <div className='w-[100%] relative block'>
       
-      <Box sx={{ minWidth: 120 }}>
+      <div>
         <select
           value={companyName}
           className="w-full p-4 appearance-none bg-gray-50 border border-gray-300 text-gray-500 block border-b-4"
           onChange={handleChange}
+
         >
-           <option disabled value="" className='p-5 bg-black text-white'>
-            <em>What type of company</em>
+           <option  value="" className='p-5 bg-black text-white'>
+             What type of company
           </option>
           {companies.map((name) => (
             <option
@@ -43,7 +44,7 @@ export default function SelectCompany() {
             </option>
           ))}
         </select>
-    </Box>
+    </div>
     </div>
   );
 }
